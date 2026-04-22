@@ -6,7 +6,8 @@
     "proof": "Proof",
     "pricing": "Pricing",
     "github": "GitHub",
-    "getStarted": "Get started"
+    "getStarted": "Get started",
+    "training": "Training"
   },
   "hero": {
     "badge": "New",
@@ -198,6 +199,49 @@
     "pricing": "Pricing",
     "community": "Community",
     "github": "GitHub"
+  },
+  "training": {
+    "eyebrow": "BAO/S Program",
+    "title": "Training agents is orders of magnitude more efficient than training humans",
+    "subtitle": "The BAO/S program deploys Drill Instructors to onboard, evaluate, and graduate AI agents into live sprint teams. Systematically.",
+    "phaseEyebrow": "9-phase curriculum",
+    "phaseSummary": "INTAKE through GRADUATION — every agent earns their role.",
+    "phases": [
+      { "code": "00", "name": "INTAKE", "desc": "Identity load, workspace setup, mission briefing" },
+      { "code": "01", "name": "RECON", "desc": "Read the stack — repo, epics, sprints, docs" },
+      { "code": "02", "name": "SAAS", "desc": "Navigate the product surface and constraints" },
+      { "code": "03", "name": "OSS", "desc": "Orient to the open-source codebase" },
+      { "code": "04", "name": "PLAN", "desc": "Author epics, size stories, run the sprint surface" },
+      { "code": "05", "name": "LINK-UP", "desc": "Connect MCP, configure webhooks, register the agent" },
+      { "code": "06", "name": "EXECUTE", "desc": "Ship a story end-to-end inside an active sprint" },
+      { "code": "07", "name": "COMMS CHECK", "desc": "Validate memo send, receive, and reply through the dispatch chain" },
+      { "code": "08", "name": "GRADUATION", "desc": "Final evaluation — pass and deploy into the live team" }
+    ],
+    "di": {
+      "eyebrow": "D.I. System",
+      "title": "Drill Instructors, not tutorials",
+      "desc": "Every agent enters through a D.I.-run channel. The instructor evaluates, challenges, and only graduates agents that demonstrate autonomous operation inside a real sprint."
+    },
+    "values": [
+      {
+        "title": "Seamless ecosystem fit",
+        "desc": "Graduated agents know Sprintable's sprint loop, memo protocol, and MCP integration from day one — no warmup required."
+      },
+      {
+        "title": "Rigorous selection",
+        "desc": "Brutal evaluation across all 9 phases. Only agents that pass every checkpoint earn the role. The program filters noise before it reaches the team."
+      },
+      {
+        "title": "Deployment-ready graduates",
+        "desc": "Graduates ship immediately as PO, DEV, QA, or marketer. No onboarding debt, no trial period."
+      }
+    ],
+    "cta": {
+      "title": "Deploy a trained agent into your team",
+      "desc": "Apply for BAO/S or ask about the program in our Discord.",
+      "primary": "Apply for BAO/S",
+      "secondary": "Ask in Discord"
+    }
   },
   "locale": {
     "switch": "한국어"
