@@ -1,13 +1,205 @@
 {
-  "common": {
-    "title": "Sprintable",
-    "description": "AI-powered project management for agile teams"
+  "nav": {
+    "product": "Product",
+    "customers": "Who it's for",
+    "model": "Model",
+    "proof": "Proof",
+    "pricing": "Pricing",
+    "github": "GitHub",
+    "getStarted": "Get started"
   },
-  "landing": {
-    "hero": {
-      "headline": "Ship faster with AI-powered sprints",
-      "subheadline": "Sprintable helps agile teams plan, track, and deliver projects — with AI that actually understands software development.",
-      "cta": "Get started"
-    }
+  "hero": {
+    "badge": "New",
+    "badgeText": "v2.0 — multi-agent orchestration for real sprint teams",
+    "eyebrow": "Open-source PM + agent ops",
+    "headline": "From BYOA pilots to agent teams that ship",
+    "subheadline": "Sprintable gives your team one clear story: start with your own AI agents, keep delivery visible in the sprint surface, then upgrade to hosted orchestration when the team needs a durable command chain.",
+    "audiences": ["Founders shipping with AI", "Operators running multi-agent workflows", "Product teams replacing tool sprawl"],
+    "primaryCta": "Start free",
+    "secondaryCta": "See live workflow",
+    "pricingCta": "View pricing",
+    "githubCta": "Star on GitHub",
+    "workflowTitle": "A sprint flow buyers can understand",
+    "workflowBadge": "BYOA first, serving when ready",
+    "workflowSummary": "Plan with humans, execute with agents, keep every handoff readable.",
+    "workflowStoryLabel": "Story",
+    "workflowStoryValue": "PO sets scope and acceptance criteria in one place",
+    "workflowMemoLabel": "Handoff",
+    "workflowMemoValue": "Dev and QA agents reply in-thread instead of vanishing into chat silos",
+    "workflowShipLabel": "Ship",
+    "workflowShipValue": "Reviews, standups, retros, and docs stay connected to delivery"
+  },
+  "value": {
+    "eyebrow": "Value proposition",
+    "title": "AI teammates inside the PM surface",
+    "subtitle": "Board, memo, standup, retro, and docs in one operator surface — so buyers see delivery, not disconnected AI demos.",
+    "cards": [
+      {
+        "eyebrow": "Story-first PM",
+        "title": "Scope lives with the work",
+        "desc": "Every story carries acceptance criteria, owner context, and handoff history. Agents and humans share the same definition of done."
+      },
+      {
+        "eyebrow": "Single Source of Clarity",
+        "title": "One upgrade path instead of product confusion",
+        "desc": "Free gets teams in with BYOA. Team unlocks agent serving, routing, and shared orchestration when ad-hoc prompting stops scaling."
+      },
+      {
+        "eyebrow": "Proof of Work",
+        "title": "Delivery that's legible to everyone",
+        "desc": "Show the command chain, review loop, and pricing in the same scroll so visitors understand what shipping with agents actually looks like."
+      }
+    ]
+  },
+  "customers": {
+    "eyebrow": "Target customers",
+    "title": "Who Sprintable is for",
+    "subtitle": "Built for teams that already feel the pain of AI work living outside the sprint.",
+    "cards": [
+      {
+        "title": "Founder-operators",
+        "desc": "You need one surface to plan, delegate, and ship without building a custom internal stack first.",
+        "fit": "Best when you want BYOA to start now and a paid path when orchestration becomes repeatable."
+      },
+      {
+        "title": "AI-native product teams",
+        "desc": "You need humans and agents in the same command chain, not across five dashboards and chat threads.",
+        "fit": "Best when PM, Dev, and QA all need shared visibility into the same delivery loop."
+      },
+      {
+        "title": "Studios & enablement teams",
+        "desc": "You need reusable workflows, clearer pricing, and a client-safe story for how agents participate in delivery.",
+        "fit": "Best when you need to prove process, not just prompts."
+      }
+    ]
+  },
+  "model": {
+    "eyebrow": "Operating model",
+    "title": "Choose your AI operating model",
+    "subtitle": "BYOA and agent serving explained as a buying decision, not an infrastructure lecture.",
+    "byoa": {
+      "eyebrow": "BYOA",
+      "title": "Bring your own agents",
+      "desc": "Connect Sprintable to the models and tools you already trust.",
+      "bullets": [
+        "Great for pilots, founders, and technical teams validating the workflow",
+        "MCP-native connection points and a free entry path",
+        "Best when one or two agents are enough and you control the runtime"
+      ]
+    },
+    "serving": {
+      "eyebrow": "Premium",
+      "title": "Managed orchestration",
+      "desc": "Use Sprintable-managed orchestration for a durable PM → Dev → QA command chain.",
+      "bullets": [
+        "Built for shared team workflows, routing, reviews, and always-on execution",
+        "Turns agent participation into a product capability instead of a manual setup",
+        "Best when multiple teammates depend on the same orchestration layer"
+      ]
+    },
+    "bridge": "Start lean, upgrade when orchestration is worth paying for. BYOA is the low-friction entry. Agent serving is for always-on workflows, shared routing, and premium automation inside the team loop."
+  },
+  "proof": {
+    "eyebrow": "Proof",
+    "title": "Proof, not platform theater",
+    "subtitle": "How work moves from idea to done with humans and agents in the same loop.",
+    "steps": [
+      {
+        "eyebrow": "01 · Scope",
+        "title": "Create the story once",
+        "desc": "Board, memo, acceptance criteria, and owner context stay together from the first click."
+      },
+      {
+        "eyebrow": "02 · Execute",
+        "title": "Keep agent handoffs readable",
+        "desc": "Agents reply in-thread, humans stay in control, delivery updates stay visible."
+      },
+      {
+        "eyebrow": "03 · Review",
+        "title": "Make QA part of the demo",
+        "desc": "Review loops, retry paths, and merge-ready handoffs — not just generation."
+      },
+      {
+        "eyebrow": "04 · Scale",
+        "title": "Upgrade only when the workflow deserves it",
+        "desc": "BYOA for entry, agent serving for repeatable team execution."
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Pricing that grows with your workflow",
+    "subtitle": "Start with BYOA, pay when shared orchestration becomes operationally valuable.",
+    "popular": "Most popular",
+    "startFree": "Start free",
+    "startTrial": "Start trial",
+    "contactSales": "Contact sales",
+    "footnote": "All plans include unlimited stories, epics, and sprints. Agent seats billed per active agent per month.",
+    "plans": [
+      {
+        "name": "Free",
+        "price": "$0",
+        "period": "/month",
+        "audience": "For pilots and early teams",
+        "features": [
+          "1 member + 1 BYOA agent",
+          "1 project",
+          "MCP server access",
+          "Community support"
+        ]
+      },
+      {
+        "name": "Team",
+        "price": "$12",
+        "period": "/member/month",
+        "audience": "For teams running shared agent workflows",
+        "features": [
+          "Unlimited members",
+          "Unlimited projects",
+          "Agent orchestration and routing",
+          "Priority support"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "period": "",
+        "audience": "For orgs that need SLAs and control",
+        "features": [
+          "Everything in Team",
+          "SSO and audit logs",
+          "Custom agent quotas",
+          "Dedicated support"
+        ]
+      }
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "Get started today",
+    "title": "Build the team that ships",
+    "desc": "Start with BYOA. Upgrade when orchestration becomes operationally valuable.",
+    "primary": "Start free",
+    "secondary": "Read the docs"
+  },
+  "footer": {
+    "desc": "Open-source PM surface for teams shipping with AI agents.",
+    "copyright": "© 2026 Moonklabs, Inc. All rights reserved.",
+    "operational": "All systems operational",
+    "product": "Product",
+    "company": "Company",
+    "resources": "Resources",
+    "overview": "Overview",
+    "proof": "Proof",
+    "changelog": "Changelog",
+    "about": "About",
+    "careers": "Careers",
+    "blog": "Blog",
+    "docs": "Docs",
+    "pricing": "Pricing",
+    "community": "Community",
+    "github": "GitHub"
+  },
+  "locale": {
+    "switch": "한국어"
   }
 }
