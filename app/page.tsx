@@ -1,7 +1,6 @@
-'use client';
-
 import { useTranslations } from "next-intl";
 import { LocaleSwitcher } from "./components/locale-switcher";
+import { NavLinks } from "./components/nav-links";
 
 export default function Home() {
   const t = useTranslations();
@@ -56,26 +55,7 @@ export default function Home() {
             Sprintable
           </a>
 
-          <div className="hidden items-center gap-7 lg:flex">
-            {(
-              ["product", "customers", "model", "proof", "pricing", "training"] as const
-            ).map((key) => (
-              <a
-                key={key}
-                href={`#${key}`}
-                className="text-sm font-medium transition"
-                style={{ color: "oklch(65% 0.025 265)" }}
-                onMouseEnter={(e) =>
-                  ((e.target as HTMLElement).style.color = "oklch(88% 0.03 265)")
-                }
-                onMouseLeave={(e) =>
-                  ((e.target as HTMLElement).style.color = "oklch(65% 0.025 265)")
-                }
-              >
-                {t(`nav.${key}`)}
-              </a>
-            ))}
-          </div>
+          <NavLinks />
 
           <div className="flex items-center gap-4">
             <LocaleSwitcher />
