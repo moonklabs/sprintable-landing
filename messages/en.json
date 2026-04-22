@@ -1,0 +1,13 @@
+{
+  "common": {
+    "title": "Sprintable",
+    "description": "AI-powered project management for agile teams"
+  },
+  "landing": {
+    "hero": {
+      "headline": "Ship faster with AI-powered sprints",
+      "subheadline": "Sprintable helps agile teams plan, track, and deliver projects — with AI that actually understands software development.",
+      "cta": "Get started"
+    }
+  }
+}

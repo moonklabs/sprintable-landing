@@ -1,0 +1,13 @@
+{
+  "common": {
+    "title": "Sprintable",
+    "description": "애자일 팀을 위한 AI 기반 프로젝트 관리"
+  },
+  "landing": {
+    "hero": {
+      "headline": "AI 스프린트로 더 빠르게 출시하세요",
+      "subheadline": "Sprintable은 소프트웨어 개발을 이해하는 AI와 함께 애자일 팀의 계획, 추적, 납품을 돕습니다.",
+      "cta": "시작하기"
+    }
+  }
+}
