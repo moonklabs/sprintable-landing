@@ -69,7 +69,7 @@ export default function Home() {
               {t("nav.github")}
             </a>
             <a
-              href="#"
+              href="https://app.sprintable.ai/login"
               className="rounded-lg px-4 py-2 text-sm font-semibold transition"
               style={{
                 backgroundColor: "oklch(72% 0.14 265)",
@@ -160,7 +160,7 @@ export default function Home() {
                 {/* CTAs */}
                 <div className="mt-9 flex flex-wrap gap-3">
                   <a
-                    href="#"
+                    href="https://app.sprintable.ai/login"
                     className="inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition"
                     style={{
                       backgroundColor: "oklch(72% 0.14 265)",
@@ -923,7 +923,7 @@ export default function Home() {
                     </ul>
 
                     <a
-                      href="#"
+                      href={i === 2 ? "https://discord.gg/sprintable" : "https://app.sprintable.ai/login"}
                       className="mt-8 inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition"
                       style={
                         isTeam
@@ -988,7 +988,7 @@ export default function Home() {
             </p>
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <a
-                href="#"
+                href="https://app.sprintable.ai/login"
                 className="inline-flex items-center justify-center rounded-xl px-7 py-3.5 text-sm font-semibold transition"
                 style={{
                   backgroundColor: "oklch(72% 0.14 265)",
@@ -999,7 +999,7 @@ export default function Home() {
                 {t("finalCta.primary")}
               </a>
               <a
-                href="#"
+                href="https://discord.gg/sprintable"
                 className="inline-flex items-center justify-center rounded-xl px-7 py-3.5 text-sm font-medium transition"
                 style={{
                   border: "1px solid oklch(26% 0.022 265)",
@@ -1129,7 +1129,7 @@ export default function Home() {
           }}
         >
           <a
-            href="#"
+            href="https://app.sprintable.ai/login"
             className="flex-1 rounded-xl py-3 text-center text-sm font-semibold"
             style={{
               backgroundColor: "oklch(72% 0.14 265)",
