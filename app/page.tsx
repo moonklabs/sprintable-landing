@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { LocaleSwitcher } from "./components/locale-switcher";
 import { NavLinks } from "./components/nav-links";
@@ -47,12 +48,21 @@ export default function Home() {
       >
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
           {/* Wordmark */}
-          <a
-            href="/"
-            className="shrink-0 font-[family-name:var(--font-display)] text-lg font-bold tracking-[-0.04em]"
-            style={{ color: "oklch(93% 0.02 265)" }}
-          >
-            Sprintable
+          <a href="/" className="flex shrink-0 items-center gap-2">
+            <Image
+              src="/brand/sprintable-logo-square.png"
+              alt="Sprintable"
+              width={28}
+              height={28}
+              className="size-7"
+              priority
+            />
+            <span
+              className="font-[family-name:var(--font-display)] text-lg font-bold tracking-[-0.04em]"
+              style={{ color: "oklch(93% 0.02 265)" }}
+            >
+              Sprintable
+            </span>
           </a>
 
           <NavLinks />
