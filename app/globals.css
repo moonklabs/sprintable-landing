@@ -21,16 +21,17 @@
   --color-teal: oklch(78% 0.13 195);         /* secondary teal */
   --color-teal-dim: oklch(78% 0.13 195 / 0.14);
 
-  /* Spacing scale — 4pt base */
-  --spacing-xs: 0.25rem;   /* 4px */
-  --spacing-sm: 0.5rem;    /* 8px */
-  --spacing-md: 0.75rem;   /* 12px */
-  --spacing-lg: 1rem;      /* 16px */
-  --spacing-xl: 1.5rem;    /* 24px */
-  --spacing-2xl: 2rem;     /* 32px */
-  --spacing-3xl: 3rem;     /* 48px */
-  --spacing-4xl: 4rem;     /* 64px */
-  --spacing-5xl: 6rem;     /* 96px */
+  /* Container widths — Tailwind v4 uses --container-{key} for max-w-{key} */
+  --container-sm: 24rem;
+  --container-md: 28rem;
+  --container-lg: 32rem;
+  --container-xl: 36rem;
+  --container-2xl: 42rem;
+  --container-3xl: 48rem;
+  --container-4xl: 56rem;
+  --container-5xl: 64rem;
+  --container-6xl: 72rem;
+  --container-7xl: 80rem;
 }
 
 *,
