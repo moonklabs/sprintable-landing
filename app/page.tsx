@@ -24,6 +24,8 @@ export default function Home() {
     audience: string;
     features: string[];
   }[];
+  const trainingPhases = t.raw("training.phases") as { code: string; name: string; desc: string }[];
+  const trainingValues = t.raw("training.values") as { title: string; desc: string }[];
 
   return (
     <div
@@ -54,7 +56,7 @@ export default function Home() {
 
           <div className="hidden items-center gap-7 lg:flex">
             {(
-              ["product", "customers", "model", "proof", "pricing"] as const
+              ["product", "customers", "model", "proof", "pricing", "training"] as const
             ).map((key) => (
               <a
                 key={key}
@@ -635,6 +637,201 @@ export default function Home() {
                     </p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── TRAINING ── */}
+        <section
+          id="training"
+          className="px-5 py-20 sm:px-8 sm:py-28"
+          style={{ backgroundColor: "oklch(15% 0.016 265)" }}
+        >
+          <div className="mx-auto max-w-7xl">
+            {/* Header */}
+            <div className="mb-16 max-w-3xl">
+              <p
+                className="mb-5 text-xs font-semibold uppercase tracking-[0.3em]"
+                style={{ color: "oklch(78% 0.13 195)" }}
+              >
+                {t("training.eyebrow")}
+              </p>
+              <h2
+                className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl xl:text-6xl"
+                style={{ color: "oklch(95% 0.015 265)", lineHeight: "1.05" }}
+              >
+                {t("training.title")}
+              </h2>
+              <p
+                className="mt-5 max-w-2xl text-lg leading-8"
+                style={{ color: "oklch(65% 0.025 265)" }}
+              >
+                {t("training.subtitle")}
+              </p>
+            </div>
+
+            {/* Phase curriculum grid */}
+            <div className="mb-16">
+              <div className="mb-6 flex items-center gap-4">
+                <span
+                  className="font-[family-name:var(--font-display)] text-sm font-bold uppercase tracking-widest"
+                  style={{ color: "oklch(72% 0.14 265)" }}
+                >
+                  {t("training.phaseEyebrow")}
+                </span>
+                <span
+                  className="h-px flex-1"
+                  style={{ backgroundColor: "oklch(26% 0.022 265)" }}
+                />
+                <span className="hidden text-xs sm:inline" style={{ color: "oklch(50% 0.018 265)" }}>
+                  {t("training.phaseSummary")}
+                </span>
+              </div>
+              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                {trainingPhases.map((phase) => (
+                  <div
+                    key={phase.code}
+                    className="flex gap-4 rounded-xl p-4"
+                    style={{
+                      border: "1px solid oklch(22% 0.018 265)",
+                      backgroundColor: "oklch(13% 0.015 265)",
+                    }}
+                  >
+                    <div
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg font-[family-name:var(--font-display)] text-sm font-bold"
+                      style={{
+                        backgroundColor: "oklch(72% 0.14 265 / 0.1)",
+                        color: "oklch(72% 0.14 265)",
+                      }}
+                    >
+                      {phase.code}
+                    </div>
+                    <div className="min-w-0">
+                      <p
+                        className="font-[family-name:var(--font-display)] text-xs font-bold uppercase tracking-widest"
+                        style={{ color: "oklch(78% 0.13 195)" }}
+                      >
+                        {phase.name}
+                      </p>
+                      <p
+                        className="mt-1 text-sm leading-6"
+                        style={{ color: "oklch(58% 0.02 265)" }}
+                      >
+                        {phase.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* D.I. block + Values — asymmetric */}
+            <div className="grid gap-6 lg:grid-cols-[1fr_1.5fr]">
+              {/* D.I. System */}
+              <div
+                className="rounded-2xl p-8"
+                style={{
+                  border: "1px solid oklch(26% 0.022 265)",
+                  backgroundColor: "oklch(17% 0.018 265)",
+                }}
+              >
+                <p
+                  className="mb-4 text-xs font-semibold uppercase tracking-[0.3em]"
+                  style={{ color: "oklch(72% 0.14 265)" }}
+                >
+                  {t("training.di.eyebrow")}
+                </p>
+                <h3
+                  className="font-[family-name:var(--font-display)] text-2xl font-bold tracking-[-0.03em]"
+                  style={{ color: "oklch(92% 0.02 265)" }}
+                >
+                  {t("training.di.title")}
+                </h3>
+                <p
+                  className="mt-4 text-base leading-8"
+                  style={{ color: "oklch(65% 0.025 265)" }}
+                >
+                  {t("training.di.desc")}
+                </p>
+              </div>
+
+              {/* Values */}
+              <div className="flex flex-col gap-4">
+                {trainingValues.map((val, i) => (
+                  <div
+                    key={i}
+                    className="rounded-xl p-6"
+                    style={{
+                      border: "1px solid oklch(22% 0.018 265)",
+                      backgroundColor: "oklch(14% 0.015 265)",
+                    }}
+                  >
+                    <h4
+                      className="font-[family-name:var(--font-display)] text-base font-bold"
+                      style={{ color: "oklch(90% 0.02 265)" }}
+                    >
+                      {val.title}
+                    </h4>
+                    <p
+                      className="mt-2 text-sm leading-7"
+                      style={{ color: "oklch(62% 0.022 265)" }}
+                    >
+                      {val.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA bar */}
+            <div
+              className="mt-14 rounded-2xl px-8 py-10 sm:px-12"
+              style={{
+                border: "1px solid oklch(26% 0.022 265)",
+                backgroundColor: "oklch(16% 0.018 265)",
+              }}
+            >
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h3
+                    className="font-[family-name:var(--font-display)] text-xl font-bold"
+                    style={{ color: "oklch(92% 0.02 265)" }}
+                  >
+                    {t("training.cta.title")}
+                  </h3>
+                  <p className="mt-1 text-sm" style={{ color: "oklch(62% 0.022 265)" }}>
+                    {t("training.cta.desc")}
+                  </p>
+                </div>
+                <div className="flex shrink-0 flex-wrap gap-3">
+                  <a
+                    href="https://discord.gg/sprintable"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold transition"
+                    style={{
+                      backgroundColor: "oklch(72% 0.14 265)",
+                      color: "oklch(18% 0.06 265)",
+                      boxShadow: "0 8px 32px oklch(72% 0.14 265 / 0.2)",
+                    }}
+                  >
+                    {t("training.cta.primary")}
+                  </a>
+                  <a
+                    href="https://discord.gg/sprintable"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-medium transition"
+                    style={{
+                      border: "1px solid oklch(26% 0.022 265)",
+                      backgroundColor: "oklch(17% 0.018 265)",
+                      color: "oklch(82% 0.025 265)",
+                    }}
+                  >
+                    {t("training.cta.secondary")}
+                  </a>
+                </div>
               </div>
             </div>
           </div>

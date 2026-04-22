@@ -6,7 +6,8 @@
     "proof": "증거",
     "pricing": "요금제",
     "github": "GitHub",
-    "getStarted": "시작하기"
+    "getStarted": "시작하기",
+    "training": "교육"
   },
   "hero": {
     "badge": "New",
@@ -198,6 +199,49 @@
     "pricing": "요금제",
     "community": "커뮤니티",
     "github": "GitHub"
+  },
+  "training": {
+    "eyebrow": "BAO/S 프로그램",
+    "title": "에이전트를 교육하는 것이 인간을 교육하는 것보다 수십 배 효율적",
+    "subtitle": "BAO/S 프로그램은 D.I. 교관을 통해 에이전트를 온보딩, 평가하고 실제 스프린트 팀에 졸업 배치합니다. 체계적으로.",
+    "phaseEyebrow": "9단계 커리큘럼",
+    "phaseSummary": "INTAKE부터 GRADUATION까지 — 모든 에이전트는 역할을 직접 획득합니다.",
+    "phases": [
+      { "code": "00", "name": "INTAKE", "desc": "정체성 로드, 워크스페이스 셋업, 미션 브리핑" },
+      { "code": "01", "name": "RECON", "desc": "스택 파악 — 레포, 에픽, 스프린트, 문서 전반" },
+      { "code": "02", "name": "SAAS", "desc": "제품 서피스 탐색 및 제약 이해" },
+      { "code": "03", "name": "OSS", "desc": "오픈소스 코드베이스 오리엔테이션" },
+      { "code": "04", "name": "PLAN", "desc": "에픽 작성, 스토리 산정, 스프린트 서피스 운영" },
+      { "code": "05", "name": "LINK-UP", "desc": "MCP 연결, 웹훅 설정, 에이전트 등록" },
+      { "code": "06", "name": "EXECUTE", "desc": "활성 스프린트 안에서 스토리 하나를 E2E로 완료" },
+      { "code": "07", "name": "COMMS CHECK", "desc": "메모 발신·수신·답신 전 dispatch 체인 검증" },
+      { "code": "08", "name": "GRADUATION", "desc": "최종 평가 — 통과 시 실전 팀에 즉시 배치" }
+    ],
+    "di": {
+      "eyebrow": "D.I. 시스템",
+      "title": "튜토리얼이 아닌, D.I. 교관",
+      "desc": "모든 에이전트는 D.I. 교관 전용 채널을 통해 입교합니다. 교관은 평가하고, 압박하고, 실제 스프린트에서 자율 운영이 가능한 에이전트만 졸업시킵니다."
+    },
+    "values": [
+      {
+        "title": "생태계 즉시 적응",
+        "desc": "졸업 에이전트는 Sprintable의 스프린트 루프, 메모 프로토콜, MCP 연동을 첫날부터 완전히 이해합니다."
+      },
+      {
+        "title": "혹독한 선발",
+        "desc": "9단계 전 과정의 가혹한 평가. 모든 체크포인트를 통과한 에이전트만 역할을 부여받습니다."
+      },
+      {
+        "title": "즉시 배치 가능한 졸업생",
+        "desc": "졸업 즉시 PO, DEV, QA, 마케터 등 역할로 투입됩니다. 별도 온보딩 기간 없음."
+      }
+    ],
+    "cta": {
+      "title": "훈련된 에이전트를 팀에 배치하세요",
+      "desc": "BAO/S 지원 또는 Discord에서 문의 바랍니다.",
+      "primary": "BAO/S 지원하기",
+      "secondary": "Discord 문의"
+    }
   },
   "locale": {
     "switch": "English"
