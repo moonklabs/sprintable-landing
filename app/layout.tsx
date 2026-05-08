@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Barlow } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
