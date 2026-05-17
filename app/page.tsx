@@ -28,6 +28,19 @@ export default function Home() {
   }[];
   const howItWorksSteps = t.raw("howItWorks.steps") as { eyebrow: string; title: string; desc: string; imgAlt: string }[];
   const featureCards = t.raw("features.cards") as { title: string; desc: string; imgAlt: string }[];
+  const howItWorksImages = [
+    '/screenshots/07-settings.png',
+    '/screenshots/01-chat-detail.png',
+    '/screenshots/04-kanban-board.png',
+  ] as const;
+  const featureImages = [
+    '/screenshots/01-chat-detail.png',
+    '/screenshots/01-chat-detail.png',
+    '/screenshots/01-chat-detail.png',
+    '/screenshots/02-epics-list.png',
+    '/screenshots/05-activity-log.png',
+    '/screenshots/07-settings.png',
+  ] as const;
   const trainingPhases = t.raw("training.phases") as { code: string; name: string; desc: string }[];
   const trainingValues = t.raw("training.values") as { title: string; desc: string }[];
 
@@ -205,93 +218,20 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right col — Workflow preview card */}
+              {/* Right col — Chat UI screenshot (AC1: Hero visual) */}
               <div className="relative">
                 <div
-                  className="rounded-2xl p-6"
-                  style={{
-                    border: "1px solid oklch(26% 0.022 265)",
-                    backgroundColor: "oklch(16% 0.018 265)",
-                  }}
+                  className="overflow-hidden rounded-2xl"
+                  style={{ border: "1px solid oklch(26% 0.022 265)" }}
                 >
-                  <div className="flex items-center justify-between">
-                    <span
-                      className="font-[family-name:var(--font-display)] text-sm font-semibold"
-                      style={{ color: "oklch(88% 0.025 265)" }}
-                    >
-                      {t("hero.workflowTitle")}
-                    </span>
-                    <span
-                      className="rounded-full px-2.5 py-1 text-xs font-semibold"
-                      style={{
-                        border: "1px solid oklch(78% 0.13 195 / 0.3)",
-                        backgroundColor: "oklch(78% 0.13 195 / 0.1)",
-                        color: "oklch(78% 0.13 195)",
-                      }}
-                    >
-                      {t("hero.workflowBadge")}
-                    </span>
-                  </div>
-
-                  <p
-                    className="mt-4 text-sm leading-7"
-                    style={{ color: "oklch(65% 0.025 265)" }}
-                  >
-                    {t("hero.workflowSummary")}
-                  </p>
-
-                  <div className="mt-5 space-y-3">
-                    {[
-                      {
-                        label: t("hero.workflowStoryLabel"),
-                        value: t("hero.workflowStoryValue"),
-                        num: "01",
-                      },
-                      {
-                        label: t("hero.workflowMemoLabel"),
-                        value: t("hero.workflowMemoValue"),
-                        num: "02",
-                      },
-                      {
-                        label: t("hero.workflowShipLabel"),
-                        value: t("hero.workflowShipValue"),
-                        num: "03",
-                      },
-                    ].map((step) => (
-                      <div
-                        key={step.num}
-                        className="flex gap-4 rounded-xl p-4"
-                        style={{
-                          border: "1px solid oklch(22% 0.018 265)",
-                          backgroundColor: "oklch(14% 0.015 265)",
-                        }}
-                      >
-                        <div
-                          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-xs font-bold"
-                          style={{
-                            backgroundColor: "oklch(72% 0.14 265 / 0.14)",
-                            color: "oklch(72% 0.14 265)",
-                          }}
-                        >
-                          {step.num}
-                        </div>
-                        <div>
-                          <p
-                            className="text-xs font-semibold uppercase tracking-widest"
-                            style={{ color: "oklch(60% 0.06 265)", fontSize: "0.65rem" }}
-                          >
-                            {step.label}
-                          </p>
-                          <p
-                            className="mt-1 text-sm leading-6"
-                            style={{ color: "oklch(82% 0.02 265)" }}
-                          >
-                            {step.value}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <Image
+                    src="/screenshots/01-chat-detail.png"
+                    alt="Sprintable chat — real-time conversation between agents and humans"
+                    width={960}
+                    height={600}
+                    className="w-full object-cover"
+                    priority
+                  />
                 </div>
               </div>
             </div>
@@ -409,11 +349,17 @@ export default function Home() {
             </div>
 
             <div className="grid gap-6 lg:grid-cols-3">
-              {howItWorksSteps.map((step) => (
+              {howItWorksSteps.map((step, i) => (
                 <div key={step.title} className="flex flex-col rounded-2xl overflow-hidden" style={{ border: "1px solid oklch(26% 0.022 265)", backgroundColor: "oklch(13% 0.015 265)" }}>
-                  {/* Screenshot placeholder */}
-                  <div className="flex items-center justify-center" style={{ height: 180, backgroundColor: "oklch(17% 0.018 265)", borderBottom: "1px solid oklch(22% 0.018 265)" }}>
-                    <span className="text-xs font-medium" style={{ color: "oklch(45% 0.02 265)" }}>{step.imgAlt}</span>
+                  <div className="overflow-hidden" style={{ borderBottom: "1px solid oklch(22% 0.018 265)" }}>
+                    <Image
+                      src={howItWorksImages[i] ?? howItWorksImages[0]}
+                      alt={step.imgAlt}
+                      width={960}
+                      height={600}
+                      className="w-full object-cover"
+                      style={{ maxHeight: 200, objectFit: "cover", objectPosition: "top" }}
+                    />
                   </div>
                   <div className="p-6">
                     <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "oklch(78% 0.13 195)", fontSize: "0.65rem" }}>{step.eyebrow}</p>
@@ -444,11 +390,17 @@ export default function Home() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {featureCards.map((card) => (
+              {featureCards.map((card, i) => (
                 <div key={card.title} className="flex flex-col rounded-2xl overflow-hidden" style={{ border: "1px solid oklch(26% 0.022 265)", backgroundColor: "oklch(17% 0.018 265)" }}>
-                  {/* Screenshot placeholder */}
-                  <div className="flex items-center justify-center" style={{ height: 140, backgroundColor: "oklch(14% 0.015 265)", borderBottom: "1px solid oklch(22% 0.018 265)" }}>
-                    <span className="text-xs" style={{ color: "oklch(40% 0.018 265)" }}>{card.imgAlt}</span>
+                  <div className="overflow-hidden" style={{ borderBottom: "1px solid oklch(22% 0.018 265)" }}>
+                    <Image
+                      src={featureImages[i] ?? featureImages[0]}
+                      alt={card.imgAlt}
+                      width={960}
+                      height={600}
+                      className="w-full object-cover"
+                      style={{ maxHeight: 160, objectFit: "cover", objectPosition: "top" }}
+                    />
                   </div>
                   <div className="flex-1 p-5">
                     <h3 className="font-[family-name:var(--font-display)] text-base font-bold" style={{ color: "oklch(93% 0.02 265)" }}>{card.title}</h3>
