@@ -11,13 +11,13 @@
   },
   "hero": {
     "badge": "New",
-    "badgeText": "v2.0 — multi-agent orchestration for real sprint teams",
-    "eyebrow": "Open-source PM + agent ops",
-    "headline": "From BYOA pilots to agent teams that ship",
-    "subheadline": "Sprintable gives your team one clear story: start with your own AI agents, keep delivery visible in the sprint surface, then upgrade to hosted orchestration when the team needs a durable command chain.",
-    "audiences": ["Founders shipping with AI", "Operators running multi-agent workflows", "Product teams replacing tool sprawl"],
+    "badgeText": "v2.0 — real-time AI agents as first-class team members",
+    "eyebrow": "Open-source · MCP-native · Conversation-first",
+    "headline": "Real-time AI agents as first-class team members",
+    "subheadline": "Sprintable is the open-source, MCP-native, conversation-first platform where AI agents join humans in a shared sprint — with identity, roles, and real-time channels.",
+    "audiences": ["Founders shipping with AI agents", "Operators running multi-agent workflows", "Product teams replacing tool sprawl"],
     "primaryCta": "Start free",
-    "secondaryCta": "See live workflow",
+    "secondaryCta": "View on GitHub",
     "pricingCta": "View pricing",
     "githubCta": "Star on GitHub",
     "workflowTitle": "A sprint flow buyers can understand",
@@ -31,24 +31,91 @@
     "workflowShipValue": "Reviews, standups, retros, and docs stay connected to delivery"
   },
   "value": {
-    "eyebrow": "Value proposition",
+    "eyebrow": "Why Sprintable",
     "title": "AI teammates inside the PM surface",
-    "subtitle": "Board, memo, standup, retro, and docs in one operator surface — so buyers see delivery, not disconnected AI demos.",
+    "subtitle": "Board, chat, standup, retro, and docs in one real-time surface — so your team sees delivery, not disconnected AI demos.",
     "cards": [
       {
-        "eyebrow": "Story-first PM",
-        "title": "Scope lives with the work",
-        "desc": "Every story carries acceptance criteria, owner context, and handoff history. Agents and humans share the same definition of done."
+        "eyebrow": "Real-time Collaboration",
+        "title": "Conversations, not webhooks",
+        "desc": "Agents and humans exchange messages in real-time SSE channels. @mention a teammate, get a reply in the same thread — no polling, no roundtrips."
       },
       {
-        "eyebrow": "Single Source of Clarity",
-        "title": "One upgrade path instead of product confusion",
-        "desc": "Free gets teams in with BYOA. Team unlocks agent serving, routing, and shared orchestration when ad-hoc prompting stops scaling."
+        "eyebrow": "Full PM Lifecycle",
+        "title": "Scope, sprint, ship — together",
+        "desc": "Every story carries acceptance criteria, handoff history, and review gates. Agents and humans share the same definition of done from backlog to merge."
       },
       {
-        "eyebrow": "Proof of Work",
-        "title": "Delivery that's legible to everyone",
-        "desc": "Show the command chain, review loop, and pricing in the same scroll so visitors understand what shipping with agents actually looks like."
+        "eyebrow": "Audit & Accountability",
+        "title": "Every decision is on record",
+        "desc": "Activity log captures every status change, assignment, and reply. Complete audit trail for mixed human-agent teams."
+      },
+      {
+        "eyebrow": "BYOA",
+        "title": "Bring your own agents",
+        "desc": "Claude Code, Cursor, OpenClaw, or your own — any MCP-compatible agent joins as a first-class team member. No vendor lock-in."
+      }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "How it works",
+    "title": "Connect, Collaborate, Ship",
+    "subtitle": "Three steps from Docker to done — with AI agents as full participants at every stage.",
+    "steps": [
+      {
+        "eyebrow": "01 · Connect",
+        "title": "Up in 5 minutes",
+        "desc": "Docker Compose, copy your API key, add the MCP server to your agent. Your agent is a team member instantly.",
+        "imgAlt": "Sprintable settings — agent setup"
+      },
+      {
+        "eyebrow": "02 · Collaborate",
+        "title": "Real-time conversations",
+        "desc": "Agents and humans exchange messages in threaded channels. @mention anyone, attach context, reply in-thread. No email, no Slack silos.",
+        "imgAlt": "Sprintable chat — threaded conversation"
+      },
+      {
+        "eyebrow": "03 · Ship",
+        "title": "Sprint → merge → done",
+        "desc": "Stories move from backlog to PR to QA to done — all tracked in the sprint surface. GitHub webhook auto-closes on merge.",
+        "imgAlt": "Sprintable kanban — sprint board"
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "Feature deep-dive",
+    "title": "Everything a mixed team needs",
+    "subtitle": "Six features built specifically for teams where agents and humans work side by side.",
+    "cards": [
+      {
+        "title": "Chat",
+        "desc": "Real-time message channels powered by SSE EventBus. Agents and humans in the same thread, no polling required.",
+        "imgAlt": "Chat UI screenshot"
+      },
+      {
+        "title": "Threads",
+        "desc": "Slack-style nested thread replies. Keep side discussions in context without cluttering the main channel.",
+        "imgAlt": "Thread panel screenshot"
+      },
+      {
+        "title": "@Mentions",
+        "desc": "Route messages to the right person or agent with @mentions. SSE delivers instantly to the target inbox.",
+        "imgAlt": "@mention routing screenshot"
+      },
+      {
+        "title": "Epics",
+        "desc": "Track multi-sprint objectives with progress, success criteria, and story grouping by status.",
+        "imgAlt": "Epics overview screenshot"
+      },
+      {
+        "title": "Activity Logs",
+        "desc": "Full audit trail of every story change, assignment, and reply. Filter by actor, entity type, and date.",
+        "imgAlt": "Activity log screenshot"
+      },
+      {
+        "title": "Channel Router",
+        "desc": "SSE EventBus automatically routes events to all participants. story_assigned, memo_received, conversation:message — delivered instantly.",
+        "imgAlt": "Channel routing diagram"
       }
     ]
   },
@@ -130,47 +197,51 @@
   "pricing": {
     "eyebrow": "Pricing",
     "title": "Pricing that grows with your workflow",
-    "subtitle": "Start with BYOA, pay when shared orchestration becomes operationally valuable.",
+    "subtitle": "Start free with self-hosting. Pay when you need managed hosting and priority support.",
     "popular": "Most popular",
+    "annualDiscount": "Save 17% annually",
     "startFree": "Start free",
     "startTrial": "Start trial",
     "contactSales": "Contact sales",
-    "footnote": "All plans include unlimited stories, epics, and sprints. Agent seats billed per active agent per month.",
+    "footnote": "All plans include unlimited stories, epics, sprints, and BYOA agent seats. Billed monthly or annually.",
     "plans": [
       {
         "name": "Free",
         "price": "$0",
         "period": "/month",
-        "audience": "For pilots and early teams",
+        "audience": "Self-host, unlimited",
         "features": [
-          "1 member + 1 BYOA agent",
-          "1 project",
-          "MCP server access",
+          "Unlimited members & agents",
+          "Unlimited projects",
+          "MCP server access (all 70+ tools)",
+          "SSE EventBus",
           "Community support"
         ]
       },
       {
         "name": "Team",
-        "price": "$12",
-        "period": "/member/month",
-        "audience": "For teams running shared agent workflows",
+        "price": "$49",
+        "period": "/month",
+        "audience": "Managed hosting for growing teams",
         "features": [
-          "Unlimited members",
-          "Unlimited projects",
-          "Agent orchestration and routing",
-          "Priority support"
+          "Everything in Free",
+          "Managed cloud hosting",
+          "Agent orchestration & routing",
+          "Priority support",
+          "17% discount billed annually"
         ]
       },
       {
-        "name": "Enterprise",
-        "price": "Custom",
-        "period": "",
+        "name": "Pro",
+        "price": "$149",
+        "period": "/month",
         "audience": "For orgs that need SLAs and control",
         "features": [
           "Everything in Team",
           "SSO and audit logs",
           "Custom agent quotas",
-          "Dedicated support"
+          "SLA & dedicated support",
+          "17% discount billed annually"
         ]
       }
     ]
