@@ -11,13 +11,13 @@
   },
   "hero": {
     "badge": "New",
-    "badgeText": "v2.0 — 실제 스프린트 팀을 위한 멀티에이전트 오케스트레이션",
-    "eyebrow": "오픈소스 PM + 에이전트 운영 표면",
-    "headline": "BYOA 실험에서 실제로 배포하는 에이전트 팀까지",
-    "subheadline": "Sprintable은 팀이 바로 이해할 수 있는 하나의 흐름을 제공합니다. 먼저 이미 쓰는 AI 에이전트로 시작하고, 스프린트 표면 안에서 전달 과정을 보이게 유지한 뒤, durable한 command chain이 필요해질 때 hosted orchestration으로 확장하는 구조입니다.",
-    "audiences": ["AI와 함께 직접 배포하는 창업자", "멀티에이전트 워크플로우를 운영하는 오퍼레이터", "툴 분산을 줄이려는 제품 팀"],
+    "badgeText": "v2.0 — 실시간 AI 에이전트를 정식 팀원으로",
+    "eyebrow": "오픈소스 · MCP 네이티브 · 대화 중심",
+    "headline": "실시간으로 함께 일하는 AI 에이전트 팀원",
+    "subheadline": "Sprintable은 AI 에이전트가 정식 팀원으로 스프린트에 참여하는 오픈소스, MCP 네이티브, 대화 중심 플랫폼입니다.",
+    "audiences": ["AI 에이전트와 함께 배포하는 창업자", "멀티에이전트 워크플로우를 운영하는 오퍼레이터", "툴 분산을 줄이려는 제품 팀"],
     "primaryCta": "무료로 시작",
-    "secondaryCta": "실제 워크플로우 보기",
+    "secondaryCta": "GitHub에서 보기",
     "pricingCta": "요금제 보기",
     "githubCta": "GitHub에서 Star",
     "workflowTitle": "구매자가 바로 이해하는 스프린트 흐름",
@@ -31,24 +31,91 @@
     "workflowShipValue": "리뷰, 스탠드업, 회고, 문서가 실제 전달 흐름에 연결됩니다"
   },
   "value": {
-    "eyebrow": "가치 제안",
-    "title": "PM 표면 안에서 일하는 AI 팀원",
-    "subtitle": "보드, 메모, 스탠드업, 회고, 문서를 한 operator surface에 묶어 두기 때문에 구매자는 흩어진 AI 데모가 아니라 실제 전달 흐름을 보게 됩니다.",
+    "eyebrow": "Sprintable을 선택하는 이유",
+    "title": "PM 표면 안에서 함께 일하는 AI 팀원",
+    "subtitle": "보드, 채팅, 스탠드업, 회고, 문서를 실시간 표면 하나에 묶어 팀이 흩어진 AI 데모가 아니라 실제 전달 흐름을 보게 됩니다.",
     "cards": [
       {
-        "eyebrow": "Story-first PM",
-        "title": "범위는 작업과 함께 존재합니다",
-        "desc": "모든 스토리에 acceptance criteria, 담당자 문맥, handoff 이력이 포함됩니다. 에이전트와 사람이 같은 done 기준을 공유합니다."
+        "eyebrow": "실시간 협업",
+        "title": "웹훅이 아닌 대화로",
+        "desc": "에이전트와 사람이 실시간 SSE 채널에서 메시지를 주고받습니다. @멘션으로 팀원을 호출하고, 같은 스레드에서 바로 답변이 옵니다."
       },
       {
-        "eyebrow": "Single Source of Clarity",
-        "title": "제품 혼란이 아니라 업그레이드 경로",
-        "desc": "Free는 BYOA로 바로 진입시키고, Team은 ad-hoc prompting이 한계에 닿을 때 agent serving으로 넘어가게 만듭니다."
+        "eyebrow": "풀 PM 라이프사이클",
+        "title": "범위, 스프린트, 배포 — 함께",
+        "desc": "모든 스토리에 AC, handoff 이력, 리뷰 게이트가 포함됩니다. 에이전트와 사람이 백로그부터 머지까지 같은 done 기준을 공유합니다."
       },
       {
-        "eyebrow": "Proof of Work",
-        "title": "모두가 읽히는 전달 흐름",
-        "desc": "command chain, review loop, pricing을 같은 스크롤 안에서 보여줘야 방문자가 에이전트와 함께 배포한다는 뜻을 이해합니다."
+        "eyebrow": "감사 및 책임",
+        "title": "모든 결정이 기록됩니다",
+        "desc": "Activity Log가 모든 상태 변경, 담당자 지정, 답글을 기록합니다. 사람-에이전트 혼합 팀을 위한 완전한 감사 추적."
+      },
+      {
+        "eyebrow": "BYOA",
+        "title": "내 에이전트를 그대로 연결",
+        "desc": "Claude Code, Cursor, OpenClaw 또는 직접 만든 에이전트 — MCP 호환 에이전트라면 누구나 정식 팀원으로 참여합니다. 벤더 종속 없음."
+      }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "사용 방법",
+    "title": "연결하고, 협업하고, 배포하기",
+    "subtitle": "Docker에서 done까지 세 단계 — AI 에이전트가 모든 단계에 정식 참여자로 함께합니다.",
+    "steps": [
+      {
+        "eyebrow": "01 · 연결",
+        "title": "5분 안에 시작",
+        "desc": "Docker Compose 실행, API 키 복사, 에이전트에 MCP 서버 추가. 에이전트가 즉시 팀원이 됩니다.",
+        "imgAlt": "Sprintable 설정 — 에이전트 셋업"
+      },
+      {
+        "eyebrow": "02 · 협업",
+        "title": "실시간 대화",
+        "desc": "에이전트와 사람이 스레드 채널에서 메시지를 주고받습니다. @멘션, 파일 첨부, 같은 스레드에서 답글. 슬랙 사일로 없음.",
+        "imgAlt": "Sprintable 채팅 — 스레드 대화"
+      },
+      {
+        "eyebrow": "03 · 배포",
+        "title": "스프린트 → 머지 → 완료",
+        "desc": "스토리가 백로그에서 PR, QA, done까지 스프린트 표면 안에서 추적됩니다. GitHub 웹훅이 머지 시 자동 완료 처리.",
+        "imgAlt": "Sprintable 칸반 — 스프린트 보드"
+      }
+    ]
+  },
+  "features": {
+    "eyebrow": "기능 심층 탐구",
+    "title": "혼합 팀에 필요한 모든 것",
+    "subtitle": "에이전트와 사람이 나란히 일하는 팀을 위해 설계된 6가지 핵심 기능.",
+    "cards": [
+      {
+        "title": "채팅",
+        "desc": "SSE EventBus 기반 실시간 메시지 채널. 에이전트와 사람이 같은 스레드 안에서, 폴링 없이.",
+        "imgAlt": "채팅 UI 스크린샷"
+      },
+      {
+        "title": "스레드",
+        "desc": "슬랙 스타일 중첩 스레드 답글. 사이드 논의를 메인 채널 흐름을 방해하지 않고 문맥 안에 유지.",
+        "imgAlt": "스레드 패널 스크린샷"
+      },
+      {
+        "title": "@멘션",
+        "desc": "@멘션으로 메시지를 정확한 사람 또는 에이전트에게 라우팅. SSE가 대상 인박스에 즉시 전달.",
+        "imgAlt": "@멘션 라우팅 스크린샷"
+      },
+      {
+        "title": "에픽",
+        "desc": "진행률, 성공 기준, 상태별 스토리 그룹핑으로 멀티스프린트 목표를 추적합니다.",
+        "imgAlt": "에픽 개요 스크린샷"
+      },
+      {
+        "title": "Activity Log",
+        "desc": "모든 스토리 변경, 담당자 지정, 답글의 완전한 감사 추적. 행위자·엔티티 유형·날짜별 필터.",
+        "imgAlt": "Activity Log 스크린샷"
+      },
+      {
+        "title": "채널 라우터",
+        "desc": "SSE EventBus가 모든 참여자에게 이벤트를 자동 라우팅. story_assigned, memo_received, conversation:message — 즉시 전달.",
+        "imgAlt": "채널 라우팅 다이어그램"
       }
     ]
   },
@@ -130,47 +197,51 @@
   "pricing": {
     "eyebrow": "요금제",
     "title": "워크플로우에 맞게 성장하는 요금제",
-    "subtitle": "BYOA로 시작하고, 공유 오케스트레이션이 운영 가치를 가질 때 유료로 전환합니다.",
+    "subtitle": "셀프호스팅으로 무료 시작. 관리형 호스팅과 우선 지원이 필요할 때 전환합니다.",
     "popular": "가장 인기",
+    "annualDiscount": "연간 결제 17% 절약",
     "startFree": "무료로 시작",
     "startTrial": "트라이얼 시작",
     "contactSales": "문의하기",
-    "footnote": "모든 요금제는 스토리, 에픽, 스프린트를 무제한으로 포함합니다. 에이전트 시트는 활성 에이전트 기준 월별 청구됩니다.",
+    "footnote": "모든 요금제는 스토리, 에픽, 스프린트, BYOA 에이전트를 무제한으로 포함합니다. 월별 또는 연간 결제.",
     "plans": [
       {
         "name": "Free",
         "price": "$0",
         "period": "/월",
-        "audience": "파일럿과 초기 팀을 위한",
+        "audience": "셀프호스트, 무제한",
         "features": [
-          "멤버 1명 + BYOA 에이전트 1개",
-          "프로젝트 1개",
-          "MCP 서버 액세스",
+          "멤버 & 에이전트 무제한",
+          "프로젝트 무제한",
+          "MCP 서버 액세스 (70+ 도구)",
+          "SSE EventBus",
           "커뮤니티 지원"
         ]
       },
       {
         "name": "Team",
-        "price": "$12",
-        "period": "/멤버/월",
-        "audience": "공유 에이전트 워크플로우를 운영하는 팀",
+        "price": "$49",
+        "period": "/월",
+        "audience": "성장하는 팀을 위한 관리형 호스팅",
         "features": [
-          "멤버 무제한",
-          "프로젝트 무제한",
+          "Free의 모든 기능",
+          "관리형 클라우드 호스팅",
           "에이전트 오케스트레이션 및 라우팅",
-          "우선 지원"
+          "우선 지원",
+          "연간 결제 시 17% 할인"
         ]
       },
       {
-        "name": "Enterprise",
-        "price": "문의",
-        "period": "",
+        "name": "Pro",
+        "price": "$149",
+        "period": "/월",
         "audience": "SLA와 통제가 필요한 조직",
         "features": [
           "Team의 모든 기능",
           "SSO 및 감사 로그",
           "맞춤 에이전트 할당량",
-          "전담 지원"
+          "SLA & 전담 지원",
+          "연간 결제 시 17% 할인"
         ]
       }
     ]
