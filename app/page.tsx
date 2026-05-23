@@ -95,8 +95,8 @@ export default function Home() {
               href="https://app.sprintable.ai/login"
               className="rounded-lg px-4 py-2 text-sm font-semibold transition"
               style={{
-                backgroundColor: "oklch(72% 0.14 265)",
-                color: "oklch(18% 0.06 265)",
+                backgroundColor: "oklch(72% 0.14 258)",
+                color: "oklch(18% 0.06 258)",
               }}
             >
               {t("nav.getStarted")}
@@ -116,7 +116,7 @@ export default function Home() {
             className="absolute inset-x-0 top-0 -z-10 h-[600px]"
             style={{
               background:
-                "radial-gradient(ellipse 80% 50% at 20% 0%, oklch(72% 0.14 265 / 0.12), transparent)",
+                "radial-gradient(ellipse 80% 50% at 20% 0%, oklch(72% 0.14 258 / 0.12), transparent)",
             }}
           />
 
@@ -146,7 +146,7 @@ export default function Home() {
               <div>
                 <p
                   className="mb-5 text-xs font-semibold uppercase tracking-[0.3em]"
-                  style={{ color: "oklch(65% 0.06 265)" }}
+                  style={{ color: "oklch(65% 0.06 258)" }}
                 >
                   {t("hero.eyebrow")}
                 </p>
@@ -166,7 +166,7 @@ export default function Home() {
                 <p
                   className="mt-5 max-w-2xl border-l-2 pl-4 font-[family-name:var(--font-display)] text-base italic leading-7"
                   style={{
-                    borderColor: "oklch(72% 0.14 265)",
+                    borderColor: "oklch(72% 0.14 258)",
                     color: "oklch(88% 0.025 265)",
                   }}
                 >
@@ -194,11 +194,11 @@ export default function Home() {
                 <div className="mt-9 flex flex-wrap gap-3">
                   <a
                     href="https://app.sprintable.ai/login"
-                    className="inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold transition"
+                    className="inline-flex items-center justify-center rounded-[var(--radius)] px-6 py-3.5 text-sm font-semibold transition"
                     style={{
-                      backgroundColor: "oklch(72% 0.14 265)",
-                      color: "oklch(18% 0.06 265)",
-                      boxShadow: "0 8px 32px oklch(72% 0.14 265 / 0.22)",
+                      backgroundColor: "oklch(72% 0.14 258)",
+                      color: "oklch(18% 0.06 258)",
+                      boxShadow: "0 8px 32px oklch(72% 0.14 258 / 0.22)",
                     }}
                   >
                     {t("hero.primaryCta")}
@@ -207,7 +207,7 @@ export default function Home() {
                     href="https://github.com/moonklabs/sprintable"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-sm font-medium transition"
+                    className="inline-flex items-center justify-center rounded-[var(--radius)] px-6 py-3.5 text-sm font-medium transition"
                     style={{
                       border: "1px solid oklch(26% 0.022 265)",
                       backgroundColor: "oklch(17% 0.018 265)",
@@ -218,7 +218,7 @@ export default function Home() {
                   </a>
                   <a
                     href="#pricing"
-                    className="inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-sm font-medium transition"
+                    className="inline-flex items-center justify-center rounded-[var(--radius)] px-6 py-3.5 text-sm font-medium transition"
                     style={{ color: "oklch(65% 0.025 265)" }}
                   >
                     {t("hero.pricingCta")} →
@@ -253,7 +253,7 @@ export default function Home() {
               <div>
                 <p
                   className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                  style={{ color: "oklch(65% 0.06 265)" }}
+                  style={{ color: "oklch(65% 0.06 258)" }}
                 >
                   {t("value.eyebrow")}
                 </p>
@@ -345,7 +345,7 @@ export default function Home() {
         >
           <div className="mx-auto max-w-7xl">
             <div className="mb-14 text-center">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: "oklch(65% 0.06 265)" }}>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: "oklch(65% 0.06 258)" }}>
                 {t("howItWorks.eyebrow")}
               </p>
               <h2 className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl" style={{ color: "oklch(93% 0.02 265)" }}>
@@ -384,7 +384,7 @@ export default function Home() {
         <section id="features" className="px-5 py-20 sm:px-8 sm:py-28">
           <div className="mx-auto max-w-7xl">
             <div className="mb-14">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: "oklch(65% 0.06 265)" }}>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: "oklch(65% 0.06 258)" }}>
                 {t("features.eyebrow")}
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -430,7 +430,7 @@ export default function Home() {
             <div className="mb-14">
               <p
                 className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                style={{ color: "oklch(65% 0.06 265)" }}
+                style={{ color: "oklch(65% 0.06 258)" }}
               >
                 {t("customers.eyebrow")}
               </p>
@@ -475,8 +475,8 @@ export default function Home() {
                   <div
                     className="mt-6 rounded-xl p-4 text-sm leading-6"
                     style={{
-                      border: "1px solid oklch(72% 0.14 265 / 0.18)",
-                      backgroundColor: "oklch(72% 0.14 265 / 0.07)",
+                      border: "1px solid oklch(72% 0.14 258 / 0.18)",
+                      backgroundColor: "oklch(72% 0.14 258 / 0.07)",
                       color: "oklch(80% 0.05 265)",
                     }}
                   >
@@ -494,7 +494,7 @@ export default function Home() {
             <div className="mb-14">
               <p
                 className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                style={{ color: "oklch(65% 0.06 265)" }}
+                style={{ color: "oklch(65% 0.06 258)" }}
               >
                 {t("model.eyebrow")}
               </p>
@@ -553,9 +553,9 @@ export default function Home() {
               <div
                 className="rounded-2xl p-7"
                 style={{
-                  border: "1px solid oklch(72% 0.14 265 / 0.25)",
+                  border: "1px solid oklch(72% 0.14 258 / 0.25)",
                   background:
-                    "linear-gradient(160deg, oklch(72% 0.14 265 / 0.1) 0%, oklch(16% 0.018 265) 60%)",
+                    "linear-gradient(160deg, oklch(72% 0.14 258 / 0.1) 0%, oklch(16% 0.018 265) 60%)",
                 }}
               >
                 <p
@@ -579,7 +579,7 @@ export default function Home() {
                 <ul className="mt-6 space-y-3">
                   {modelBulletsServing.map((b) => (
                     <li key={b} className="flex gap-3 text-sm leading-6">
-                      <span style={{ color: "oklch(72% 0.14 265)" }}>✦</span>
+                      <span style={{ color: "oklch(72% 0.14 258)" }}>✦</span>
                       <span style={{ color: "oklch(78% 0.03 265)" }}>{b}</span>
                     </li>
                   ))}
@@ -591,8 +591,8 @@ export default function Home() {
             <div
               className="mt-4 rounded-2xl p-6"
               style={{
-                border: "1px solid oklch(72% 0.14 265 / 0.16)",
-                backgroundColor: "oklch(72% 0.14 265 / 0.05)",
+                border: "1px solid oklch(72% 0.14 258 / 0.16)",
+                backgroundColor: "oklch(72% 0.14 258 / 0.05)",
               }}
             >
               <p
@@ -616,7 +616,7 @@ export default function Home() {
               <div className="lg:sticky lg:top-28">
                 <p
                   className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                  style={{ color: "oklch(65% 0.06 265)" }}
+                  style={{ color: "oklch(65% 0.06 258)" }}
                 >
                   {t("proof.eyebrow")}
                 </p>
@@ -675,7 +675,7 @@ export default function Home() {
             <div className="mb-14">
               <p
                 className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                style={{ color: "oklch(65% 0.06 265)" }}
+                style={{ color: "oklch(65% 0.06 258)" }}
               >
                 {t("pricing.eyebrow")}
               </p>
@@ -716,13 +716,13 @@ export default function Home() {
                     className="relative flex flex-col rounded-2xl p-7"
                     style={{
                       border: isTeam
-                        ? "1px solid oklch(72% 0.14 265 / 0.35)"
+                        ? "1px solid oklch(72% 0.14 258 / 0.35)"
                         : "1px solid oklch(26% 0.022 265)",
                       backgroundColor: isTeam
                         ? "oklch(17% 0.02 265)"
                         : "oklch(16% 0.018 265)",
                       boxShadow: isTeam
-                        ? "0 0 60px oklch(72% 0.14 265 / 0.1)"
+                        ? "0 0 60px oklch(72% 0.14 258 / 0.1)"
                         : "none",
                     }}
                   >
@@ -730,8 +730,8 @@ export default function Home() {
                       <div
                         className="absolute -top-3 left-7 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
                         style={{
-                          backgroundColor: "oklch(72% 0.14 265)",
-                          color: "oklch(18% 0.06 265)",
+                          backgroundColor: "oklch(72% 0.14 258)",
+                          color: "oklch(18% 0.06 258)",
                         }}
                       >
                         {t("pricing.popular")}
@@ -775,7 +775,7 @@ export default function Home() {
                           <span
                             style={{
                               color: isTeam
-                                ? "oklch(72% 0.14 265)"
+                                ? "oklch(72% 0.14 258)"
                                 : "oklch(65% 0.025 265)",
                             }}
                           >
@@ -788,12 +788,12 @@ export default function Home() {
 
                     <a
                       href={i === 2 ? "mailto:dev1@moonklabs.com" : "https://app.sprintable.ai/login"}
-                      className="mt-8 inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition"
+                      className="mt-8 inline-flex items-center justify-center rounded-[var(--radius)] px-5 py-3 text-sm font-semibold transition"
                       style={
                         isTeam
                           ? {
-                              backgroundColor: "oklch(72% 0.14 265)",
-                              color: "oklch(18% 0.06 265)",
+                              backgroundColor: "oklch(72% 0.14 258)",
+                              color: "oklch(18% 0.06 258)",
                             }
                           : {
                               border: "1px solid oklch(30% 0.025 265)",
@@ -827,14 +827,14 @@ export default function Home() {
           <div
             className="mx-auto max-w-4xl rounded-2xl p-10 text-center sm:p-16"
             style={{
-              border: "1px solid oklch(72% 0.14 265 / 0.2)",
+              border: "1px solid oklch(72% 0.14 258 / 0.2)",
               background:
-                "radial-gradient(ellipse 100% 80% at 50% 0%, oklch(72% 0.14 265 / 0.12), oklch(16% 0.018 265) 70%)",
+                "radial-gradient(ellipse 100% 80% at 50% 0%, oklch(72% 0.14 258 / 0.12), oklch(16% 0.018 265) 70%)",
             }}
           >
             <p
               className="mb-4 text-xs font-semibold uppercase tracking-[0.3em]"
-              style={{ color: "oklch(65% 0.06 265)" }}
+              style={{ color: "oklch(65% 0.06 258)" }}
             >
               {t("finalCta.eyebrow")}
             </p>
@@ -853,11 +853,11 @@ export default function Home() {
             <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
               <a
                 href="https://app.sprintable.ai/login"
-                className="inline-flex items-center justify-center rounded-xl px-7 py-3.5 text-sm font-semibold transition"
+                className="inline-flex items-center justify-center rounded-[var(--radius)] px-7 py-3.5 text-sm font-semibold transition"
                 style={{
-                  backgroundColor: "oklch(72% 0.14 265)",
-                  color: "oklch(18% 0.06 265)",
-                  boxShadow: "0 8px 32px oklch(72% 0.14 265 / 0.22)",
+                  backgroundColor: "oklch(72% 0.14 258)",
+                  color: "oklch(18% 0.06 258)",
+                  boxShadow: "0 8px 32px oklch(72% 0.14 258 / 0.22)",
                 }}
               >
                 {t("finalCta.primary")}
@@ -866,7 +866,7 @@ export default function Home() {
                 href="https://github.com/moonklabs/sprintable#readme"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-xl px-7 py-3.5 text-sm font-medium transition"
+                className="inline-flex items-center justify-center rounded-[var(--radius)] px-7 py-3.5 text-sm font-medium transition"
                 style={{
                   border: "1px solid oklch(26% 0.022 265)",
                   backgroundColor: "oklch(17% 0.018 265)",
@@ -999,17 +999,17 @@ export default function Home() {
         >
           <a
             href="https://app.sprintable.ai/login"
-            className="flex-1 rounded-xl py-3 text-center text-sm font-semibold"
+            className="flex-1 rounded-[var(--radius)] py-3 text-center text-sm font-semibold"
             style={{
-              backgroundColor: "oklch(72% 0.14 265)",
-              color: "oklch(18% 0.06 265)",
+              backgroundColor: "oklch(72% 0.14 258)",
+              color: "oklch(18% 0.06 258)",
             }}
           >
             {t("hero.primaryCta")}
           </a>
           <a
             href="#pricing"
-            className="flex-1 rounded-xl py-3 text-center text-sm font-medium"
+            className="flex-1 rounded-[var(--radius)] py-3 text-center text-sm font-medium"
             style={{
               border: "1px solid oklch(26% 0.022 265)",
               color: "oklch(72% 0.025 265)",
