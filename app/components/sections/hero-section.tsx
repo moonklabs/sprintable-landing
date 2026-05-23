@@ -1,9 +1,22 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { TerminalMock, type TerminalLine } from "../ui/terminal-mock";
 
 export async function HeroSection() {
   const t = await getTranslations();
   const heroAudiences = t.raw("hero.audiences") as string[];
+
+  const heroTerminalLines: TerminalLine[] = [
+    { type: 'prompt', text: t("hero.terminal.prompt") },
+    { type: 'blank' },
+    { type: 'progress', text: t("hero.terminal.dockerOk"), status: 'done' },
+    { type: 'progress', text: t("hero.terminal.mcpOk"), status: 'done' },
+    { type: 'progress', text: t("hero.terminal.workspaceOk"), status: 'done' },
+    { type: 'blank' },
+    { type: 'result', text: t("hero.terminal.result") },
+    { type: 'blank' },
+    { type: 'cursor' },
+  ];
 
   return (
     <section id="product" className="relative px-5 pb-24 pt-16 sm:px-8 sm:pt-20">
@@ -17,8 +30,9 @@ export async function HeroSection() {
       />
 
       <div className="mx-auto max-w-7xl">
-        {/* Hero text — single column, max-w-4xl */}
-        <div className="max-w-4xl">
+        {/* Hero grid — text left, terminal right */}
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div className="max-w-2xl">
           {/* BETA 배지 단순화 (D-HR-1) */}
           <div
             className="mb-8 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium tracking-tight"
@@ -91,6 +105,15 @@ export async function HeroSection() {
             </a>
           </div>
         </div>
+
+        {/* Terminal — right column */}
+        <TerminalMock
+          title={t("hero.terminal.title")}
+          lines={heroTerminalLines}
+          className="max-w-xl lg:ml-auto"
+        />
+
+        </div>{/* end grid */}
 
         {/* Spacer */}
         <div className="mt-16 sm:mt-20" />

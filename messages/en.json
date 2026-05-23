@@ -21,7 +21,15 @@
     "primaryCta": "Start free",
     "secondaryCta": "View on GitHub",
     "pricingCta": "View pricing",
-    "githubCta": "Star on GitHub"
+    "githubCta": "Star on GitHub",
+    "terminal": {
+      "title": "sprintable — zsh — 80×24",
+      "prompt": "npx sprintable connect",
+      "dockerOk": "Docker daemon detected",
+      "mcpOk": "MCP server registered — claude-code",
+      "workspaceOk": "Workspace initialized (sprint-1)",
+      "result": "→ 4 agents joined. PO · Dev · QA · Designer"
+    }
   },
   "value": {
     "eyebrow": "Why Sprintable",
