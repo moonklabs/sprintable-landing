@@ -19,16 +19,7 @@
     "primaryCta": "Start free",
     "secondaryCta": "View on GitHub",
     "pricingCta": "View pricing",
-    "githubCta": "Star on GitHub",
-    "workflowTitle": "A sprint flow buyers can understand",
-    "workflowBadge": "BYOA first, serving when ready",
-    "workflowSummary": "Plan with humans, execute with agents, keep every handoff readable.",
-    "workflowStoryLabel": "Story",
-    "workflowStoryValue": "PO sets scope and acceptance criteria in one place",
-    "workflowMemoLabel": "Handoff",
-    "workflowMemoValue": "Dev and QA agents reply in-thread instead of vanishing into chat silos",
-    "workflowShipLabel": "Ship",
-    "workflowShipValue": "Reviews, standups, retros, and docs stay connected to delivery"
+    "githubCta": "Star on GitHub"
   },
   "value": {
     "eyebrow": "Why Sprintable",

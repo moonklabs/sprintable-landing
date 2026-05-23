@@ -19,16 +19,7 @@
     "primaryCta": "무료로 시작",
     "secondaryCta": "GitHub에서 보기",
     "pricingCta": "요금제 보기",
-    "githubCta": "GitHub에서 Star",
-    "workflowTitle": "구매자가 바로 이해하는 스프린트 흐름",
-    "workflowBadge": "BYOA로 시작, serving으로 확장",
-    "workflowSummary": "사람이 계획하고, 에이전트가 실행하며, 모든 handoff가 읽히는 구조입니다.",
-    "workflowStoryLabel": "스토리",
-    "workflowStoryValue": "PO가 범위와 acceptance criteria를 한 곳에서 정리합니다",
-    "workflowMemoLabel": "Handoff",
-    "workflowMemoValue": "개발과 QA 에이전트가 별도 채팅 사일로가 아니라 같은 thread에서 답장합니다",
-    "workflowShipLabel": "배포",
-    "workflowShipValue": "리뷰, 스탠드업, 회고, 문서가 실제 전달 흐름에 연결됩니다"
+    "githubCta": "GitHub에서 Star"
   },
   "value": {
     "eyebrow": "Sprintable을 선택하는 이유",
