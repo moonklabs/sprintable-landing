@@ -1,12 +1,14 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { LocaleSwitcher } from "./components/locale-switcher";
 import { NavLinks } from "./components/nav-links";
 import { SprintableMarkSvg } from "./components/brand/sprintable-mark-svg";
+import { HeroSection } from "./components/sections/hero-section";
+import { HowItWorksSection } from "./components/sections/how-it-works-section";
+import { FeaturesSection } from "./components/sections/features-section";
+import { FinalCtaSection } from "./components/sections/final-cta-section";
 
 export default function Home() {
   const t = useTranslations();
-  const heroAudiences = t.raw("hero.audiences") as string[];
   const valueCards = t.raw("value.cards") as { eyebrow: string; title: string; desc: string }[];
   const customerCards = t.raw("customers.cards") as {
     title: string;
@@ -27,21 +29,6 @@ export default function Home() {
     audience: string;
     features: string[];
   }[];
-  const howItWorksSteps = t.raw("howItWorks.steps") as { eyebrow: string; title: string; desc: string; imgAlt: string }[];
-  const featureCards = t.raw("features.cards") as { title: string; desc: string; imgAlt: string }[];
-  const howItWorksImages = [
-    '/screenshots/07-settings.png',
-    '/screenshots/01-chat-detail.png',
-    '/screenshots/09-board-overview.png',
-  ] as const;
-  const featureImages = [
-    '/screenshots/01-chat-detail.png',
-    '/screenshots/08-thread-detail.png',
-    '/screenshots/04-kanban-board.png',
-    '/screenshots/11-epic-detail.png',
-    '/screenshots/13-activity-log.png',
-    '/screenshots/10-agents.png',
-  ] as const;
 
   return (
     <div
@@ -97,145 +84,7 @@ export default function Home() {
       </nav>
 
       <main className="overflow-x-hidden pt-18">
-        {/* ── HERO ── */}
-        <section
-          id="product"
-          className="relative px-5 pb-24 pt-16 sm:px-8 sm:pt-20"
-        >
-          {/* Background: single subtle radial, no multi-gradient AI slop */}
-          <div
-            className="absolute inset-x-0 top-0 -z-10 h-[600px]"
-            style={{
-              background:
-                "radial-gradient(ellipse 80% 50% at 20% 0%, oklch(72% 0.14 258 / 0.12), transparent)",
-            }}
-          />
-
-          <div className="mx-auto max-w-7xl">
-            {/* Badge */}
-            <div className="mb-10 inline-flex items-center gap-3 rounded-full px-4 py-2 text-xs"
-              style={{
-                border: "1px solid oklch(26% 0.022 265)",
-                backgroundColor: "oklch(17% 0.018 265)",
-              }}
-            >
-              <span
-                className="rounded-full px-2 py-0.5 font-bold uppercase tracking-widest"
-                style={{
-                  backgroundColor: "oklch(78% 0.13 195 / 0.15)",
-                  color: "oklch(78% 0.13 195)",
-                  fontSize: "0.6rem",
-                }}
-              >
-                {t("hero.badge")}
-              </span>
-              <span style={{ color: "oklch(65% 0.025 265)" }}>{t("hero.badgeText")}</span>
-            </div>
-
-            <div className="grid gap-16 xl:grid-cols-[1.1fr_0.9fr] xl:items-start">
-              {/* Left col */}
-              <div>
-                <p
-                  className="mb-5 text-xs font-semibold uppercase tracking-[0.3em]"
-                  style={{ color: "oklch(65% 0.06 258)" }}
-                >
-                  {t("hero.eyebrow")}
-                </p>
-                <h1
-                  className="font-[family-name:var(--font-display)] text-5xl font-extrabold tracking-[-0.04em] sm:text-6xl xl:text-7xl"
-                  style={{ color: "oklch(95% 0.015 265)", lineHeight: "1.02" }}
-                >
-                  {t("hero.headline")}
-                </h1>
-                <p
-                  className="mt-6 max-w-2xl text-lg leading-8"
-                  style={{ color: "oklch(72% 0.025 265)" }}
-                >
-                  {t("hero.subheadline")}
-                </p>
-
-                <p
-                  className="mt-5 max-w-2xl border-l-2 pl-4 font-[family-name:var(--font-display)] text-base italic leading-7"
-                  style={{
-                    borderColor: "oklch(72% 0.14 258)",
-                    color: "oklch(88% 0.025 265)",
-                  }}
-                >
-                  {t("hero.operatingPrinciple")}
-                </p>
-
-                {/* Audience tags */}
-                <div className="mt-8 flex flex-wrap gap-2">
-                  {heroAudiences.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full px-3 py-1.5 text-sm font-medium"
-                      style={{
-                        border: "1px solid oklch(26% 0.022 265)",
-                        backgroundColor: "oklch(17% 0.018 265)",
-                        color: "oklch(78% 0.03 265)",
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* CTAs */}
-                <div className="mt-9 flex flex-wrap gap-3">
-                  <a
-                    href="https://app.sprintable.ai/login"
-                    className="inline-flex items-center justify-center rounded-[var(--radius)] px-6 py-3.5 text-sm font-semibold transition"
-                    style={{
-                      backgroundColor: "oklch(72% 0.14 258)",
-                      color: "oklch(18% 0.06 258)",
-                      boxShadow: "0 8px 32px oklch(72% 0.14 258 / 0.22)",
-                    }}
-                  >
-                    {t("hero.primaryCta")}
-                  </a>
-                  <a
-                    href="https://github.com/moonklabs/sprintable"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-[var(--radius)] px-6 py-3.5 text-sm font-medium transition"
-                    style={{
-                      border: "1px solid oklch(26% 0.022 265)",
-                      backgroundColor: "oklch(17% 0.018 265)",
-                      color: "oklch(82% 0.025 265)",
-                    }}
-                  >
-                    {t("hero.secondaryCta")}
-                  </a>
-                  <a
-                    href="#pricing"
-                    className="inline-flex items-center justify-center rounded-[var(--radius)] px-6 py-3.5 text-sm font-medium transition"
-                    style={{ color: "oklch(65% 0.025 265)" }}
-                  >
-                    {t("hero.pricingCta")} →
-                  </a>
-                </div>
-              </div>
-
-              {/* Right col — Chat UI screenshot (AC1: Hero visual) */}
-              <div className="relative">
-                <div
-                  className="overflow-hidden rounded-2xl"
-                  style={{ border: "1px solid oklch(26% 0.022 265)" }}
-                >
-                  <Image
-                    src="/screenshots/12-dashboard-activity.png"
-                    alt="Sprintable dashboard — command center with sprint status and live activity feed"
-                    width={960}
-                    height={600}
-                    className="w-full object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HeroSection />
 
         {/* ── VALUE PROPOSITION ── */}
         <section id="value" className="px-5 py-20 sm:px-8 sm:py-28">
@@ -328,88 +177,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── HOW IT WORKS ── */}
-        <section
-          id="how-it-works"
-          className="px-5 py-20 sm:px-8 sm:py-28"
-          style={{ backgroundColor: "oklch(15% 0.016 265)" }}
-        >
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-14 text-center">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: "oklch(65% 0.06 258)" }}>
-                {t("howItWorks.eyebrow")}
-              </p>
-              <h2 className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl" style={{ color: "oklch(93% 0.02 265)" }}>
-                {t("howItWorks.title")}
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-base leading-7" style={{ color: "oklch(65% 0.025 265)" }}>
-                {t("howItWorks.subtitle")}
-              </p>
-            </div>
+        <HowItWorksSection />
 
-            <div className="grid gap-6 lg:grid-cols-3">
-              {howItWorksSteps.map((step, i) => (
-                <div key={step.title} className="flex flex-col rounded-2xl overflow-hidden" style={{ border: "1px solid oklch(26% 0.022 265)", backgroundColor: "oklch(13% 0.015 265)" }}>
-                  <div className="overflow-hidden" style={{ borderBottom: "1px solid oklch(22% 0.018 265)" }}>
-                    <Image
-                      src={howItWorksImages[i] ?? howItWorksImages[0]}
-                      alt={step.imgAlt}
-                      width={960}
-                      height={600}
-                      className="w-full object-cover"
-                      style={{ maxHeight: 200, objectFit: "cover", objectPosition: "top" }}
-                    />
-                  </div>
-                  <div className="p-6">
-                    <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "oklch(78% 0.13 195)", fontSize: "0.65rem" }}>{step.eyebrow}</p>
-                    <h3 className="mt-3 font-[family-name:var(--font-display)] text-xl font-bold" style={{ color: "oklch(93% 0.02 265)" }}>{step.title}</h3>
-                    <p className="mt-2 text-sm leading-7" style={{ color: "oklch(65% 0.025 265)" }}>{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── FEATURE DEEP-DIVE ── */}
-        <section id="features" className="px-5 py-20 sm:px-8 sm:py-28">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-14">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: "oklch(65% 0.06 258)" }}>
-                {t("features.eyebrow")}
-              </p>
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                <h2 className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl" style={{ color: "oklch(93% 0.02 265)" }}>
-                  {t("features.title")}
-                </h2>
-                <p className="max-w-sm text-sm leading-7 sm:text-right" style={{ color: "oklch(65% 0.025 265)" }}>
-                  {t("features.subtitle")}
-                </p>
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {featureCards.map((card, i) => (
-                <div key={card.title} className="flex flex-col rounded-2xl overflow-hidden" style={{ border: "1px solid oklch(26% 0.022 265)", backgroundColor: "oklch(17% 0.018 265)" }}>
-                  <div className="overflow-hidden" style={{ borderBottom: "1px solid oklch(22% 0.018 265)" }}>
-                    <Image
-                      src={featureImages[i] ?? featureImages[0]}
-                      alt={card.imgAlt}
-                      width={960}
-                      height={600}
-                      className="w-full object-cover"
-                      style={{ maxHeight: 160, objectFit: "cover", objectPosition: "top" }}
-                    />
-                  </div>
-                  <div className="flex-1 p-5">
-                    <h3 className="font-[family-name:var(--font-display)] text-base font-bold" style={{ color: "oklch(93% 0.02 265)" }}>{card.title}</h3>
-                    <p className="mt-2 text-sm leading-6" style={{ color: "oklch(65% 0.025 265)" }}>{card.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FeaturesSection />
 
         {/* ── CUSTOMERS ── */}
         <section
@@ -813,62 +583,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── FINAL CTA ── */}
-        <section className="px-5 py-20 sm:px-8 sm:py-28">
-          <div
-            className="mx-auto max-w-4xl rounded-2xl p-10 text-center sm:p-16"
-            style={{
-              border: "1px solid oklch(72% 0.14 258 / 0.2)",
-              background:
-                "radial-gradient(ellipse 100% 80% at 50% 0%, oklch(72% 0.14 258 / 0.12), oklch(16% 0.018 265) 70%)",
-            }}
-          >
-            <p
-              className="mb-4 text-xs font-semibold uppercase tracking-[0.3em]"
-              style={{ color: "oklch(65% 0.06 258)" }}
-            >
-              {t("finalCta.eyebrow")}
-            </p>
-            <h2
-              className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
-              style={{ color: "oklch(93% 0.02 265)" }}
-            >
-              {t("finalCta.title")}
-            </h2>
-            <p
-              className="mx-auto mt-5 max-w-xl text-base leading-8"
-              style={{ color: "oklch(65% 0.025 265)" }}
-            >
-              {t("finalCta.desc")}
-            </p>
-            <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-              <a
-                href="https://app.sprintable.ai/login"
-                className="inline-flex items-center justify-center rounded-[var(--radius)] px-7 py-3.5 text-sm font-semibold transition"
-                style={{
-                  backgroundColor: "oklch(72% 0.14 258)",
-                  color: "oklch(18% 0.06 258)",
-                  boxShadow: "0 8px 32px oklch(72% 0.14 258 / 0.22)",
-                }}
-              >
-                {t("finalCta.primary")}
-              </a>
-              <a
-                href="https://github.com/moonklabs/sprintable#readme"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-[var(--radius)] px-7 py-3.5 text-sm font-medium transition"
-                style={{
-                  border: "1px solid oklch(26% 0.022 265)",
-                  backgroundColor: "oklch(17% 0.018 265)",
-                  color: "oklch(72% 0.025 265)",
-                }}
-              >
-                {t("finalCta.secondary")}
-              </a>
-            </div>
-          </div>
-        </section>
+        <FinalCtaSection />
       </main>
 
       {/* ── FOOTER ── */}
