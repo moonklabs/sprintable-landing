@@ -3,6 +3,10 @@
 @theme inline {
   --font-display: var(--font-display);
   --font-body: var(--font-body);
+  --font-sans: var(--font-body);       /* alias — 본앱 변수명 호환 */
+  --font-heading: var(--font-display); /* alias — 본앱 변수명 호환 */
+
+  --radius: 0.625rem; /* 본앱 정합 */
 
   /* OKLCH-based color system — warm-indigo tinted dark */
   --color-surface: oklch(13% 0.015 265);
@@ -15,9 +19,9 @@
   --color-text-secondary: oklch(72% 0.025 265);
   --color-text-muted: oklch(55% 0.02 265);
 
-  --color-accent: oklch(72% 0.14 265);       /* indigo */
-  --color-accent-dim: oklch(72% 0.14 265 / 0.15);
-  --color-accent-hover: oklch(78% 0.13 265);
+  --color-accent: oklch(72% 0.14 258);       /* brand blue — hue 265°→258° 본앱 정렬 */
+  --color-accent-dim: oklch(72% 0.14 258 / 0.15);
+  --color-accent-hover: oklch(78% 0.13 258);
   --color-teal: oklch(78% 0.13 195);         /* secondary teal */
   --color-teal-dim: oklch(78% 0.13 195 / 0.14);
 
