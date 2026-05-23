@@ -863,7 +863,9 @@ export default function Home() {
                 {t("finalCta.primary")}
               </a>
               <a
-                href="https://discord.gg/sprintable"
+                href="https://github.com/moonklabs/sprintable#readme"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-xl px-7 py-3.5 text-sm font-medium transition"
                 style={{
                   border: "1px solid oklch(26% 0.022 265)",
