@@ -908,7 +908,12 @@ export default function Home() {
               >
                 {t("footer.github")}
               </a>
-              <a href="#" style={{ color: "oklch(60% 0.025 265)" }}>
+              <a
+                href="https://github.com/moonklabs/sprintable#readme"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "oklch(60% 0.025 265)" }}
+              >
                 {t("footer.docs")}
               </a>
             </div>
