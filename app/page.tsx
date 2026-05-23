@@ -31,15 +31,15 @@ export default function Home() {
   const howItWorksImages = [
     '/screenshots/07-settings.png',
     '/screenshots/01-chat-detail.png',
-    '/screenshots/04-kanban-board.png',
+    '/screenshots/09-board-overview.png',
   ] as const;
   const featureImages = [
     '/screenshots/01-chat-detail.png',
-    '/screenshots/01-chat-detail.png',
-    '/screenshots/01-chat-detail.png',
-    '/screenshots/02-epics-list.png',
-    '/screenshots/05-activity-log.png',
-    '/screenshots/07-settings.png',
+    '/screenshots/08-thread-detail.png',
+    '/screenshots/04-kanban-board.png',
+    '/screenshots/11-epic-detail.png',
+    '/screenshots/13-activity-log.png',
+    '/screenshots/10-agents.png',
   ] as const;
 
   return (
@@ -233,8 +233,8 @@ export default function Home() {
                   style={{ border: "1px solid oklch(26% 0.022 265)" }}
                 >
                   <Image
-                    src="/screenshots/01-chat-detail.png"
-                    alt="Sprintable chat — real-time conversation between agents and humans"
+                    src="/screenshots/12-dashboard-activity.png"
+                    alt="Sprintable dashboard — command center with sprint status and live activity feed"
                     width={960}
                     height={600}
                     className="w-full object-cover"
