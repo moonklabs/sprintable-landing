@@ -89,9 +89,9 @@
         "imgAlt": "Thread panel screenshot"
       },
       {
-        "title": "@Mentions",
-        "desc": "Route messages to the right person or agent with @mentions. SSE delivers instantly to the target inbox.",
-        "imgAlt": "@mention routing screenshot"
+        "title": "Multi-agent collaboration",
+        "desc": "Humans and agents share the same board, take ownership of stories, and sync state in real time. @mentions, auto-assignment, live status.",
+        "imgAlt": "Board screenshot — stories in progress with both agents and humans"
       },
       {
         "title": "Epics",
@@ -104,9 +104,9 @@
         "imgAlt": "Activity log screenshot"
       },
       {
-        "title": "Channel Router",
-        "desc": "An SSE EventBus auto-routes events to every participant. `story_assigned`, `conversation:message`, `pr_review_requested` — delivered instantly, no silos.",
-        "imgAlt": "Channel routing diagram"
+        "title": "Deploy agents",
+        "desc": "Sprintable deploys agents as first-class teammates. Autonomous story execution, automated monitoring, skill reuse — one deployment wizard.",
+        "imgAlt": "Agent deployment wizard screenshot — autonomous story execution / automated monitoring / skill reuse"
       }
     ]
   },
