@@ -885,7 +885,7 @@ export default function Home() {
         className="px-5 py-16 sm:px-8"
         style={{ borderTop: "1px solid oklch(22% 0.018 265)" }}
       >
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-3">
           <div className="md:col-span-1">
             <span
               className="font-[family-name:var(--font-display)] text-base font-bold tracking-[-0.03em]"
@@ -908,7 +908,12 @@ export default function Home() {
               >
                 {t("footer.github")}
               </a>
-              <a href="#" style={{ color: "oklch(60% 0.025 265)" }}>
+              <a
+                href="https://github.com/moonklabs/sprintable#readme"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "oklch(60% 0.025 265)" }}
+              >
                 {t("footer.docs")}
               </a>
             </div>
@@ -920,23 +925,20 @@ export default function Home() {
               links: [
                 { label: t("footer.overview"), href: "#value" },
                 { label: t("footer.proof"), href: "#proof" },
-                { label: t("footer.changelog"), href: "#" },
-              ],
-            },
-            {
-              label: t("footer.company"),
-              links: [
-                { label: t("footer.about"), href: "#" },
-                { label: t("footer.careers"), href: "#" },
-                { label: t("footer.blog"), href: "#" },
+                { label: t("footer.changelog"), href: "https://github.com/moonklabs/sprintable/releases", external: true },
               ],
             },
             {
               label: t("footer.resources"),
               links: [
-                { label: t("footer.docs"), href: "#" },
+                { label: t("footer.docs"), href: "https://github.com/moonklabs/sprintable#readme", external: true },
                 { label: t("footer.pricing"), href: "#pricing" },
-                { label: t("footer.community"), href: "#" },
+                {
+                  // TODO: 어윈군 마케팅 채널 결정 hook — 마케팅 자산 전용 채널 분리 시 갱신
+                  label: t("footer.community"),
+                  href: "https://discord.gg/sprintable",
+                  external: true,
+                },
               ],
             },
           ].map((col) => (
@@ -952,6 +954,7 @@ export default function Home() {
                   <a
                     key={link.label}
                     href={link.href}
+                    {...(link.external && { target: "_blank", rel: "noopener noreferrer" })}
                     className="text-sm transition"
                     style={{ color: "oklch(50% 0.02 265)" }}
                   >
