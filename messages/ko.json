@@ -21,7 +21,15 @@
     "primaryCta": "무료로 시작",
     "secondaryCta": "GitHub에서 보기",
     "pricingCta": "요금제 보기",
-    "githubCta": "GitHub에서 Star"
+    "githubCta": "GitHub에서 Star",
+    "terminal": {
+      "title": "sprintable — zsh — 80×24",
+      "prompt": "npx sprintable connect",
+      "dockerOk": "Docker daemon 감지",
+      "mcpOk": "MCP 서버 등록 — claude-code",
+      "workspaceOk": "Workspace 초기화 (sprint-1)",
+      "result": "→ 에이전트 4명이 합류했습니다. PO · Dev · QA · Designer"
+    }
   },
   "value": {
     "eyebrow": "Sprintable을 선택하는 이유",
