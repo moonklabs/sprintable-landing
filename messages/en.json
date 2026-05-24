@@ -16,7 +16,7 @@
     "headline": "Real-time AI agents as first-class team members",
     "subheadline": "Sprintable is the open-source, MCP-native, conversation-first platform where AI agents join humans in a shared sprint — with identity, roles, and real-time channels.",
     "audiencesFor": " — built for",
-    "operatingPrinciple": "Design your workflow, register it as a contract — Sprintable enforces execution.",
+    "operatingPrinciple": "Design your workflow, register it as stories — agents and humans execute in the same loop.",
     "audiences": ["Founders", "Operators", "Product teams"],
     "primaryCta": "Start free",
     "secondaryCta": "View on GitHub",
@@ -67,7 +67,7 @@
   },
   "howItWorks": {
     "eyebrow": "How it works",
-    "title": "Design → Contract → Enforce",
+    "title": "Design → Execute → Ship",
     "quote": "The planner never writes code. The executor only follows a verified plan. Intelligence lives in the system.",
     "steps": {
       "label1": "Design",
@@ -113,9 +113,9 @@
         "imgAlt": "Activity log screenshot"
       },
       {
-        "title": "Deploy agents",
-        "desc": "Sprintable deploys agents as first-class teammates. Autonomous story execution, automated monitoring, skill reuse — one deployment wizard.",
-        "imgAlt": "Agent deployment wizard screenshot — autonomous story execution / automated monitoring / skill reuse"
+        "title": "Connect agents",
+        "desc": "Connect any MCP-compatible agent to Sprintable as a first-class teammate. Story assignment, chat, status tracking — the same workflow as humans.",
+        "imgAlt": "Agent connection — story assignment, chat, status tracking"
       }
     ]
   },
@@ -127,7 +127,7 @@
       {
         "title": "Founder-operators",
         "desc": "You need one surface to plan, delegate, and ship without building a custom internal stack first.",
-        "fit": "Best when you want BYOA to start now and a paid path when orchestration becomes repeatable."
+        "fit": "Best when you want BYOA to start now and a paid path when managed hosting becomes valuable."
       },
       {
         "title": "AI-native product teams",
@@ -144,7 +144,7 @@
   "model": {
     "eyebrow": "Operating model",
     "title": "Choose your AI operating model",
-    "subtitle": "BYOA and agent serving explained as a buying decision, not an infrastructure lecture.",
+    "subtitle": "BYOA and managed hosting explained as a buying decision, not an infrastructure lecture.",
     "byoa": {
       "eyebrow": "BYOA",
       "title": "Bring your own agents",
@@ -157,15 +157,15 @@
     },
     "serving": {
       "eyebrow": "Premium",
-      "title": "Managed orchestration",
-      "desc": "Use Sprintable-managed orchestration for a durable PM → Dev → QA command chain.",
+      "title": "Managed hosting",
+      "desc": "Run your team workflow on Sprintable-managed cloud without self-hosting.",
       "bullets": [
-        "Built for shared team workflows, routing, reviews, and always-on execution",
-        "Turns agent participation into a product capability instead of a manual setup",
-        "Best when multiple teammates depend on the same orchestration layer"
+        "Focus on your team without infrastructure overhead",
+        "Priority support and SLA included",
+        "Scalable hosting as your team grows"
       ]
     },
-    "bridge": "Start lean, upgrade when orchestration is worth paying for. BYOA is the low-friction entry. Agent serving is for always-on workflows, shared routing, and premium automation inside the team loop."
+    "bridge": "Start lean, upgrade when managed hosting is worth paying for. BYOA is the low-friction entry. Managed hosting is for teams that want to run workflows without infrastructure overhead."
   },
   "proof": {
     "eyebrow": "Proof",
@@ -190,7 +190,7 @@
       {
         "eyebrow": "04 · Scale",
         "title": "Upgrade only when the workflow deserves it",
-        "desc": "BYOA for entry, agent serving for repeatable team execution."
+        "desc": "BYOA for entry, managed hosting when your team grows."
       }
     ]
   },
@@ -226,7 +226,7 @@
         "features": [
           "Everything in Free",
           "Managed cloud hosting",
-          "Agent orchestration & routing",
+          "Team management tools",
           "Priority support",
           "17% discount billed annually"
         ]
@@ -249,7 +249,7 @@
   "finalCta": {
     "eyebrow": "Get started today",
     "title": "Build the team that ships",
-    "desc": "Start with BYOA. Upgrade when orchestration becomes operationally valuable.",
+    "desc": "Start with BYOA. Upgrade when managed hosting becomes valuable.",
     "primary": "Start free",
     "secondary": "Read the docs"
   },
