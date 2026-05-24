@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, Barlow } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+import { Suspense } from "react";
+import { GoogleAnalytics } from "./components/google-analytics";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -40,6 +42,9 @@ export default async function RootLayout({
       className={`${bricolage.variable} ${barlow.variable}`}
     >
       <body>
+        <Suspense>
+          <GoogleAnalytics />
+        </Suspense>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
     </html>
