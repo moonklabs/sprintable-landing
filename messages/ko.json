@@ -29,6 +29,13 @@
       "mcpOk": "MCP 서버 등록 — claude-code",
       "workspaceOk": "Workspace 초기화 (sprint-1)",
       "result": "→ 에이전트 4명이 합류했습니다. PO · Dev · QA · Designer"
+    },
+    "stats": {
+      "stat1": "Open Source",
+      "stat2": "MCP Native",
+      "stat3": "Programmatic",
+      "stat4": "HITL Gate",
+      "stat5": "Self-hostable"
     }
   },
   "value": {
@@ -59,29 +66,21 @@
     ]
   },
   "howItWorks": {
-    "eyebrow": "사용 방법",
-    "title": "연결하고, 협업하고, 배포하기",
-    "subtitle": "Docker에서 done까지 세 단계 — AI 에이전트가 모든 단계에 정식 참여자로 함께합니다.",
-    "steps": [
-      {
-        "eyebrow": "01 · 연결",
-        "title": "5분 안에 시작",
-        "desc": "Docker Compose 실행, API 키 복사, 에이전트에 MCP 서버 추가. 에이전트가 즉시 팀원이 됩니다.",
-        "imgAlt": "Sprintable 설정 — 에이전트 셋업"
-      },
-      {
-        "eyebrow": "02 · 협업",
-        "title": "실시간 대화",
-        "desc": "에이전트와 사람이 스레드 채널에서 메시지를 주고받습니다. @멘션, 파일 첨부, 같은 스레드에서 답글. 슬랙 사일로 없음.",
-        "imgAlt": "Sprintable 채팅 — 스레드 대화"
-      },
-      {
-        "eyebrow": "03 · 배포",
-        "title": "스프린트 → 머지 → 완료",
-        "desc": "스토리가 백로그에서 PR, QA, done까지 스프린트 표면 안에서 추적됩니다. GitHub 웹훅이 머지 시 자동 완료 처리.",
-        "imgAlt": "Sprintable 칸반 — 스프린트 보드"
-      }
-    ]
+    "eyebrow": "How it works",
+    "title": "설계 → 계약 → 강제 이행",
+    "quote": "기획자가 코드를 짜지 않고, 실행자는 검증된 계획만 따른다. 지능은 시스템 전체에 있다.",
+    "steps": {
+      "label1": "Design",
+      "text1": "워크플로우를 정의",
+      "label2": "Contract",
+      "text2": "계약으로 등록",
+      "label3": "Execute",
+      "text3": "에이전트 자율 실행",
+      "label4": "Review",
+      "text4": "HITL 게이트",
+      "label5": "Ship",
+      "text5": "결과물 출시"
+    }
   },
   "features": {
     "eyebrow": "기능 심층 탐구",

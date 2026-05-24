@@ -9,13 +9,21 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "lucide-react": "^1.16.0",
     "next": "16.2.4",
     "next-intl": "^4.9.1",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["@parcel/watcher", "@swc/core", "esbuild", "sharp", "unrs-resolver", "workerd"]
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@swc/core",
+      "esbuild",
+      "sharp",
+      "unrs-resolver",
+      "workerd"
+    ]
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.16",

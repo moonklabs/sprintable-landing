@@ -1,15 +1,15 @@
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
-const howItWorksImages = [
-  '/screenshots/07-settings.png',
-  '/screenshots/01-chat-detail.png',
-  '/screenshots/09-board-overview.png',
+const WORKFLOW_STEPS = [
+  { num: '1', labelKey: 'label1', textKey: 'text1' },
+  { num: '2', labelKey: 'label2', textKey: 'text2' },
+  { num: '3', labelKey: 'label3', textKey: 'text3' },
+  { num: '4', labelKey: 'label4', textKey: 'text4' },
+  { num: '5', labelKey: 'label5', textKey: 'text5' },
 ] as const;
 
 export async function HowItWorksSection() {
   const t = await getTranslations();
-  const howItWorksSteps = t.raw("howItWorks.steps") as { eyebrow: string; title: string; desc: string; imgAlt: string }[];
 
   return (
     <section
@@ -18,39 +18,68 @@ export async function HowItWorksSection() {
       style={{ backgroundColor: "oklch(15% 0.016 265)" }}
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-14 text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]" style={{ color: "oklch(65% 0.06 258)" }}>
+        {/* Header */}
+        <div className="mb-16 text-center">
+          <span
+            className="mb-3 inline-block rounded-full px-3 py-1 text-xs font-medium"
+            style={{
+              backgroundColor: "oklch(72% 0.14 258 / 0.12)",
+              color: "oklch(78% 0.13 258)",
+            }}
+          >
             {t("howItWorks.eyebrow")}
-          </p>
-          <h2 className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl" style={{ color: "oklch(93% 0.02 265)" }}>
+          </span>
+          <h2
+            className="mt-3 font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
+            style={{ color: "oklch(93% 0.02 265)" }}
+          >
             {t("howItWorks.title")}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-7" style={{ color: "oklch(65% 0.025 265)" }}>
-            {t("howItWorks.subtitle")}
-          </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          {howItWorksSteps.map((step, i) => (
-            <div key={step.title} className="flex flex-col rounded-2xl overflow-hidden" style={{ border: "1px solid oklch(26% 0.022 265)", backgroundColor: "oklch(13% 0.015 265)" }}>
-              <div className="overflow-hidden" style={{ borderBottom: "1px solid oklch(22% 0.018 265)" }}>
-                <Image
-                  src={howItWorksImages[i] ?? howItWorksImages[0]}
-                  alt={step.imgAlt}
-                  width={960}
-                  height={600}
-                  className="w-full object-cover"
-                  style={{ maxHeight: 200, objectFit: "cover", objectPosition: "top" }}
-                />
+        {/* Horizontal flow */}
+        <div className="flex flex-col items-stretch gap-6 lg:flex-row lg:items-center lg:justify-between">
+          {WORKFLOW_STEPS.map((step, idx) => (
+            <div key={step.num} className="flex items-center gap-4 lg:flex-col lg:items-center lg:gap-3 lg:text-center">
+              <div className="flex items-center gap-3 lg:flex-col lg:items-center lg:gap-3">
+                <div
+                  className="flex size-10 shrink-0 items-center justify-center rounded-full font-[family-name:var(--font-display)] text-base font-bold"
+                  style={{
+                    backgroundColor: "oklch(72% 0.14 258 / 0.15)",
+                    border: "1px solid oklch(72% 0.14 258 / 0.4)",
+                    color: "oklch(78% 0.13 258)",
+                  }}
+                >
+                  {step.num}
+                </div>
+                <div>
+                  <p className="text-sm font-semibold" style={{ color: "oklch(92% 0.025 265)" }}>
+                    {t(`howItWorks.steps.${step.labelKey}`)}
+                  </p>
+                  <p className="text-xs" style={{ color: "oklch(65% 0.025 265)" }}>
+                    {t(`howItWorks.steps.${step.textKey}`)}
+                  </p>
+                </div>
               </div>
-              <div className="p-6">
-                <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "oklch(78% 0.13 195)", fontSize: "0.65rem" }}>{step.eyebrow}</p>
-                <h3 className="mt-3 font-[family-name:var(--font-display)] text-xl font-bold" style={{ color: "oklch(93% 0.02 265)" }}>{step.title}</h3>
-                <p className="mt-2 text-sm leading-7" style={{ color: "oklch(65% 0.025 265)" }}>{step.desc}</p>
-              </div>
+              {idx < WORKFLOW_STEPS.length - 1 && (
+                <span
+                  className="hidden text-lg lg:block"
+                  style={{ color: "oklch(72% 0.14 258 / 0.4)" }}
+                >
+                  →
+                </span>
+              )}
             </div>
           ))}
         </div>
+
+        {/* Manifesto quote */}
+        <p
+          className="mx-auto mt-14 max-w-2xl text-center text-sm italic leading-7"
+          style={{ color: "oklch(65% 0.025 265)" }}
+        >
+          {t("howItWorks.quote")}
+        </p>
       </div>
     </section>
   );

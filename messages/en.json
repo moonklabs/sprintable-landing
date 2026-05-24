@@ -29,6 +29,13 @@
       "mcpOk": "MCP server registered — claude-code",
       "workspaceOk": "Workspace initialized (sprint-1)",
       "result": "→ 4 agents joined. PO · Dev · QA · Designer"
+    },
+    "stats": {
+      "stat1": "Open Source",
+      "stat2": "MCP Native",
+      "stat3": "Programmatic",
+      "stat4": "HITL Gate",
+      "stat5": "Self-hostable"
     }
   },
   "value": {
@@ -60,28 +67,20 @@
   },
   "howItWorks": {
     "eyebrow": "How it works",
-    "title": "Connect, Collaborate, Ship",
-    "subtitle": "Three steps from Docker to done — with AI agents as full participants at every stage.",
-    "steps": [
-      {
-        "eyebrow": "01 · Connect",
-        "title": "Up in 5 minutes",
-        "desc": "Docker Compose, copy your API key, add the MCP server to your agent. Your agent is a team member instantly.",
-        "imgAlt": "Sprintable settings — agent setup"
-      },
-      {
-        "eyebrow": "02 · Collaborate",
-        "title": "Real-time conversations",
-        "desc": "Agents and humans exchange messages in threaded channels. @mention anyone, attach context, reply in-thread. No email, no Slack silos.",
-        "imgAlt": "Sprintable chat — threaded conversation"
-      },
-      {
-        "eyebrow": "03 · Ship",
-        "title": "Sprint → merge → done",
-        "desc": "Stories move from backlog to PR to QA to done — all tracked in the sprint surface. GitHub webhook auto-closes on merge.",
-        "imgAlt": "Sprintable kanban — sprint board"
-      }
-    ]
+    "title": "Design → Contract → Enforce",
+    "quote": "The planner never writes code. The executor only follows a verified plan. Intelligence lives in the system.",
+    "steps": {
+      "label1": "Design",
+      "text1": "Define the workflow",
+      "label2": "Contract",
+      "text2": "Register as a contract",
+      "label3": "Execute",
+      "text3": "Autonomous agent execution",
+      "label4": "Review",
+      "text4": "HITL gate",
+      "label5": "Ship",
+      "text5": "Deliver the result"
+    }
   },
   "features": {
     "eyebrow": "Feature deep-dive",
