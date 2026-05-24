@@ -1,6 +1,15 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
+import { GitBranch, Plug, Code, Shield, Server } from "lucide-react";
 import { TerminalMock, type TerminalLine } from "../ui/terminal-mock";
+
+const HERO_STATS = [
+  { icon: GitBranch, labelKey: 'stat1' },
+  { icon: Plug, labelKey: 'stat2' },
+  { icon: Code, labelKey: 'stat3' },
+  { icon: Shield, labelKey: 'stat4' },
+  { icon: Server, labelKey: 'stat5' },
+] as const;
 
 export async function HeroSection() {
   const t = await getTranslations();
@@ -65,9 +74,27 @@ export async function HeroSection() {
             {t("hero.subheadline")}
           </p>
 
+          {/* Stat chips row (A2A3) */}
+          <div className="mt-6 flex flex-wrap gap-2">
+            {HERO_STATS.map(({ icon: Icon, labelKey }) => (
+              <span
+                key={labelKey}
+                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
+                style={{
+                  border: "1px solid oklch(26% 0.022 265)",
+                  backgroundColor: "oklch(17% 0.018 265)",
+                  color: "oklch(82% 0.025 265)",
+                }}
+              >
+                <Icon className="size-3" style={{ color: "oklch(78% 0.13 258)" }} aria-hidden="true" />
+                {t(`hero.stats.${labelKey}`)}
+              </span>
+            ))}
+          </div>
+
           {/* Audiences inline (D-HR-3) */}
           <p
-            className="mt-3 max-w-3xl text-sm tracking-tight"
+            className="mt-4 max-w-3xl text-sm tracking-tight"
             style={{ color: "oklch(65% 0.025 265)" }}
           >
             {heroAudiences.join(" · ")}{t("hero.audiencesFor")}.
