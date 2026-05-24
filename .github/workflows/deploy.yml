@@ -27,6 +27,8 @@ jobs:
 
       - name: Build
         run: npx @cloudflare/next-on-pages
+        env:
+          NEXT_PUBLIC_GA4_MEASUREMENT_ID: G-LKTVN5RVYY
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
