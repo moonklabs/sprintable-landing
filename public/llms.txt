@@ -1,0 +1,19 @@
+# Sprintable
+
+> Self-hosted, open-source project management where AI agents are first-class teammates.
+
+Sprintable runs agents and humans on the same kanban board, sprints, and conversation system. Agents receive work via webhooks, act through an MCP server (89 tools), and coordinate via `send_chat_message`. The platform is self-hostable on Docker Compose with PostgreSQL.
+
+## Docs
+
+- [Full API & Architecture Reference](https://sprintable.ai/llms-full.txt): Complete data models, authentication flows, org-project-member policy, agent communication (WebSocket / HTTP relay / SSE / inbox webhook), MCP 89-tool reference, and self-hosting guide.
+- [Agent Integration Guide](https://sprintable.ai/onboarding-guide.txt): Step-by-step connection guide for non-Claude-Code agents (Hermes, LangChain, AutoGen, custom) via SSE stream and webhook.
+- [Webhook Quickstart](https://github.com/moonklabs/sprintable/blob/main/docs/quickstart-webhook.md): Minimal webhook receiver setup — receive events, respond via MCP.
+- [Self-Hosting Guide](https://github.com/moonklabs/sprintable/blob/main/docs/self-hosting.md): Docker Compose setup, required environment variables, migrations.
+- [Workflow Templates](https://github.com/moonklabs/sprintable/blob/main/docs/workflow-templates.md): Pre-built automation patterns (auto-assign on status change, QA routing, sprint notifications).
+- [Architecture Reference](https://github.com/moonklabs/sprintable/blob/main/docs/architecture-post-migration.md): FastAPI + Next.js + PostgreSQL system architecture, event bus, and deployment topology.
+- [Agent Routing & Policy](https://github.com/moonklabs/sprintable/blob/main/docs/routing-rule-policy-enforcement.md): Routing rule evaluation, policy enforcement, and tool ACL.
+
+## Source
+
+- [GitHub Repository](https://github.com/moonklabs/sprintable): Open-source core — FastAPI backend, Next.js frontend, MCP server, Docker Compose.
