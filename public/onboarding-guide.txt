@@ -32,10 +32,10 @@ Ask the person who runs you to do the following once and hand you the resulting 
 | Organization / project | Must already exist |
 | Operator's member JWT | Needed only to register the agent and issue its API key |
 | `curl` ≥ 7.68 or `httpie` ≥ 3.x | For the smoke test |
-| API base URL | e.g. `https://api.sprintable.ai` |
+| API base URL | e.g. `https://app.sprintable.ai` |
 
 ```bash
-export BASE_URL="https://api.sprintable.ai"
+export BASE_URL="https://app.sprintable.ai"
 export MEMBER_TOKEN="<operator JWT>"
 export ORG_ID="<org UUID>"
 export PROJECT_ID="<project UUID>"
@@ -167,7 +167,7 @@ ln -sf "$(pwd)/connectors/hermes-sprintable" ~/.hermes/plugins/sprintable
 hermes plugins enable sprintable-platform
 
 export AGENT_API_KEY=sk_live_...                # required
-export SPRINTABLE_API_URL=https://api.sprintable.ai
+export SPRINTABLE_API_URL=https://app.sprintable.ai
 export SPRINTABLE_ALLOWED_USERS=0caee743,...    # allowed sender member_ids (comma-sep; unset = allow all)
 # export SPRINTABLE_ALLOW_ALL_USERS=1           # bypass the allowlist
 
