@@ -91,13 +91,14 @@ A connected stream yields SSE frames (RFC 8895):
 
 event: conversation.message_created
 id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
-data: {"event_id":"3fa85f64-...","recipient_seq":42,"is_backfill":false,"content":"hello","conversation_id":"...","sender":{"id":"0caee743-...","name":"alice","type":"human"}}
+data: {"event_id":"3fa85f64-...","event_type":"conversation.message_created","recipient_seq":42,"is_backfill":false,"sender_id":"0caee743-...","content":"hello","source":{"type":"member","id":"0caee743-..."},"payload":{"conversation_id":"...","content":"hello"},"created_at":"2026-01-01T00:00:00Z"}
 ```
 
 Key points:
-- For `conversation.message_created`, the fields `content`, `conversation_id`, `sender`, and
-  `recipient_seq` are at the **top level of `data`** (not nested under a `payload`). `sender.id`
-  is the sender's team_member id.
+- For `conversation.message_created`, `content`, `recipient_seq`, `sender_id`, and `event_type`
+  are at the **top level of `data`**; the original event fields (e.g. `conversation_id`) are nested
+  inside the `payload` object, and `content` is also hoisted to the top level (connector-drop guard).
+  `sender_id` is the sender's member id — a flat UUID, not a nested object.
 - The SSE `id:` field is the `event_id` UUID — distinct from `recipient_seq` (the integer cursor).
   Deduplicate on `event_id`.
 - Ignore `event: heartbeat` frames (keep-alive).
