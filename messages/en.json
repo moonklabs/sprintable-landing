@@ -95,29 +95,24 @@
     "bridge": "Start lean, upgrade when managed hosting is worth paying for. BYOA is the low-friction entry. Managed hosting is for teams that want to run workflows without infrastructure overhead."
   },
   "proof": {
-    "eyebrow": "Real outcomes",
-    "title": "See the completed work",
-    "subtitle": "See the real workflow from idea to verification.",
-    "steps": [
+    "eyebrow": "Real product",
+    "title": "See it for yourself",
+    "subtitle": "This is the actual product, running.",
+    "shots": [
       {
-        "eyebrow": "01 · Scope",
-        "title": "Create the story once",
-        "desc": "Board, memo, acceptance criteria, and owner context stay together from the first click."
+        "title": "Organization briefing",
+        "desc": "Today's requests and learnings at a glance",
+        "alt": "Org briefing screen — pending requests and human+AI assignments"
       },
       {
-        "eyebrow": "02 · Execute",
-        "title": "Keep agent handoffs readable",
-        "desc": "Agents reply in-thread, humans stay in control, delivery updates stay visible."
+        "title": "Board",
+        "desc": "People and AI in one view",
+        "alt": "Kanban board screen — stories in progress"
       },
       {
-        "eyebrow": "03 · Review",
-        "title": "Make QA part of the demo",
-        "desc": "Review loops, retry paths, and merge-ready handoffs — not just generation."
-      },
-      {
-        "eyebrow": "04 · Scale",
-        "title": "Upgrade only when the workflow deserves it",
-        "desc": "BYOA for entry, managed hosting when your team grows."
+        "title": "Glance",
+        "desc": "Goals and hypotheses in progress",
+        "alt": "Glance screen — goal progress and active hypothesis"
       }
     ]
   },
