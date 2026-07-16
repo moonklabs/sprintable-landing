@@ -3,13 +3,13 @@ import { LocaleSwitcher } from "./components/locale-switcher";
 import { NavLinks } from "./components/nav-links";
 import { SprintableMarkSvg } from "./components/brand/sprintable-mark-svg";
 import { HeroSection } from "./components/sections/hero-section";
-import { HowItWorksSection } from "./components/sections/how-it-works-section";
-import { FeaturesSection } from "./components/sections/features-section";
+import { TrustSection } from "./components/sections/trust-section";
+import { AccelerationSection } from "./components/sections/acceleration-section";
+import { OrgOsSection } from "./components/sections/org-os-section";
 import { FinalCtaSection } from "./components/sections/final-cta-section";
 
 export default function Home() {
   const t = useTranslations();
-  const valueCards = t.raw("value.cards") as { eyebrow: string; title: string; desc: string }[];
   const customerCards = t.raw("customers.cards") as {
     title: string;
     desc: string;
@@ -86,100 +86,11 @@ export default function Home() {
       <main className="overflow-x-hidden pt-18">
         <HeroSection />
 
-        {/* ── VALUE PROPOSITION ── */}
-        <section id="value" className="px-5 py-20 sm:px-8 sm:py-28">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-14 grid gap-6 lg:grid-cols-[1fr_1.4fr] lg:items-end">
-              <div>
-                <p
-                  className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                  style={{ color: "oklch(65% 0.06 258)" }}
-                >
-                  {t("value.eyebrow")}
-                </p>
-                <h2
-                  className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
-                  style={{ color: "oklch(93% 0.02 265)" }}
-                >
-                  {t("value.title")}
-                </h2>
-              </div>
-              <p
-                className="text-base leading-8 lg:max-w-xl lg:text-right"
-                style={{ color: "oklch(65% 0.025 265)" }}
-              >
-                {t("value.subtitle")}
-              </p>
-            </div>
+        <TrustSection />
 
-            {/* Asymmetric layout: large card + two stacked */}
-            <div className="grid gap-4 lg:grid-cols-[1.6fr_1fr]">
-              {/* Primary card */}
-              <div
-                className="rounded-2xl p-8"
-                style={{
-                  border: "1px solid oklch(26% 0.022 265)",
-                  backgroundColor: "oklch(17% 0.018 265)",
-                }}
-              >
-                <p
-                  className="text-xs font-semibold uppercase tracking-widest"
-                  style={{ color: "oklch(78% 0.13 195)", fontSize: "0.65rem" }}
-                >
-                  {valueCards[0]?.eyebrow}
-                </p>
-                <h3
-                  className="mt-4 font-[family-name:var(--font-display)] text-2xl font-bold"
-                  style={{ color: "oklch(93% 0.02 265)" }}
-                >
-                  {valueCards[0]?.title}
-                </h3>
-                <p
-                  className="mt-4 max-w-md text-sm leading-7"
-                  style={{ color: "oklch(65% 0.025 265)" }}
-                >
-                  {valueCards[0]?.desc}
-                </p>
-              </div>
-              {/* Secondary cards */}
-              <div className="flex flex-col gap-4">
-                {valueCards.slice(1).map((card) => (
-                  <div
-                    key={card.title}
-                    className="flex-1 rounded-2xl p-6"
-                    style={{
-                      border: "1px solid oklch(26% 0.022 265)",
-                      backgroundColor: "oklch(17% 0.018 265)",
-                    }}
-                  >
-                    <p
-                      className="text-xs font-semibold uppercase tracking-widest"
-                      style={{ color: "oklch(78% 0.13 195)", fontSize: "0.65rem" }}
-                    >
-                      {card.eyebrow}
-                    </p>
-                    <h3
-                      className="mt-3 font-[family-name:var(--font-display)] text-xl font-bold"
-                      style={{ color: "oklch(93% 0.02 265)" }}
-                    >
-                      {card.title}
-                    </h3>
-                    <p
-                      className="mt-2 text-sm leading-6"
-                      style={{ color: "oklch(65% 0.025 265)" }}
-                    >
-                      {card.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <AccelerationSection />
 
-        <HowItWorksSection />
-
-        <FeaturesSection />
+        <OrgOsSection />
 
         {/* ── CUSTOMERS ── */}
         <section

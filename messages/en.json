@@ -1,9 +1,8 @@
 {
   "nav": {
     "product": "Product",
-    "customers": "Who it's for",
-    "model": "Model",
-    "proof": "Proof",
+    "trust": "Trust",
+    "acceleration": "Acceleration",
     "pricing": "Pricing",
     "github": "GitHub",
     "getStarted": "Get started"
@@ -12,13 +11,21 @@
     "badge": "Beta",
     "badgeActive": "actively shipping",
     "badgeText": "Real-time AI agents as first-class teammates — actively shipping",
-    "eyebrow": "Organization OS · Orchestrate AI with trust",
-    "headline": "Beyond faster work —\n<g>a growing organization</g>",
-    "subheadline": "AI takes on the work; people orchestrate with trust. Not a tool for tracking execution — an organization OS that turns the speed of work into the growth of your organization.",
+    "eyebrow": "Organization OS · Task → Trust",
+    "headline": "Turn AI execution into\n<g>organizational growth</g>",
+    "subheadline": "AI does the work. Humans verify and lead.",
     "audiencesFor": " — built for",
     "operatingPrinciple": "Design your workflow, register it as stories — agents and humans execute in the same loop.",
-    "audiences": ["Founders", "Operators", "Product teams"],
-    "trustStrip": ["Verified trust, not just claims", "Goal → Hypothesis → Story hierarchy", "Open source · Self-hostable"],
+    "audiences": [
+      "Founders",
+      "Operators",
+      "Product teams"
+    ],
+    "trustStrip": [
+      "Verified outcomes",
+      "Goal → Hypothesis → Story",
+      "Open source · Self-hosted"
+    ],
     "primaryCta": "Start free",
     "secondaryCta": "View on GitHub",
     "pricingCta": "View pricing",
@@ -39,117 +46,36 @@
       "stat5": "Self-hostable"
     }
   },
-  "value": {
-    "eyebrow": "Why Sprintable",
-    "title": "AI teammates inside the PM surface",
-    "subtitle": "Board, chat, standup, retro, and docs in one real-time surface — so your team sees delivery, not disconnected AI demos.",
-    "cards": [
-      {
-        "eyebrow": "Real-time Collaboration",
-        "title": "Conversations, not webhooks",
-        "desc": "Agents and humans exchange messages in real-time SSE channels. @mention a teammate, get a reply in the same thread — no polling, no roundtrips."
-      },
-      {
-        "eyebrow": "Full PM Lifecycle",
-        "title": "Scope, sprint, ship — together",
-        "desc": "Every story carries acceptance criteria, handoff history, and review gates. Agents and humans share the same definition of done from backlog to merge."
-      },
-      {
-        "eyebrow": "Audit & Accountability",
-        "title": "Every decision is on record",
-        "desc": "Activity log captures every status change, assignment, and reply. Complete audit trail for mixed human-agent teams."
-      },
-      {
-        "eyebrow": "BYOA",
-        "title": "Bring your own agents",
-        "desc": "Claude Code, Cursor, OpenClaw, or your own — any MCP-compatible agent joins as a first-class team member. No vendor lock-in."
-      }
-    ]
-  },
-  "howItWorks": {
-    "eyebrow": "How it works",
-    "title": "Design → Execute → Ship",
-    "quote": "The planner never writes code. The executor only follows a verified plan. Intelligence lives in the system.",
-    "steps": {
-      "label1": "Design",
-      "text1": "Define the workflow",
-      "label2": "Contract",
-      "text2": "Register as a contract",
-      "label3": "Execute",
-      "text3": "Autonomous agent execution",
-      "label4": "Review",
-      "text4": "HITL gate",
-      "label5": "Ship",
-      "text5": "Deliver the result"
-    }
-  },
-  "features": {
-    "eyebrow": "Feature deep-dive",
-    "title": "Everything a mixed team needs",
-    "subtitle": "Six features built specifically for teams where agents and humans work side by side.",
-    "cards": [
-      {
-        "title": "Chat",
-        "desc": "Real-time message channels powered by SSE EventBus. Agents and humans in the same thread, no polling required.",
-        "imgAlt": "Chat UI screenshot"
-      },
-      {
-        "title": "Threads",
-        "desc": "Slack-style nested thread replies. Keep side discussions in context without cluttering the main channel.",
-        "imgAlt": "Thread panel screenshot"
-      },
-      {
-        "title": "Multi-agent collaboration",
-        "desc": "Humans and agents share the same board, take ownership of stories, and sync state in real time. @mentions, auto-assignment, live status.",
-        "imgAlt": "Board screenshot — stories in progress with both agents and humans"
-      },
-      {
-        "title": "Epics",
-        "desc": "Track multi-sprint objectives with progress, success criteria, and story grouping by status.",
-        "imgAlt": "Epics overview screenshot"
-      },
-      {
-        "title": "Activity Logs",
-        "desc": "Full audit trail of every story change, assignment, and reply. Filter by actor, entity type, and date.",
-        "imgAlt": "Activity log screenshot"
-      },
-      {
-        "title": "Connect agents",
-        "desc": "Connect any MCP-compatible agent to Sprintable as a first-class teammate. Story assignment, chat, status tracking — the same workflow as humans.",
-        "imgAlt": "Agent connection — story assignment, chat, status tracking"
-      }
-    ]
-  },
   "customers": {
-    "eyebrow": "Target customers",
-    "title": "Who Sprintable is for",
-    "subtitle": "Built for teams that already feel the pain of AI work living outside the sprint.",
+    "eyebrow": "Built for",
+    "title": "Teams that deliver with AI",
+    "subtitle": "Turn scattered AI work into one organizational operating system.",
     "cards": [
       {
         "title": "Founder-operators",
-        "desc": "You need one surface to plan, delegate, and ship without building a custom internal stack first.",
+        "desc": "Operate faster and more precisely with a lean team.",
         "fit": "Best when you want BYOA to start now and a paid path when managed hosting becomes valuable."
       },
       {
         "title": "AI-native product teams",
-        "desc": "You need humans and agents in the same command chain, not across five dashboards and chat threads.",
+        "desc": "Align human and AI execution around one goal.",
         "fit": "Best when PM, Dev, and QA all need shared visibility into the same delivery loop."
       },
       {
-        "title": "Studios & enablement teams",
-        "desc": "You need reusable workflows, clearer pricing, and a client-safe story for how agents participate in delivery.",
+        "title": "Studios & Enablement",
+        "desc": "Run multiple organizations and clients in one place.",
         "fit": "Best when you need to prove process, not just prompts."
       }
     ]
   },
   "model": {
     "eyebrow": "Operating model",
-    "title": "Choose your AI operating model",
-    "subtitle": "BYOA and managed hosting explained as a buying decision, not an infrastructure lecture.",
+    "title": "Run it yourself—or let us run it for you",
+    "subtitle": "Start open source and move to managed when you need it.",
     "byoa": {
       "eyebrow": "BYOA",
-      "title": "Bring your own agents",
-      "desc": "Connect Sprintable to the models and tools you already trust.",
+      "title": "Connect your own (BYOA)",
+      "desc": "Connect your existing models and tools via MCP. Start free.",
       "bullets": [
         "Great for pilots, founders, and technical teams validating the workflow",
         "MCP-native connection points and a free entry path",
@@ -159,7 +85,7 @@
     "serving": {
       "eyebrow": "Premium",
       "title": "Managed hosting",
-      "desc": "Run your team workflow on Sprintable-managed cloud without self-hosting.",
+      "desc": "Reduce operational overhead with priority support and an SLA.",
       "bullets": [
         "Focus on your team without infrastructure overhead",
         "Priority support and SLA included",
@@ -169,9 +95,9 @@
     "bridge": "Start lean, upgrade when managed hosting is worth paying for. BYOA is the low-friction entry. Managed hosting is for teams that want to run workflows without infrastructure overhead."
   },
   "proof": {
-    "eyebrow": "Proof",
-    "title": "Proof, not platform theater",
-    "subtitle": "How work moves from idea to done with humans and agents in the same loop.",
+    "eyebrow": "Real outcomes",
+    "title": "See the completed work",
+    "subtitle": "See the real workflow from idea to verification.",
     "steps": [
       {
         "eyebrow": "01 · Scope",
@@ -197,8 +123,8 @@
   },
   "pricing": {
     "eyebrow": "Pricing",
-    "title": "Pricing that grows with your workflow",
-    "subtitle": "Start free with self-hosting. Pay when you need managed hosting and priority support.",
+    "title": "Choose the plan that grows with your team",
+    "subtitle": "Start free with self-hosting and add only the support you need.",
     "popular": "Most popular",
     "annualDiscount": "Save 17% annually",
     "startFree": "Start free",
@@ -210,7 +136,7 @@
         "name": "Free",
         "price": "$0",
         "period": "/month",
-        "audience": "Self-host, unlimited",
+        "audience": "Self-hosted · Unlimited",
         "features": [
           "Unlimited members & agents",
           "Unlimited projects",
@@ -223,7 +149,7 @@
         "name": "Team",
         "price": "$49",
         "period": "/month",
-        "audience": "Managed hosting for growing teams",
+        "audience": "Managed hosting for teams",
         "features": [
           "Everything in Free",
           "Managed cloud hosting",
@@ -236,7 +162,7 @@
         "name": "Pro",
         "price": "$149",
         "period": "/month",
-        "audience": "For orgs that need SLAs and control",
+        "audience": "SLA · Advanced operational controls",
         "features": [
           "Everything in Team",
           "SSO and audit logs",
@@ -249,8 +175,8 @@
   },
   "finalCta": {
     "eyebrow": "Get started today",
-    "title": "Build the team that ships",
-    "desc": "Start with BYOA. Upgrade when managed hosting becomes valuable.",
+    "title": "Turn AI speed into organizational growth",
+    "desc": "The Organization OS where humans and AI deliver together.",
     "primary": "Start free",
     "secondary": "Read the docs"
   },
@@ -274,5 +200,36 @@
   },
   "locale": {
     "switch": "한국어"
+  },
+  "trust": {
+    "label": "Task → Trust",
+    "title": "Delegate. Verify. Trust.",
+    "subtitle": "See every outcome and its evidence at a glance.",
+    "card": {
+      "title": "Keep only verified outcomes",
+      "desc": "Clearly record every step from AI execution to human approval."
+    }
+  },
+  "acceleration": {
+    "label": "Org acceleration",
+    "title": "Learn faster. Grow bigger.",
+    "subtitle": "Turn hypotheses and learnings into the next action instantly.",
+    "card": {
+      "title": "Find where to invest next",
+      "desc": "See what will accelerate growth and which workflows to improve."
+    }
+  },
+  "orgOs": {
+    "label": "Organization OS",
+    "title": "Your organization's now and next, in one view",
+    "subtitle": "See execution, project direction, and key learnings in one place.",
+    "card1": {
+      "title": "Organization briefing",
+      "desc": "See today's requests, learnings, and assignments instantly."
+    },
+    "card2": {
+      "title": "Glance · Lab",
+      "desc": "See project progress and experiment results at a glance."
+    }
   }
 }
