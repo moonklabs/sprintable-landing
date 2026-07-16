@@ -33,10 +33,10 @@
     "terminal": {
       "title": "sprintable — zsh — 80×24",
       "prompt": "npx sprintable connect",
-      "dockerOk": "Docker daemon detected",
-      "mcpOk": "MCP server registered — claude-code",
-      "workspaceOk": "Workspace initialized (sprint-1)",
-      "result": "→ 4 agents joined. PO · Dev · QA · Designer"
+      "connectOk": "Connected to app.sprintable.ai",
+      "projectOk": "Project selected — Checkout Redesign",
+      "agentOk": "Agent registered — claude-code",
+      "result": "→ Restart your client, then run sprintable_ping to confirm"
     },
     "stats": {
       "stat1": "Open Source",

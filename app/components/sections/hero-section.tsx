@@ -20,9 +20,9 @@ export async function HeroSection() {
   const heroTerminalLines: TerminalLine[] = [
     { type: 'prompt', text: t("hero.terminal.prompt") },
     { type: 'blank' },
-    { type: 'progress', text: t("hero.terminal.dockerOk"), status: 'done' },
-    { type: 'progress', text: t("hero.terminal.mcpOk"), status: 'done' },
-    { type: 'progress', text: t("hero.terminal.workspaceOk"), status: 'done' },
+    { type: 'progress', text: t("hero.terminal.connectOk"), status: 'done' },
+    { type: 'progress', text: t("hero.terminal.projectOk"), status: 'done' },
+    { type: 'progress', text: t("hero.terminal.agentOk"), status: 'done' },
     { type: 'blank' },
     { type: 'result', text: t("hero.terminal.result") },
     { type: 'blank' },
