@@ -208,6 +208,17 @@
     "card": {
       "title": "검증된 결과만 남깁니다",
       "desc": "AI의 실행부터 사람의 승인까지 명확하게 기록합니다."
+    },
+    "seals": {
+      "verified": "검증됨",
+      "verifiedRow": "결제 로직 — 인간 게이트 통과",
+      "verifiedMeta": "사람 서명",
+      "claim": "주장",
+      "claimRow": "신뢰 배지 컴포넌트 구현",
+      "claimMeta": "증거 3",
+      "gate": "게이트 대기",
+      "gateRow": "저장소 마이그 — 승인 대기",
+      "gateMeta": "개입"
     }
   },
   "acceleration": {
@@ -217,6 +228,18 @@
     "card": {
       "title": "다음 투자 지점을 찾습니다",
       "desc": "성장을 앞당길 지점과 개선할 흐름을 선명하게 확인합니다."
+    },
+    "feed": {
+      "closedTitle": "닫힘 · 학습",
+      "closedRow": "체크아웃 2단계 → 완료율 (반증)",
+      "closedMeta": "52/60",
+      "learned": "↳ 학습이 낳은 새 가설: 완료율은 신뢰 신호에 좌우",
+      "measuringTitle": "검증 중",
+      "measuringRow": "완료율은 신뢰 신호에 좌우",
+      "measuringMeta": "측정 예정",
+      "stalledTitle": "정체",
+      "stalledRow": "검증 기한 지난 루프 · 개입 지점",
+      "stalledMeta": "4"
     }
   },
   "orgOs": {

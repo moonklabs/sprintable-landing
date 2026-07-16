@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { GitBranch, Plug, Code, Shield, Server } from "lucide-react";
 import { TerminalMock, type TerminalLine } from "../ui/terminal-mock";
 
@@ -13,7 +13,9 @@ const HERO_STATS = [
 
 export async function HeroSection() {
   const t = await getTranslations();
+  const locale = await getLocale();
   const heroTrustStrip = t.raw("hero.trustStrip") as string[];
+  const dashboardShot = locale === "en" ? "/screenshots/12-dashboard-activity-en.png" : "/screenshots/12-dashboard-activity.png";
 
   const heroTerminalLines: TerminalLine[] = [
     { type: 'prompt', text: t("hero.terminal.prompt") },
@@ -177,7 +179,7 @@ export async function HeroSection() {
             }}
           >
             <Image
-              src="/screenshots/12-dashboard-activity.png"
+              src={dashboardShot}
               alt="Sprintable dashboard — command center with sprint status and live activity feed"
               width={1920}
               height={1200}

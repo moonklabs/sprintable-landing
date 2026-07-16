@@ -208,6 +208,17 @@
     "card": {
       "title": "Keep only verified outcomes",
       "desc": "Clearly record every step from AI execution to human approval."
+    },
+    "seals": {
+      "verified": "Verified",
+      "verifiedRow": "Payment logic — passed human gate",
+      "verifiedMeta": "Signed",
+      "claim": "Claim",
+      "claimRow": "Trust badge component",
+      "claimMeta": "3 evidence",
+      "gate": "Awaiting gate",
+      "gateRow": "Repo migration — pending approval",
+      "gateMeta": "Step in"
     }
   },
   "acceleration": {
@@ -217,6 +228,18 @@
     "card": {
       "title": "Find where to invest next",
       "desc": "See what will accelerate growth and which workflows to improve."
+    },
+    "feed": {
+      "closedTitle": "Closed · Learned",
+      "closedRow": "Checkout 2-step → completion (disproven)",
+      "closedMeta": "52/60",
+      "learned": "↳ New hypothesis from the learning: completion depends on trust signals",
+      "measuringTitle": "Measuring",
+      "measuringRow": "Completion depends on trust signals",
+      "measuringMeta": "To be measured",
+      "stalledTitle": "Stalled",
+      "stalledRow": "Loops past their verify-by date",
+      "stalledMeta": "4"
     }
   },
   "orgOs": {
