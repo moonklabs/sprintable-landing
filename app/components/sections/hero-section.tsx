@@ -13,7 +13,7 @@ const HERO_STATS = [
 
 export async function HeroSection() {
   const t = await getTranslations();
-  const heroAudiences = t.raw("hero.audiences") as string[];
+  const heroTrustStrip = t.raw("hero.trustStrip") as string[];
 
   const heroTerminalLines: TerminalLine[] = [
     { type: 'prompt', text: t("hero.terminal.prompt") },
@@ -58,12 +58,25 @@ export async function HeroSection() {
 
           {/* eyebrow 제거 (D-HR-2) */}
 
-          {/* Headline */}
+          {/* Headline — <g> 태그 구간만 브랜드 그라디언트(히어로 다크밴드 전용, 테마무관 고정) */}
           <h1
-            className="font-[family-name:var(--font-display)] text-5xl font-extrabold tracking-[-0.04em] sm:text-6xl xl:text-7xl"
+            className="whitespace-pre-line font-[family-name:var(--font-display)] text-5xl font-extrabold tracking-[-0.04em] sm:text-6xl xl:text-7xl"
             style={{ color: "oklch(95% 0.015 265)", lineHeight: "1.02" }}
           >
-            {t("hero.headline")}
+            {t.rich("hero.headline", {
+              g: (chunks) => (
+                <span
+                  style={{
+                    background: "linear-gradient(90deg, oklch(80% 0.1 258), oklch(72% 0.14 258))",
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    color: "transparent",
+                  }}
+                >
+                  {chunks}
+                </span>
+              ),
+            })}
           </h1>
 
           {/* Subheadline */}
@@ -92,13 +105,14 @@ export async function HeroSection() {
             ))}
           </div>
 
-          {/* Audiences inline (D-HR-3) */}
-          <p
-            className="mt-4 max-w-3xl text-sm tracking-tight"
-            style={{ color: "oklch(65% 0.025 265)" }}
-          >
-            {heroAudiences.join(" · ")}{t("hero.audiencesFor")}.
-          </p>
+          {/* Trust strip — Task→Trust 포지셔닝의 3개 증거점(claimed-vs-verified-spec-handoff 정신) */}
+          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm" style={{ color: "oklch(65% 0.025 265)" }}>
+            {heroTrustStrip.map((item) => (
+              <span key={item} className="inline-flex items-center gap-2">
+                <span style={{ color: "oklch(70% 0.15 145)" }}>✓</span> {item}
+              </span>
+            ))}
+          </div>
 
           {/* CTA 2개 (D-HR-4 — 요금제 CTA 삭제) */}
           <div className="mt-9 flex flex-wrap items-center gap-3">
