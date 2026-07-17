@@ -55,8 +55,8 @@ export default function Home() {
       >
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
           {/* Wordmark */}
-          <a href="/" className="flex shrink-0 items-center gap-2 text-white">
-            <SprintableMarkSvg className="size-7" />
+          <a href="/" className="flex shrink-0 items-center gap-[11px] text-white">
+            <SprintableMarkSvg className="size-[26px]" style={{ color: "oklch(72% 0.14 258)" }} />
             <span className="font-[family-name:var(--font-display)] text-lg font-bold tracking-[-0.04em]">
               Sprintable
             </span>
