@@ -32,11 +32,11 @@
     "githubCta": "Star on GitHub",
     "terminal": {
       "title": "sprintable — zsh — 80×24",
-      "prompt": "npx sprintable connect",
-      "connectOk": "Connected to app.sprintable.ai",
-      "projectOk": "Project selected — Checkout Redesign",
-      "agentOk": "Configured — uvx sprintable-mcp",
-      "result": "→ Restart your client, then run sprintable_ping to confirm"
+      "prompt": "uvx sprintable",
+      "connectOk": "Authenticated — app.sprintable.ai",
+      "projectOk": "Project — Checkout Redesign",
+      "agentOk": "MCP toolset ready",
+      "result": "→ sse-bridge connected"
     },
     "stats": {
       "stat1": "Open Source",

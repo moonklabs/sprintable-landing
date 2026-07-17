@@ -32,11 +32,11 @@
     "githubCta": "GitHub에서 Star",
     "terminal": {
       "title": "sprintable — zsh — 80×24",
-      "prompt": "npx sprintable connect",
-      "connectOk": "app.sprintable.ai 연결됨",
-      "projectOk": "프로젝트 선택 — Checkout Redesign",
-      "agentOk": "구성 완료 — uvx sprintable-mcp",
-      "result": "→ 클라이언트 재시작 후 sprintable_ping으로 확인"
+      "prompt": "uvx sprintable",
+      "connectOk": "app.sprintable.ai 인증됨",
+      "projectOk": "프로젝트 — Checkout Redesign",
+      "agentOk": "MCP 툴셋 준비 완료",
+      "result": "→ sse-bridge 연결됨"
     },
     "stats": {
       "stat1": "Open Source",
