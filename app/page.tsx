@@ -1,15 +1,16 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { LocaleSwitcher } from "./components/locale-switcher";
 import { NavLinks } from "./components/nav-links";
 import { SprintableMarkSvg } from "./components/brand/sprintable-mark-svg";
 import { HeroSection } from "./components/sections/hero-section";
-import { HowItWorksSection } from "./components/sections/how-it-works-section";
-import { FeaturesSection } from "./components/sections/features-section";
+import { TrustSection } from "./components/sections/trust-section";
+import { AccelerationSection } from "./components/sections/acceleration-section";
+import { OrgOsSection } from "./components/sections/org-os-section";
 import { FinalCtaSection } from "./components/sections/final-cta-section";
 
 export default function Home() {
   const t = useTranslations();
-  const valueCards = t.raw("value.cards") as { eyebrow: string; title: string; desc: string }[];
   const customerCards = t.raw("customers.cards") as {
     title: string;
     desc: string;
@@ -17,11 +18,16 @@ export default function Home() {
   }[];
   const modelBulletsByoa = t.raw("model.byoa.bullets") as string[];
   const modelBulletsServing = t.raw("model.serving.bullets") as string[];
-  const proofSteps = t.raw("proof.steps") as {
-    eyebrow: string;
+  const proofShots = t.raw("proof.shots") as {
     title: string;
     desc: string;
+    alt: string;
   }[];
+  const PROOF_SHOT_IMAGES = [
+    "/screenshots/shot1-orgbriefing-en.png",
+    "/screenshots/shot3-board-en.png",
+    "/screenshots/shot4-glance-en.png",
+  ];
   const pricingPlans = t.raw("pricing.plans") as {
     name: string;
     price: string;
@@ -86,100 +92,11 @@ export default function Home() {
       <main className="overflow-x-hidden pt-18">
         <HeroSection />
 
-        {/* ── VALUE PROPOSITION ── */}
-        <section id="value" className="px-5 py-20 sm:px-8 sm:py-28">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-14 grid gap-6 lg:grid-cols-[1fr_1.4fr] lg:items-end">
-              <div>
-                <p
-                  className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                  style={{ color: "oklch(65% 0.06 258)" }}
-                >
-                  {t("value.eyebrow")}
-                </p>
-                <h2
-                  className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
-                  style={{ color: "oklch(93% 0.02 265)" }}
-                >
-                  {t("value.title")}
-                </h2>
-              </div>
-              <p
-                className="text-base leading-8 lg:max-w-xl lg:text-right"
-                style={{ color: "oklch(65% 0.025 265)" }}
-              >
-                {t("value.subtitle")}
-              </p>
-            </div>
+        <TrustSection />
 
-            {/* Asymmetric layout: large card + two stacked */}
-            <div className="grid gap-4 lg:grid-cols-[1.6fr_1fr]">
-              {/* Primary card */}
-              <div
-                className="rounded-2xl p-8"
-                style={{
-                  border: "1px solid oklch(26% 0.022 265)",
-                  backgroundColor: "oklch(17% 0.018 265)",
-                }}
-              >
-                <p
-                  className="text-xs font-semibold uppercase tracking-widest"
-                  style={{ color: "oklch(78% 0.13 195)", fontSize: "0.65rem" }}
-                >
-                  {valueCards[0]?.eyebrow}
-                </p>
-                <h3
-                  className="mt-4 font-[family-name:var(--font-display)] text-2xl font-bold"
-                  style={{ color: "oklch(93% 0.02 265)" }}
-                >
-                  {valueCards[0]?.title}
-                </h3>
-                <p
-                  className="mt-4 max-w-md text-sm leading-7"
-                  style={{ color: "oklch(65% 0.025 265)" }}
-                >
-                  {valueCards[0]?.desc}
-                </p>
-              </div>
-              {/* Secondary cards */}
-              <div className="flex flex-col gap-4">
-                {valueCards.slice(1).map((card) => (
-                  <div
-                    key={card.title}
-                    className="flex-1 rounded-2xl p-6"
-                    style={{
-                      border: "1px solid oklch(26% 0.022 265)",
-                      backgroundColor: "oklch(17% 0.018 265)",
-                    }}
-                  >
-                    <p
-                      className="text-xs font-semibold uppercase tracking-widest"
-                      style={{ color: "oklch(78% 0.13 195)", fontSize: "0.65rem" }}
-                    >
-                      {card.eyebrow}
-                    </p>
-                    <h3
-                      className="mt-3 font-[family-name:var(--font-display)] text-xl font-bold"
-                      style={{ color: "oklch(93% 0.02 265)" }}
-                    >
-                      {card.title}
-                    </h3>
-                    <p
-                      className="mt-2 text-sm leading-6"
-                      style={{ color: "oklch(65% 0.025 265)" }}
-                    >
-                      {card.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        <AccelerationSection />
 
-        <HowItWorksSection />
-
-        <FeaturesSection />
+        <OrgOsSection />
 
         {/* ── CUSTOMERS ── */}
         <section
@@ -366,66 +283,83 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── PROOF ── */}
+        {/* ── PROOF (실 UI 증빙 band — 유나 큐레이션: primary wide + supporting 2-up, 히어로 이미지 스타일 재사용) ── */}
         <section
           id="proof"
           className="px-5 py-20 sm:px-8 sm:py-28"
           style={{ backgroundColor: "oklch(15% 0.016 265)" }}
         >
           <div className="mx-auto max-w-7xl">
-            <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-              <div className="lg:sticky lg:top-28">
-                <p
-                  className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                  style={{ color: "oklch(65% 0.06 258)" }}
-                >
-                  {t("proof.eyebrow")}
-                </p>
-                <h2
-                  className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
-                  style={{ color: "oklch(93% 0.02 265)" }}
-                >
-                  {t("proof.title")}
-                </h2>
-                <p
-                  className="mt-5 text-base leading-8"
-                  style={{ color: "oklch(65% 0.025 265)" }}
-                >
-                  {t("proof.subtitle")}
-                </p>
-              </div>
+            <div className="mx-auto max-w-2xl text-center">
+              <p
+                className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
+                style={{ color: "oklch(65% 0.06 258)" }}
+              >
+                {t("proof.eyebrow")}
+              </p>
+              <h2
+                className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
+                style={{ color: "oklch(93% 0.02 265)" }}
+              >
+                {t("proof.title")}
+              </h2>
+              <p className="mt-4 text-base leading-8" style={{ color: "oklch(65% 0.025 265)" }}>
+                {t("proof.subtitle")}
+              </p>
+            </div>
 
-              <div className="space-y-4">
-                {proofSteps.map((step) => (
+            {/* primary — org briefing (wide) */}
+            {proofShots[0] && (
+              <div className="mx-auto mt-12 max-w-5xl">
+                <div
+                  className="relative overflow-hidden rounded-2xl"
+                  style={{ border: "1px solid oklch(26% 0.022 265)", boxShadow: "0 24px 64px oklch(13% 0.015 265 / 0.6)" }}
+                >
                   <div
-                    key={step.title}
-                    className="rounded-2xl p-6"
-                    style={{
-                      border: "1px solid oklch(26% 0.022 265)",
-                      backgroundColor: "oklch(13% 0.015 265)",
-                    }}
-                  >
-                    <p
-                      className="text-xs font-semibold uppercase tracking-widest"
-                      style={{ color: "oklch(78% 0.13 195)", fontSize: "0.65rem" }}
-                    >
-                      {step.eyebrow}
-                    </p>
-                    <h3
-                      className="mt-3 font-[family-name:var(--font-display)] text-xl font-bold"
-                      style={{ color: "oklch(93% 0.02 265)" }}
-                    >
-                      {step.title}
-                    </h3>
-                    <p
-                      className="mt-2 text-sm leading-7"
-                      style={{ color: "oklch(65% 0.025 265)" }}
-                    >
-                      {step.desc}
-                    </p>
-                  </div>
-                ))}
+                    className="absolute inset-x-12 -bottom-6 -top-6 -z-10 rounded-[2rem] opacity-40 blur-3xl"
+                    style={{ background: "radial-gradient(ellipse 80% 50% at 50% 50%, oklch(72% 0.14 258 / 0.25), transparent)" }}
+                  />
+                  <Image
+                    src={PROOF_SHOT_IMAGES[0]!}
+                    alt={proofShots[0].alt}
+                    width={1600}
+                    height={1000}
+                    className="w-full object-cover"
+                  />
+                </div>
+                <h3 className="mt-4 font-[family-name:var(--font-display)] text-lg font-bold" style={{ color: "oklch(93% 0.02 265)" }}>
+                  {proofShots[0].title}
+                </h3>
+                <p className="mt-1 text-sm leading-7" style={{ color: "oklch(65% 0.025 265)" }}>
+                  {proofShots[0].desc}
+                </p>
               </div>
+            )}
+
+            {/* supporting — board + glance (2-up) */}
+            <div className="mx-auto mt-8 grid max-w-5xl gap-8 sm:grid-cols-2">
+              {proofShots.slice(1).map((shot, i) => (
+                <div key={shot.title}>
+                  <div
+                    className="overflow-hidden rounded-2xl"
+                    style={{ border: "1px solid oklch(26% 0.022 265)", boxShadow: "0 16px 40px oklch(13% 0.015 265 / 0.5)" }}
+                  >
+                    <Image
+                      src={PROOF_SHOT_IMAGES[i + 1] ?? PROOF_SHOT_IMAGES[0]}
+                      alt={shot.alt}
+                      width={1600}
+                      height={1000}
+                      className="w-full object-cover"
+                    />
+                  </div>
+                  <h3 className="mt-4 font-[family-name:var(--font-display)] text-base font-bold" style={{ color: "oklch(93% 0.02 265)" }}>
+                    {shot.title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-7" style={{ color: "oklch(65% 0.025 265)" }}>
+                    {shot.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
