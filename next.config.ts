@@ -25,6 +25,9 @@ const APP_PATHS = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    unoptimized: true,
+  },
   async redirects() {
     return [
       // www → apex
