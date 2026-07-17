@@ -35,7 +35,7 @@
       "prompt": "npx sprintable connect",
       "connectOk": "Connected to app.sprintable.ai",
       "projectOk": "Project selected — Checkout Redesign",
-      "agentOk": "Agent registered — claude-code",
+      "agentOk": "Configured — uvx sprintable-mcp",
       "result": "→ Restart your client, then run sprintable_ping to confirm"
     },
     "stats": {

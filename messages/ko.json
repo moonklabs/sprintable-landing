@@ -35,7 +35,7 @@
       "prompt": "npx sprintable connect",
       "connectOk": "app.sprintable.ai 연결됨",
       "projectOk": "프로젝트 선택 — Checkout Redesign",
-      "agentOk": "에이전트 등록 — claude-code",
+      "agentOk": "구성 완료 — uvx sprintable-mcp",
       "result": "→ 클라이언트 재시작 후 sprintable_ping으로 확인"
     },
     "stats": {
