@@ -26,6 +26,12 @@ export const metadata: Metadata = {
   title: "Sprintable — Ship with AI agents",
   description:
     "Open-source PM surface for teams shipping with AI. Start with BYOA, upgrade to managed orchestration.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+  },
 };
 
 export default async function RootLayout({
