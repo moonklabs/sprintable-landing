@@ -3,32 +3,37 @@
 @theme inline {
   --font-display: var(--font-display);
   --font-body: var(--font-body);
-  --font-sans: var(--font-body);       /* alias — 본앱 변수명 호환 */
-  --font-heading: var(--font-display); /* alias — 본앱 변수명 호환 */
+  --font-serif: var(--font-serif);           /* Instrument Serif — editorial accent */
+  --font-sans: var(--font-body);             /* alias — 본앱 변수명 호환 */
+  --font-heading: var(--font-display);       /* alias — 본앱 변수명 호환 */
 
   --radius: 0.625rem; /* 본앱 정합 */
 
-  /* ═══ "Proof, in Daylight" — OKLCH light color system ═══ */
+  /* ═══ "Certificate Luxury" — OKLCH ivory-paper + navy-ink color system ═══ */
 
-  /* Canvas — cool neutral white, blue undertone */
-  --color-canvas:        oklch(98.5% 0.003 265);
-  --color-canvas-tint:   oklch(96.9% 0.007 258);
-  --color-card:          oklch(100% 0 0);
+  /* Canvas — warm ivory paper */
+  --color-canvas:        oklch(98.6% 0.005 85);
+  --color-canvas-tint:   oklch(96.8% 0.008 80);
+  --color-card:          oklch(99.5% 0.002 85);
 
   /* Ink */
-  --color-ink:           oklch(22% 0.025 265);
-  --color-ink-secondary: oklch(45% 0.02 265);
+  --color-ink:           oklch(23% 0.03 262);
+  --color-ink-secondary: oklch(44% 0.025 262);
   --color-ink-muted:     oklch(57% 0.015 265);
 
-  /* Hairlines */
-  --color-line:          oklch(90% 0.008 265);
-  --color-line-strong:   oklch(84% 0.012 265);
+  /* Hairlines — warm */
+  --color-line:          oklch(89% 0.01 85);
+  --color-line-strong:   oklch(82% 0.015 85);
 
-  /* Signature blue — deep for light-background WCAG AA contrast */
-  --color-accent:        oklch(51% 0.19 258);
-  --color-accent-strong: oklch(44% 0.19 258);      /* hover */
-  --color-accent-wash:   oklch(51% 0.19 258 / 0.07);
-  --color-accent-soft:   oklch(88% 0.055 258);     /* mesh / decorative */
+  /* Signature blue — deep navy-blue ink, WCAG AA on ivory */
+  --color-accent:        oklch(48% 0.17 260);
+  --color-accent-strong: oklch(42% 0.17 260);      /* hover */
+  --color-accent-wash:   oklch(48% 0.17 260 / 0.07);
+  --color-accent-soft:   oklch(88% 0.055 260);     /* mesh / decorative */
+
+  /* Gold foil — seal ring · rule tick · CTA watermark. 3 uses only. */
+  --color-gold:          oklch(72% 0.09 85);
+  --color-gold-soft:     oklch(72% 0.09 85 / 0.35);
 
   /* Secondary */
   --color-teal:          oklch(55% 0.11 195);
@@ -58,8 +63,8 @@ html {
 }
 
 body {
-  background-color: oklch(98.5% 0.003 265);
-  color: oklch(22% 0.025 265);
+  background-color: oklch(98.6% 0.005 85);  /* ivory paper */
+  color: oklch(23% 0.03 262);               /* deep navy ink */
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -89,7 +94,7 @@ h2 {
 }
 
 :focus-visible {
-  outline: 2px solid oklch(51% 0.19 258 / 0.7);
+  outline: 2px solid oklch(48% 0.17 260 / 0.7);
   outline-offset: 2px;
 }
 
@@ -165,7 +170,7 @@ h2 {
 .rule-ticks {
   position: relative;
   height: 1px;
-  background: linear-gradient(90deg, transparent, oklch(84% 0.012 265) 18%, oklch(84% 0.012 265) 82%, transparent);
+  background: linear-gradient(90deg, transparent, oklch(82% 0.015 85) 18%, oklch(82% 0.015 85) 82%, transparent);
 }
 .rule-ticks::before {
   content: '';
@@ -175,8 +180,8 @@ h2 {
   width: 8px;
   height: 8px;
   transform: translateX(-50%) rotate(45deg);
-  border: 1px solid oklch(51% 0.19 258 / 0.5);
-  background: oklch(98.5% 0.003 265); /* canvas — the diamond window shows page bg */
+  border: 1px solid oklch(72% 0.09 85 / 0.65);  /* gold tick */
+  background: oklch(98.6% 0.005 85);             /* ivory diamond */
 }
 
 /* ── Blueprint corner brackets — accent blue, evidence frames only ── */
@@ -189,7 +194,7 @@ h2 {
   position: absolute;
   width: 14px;
   height: 14px;
-  border: 0 solid oklch(51% 0.19 258 / 0.55);
+  border: 0 solid oklch(48% 0.17 260 / 0.55);
   pointer-events: none;
 }
 .corner-ticks::before {
@@ -208,17 +213,17 @@ h2 {
 /* ── Card hover lift — Stripe-style blue-tint layered shadow ── */
 .card-lift {
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
 .card-lift:hover {
   transform: translateY(-4px);
-  border-color: oklch(51% 0.19 258 / 0.4) !important;
+  border-color: oklch(48% 0.17 260 / 0.4) !important;
   box-shadow:
-    0 2px 4px oklch(25% 0.04 265 / 0.06),
-    0 20px 48px -12px oklch(45% 0.12 258 / 0.22),
-    inset 0 1px 0 oklch(100% 0 0 / 0.8);
+    0 2px 4px oklch(23% 0.04 262 / 0.06),
+    0 20px 48px -12px oklch(42% 0.12 260 / 0.22),
+    inset 0 1px 0 oklch(99.5% 0.002 85 / 0.9);
 }
 
 /* ── Primary CTA glow — color shadow (blur-free, per brief) ── */
@@ -231,15 +236,45 @@ h2 {
 .btn-glow:hover {
   transform: translateY(-1px);
   box-shadow:
-    0 1px 2px oklch(25% 0.1 258 / 0.2),
-    0 8px 24px -6px oklch(51% 0.19 258 / 0.45) !important;
+    0 1px 2px oklch(25% 0.1 260 / 0.2),
+    0 8px 24px -6px oklch(48% 0.17 260 / 0.45) !important;
   filter: brightness(1.04);
+}
+
+/* ── Glass button — gradient body + inset top highlight → luxury button feel ── */
+.glass-btn {
+  background: linear-gradient(180deg, oklch(52% 0.18 260), oklch(44% 0.17 260)) !important;
+  box-shadow:
+    inset 0 1px 0 oklch(100% 0 0 / 0.18),
+    0 1px 2px oklch(23% 0.1 260 / 0.2),
+    0 8px 24px -6px oklch(48% 0.17 260 / 0.4);
+}
+.glass-btn:hover {
+  background: linear-gradient(180deg, oklch(54% 0.18 260), oklch(46% 0.17 260)) !important;
+  box-shadow:
+    inset 0 1px 0 oklch(100% 0 0 / 0.22),
+    0 1px 2px oklch(23% 0.1 260 / 0.25),
+    0 12px 32px -8px oklch(48% 0.17 260 / 0.55) !important;
+}
+
+/* ── Certificate double-border — 6px inset hairline inside card, document frame ── */
+.cert-double {
+  position: relative;
+}
+.cert-double::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid oklch(82% 0.015 85);
+  border-radius: calc(1rem - 3px);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ── Nav link — ink-secondary, hairline underline slides in from the left in accent ── */
 .nav-link {
   position: relative;
-  color: oklch(45% 0.02 265);
+  color: oklch(44% 0.025 262);
   transition: color 0.25s ease;
 }
 .nav-link::after {
@@ -249,13 +284,13 @@ h2 {
   bottom: -5px;
   height: 1px;
   width: 100%;
-  background: oklch(51% 0.19 258);
+  background: oklch(48% 0.17 260);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .nav-link:hover {
-  color: oklch(22% 0.025 265);
+  color: oklch(23% 0.03 262);
 }
 .nav-link:hover::after {
   transform: scaleX(1);
@@ -342,7 +377,7 @@ h2 {
 .flow-line {
   background-image: repeating-linear-gradient(
     90deg,
-    oklch(51% 0.19 258 / 0.5) 0 5px,
+    oklch(48% 0.17 260 / 0.5) 0 5px,
     transparent 5px 22px
   );
   mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);

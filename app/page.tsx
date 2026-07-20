@@ -17,7 +17,7 @@ function BrowserChrome({ url = "app.sprintable.ai" }: { url?: string }) {
     <div
       className="flex items-center gap-2 px-4 py-2"
       style={{
-        borderBottom: "1px solid oklch(84% 0.012 265)",
+        borderBottom: "1px solid oklch(82% 0.015 85)",
         backgroundColor: "oklch(100% 0 0)",
       }}
     >
@@ -29,9 +29,9 @@ function BrowserChrome({ url = "app.sprintable.ai" }: { url?: string }) {
       <span
         className="mx-auto rounded px-3 py-0.5 font-mono text-[10px]"
         style={{
-          backgroundColor: "oklch(96.9% 0.007 258)",
-          color: "oklch(57% 0.015 265)",
-          border: "1px solid oklch(84% 0.012 265)",
+          backgroundColor: "oklch(96.8% 0.008 80)",
+          color: "oklch(57% 0.015 262)",
+          border: "1px solid oklch(82% 0.015 85)",
         }}
       >
         {url}
@@ -71,11 +71,11 @@ export default function Home() {
   return (
     <div
       style={{
-        backgroundColor: "oklch(98.5% 0.003 265)",
-        color: "oklch(22% 0.025 265)",
+        backgroundColor: "oklch(98.6% 0.005 85)",
+        color: "oklch(23% 0.03 262)",
         fontFamily: "var(--font-body), system-ui, sans-serif",
       }}
-      className="min-h-screen selection:bg-[oklch(51%_0.19_258/0.15)]"
+      className="min-h-screen selection:bg-[oklch(48%_0.17_260/0.15)]"
     >
       {/* Verification gauge — scroll progress as a hairline over the nav.
           Inline scaleX(0) doubles as the no-support fallback (stays hidden). */}
@@ -85,15 +85,15 @@ export default function Home() {
         style={{
           transform: "scaleX(0)",
           background:
-            "linear-gradient(90deg, oklch(51% 0.19 258), oklch(55% 0.11 195))",
+            "linear-gradient(90deg, oklch(48% 0.17 260), oklch(55% 0.11 195))",
         }}
       />
 
       {/* ── NAV — white glass: canvas/0.8 + backdrop-blur-xl + hairline bottom ── */}
       <nav
         style={{
-          backgroundColor: "oklch(98.5% 0.003 265 / 0.8)",
-          borderBottom: "1px solid oklch(84% 0.012 265)",
+          backgroundColor: "oklch(98.6% 0.005 85 / 0.8)",
+          borderBottom: "1px solid oklch(82% 0.015 85)",
         }}
         className="fixed inset-x-0 top-0 z-50 backdrop-blur-xl"
       >
@@ -102,9 +102,9 @@ export default function Home() {
           <Link
             href="/"
             className="flex shrink-0 items-center gap-[11px]"
-            style={{ color: "oklch(22% 0.025 265)" }}
+            style={{ color: "oklch(23% 0.03 262)" }}
           >
-            <SprintableMarkSvg className="size-[26px]" style={{ color: "oklch(51% 0.19 258)" }} />
+            <SprintableMarkSvg className="size-[26px]" style={{ color: "oklch(48% 0.17 260)" }} />
             <span className="font-[family-name:var(--font-display)] text-lg font-bold tracking-[-0.04em]">
               Sprintable
             </span>
@@ -126,7 +126,7 @@ export default function Home() {
               href="https://app.sprintable.ai/login"
               className="btn-glow rounded-lg px-4 py-2 text-sm font-semibold"
               style={{
-                backgroundColor: "oklch(51% 0.19 258)",
+                backgroundColor: "oklch(48% 0.17 260)",
                 color: "oklch(100% 0 0)",
               }}
             >
@@ -144,23 +144,25 @@ export default function Home() {
 
         <HowItWorksSection />
 
+        <div aria-hidden="true" className="rule-ticks mx-5 sm:mx-8" />
+
         {/* ── PROOF (실 UI 증빙 band) ── */}
         <section id="proof" className="px-5 py-20 sm:px-8 sm:py-28">
           <div className="mx-auto max-w-7xl">
             <ScrollReveal className="mx-auto max-w-2xl text-center">
               <p
                 className="eyebrow-cross mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                style={{ color: "oklch(51% 0.19 258)" }}
+                style={{ color: "oklch(48% 0.17 260)" }}
               >
                 {t("proof.eyebrow")}
               </p>
               <h2
                 className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
-                style={{ color: "oklch(22% 0.025 265)" }}
+                style={{ color: "oklch(23% 0.03 262)" }}
               >
                 {t("proof.title")}
               </h2>
-              <p className="mt-4 text-base leading-8" style={{ color: "oklch(45% 0.02 265)" }}>
+              <p className="mt-4 text-base leading-8" style={{ color: "oklch(44% 0.025 262)" }}>
                 {t("proof.subtitle")}
               </p>
             </ScrollReveal>
@@ -172,13 +174,13 @@ export default function Home() {
                   <div
                     className="corner-ticks shimmer-frame tilt-in relative isolate overflow-hidden rounded-2xl"
                     style={{
-                      border: "1px solid oklch(84% 0.012 265)",
-                      boxShadow: "0 24px 64px -16px oklch(35% 0.08 258 / 0.25)",
+                      border: "1px solid oklch(82% 0.015 85)",
+                      boxShadow: "0 24px 64px -16px oklch(35% 0.08 260 / 0.25)",
                     }}
                   >
                     <div
                       className="absolute inset-x-12 -bottom-6 -top-6 -z-10 rounded-[2rem] opacity-30 blur-3xl"
-                      style={{ background: "radial-gradient(ellipse 80% 50% at 50% 50%, oklch(51% 0.19 258 / 0.12), transparent)" }}
+                      style={{ background: "radial-gradient(ellipse 80% 50% at 50% 50%, oklch(48% 0.17 260 / 0.12), transparent)" }}
                     />
                     <BrowserChrome />
                     <Image
@@ -190,10 +192,10 @@ export default function Home() {
                     />
                   </div>
                 </Parallax>
-                <h3 className="mt-4 font-[family-name:var(--font-display)] text-lg font-bold" style={{ color: "oklch(22% 0.025 265)" }}>
+                <h3 className="mt-4 font-[family-name:var(--font-display)] text-lg font-bold" style={{ color: "oklch(23% 0.03 262)" }}>
                   {proofShots[0].title}
                 </h3>
-                <p className="mt-1 text-sm leading-7" style={{ color: "oklch(45% 0.02 265)" }}>
+                <p className="mt-1 text-sm leading-7" style={{ color: "oklch(44% 0.025 262)" }}>
                   {proofShots[0].desc}
                 </p>
               </ScrollReveal>
@@ -206,8 +208,8 @@ export default function Home() {
                   <div
                     className="card-lift overflow-hidden rounded-2xl"
                     style={{
-                      border: "1px solid oklch(84% 0.012 265)",
-                      boxShadow: "0 1px 2px oklch(25% 0.04 265 / 0.05), 0 8px 24px -6px oklch(35% 0.06 258 / 0.10)",
+                      border: "1px solid oklch(82% 0.015 85)",
+                      boxShadow: "0 1px 2px oklch(25% 0.04 262 / 0.05), 0 8px 24px -6px oklch(35% 0.06 260 / 0.10)",
                     }}
                   >
                     <BrowserChrome />
@@ -219,10 +221,10 @@ export default function Home() {
                       className="w-full object-cover"
                     />
                   </div>
-                  <h3 className="mt-4 font-[family-name:var(--font-display)] text-base font-bold" style={{ color: "oklch(22% 0.025 265)" }}>
+                  <h3 className="mt-4 font-[family-name:var(--font-display)] text-base font-bold" style={{ color: "oklch(23% 0.03 262)" }}>
                     {shot.title}
                   </h3>
-                  <p className="mt-1 text-sm leading-7" style={{ color: "oklch(45% 0.02 265)" }}>
+                  <p className="mt-1 text-sm leading-7" style={{ color: "oklch(44% 0.025 262)" }}>
                     {shot.desc}
                   </p>
                 </ScrollReveal>
@@ -231,30 +233,32 @@ export default function Home() {
           </div>
         </section>
 
+        <div aria-hidden="true" className="rule-ticks mx-5 sm:mx-8" />
+
         {/* ── CUSTOMERS ── */}
         <section
           id="customers"
           className="px-5 py-20 sm:px-8 sm:py-28"
-          style={{ backgroundColor: "oklch(96.9% 0.007 258)" }}
+          style={{ backgroundColor: "oklch(96.8% 0.008 80)" }}
         >
           <div className="mx-auto max-w-7xl">
             <ScrollReveal className="mb-14">
               <p
                 className="eyebrow-lead mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                style={{ color: "oklch(51% 0.19 258)" }}
+                style={{ color: "oklch(48% 0.17 260)" }}
               >
                 {t("customers.eyebrow")}
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <h2
                   className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
-                  style={{ color: "oklch(22% 0.025 265)" }}
+                  style={{ color: "oklch(23% 0.03 262)" }}
                 >
                   {t("customers.title")}
                 </h2>
                 <p
                   className="max-w-sm text-sm leading-7 sm:text-right"
-                  style={{ color: "oklch(45% 0.02 265)" }}
+                  style={{ color: "oklch(44% 0.025 262)" }}
                 >
                   {t("customers.subtitle")}
                 </p>
@@ -268,28 +272,28 @@ export default function Home() {
                   delay={i * 100}
                   className="card-lift flex flex-col rounded-2xl p-7"
                   style={{
-                    border: "1px solid oklch(84% 0.012 265)",
+                    border: "1px solid oklch(82% 0.015 85)",
                     backgroundColor: "oklch(100% 0 0)",
                   }}
                 >
                   <h3
                     className="font-[family-name:var(--font-display)] text-xl font-bold"
-                    style={{ color: "oklch(22% 0.025 265)" }}
+                    style={{ color: "oklch(23% 0.03 262)" }}
                   >
                     {card.title}
                   </h3>
                   <p
                     className="mt-3 flex-1 text-sm leading-7"
-                    style={{ color: "oklch(45% 0.02 265)" }}
+                    style={{ color: "oklch(44% 0.025 262)" }}
                   >
                     {card.desc}
                   </p>
                   <div
                     className="mt-6 rounded-xl p-4 text-sm leading-6"
                     style={{
-                      border: "1px solid oklch(51% 0.19 258 / 0.18)",
-                      backgroundColor: "oklch(51% 0.19 258 / 0.07)",
-                      color: "oklch(45% 0.02 265)",
+                      border: "1px solid oklch(48% 0.17 260 / 0.18)",
+                      backgroundColor: "oklch(48% 0.17 260 / 0.07)",
+                      color: "oklch(44% 0.025 262)",
                     }}
                   >
                     {card.fit}
@@ -300,25 +304,27 @@ export default function Home() {
           </div>
         </section>
 
+        <div aria-hidden="true" className="rule-ticks mx-5 sm:mx-8" />
+
         {/* ── MODEL ── */}
         <section id="model" className="px-5 py-20 sm:px-8 sm:py-28">
           <div className="mx-auto max-w-7xl">
             <ScrollReveal className="mb-14">
               <p
                 className="eyebrow-lead mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                style={{ color: "oklch(51% 0.19 258)" }}
+                style={{ color: "oklch(48% 0.17 260)" }}
               >
                 {t("model.eyebrow")}
               </p>
               <h2
                 className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
-                style={{ color: "oklch(22% 0.025 265)" }}
+                style={{ color: "oklch(23% 0.03 262)" }}
               >
                 {t("model.title")}
               </h2>
               <p
                 className="mt-4 max-w-2xl text-base leading-7"
-                style={{ color: "oklch(45% 0.02 265)" }}
+                style={{ color: "oklch(44% 0.025 262)" }}
               >
                 {t("model.subtitle")}
               </p>
@@ -330,25 +336,25 @@ export default function Home() {
                 direction="left"
                 className="card-lift rounded-2xl p-7"
                 style={{
-                  border: "1px solid oklch(84% 0.012 265)",
+                  border: "1px solid oklch(82% 0.015 85)",
                   backgroundColor: "oklch(100% 0 0)",
                 }}
               >
                 <p
                   className="text-xs font-semibold uppercase tracking-widest"
-                  style={{ color: "oklch(57% 0.015 265)", fontSize: "0.65rem" }}
+                  style={{ color: "oklch(57% 0.015 262)", fontSize: "0.65rem" }}
                 >
                   {t("model.byoa.eyebrow")}
                 </p>
                 <h3
                   className="mt-3 font-[family-name:var(--font-display)] text-2xl font-bold"
-                  style={{ color: "oklch(22% 0.025 265)" }}
+                  style={{ color: "oklch(23% 0.03 262)" }}
                 >
                   {t("model.byoa.title")}
                 </h3>
                 <p
                   className="mt-3 text-sm leading-7"
-                  style={{ color: "oklch(45% 0.02 265)" }}
+                  style={{ color: "oklch(44% 0.025 262)" }}
                 >
                   {t("model.byoa.desc")}
                 </p>
@@ -356,7 +362,7 @@ export default function Home() {
                   {modelBulletsByoa.map((b) => (
                     <li key={b} className="flex gap-3 text-sm leading-6">
                       <span style={{ color: "oklch(55% 0.11 195)" }}>✦</span>
-                      <span style={{ color: "oklch(45% 0.02 265)" }}>{b}</span>
+                      <span style={{ color: "oklch(44% 0.025 262)" }}>{b}</span>
                     </li>
                   ))}
                 </ul>
@@ -368,34 +374,34 @@ export default function Home() {
                 delay={120}
                 className="card-lift rounded-2xl p-7"
                 style={{
-                  border: "1px solid oklch(51% 0.19 258 / 0.35)",
+                  border: "1px solid oklch(48% 0.17 260 / 0.35)",
                   background:
-                    "linear-gradient(160deg, oklch(51% 0.19 258 / 0.07) 0%, oklch(100% 0 0) 60%)",
+                    "linear-gradient(160deg, oklch(48% 0.17 260 / 0.07) 0%, oklch(100% 0 0) 60%)",
                 }}
               >
                 <p
                   className="text-xs font-semibold uppercase tracking-widest"
-                  style={{ color: "oklch(57% 0.015 265)", fontSize: "0.65rem" }}
+                  style={{ color: "oklch(57% 0.015 262)", fontSize: "0.65rem" }}
                 >
                   {t("model.serving.eyebrow")}
                 </p>
                 <h3
                   className="mt-3 font-[family-name:var(--font-display)] text-2xl font-bold"
-                  style={{ color: "oklch(22% 0.025 265)" }}
+                  style={{ color: "oklch(23% 0.03 262)" }}
                 >
                   {t("model.serving.title")}
                 </h3>
                 <p
                   className="mt-3 text-sm leading-7"
-                  style={{ color: "oklch(45% 0.02 265)" }}
+                  style={{ color: "oklch(44% 0.025 262)" }}
                 >
                   {t("model.serving.desc")}
                 </p>
                 <ul className="mt-6 space-y-3">
                   {modelBulletsServing.map((b) => (
                     <li key={b} className="flex gap-3 text-sm leading-6">
-                      <span style={{ color: "oklch(51% 0.19 258)" }}>✦</span>
-                      <span style={{ color: "oklch(45% 0.02 265)" }}>{b}</span>
+                      <span style={{ color: "oklch(48% 0.17 260)" }}>✦</span>
+                      <span style={{ color: "oklch(44% 0.025 262)" }}>{b}</span>
                     </li>
                   ))}
                 </ul>
@@ -407,13 +413,13 @@ export default function Home() {
               delay={200}
               className="mt-4 rounded-2xl p-6"
               style={{
-                border: "1px solid oklch(51% 0.19 258 / 0.16)",
-                backgroundColor: "oklch(51% 0.19 258 / 0.05)",
+                border: "1px solid oklch(48% 0.17 260 / 0.16)",
+                backgroundColor: "oklch(48% 0.17 260 / 0.05)",
               }}
             >
               <p
                 className="text-sm leading-7"
-                style={{ color: "oklch(45% 0.02 265)" }}
+                style={{ color: "oklch(44% 0.025 262)" }}
               >
                 {t("model.bridge")}
               </p>
@@ -421,25 +427,27 @@ export default function Home() {
           </div>
         </section>
 
+        <div aria-hidden="true" className="rule-ticks mx-5 sm:mx-8" />
+
         {/* ── PRICING ── */}
         <section id="pricing" className="px-5 py-20 sm:px-8 sm:py-28">
           <div className="mx-auto max-w-7xl">
             <ScrollReveal className="mb-14">
               <p
                 className="eyebrow-lead mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                style={{ color: "oklch(51% 0.19 258)" }}
+                style={{ color: "oklch(48% 0.17 260)" }}
               >
                 {t("pricing.eyebrow")}
               </p>
               <h2
                 className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
-                style={{ color: "oklch(22% 0.025 265)" }}
+                style={{ color: "oklch(23% 0.03 262)" }}
               >
                 {t("pricing.title")}
               </h2>
               <p
                 className="mt-4 max-w-xl text-base leading-7"
-                style={{ color: "oklch(45% 0.02 265)" }}
+                style={{ color: "oklch(44% 0.025 262)" }}
               >
                 {t("pricing.subtitle")}
               </p>
@@ -469,13 +477,13 @@ export default function Home() {
                     className="card-lift relative flex flex-col rounded-2xl p-7"
                     style={{
                       border: isTeam
-                        ? "1px solid oklch(51% 0.19 258 / 0.35)"
-                        : "1px solid oklch(84% 0.012 265)",
+                        ? "1px solid oklch(48% 0.17 260 / 0.35)"
+                        : "1px solid oklch(82% 0.015 85)",
                       background: isTeam
-                        ? "linear-gradient(160deg, oklch(51% 0.19 258 / 0.07), oklch(100% 0 0) 60%)"
+                        ? "linear-gradient(160deg, oklch(48% 0.17 260 / 0.07), oklch(100% 0 0) 60%)"
                         : "oklch(100% 0 0)",
                       boxShadow: isTeam
-                        ? "0 0 60px oklch(51% 0.19 258 / 0.08)"
+                        ? "0 0 60px oklch(48% 0.17 260 / 0.08)"
                         : "none",
                     }}
                   >
@@ -483,7 +491,7 @@ export default function Home() {
                       <div
                         className="absolute -top-3 left-7 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-widest"
                         style={{
-                          backgroundColor: "oklch(51% 0.19 258)",
+                          backgroundColor: "oklch(48% 0.17 260)",
                           color: "oklch(100% 0 0)",
                         }}
                       >
@@ -494,27 +502,27 @@ export default function Home() {
                     <div>
                       <h3
                         className="font-[family-name:var(--font-display)] text-xl font-bold"
-                        style={{ color: "oklch(22% 0.025 265)" }}
+                        style={{ color: "oklch(23% 0.03 262)" }}
                       >
                         {plan.name}
                       </h3>
                       <p
                         className="mt-2 text-sm"
-                        style={{ color: "oklch(57% 0.015 265)" }}
+                        style={{ color: "oklch(57% 0.015 262)" }}
                       >
                         {plan.audience}
                       </p>
                       <div className="mt-5 flex items-end gap-1">
                         <span
                           className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em]"
-                          style={{ color: "oklch(22% 0.025 265)" }}
+                          style={{ color: "oklch(23% 0.03 262)" }}
                         >
                           {plan.price}
                         </span>
                         {plan.period && (
                           <span
                             className="mb-1 text-sm"
-                            style={{ color: "oklch(57% 0.015 265)" }}
+                            style={{ color: "oklch(57% 0.015 262)" }}
                           >
                             {plan.period}
                           </span>
@@ -528,13 +536,13 @@ export default function Home() {
                           <span
                             style={{
                               color: isTeam
-                                ? "oklch(51% 0.19 258)"
-                                : "oklch(57% 0.015 265)",
+                                ? "oklch(48% 0.17 260)"
+                                : "oklch(57% 0.015 262)",
                             }}
                           >
                             ✓
                           </span>
-                          <span style={{ color: "oklch(45% 0.02 265)" }}>{f}</span>
+                          <span style={{ color: "oklch(44% 0.025 262)" }}>{f}</span>
                         </li>
                       ))}
                     </ul>
@@ -545,13 +553,13 @@ export default function Home() {
                       style={
                         isTeam
                           ? {
-                              backgroundColor: "oklch(51% 0.19 258)",
+                              backgroundColor: "oklch(48% 0.17 260)",
                               color: "oklch(100% 0 0)",
                             }
                           : {
-                              border: "1px solid oklch(84% 0.012 265)",
-                              backgroundColor: "oklch(98.5% 0.003 265)",
-                              color: "oklch(45% 0.02 265)",
+                              border: "1px solid oklch(82% 0.015 85)",
+                              backgroundColor: "oklch(98.6% 0.005 85)",
+                              color: "oklch(44% 0.025 262)",
                             }
                       }
                     >
@@ -571,18 +579,18 @@ export default function Home() {
               delay={120}
               className="mt-6 rounded-2xl p-5 text-center"
               style={{
-                border: "1px solid oklch(51% 0.19 258 / 0.2)",
-                backgroundColor: "oklch(51% 0.19 258 / 0.06)",
+                border: "1px solid oklch(48% 0.17 260 / 0.2)",
+                backgroundColor: "oklch(48% 0.17 260 / 0.06)",
               }}
             >
-              <p className="text-sm font-semibold" style={{ color: "oklch(44% 0.19 258)" }}>
+              <p className="text-sm font-semibold" style={{ color: "oklch(44% 0.17 260)" }}>
                 {t("pricing.wedge")}
               </p>
             </ScrollReveal>
 
             <p
               className="mt-6 text-xs leading-6"
-              style={{ color: "oklch(57% 0.015 265)" }}
+              style={{ color: "oklch(57% 0.015 262)" }}
             >
               {t("pricing.footnote")}
             </p>
@@ -595,19 +603,19 @@ export default function Home() {
       {/* ── FOOTER — canvas bg, hairline top, ink-muted text ── */}
       <footer
         className="px-5 py-16 sm:px-8"
-        style={{ borderTop: "1px solid oklch(90% 0.008 265)" }}
+        style={{ borderTop: "1px solid oklch(89% 0.01 85)" }}
       >
         <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-3">
           <div className="md:col-span-1">
             <span
               className="font-[family-name:var(--font-display)] text-base font-bold tracking-[-0.03em]"
-              style={{ color: "oklch(22% 0.025 265)" }}
+              style={{ color: "oklch(23% 0.03 262)" }}
             >
               Sprintable
             </span>
             <p
               className="mt-3 max-w-xs text-sm leading-7"
-              style={{ color: "oklch(57% 0.015 265)" }}
+              style={{ color: "oklch(57% 0.015 262)" }}
             >
               {t("footer.desc")}
             </p>
@@ -616,7 +624,7 @@ export default function Home() {
                 href="https://github.com/moonklabs/sprintable"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "oklch(57% 0.015 265)" }}
+                style={{ color: "oklch(57% 0.015 262)" }}
               >
                 {t("footer.github")}
               </a>
@@ -624,7 +632,7 @@ export default function Home() {
                 href="https://github.com/moonklabs/sprintable#readme"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "oklch(57% 0.015 265)" }}
+                style={{ color: "oklch(57% 0.015 262)" }}
               >
                 {t("footer.docs")}
               </a>
@@ -656,7 +664,7 @@ export default function Home() {
             <div key={col.label}>
               <h3
                 className="text-xs font-bold uppercase tracking-widest"
-                style={{ color: "oklch(45% 0.02 265)" }}
+                style={{ color: "oklch(44% 0.025 262)" }}
               >
                 {col.label}
               </h3>
@@ -667,7 +675,7 @@ export default function Home() {
                     href={link.href}
                     {...(link.external && { target: "_blank", rel: "noopener noreferrer" })}
                     className="text-sm transition"
-                    style={{ color: "oklch(57% 0.015 265)" }}
+                    style={{ color: "oklch(57% 0.015 262)" }}
                   >
                     {link.label}
                   </a>
@@ -679,14 +687,14 @@ export default function Home() {
 
         <div
           className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 pt-6 text-xs sm:flex-row sm:items-center sm:justify-between"
-          style={{ borderTop: "1px solid oklch(90% 0.008 265)" }}
+          style={{ borderTop: "1px solid oklch(89% 0.01 85)" }}
         >
-          <p style={{ color: "oklch(57% 0.015 265)" }}>{t("footer.copyright")}</p>
+          <p style={{ color: "oklch(57% 0.015 262)" }}>{t("footer.copyright")}</p>
           <div
             className="inline-flex items-center gap-2 rounded-full px-3 py-1.5"
             style={{
-              border: "1px solid oklch(84% 0.012 265)",
-              color: "oklch(45% 0.02 265)",
+              border: "1px solid oklch(82% 0.015 85)",
+              color: "oklch(44% 0.025 262)",
             }}
           >
             {/* operational dot — verified green */}
@@ -704,16 +712,16 @@ export default function Home() {
         <div
           className="mx-auto flex max-w-sm items-center gap-3 rounded-2xl p-3 backdrop-blur-xl"
           style={{
-            border: "1px solid oklch(84% 0.012 265)",
+            border: "1px solid oklch(82% 0.015 85)",
             backgroundColor: "oklch(100% 0 0 / 0.92)",
-            boxShadow: "0 -2px 24px oklch(35% 0.08 258 / 0.12)",
+            boxShadow: "0 -2px 24px oklch(35% 0.08 260 / 0.12)",
           }}
         >
           <a
             href="https://app.sprintable.ai/login"
             className="flex-1 rounded-[var(--radius)] py-3 text-center text-sm font-semibold"
             style={{
-              backgroundColor: "oklch(51% 0.19 258)",
+              backgroundColor: "oklch(48% 0.17 260)",
               color: "oklch(100% 0 0)",
             }}
           >
@@ -723,8 +731,8 @@ export default function Home() {
             href="#pricing"
             className="flex-1 rounded-[var(--radius)] py-3 text-center text-sm font-medium"
             style={{
-              border: "1px solid oklch(84% 0.012 265)",
-              color: "oklch(45% 0.02 265)",
+              border: "1px solid oklch(82% 0.015 85)",
+              color: "oklch(44% 0.025 262)",
             }}
           >
             {t("hero.pricingCta")}

@@ -59,7 +59,7 @@ function SignatureObject() {
     <svg viewBox="0 0 150 44" className="sig-draw h-9 w-28" aria-hidden="true" fill="none">
       <path
         d="M8 32 C 26 4, 38 42, 56 24 S 84 8, 92 26 S 118 40, 128 18 C 132 10, 138 14, 144 22"
-        stroke="oklch(51% 0.19 258)"
+        stroke="oklch(48% 0.17 260)"
         strokeWidth="1.75"
         strokeLinecap="round"
       />
@@ -76,7 +76,7 @@ export async function TrustSection() {
     <section
       id="trust"
       className="overflow-x-clip py-20 sm:py-28"
-      style={{ backgroundColor: "oklch(96.9% 0.007 258)" }}
+      style={{ backgroundColor: "oklch(96.8% 0.008 80)" }}
     >
       {/* Ghost strip — subtle blue outline on canvas-tint, drifting with scroll */}
       <div
@@ -88,7 +88,7 @@ export async function TrustSection() {
           style={{
             fontSize: "clamp(4.5rem, 11vw, 10rem)",
             color: "transparent",
-            WebkitTextStroke: "1.5px oklch(51% 0.19 258 / 0.18)",
+            WebkitTextStroke: "1.5px oklch(48% 0.17 260 / 0.18)",
           }}
         >
           Claimed → Gate → Verified&ensp;·&ensp;Claimed → Gate → Verified
@@ -99,7 +99,7 @@ export async function TrustSection() {
         <ScrollReveal className="mx-auto max-w-3xl space-y-4 text-center">
           <p
             className="eyebrow-cross text-xs font-semibold uppercase tracking-[0.3em]"
-            style={{ color: "oklch(51% 0.19 258)" }}
+            style={{ color: "oklch(48% 0.17 260)" }}
           >
             {t("trust.label")}
           </p>
@@ -129,9 +129,9 @@ export async function TrustSection() {
                   <span
                     className="inline-flex size-8 items-center justify-center rounded-full font-mono text-xs font-bold"
                     style={{
-                      border: "1px solid oklch(51% 0.19 258 / 0.35)",
-                      backgroundColor: "oklch(51% 0.19 258 / 0.08)",
-                      color: "oklch(51% 0.19 258)",
+                      border: "1px solid oklch(48% 0.17 260 / 0.35)",
+                      backgroundColor: "oklch(48% 0.17 260 / 0.08)",
+                      color: "oklch(48% 0.17 260)",
                     }}
                   >
                     {i + 1}
@@ -157,9 +157,9 @@ export async function TrustSection() {
           delay={120}
           className="card-lift mt-4 rounded-2xl p-7"
           style={{
-            border: "1px solid oklch(51% 0.19 258 / 0.2)",
+            border: "1px solid oklch(48% 0.17 260 / 0.2)",
             background:
-              "linear-gradient(160deg, oklch(51% 0.19 258 / 0.07) 0%, oklch(100% 0 0) 60%)",
+              "linear-gradient(160deg, oklch(48% 0.17 260 / 0.07) 0%, oklch(100% 0 0) 60%)",
           }}
         >
           <div className="flex flex-wrap items-center gap-3">
@@ -172,9 +172,9 @@ export async function TrustSection() {
             <span
               className="rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-widest"
               style={{
-                border: "1px solid oklch(51% 0.19 258 / 0.35)",
-                backgroundColor: "oklch(51% 0.19 258 / 0.08)",
-                color: "oklch(51% 0.19 258)",
+                border: "1px solid oklch(48% 0.17 260 / 0.35)",
+                backgroundColor: "oklch(48% 0.17 260 / 0.08)",
+                color: "oklch(48% 0.17 260)",
               }}
             >
               {t("trust.advisor.badge")}

@@ -5,6 +5,7 @@ import { VerifiedSealCard } from "../ui/verified-seal-card";
 import { CommandChip } from "../ui/command-chip";
 import { ScrollReveal } from "../motion/scroll-reveal";
 import { Parallax } from "../motion/parallax";
+import { Guilloche } from "../brand/guilloche";
 
 const HERO_STATS = [
   { icon: GitBranch, labelKey: 'stat1' },
@@ -31,7 +32,7 @@ export async function HeroSection() {
         style={{
           top: "-80px",
           left: "-96px",
-          background: "radial-gradient(circle, oklch(85% 0.09 258 / 0.7), transparent 65%)",
+          background: "radial-gradient(circle, oklch(85% 0.09 260 / 0.7), transparent 65%)",
           filter: "blur(100px)",
         }}
       />
@@ -56,6 +57,26 @@ export async function HeroSection() {
           animationDelay: "-5s",
         }}
       />
+      {/* Gold-champagne orb — right-bottom, very subtle warm accent balancing ivory canvas */}
+      <div
+        aria-hidden="true"
+        className="aurora-orb aurora-orb--late pointer-events-none absolute -z-10 h-[500px] w-[500px] rounded-full"
+        style={{
+          bottom: "-40px",
+          right: "-60px",
+          background: "radial-gradient(circle, oklch(88% 0.065 80 / 0.45), transparent 65%)",
+          filter: "blur(110px)",
+          animationDelay: "-12s",
+        }}
+      />
+      {/* Guilloche watermark — right-side certificate texture, opacity 0.05 */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 right-0 -z-10 w-1/2 opacity-[0.05] lg:opacity-[0.06]"
+        style={{ color: "oklch(48% 0.17 260)" }}
+      >
+        <Guilloche className="h-full w-full" waveCount={14} />
+      </div>
       {/* Dot grid — strong blue dots, fades out toward the fold */}
       <div className="bg-grid-dots absolute inset-x-0 top-0 -z-10 h-[640px]" aria-hidden="true" />
       {/* Film grain — light paper texture, scoped to hero */}
@@ -70,9 +91,9 @@ export async function HeroSection() {
             <div
               className="mb-8 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium tracking-tight"
               style={{
-                border: "1px solid oklch(51% 0.19 258 / 0.3)",
-                backgroundColor: "oklch(51% 0.19 258 / 0.07)",
-                color: "oklch(44% 0.19 258)",
+                border: "1px solid oklch(48% 0.17 260 / 0.3)",
+                backgroundColor: "oklch(48% 0.17 260 / 0.07)",
+                color: "oklch(42% 0.17 260)",
               }}
             >
               <span
@@ -81,11 +102,11 @@ export async function HeroSection() {
               >
                 <span
                   className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60"
-                  style={{ backgroundColor: "oklch(51% 0.19 258)" }}
+                  style={{ backgroundColor: "oklch(48% 0.17 260)" }}
                 />
                 <span
                   className="relative inline-flex h-1.5 w-1.5 rounded-full"
-                  style={{ backgroundColor: "oklch(51% 0.19 258)" }}
+                  style={{ backgroundColor: "oklch(48% 0.17 260)" }}
                 />
               </span>
               <span className="font-bold uppercase tracking-widest">{t("hero.badge")}</span>
@@ -98,19 +119,37 @@ export async function HeroSection() {
           <ScrollReveal delay={80}>
             <h1
               className="whitespace-pre-line font-[family-name:var(--font-display)] text-5xl font-extrabold tracking-[-0.04em] sm:text-6xl xl:text-7xl"
-              style={{ color: "oklch(22% 0.025 265)", lineHeight: "1.02" }}
+              style={{ color: "oklch(23% 0.03 262)", lineHeight: "1.02" }}
             >
               {t.rich("hero.headline", {
                 g: (chunks) => (
+                  /* Editorial serif italic — high-end print contrast (en) or color+underline (ko) */
                   <span
+                    className="relative inline-block pb-1.5"
                     style={{
-                      color: "oklch(44% 0.19 258)",
-                      background: "oklch(88% 0.055 258 / 0.6)",
-                      borderRadius: "0.5em",
-                      padding: "0.15em 0.18em",
+                      color: "oklch(48% 0.17 260)",
+                      fontStyle: locale === "en" ? "italic" : "normal",
+                      fontFamily: locale === "en"
+                        ? "var(--font-serif, 'Georgia', serif)"
+                        : "inherit",
                     }}
                   >
                     {chunks}
+                    {/* Hand-drawn brush underline */}
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 200 8"
+                      preserveAspectRatio="none"
+                      className="absolute bottom-0 left-0 h-[6px] w-full"
+                    >
+                      <path
+                        d="M 2,4 C 30,2 60,6 100,4 C 140,2 175,6 198,3"
+                        stroke="oklch(48% 0.17 260)"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        fill="none"
+                      />
+                    </svg>
                   </span>
                 ),
               })}
@@ -121,7 +160,7 @@ export async function HeroSection() {
           <ScrollReveal delay={160}>
             <p
               className="mt-6 max-w-3xl text-lg leading-8"
-              style={{ color: "oklch(45% 0.02 265)" }}
+              style={{ color: "oklch(44% 0.025 262)" }}
             >
               {t("hero.subheadline")}
             </p>
@@ -135,12 +174,12 @@ export async function HeroSection() {
                   key={labelKey}
                   className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
                   style={{
-                    border: "1px solid oklch(84% 0.012 265)",
+                    border: "1px solid oklch(82% 0.015 85)",
                     backgroundColor: "oklch(100% 0 0)",
-                    color: "oklch(45% 0.02 265)",
+                    color: "oklch(44% 0.025 262)",
                   }}
                 >
-                  <Icon className="size-3" style={{ color: "oklch(51% 0.19 258)" }} aria-hidden="true" />
+                  <Icon className="size-3" style={{ color: "oklch(48% 0.17 260)" }} aria-hidden="true" />
                   {t(`hero.stats.${labelKey}`)}
                 </span>
               ))}
@@ -163,11 +202,11 @@ export async function HeroSection() {
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
                 href="https://app.sprintable.ai/login"
-                className="btn-glow group inline-flex items-center gap-2 rounded-[var(--radius)] px-7 py-3.5 text-sm font-semibold"
+                className="btn-glow glass-btn group inline-flex items-center gap-2 rounded-[var(--radius)] px-7 py-3.5 text-sm font-semibold"
                 style={{
-                  backgroundColor: "oklch(51% 0.19 258)",
+                  backgroundColor: "oklch(48% 0.17 260)",
                   color: "oklch(100% 0 0)",
-                  boxShadow: "0 1px 2px oklch(25% .1 258 / .2), 0 8px 24px -6px oklch(51% .19 258 / 0.45)",
+                  boxShadow: "0 1px 2px oklch(23% 0.1 260 / 0.2), 0 8px 24px -6px oklch(48% 0.17 260 / 0.45)",
                 }}
               >
                 {t("hero.primaryCta")}
@@ -179,9 +218,9 @@ export async function HeroSection() {
                 rel="noopener noreferrer"
                 className="card-lift inline-flex items-center gap-2 rounded-[var(--radius)] px-7 py-3.5 text-sm font-medium"
                 style={{
-                  border: "1px solid oklch(84% 0.012 265)",
+                  border: "1px solid oklch(82% 0.015 85)",
                   backgroundColor: "oklch(100% 0 0)",
-                  color: "oklch(45% 0.02 265)",
+                  color: "oklch(44% 0.025 262)",
                 }}
               >
                 <svg className="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -232,57 +271,43 @@ export async function HeroSection() {
                 className="absolute inset-x-8 -bottom-10 -top-10 -z-10 rounded-[2rem] opacity-70 blur-3xl"
                 style={{
                   background:
-                    "radial-gradient(ellipse 85% 55% at 50% 50%, oklch(51% 0.19 258 / 0.22), transparent)",
+                    "radial-gradient(ellipse 85% 55% at 50% 50%, oklch(48% 0.17 260 / 0.22), transparent)",
                 }}
               />
+              {/* Mat frame — ivory mounting + serif caption, gallery-of-evidence aesthetic */}
               <div
-                className="corner-ticks overflow-hidden rounded-2xl"
+                className="corner-ticks relative rounded-2xl"
                 style={{
-                  border: "1px solid oklch(84% 0.012 265)",
-                  boxShadow: "0 4px 16px oklch(35% 0.08 258 / 0.12), 0 32px 80px -16px oklch(40% 0.14 258 / 0.38)",
+                  border: "1px solid oklch(82% 0.015 85)",
+                  boxShadow: "0 4px 16px oklch(30% 0.08 262 / 0.12), 0 32px 80px -16px oklch(38% 0.14 260 / 0.38)",
+                  background: "oklch(98.6% 0.005 85)",
+                  padding: "14px 14px 10px",
                 }}
               >
-                {/* Browser chrome — canvas-tint bar separates from dark screenshot */}
-                <div
-                  className="flex items-center gap-2 px-4 py-2.5"
+                <div className="overflow-hidden rounded-lg">
+                  <Image
+                    src={dashboardShot}
+                    alt="Sprintable dashboard — command center with sprint status and live activity feed"
+                    width={1920}
+                    height={1200}
+                    className="w-full object-cover"
+                    priority
+                  />
+                </div>
+                {/* Serif italic caption — evidence label like a gallery print */}
+                <p
+                  className="pb-0.5 pt-3 text-center text-xs leading-none"
                   style={{
-                    borderBottom: "1px solid oklch(84% 0.012 265)",
-                    backgroundColor: "oklch(96.9% 0.007 258)",
+                    fontFamily: "var(--font-serif, 'Georgia', serif)",
+                    fontStyle: "italic",
+                    color: "oklch(44% 0.025 262)",
+                    letterSpacing: "0.02em",
                   }}
                 >
-                  <span className="flex gap-1.5" aria-hidden="true">
-                    {[
-                      "oklch(72% 0.2 25)",
-                      "oklch(76% 0.18 85)",
-                      "oklch(68% 0.17 145)",
-                    ].map((bg, d) => (
-                      <span
-                        key={d}
-                        className="size-2 rounded-full"
-                        style={{ backgroundColor: bg }}
-                      />
-                    ))}
-                  </span>
-                  <span
-                    className="mx-auto rounded-md px-3 py-0.5 font-mono text-[11px]"
-                    style={{
-                      backgroundColor: "oklch(96.9% 0.007 258)",
-                      color: "oklch(57% 0.015 265)",
-                      border: "1px solid oklch(84% 0.012 265)",
-                    }}
-                  >
-                    app.sprintable.ai
-                  </span>
-                  <span className="w-9" aria-hidden="true" />
-                </div>
-                <Image
-                  src={dashboardShot}
-                  alt="Sprintable dashboard — command center with sprint status and live activity feed"
-                  width={1920}
-                  height={1200}
-                  className="w-full object-cover"
-                  priority
-                />
+                  {locale === "ko"
+                    ? "Sprintable — AI 검증 프로젝트 인텔리전스"
+                    : "Sprintable — Verified Project Intelligence"}
+                </p>
               </div>
             </div>
           </Parallax>
@@ -294,10 +319,11 @@ export async function HeroSection() {
         {/* Operating Principle — accent border-left quote */}
         <ScrollReveal>
           <p
-            className="mx-auto max-w-3xl border-l-2 pl-6 font-[family-name:var(--font-display)] text-lg italic leading-relaxed"
+            className="mx-auto max-w-3xl border-l-2 pl-6 text-lg italic leading-relaxed"
             style={{
-              borderColor: "oklch(51% 0.19 258)",
-              color: "oklch(45% 0.02 265)",
+              fontFamily: "var(--font-serif, 'Georgia', serif)",
+              borderColor: "oklch(48% 0.17 260)",
+              color: "oklch(44% 0.025 262)",
             }}
           >
             {t("hero.operatingPrinciple")}

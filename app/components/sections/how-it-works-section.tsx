@@ -16,7 +16,7 @@ export async function HowItWorksSection() {
         <ScrollReveal className="mx-auto max-w-2xl space-y-4 text-center">
           <p
             className="eyebrow-cross text-xs font-semibold uppercase tracking-[0.3em]"
-            style={{ color: "oklch(51% 0.19 258)" }}
+            style={{ color: "oklch(48% 0.17 260)" }}
           >
             {t("howItWorks.label")}
           </p>
@@ -40,8 +40,8 @@ export async function HowItWorksSection() {
               className="flow-fill absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(90deg, oklch(51% 0.19 258 / 0.9), oklch(56% 0.13 150 / 0.9))",
-                boxShadow: "0 0 14px oklch(51% 0.19 258 / 0.35)",
+                  "linear-gradient(90deg, oklch(48% 0.17 260 / 0.9), oklch(56% 0.13 150 / 0.9))",
+                boxShadow: "0 0 14px oklch(48% 0.17 260 / 0.35)",
               }}
             />
           </div>
@@ -54,13 +54,13 @@ export async function HowItWorksSection() {
                 className="card-lift relative rounded-2xl p-6"
                 style={{
                   border: isGate
-                    ? "1px solid oklch(51% 0.19 258 / 0.4)"
+                    ? "1px solid oklch(48% 0.17 260 / 0.4)"
                     : "1px solid oklch(84% 0.012 265)",
                   backgroundColor: isGate
-                    ? "oklch(51% 0.19 258 / 0.05)"
+                    ? "oklch(48% 0.17 260 / 0.05)"
                     : "oklch(100% 0 0)",
                   boxShadow: isGate
-                    ? "0 4px 24px oklch(51% 0.19 258 / 0.08)"
+                    ? "0 4px 24px oklch(48% 0.17 260 / 0.08)"
                     : "none",
                 }}
               >
@@ -69,12 +69,12 @@ export async function HowItWorksSection() {
                   <span
                     className="inline-flex size-9 items-center justify-center rounded-full font-mono text-sm font-bold"
                     style={{
-                      border: "1px solid oklch(51% 0.19 258 / 0.4)",
+                      border: "1px solid oklch(48% 0.17 260 / 0.4)",
                       backgroundColor: isGate
-                        ? "oklch(51% 0.19 258 / 0.1)"
+                        ? "oklch(48% 0.17 260 / 0.1)"
                         : "oklch(100% 0 0)",
-                      color: "oklch(51% 0.19 258)",
-                      boxShadow: "0 2px 8px oklch(51% 0.19 258 / 0.15)",
+                      color: "oklch(48% 0.17 260)",
+                      boxShadow: "0 2px 8px oklch(48% 0.17 260 / 0.15)",
                     }}
                   >
                     {`0${i + 1}`}

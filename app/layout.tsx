@@ -1,7 +1,7 @@
 export const runtime = "edge";
 
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Barlow } from "next/font/google";
+import { Bricolage_Grotesque, Barlow, Instrument_Serif } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Suspense } from "react";
@@ -19,6 +19,14 @@ const barlow = Barlow({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -45,7 +53,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${bricolage.variable} ${barlow.variable}`}
+      className={`${bricolage.variable} ${barlow.variable} ${instrumentSerif.variable}`}
     >
       <body>
         <Suspense>

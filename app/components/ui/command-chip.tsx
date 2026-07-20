@@ -39,7 +39,7 @@ export function CommandChip({ command, copiedLabel, className }: CommandChipProp
       }}
       aria-label={`Copy: ${command}`}
     >
-      <span aria-hidden="true" style={{ color: 'oklch(72% 0.14 258)' }}>$</span>
+      <span aria-hidden="true" style={{ color: 'oklch(72% 0.14 260)' }}>$</span>
       {command}
       {copied ? (
         <span
