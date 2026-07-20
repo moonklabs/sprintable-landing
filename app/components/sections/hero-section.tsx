@@ -123,19 +123,21 @@ export async function HeroSection() {
             >
               {t.rich("hero.headline", {
                 g: (chunks) => (
-                  /* Editorial serif italic — high-end print contrast (en) or color+underline (ko) */
+                  /* Editorial serif — EN: Instrument Serif italic / KO: Noto Serif KR 700 upright
+                     세리프 체인: 라틴은 Instrument Serif가 받고, 한글은 Noto Serif KR이 받는다. */
                   <span
                     className="relative inline-block pb-1.5"
                     style={{
                       color: "oklch(48% 0.17 260)",
                       fontStyle: locale === "en" ? "italic" : "normal",
-                      fontFamily: locale === "en"
-                        ? "var(--font-serif, 'Georgia', serif)"
-                        : "inherit",
+                      fontFamily: "var(--font-serif), var(--font-serif-kr), 'Georgia', serif",
+                      fontWeight: locale === "ko" ? "700" : undefined,
+                      /* 한글 명조는 자간이 넓어 보이므로 획 무게에 맞게 압축 */
+                      letterSpacing: locale === "ko" ? "-0.01em" : undefined,
                     }}
                   >
                     {chunks}
-                    {/* Hand-drawn brush underline */}
+                    {/* Hand-drawn brush underline — strokeWidth 2.6 (한글 획 무게에 안 눌리도록) */}
                     <svg
                       aria-hidden="true"
                       viewBox="0 0 200 8"
@@ -145,7 +147,7 @@ export async function HeroSection() {
                       <path
                         d="M 2,4 C 30,2 60,6 100,4 C 140,2 175,6 198,3"
                         stroke="oklch(48% 0.17 260)"
-                        strokeWidth="1.8"
+                        strokeWidth="2.6"
                         strokeLinecap="round"
                         fill="none"
                       />
@@ -294,14 +296,15 @@ export async function HeroSection() {
                     priority
                   />
                 </div>
-                {/* Serif italic caption — evidence label like a gallery print */}
+                {/* Serif caption — EN: Instrument Serif italic / KO: Noto Serif KR 600 upright */}
                 <p
                   className="pb-0.5 pt-3 text-center text-xs leading-none"
                   style={{
-                    fontFamily: "var(--font-serif, 'Georgia', serif)",
-                    fontStyle: "italic",
+                    fontFamily: "var(--font-serif), var(--font-serif-kr), 'Georgia', serif",
+                    fontStyle: locale === "en" ? "italic" : "normal",
+                    fontWeight: locale === "ko" ? "600" : undefined,
                     color: "oklch(44% 0.025 262)",
-                    letterSpacing: "0.02em",
+                    letterSpacing: locale === "ko" ? "-0.01em" : "0.02em",
                   }}
                 >
                   {locale === "ko"
@@ -318,10 +321,14 @@ export async function HeroSection() {
 
         {/* Operating Principle — accent border-left quote */}
         <ScrollReveal>
+          {/* EN: Instrument Serif italic / KO: Noto Serif KR 600 upright — 합성 오블리크 금지 */}
           <p
-            className="mx-auto max-w-3xl border-l-2 pl-6 text-lg italic leading-relaxed"
+            className="mx-auto max-w-3xl border-l-2 pl-6 text-lg leading-relaxed"
             style={{
-              fontFamily: "var(--font-serif, 'Georgia', serif)",
+              fontFamily: "var(--font-serif), var(--font-serif-kr), 'Georgia', serif",
+              fontStyle: locale === "en" ? "italic" : "normal",
+              fontWeight: locale === "ko" ? "600" : undefined,
+              letterSpacing: locale === "ko" ? "-0.01em" : undefined,
               borderColor: "oklch(48% 0.17 260)",
               color: "oklch(44% 0.025 262)",
             }}

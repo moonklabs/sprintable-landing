@@ -1,7 +1,7 @@
 export const runtime = "edge";
 
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Barlow, Instrument_Serif } from "next/font/google";
+import { Bricolage_Grotesque, Barlow, Instrument_Serif, Noto_Serif_KR } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Suspense } from "react";
@@ -30,6 +30,16 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
+/* Noto Serif KR — 한글 명조. 영문 Instrument Serif의 등가물.
+   CJK 폰트는 파일이 크므로 preload: false로 LCP 충돌 방지. */
+const notoSerifKr = Noto_Serif_KR({
+  variable: "--font-serif-kr",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  display: "swap",
+  preload: false,
+});
+
 export const metadata: Metadata = {
   title: "Sprintable — Ship with AI agents",
   description:
@@ -53,7 +63,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${bricolage.variable} ${barlow.variable} ${instrumentSerif.variable}`}
+      className={`${bricolage.variable} ${barlow.variable} ${instrumentSerif.variable} ${notoSerifKr.variable}`}
     >
       <body>
         <Suspense>
