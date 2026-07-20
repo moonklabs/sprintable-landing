@@ -1,12 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { LocaleSwitcher } from "./components/locale-switcher";
 import { NavLinks } from "./components/nav-links";
 import { SprintableMarkSvg } from "./components/brand/sprintable-mark-svg";
+import { ScrollReveal } from "./components/motion/scroll-reveal";
+import { Parallax } from "./components/motion/parallax";
 import { HeroSection } from "./components/sections/hero-section";
 import { TrustSection } from "./components/sections/trust-section";
-import { AccelerationSection } from "./components/sections/acceleration-section";
-import { OrgOsSection } from "./components/sections/org-os-section";
+import { HowItWorksSection } from "./components/sections/how-it-works-section";
 import { FinalCtaSection } from "./components/sections/final-cta-section";
 
 export default function Home() {
@@ -55,12 +57,12 @@ export default function Home() {
       >
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
           {/* Wordmark */}
-          <a href="/" className="flex shrink-0 items-center gap-[11px] text-white">
+          <Link href="/" className="flex shrink-0 items-center gap-[11px] text-white">
             <SprintableMarkSvg className="size-[26px]" style={{ color: "oklch(72% 0.14 258)" }} />
             <span className="font-[family-name:var(--font-display)] text-lg font-bold tracking-[-0.04em]">
               Sprintable
             </span>
-          </a>
+          </Link>
 
           <NavLinks />
 
@@ -77,7 +79,7 @@ export default function Home() {
             </a>
             <a
               href="https://app.sprintable.ai/login"
-              className="rounded-lg px-4 py-2 text-sm font-semibold transition"
+              className="btn-glow rounded-lg px-4 py-2 text-sm font-semibold"
               style={{
                 backgroundColor: "oklch(72% 0.14 258)",
                 color: "oklch(18% 0.06 258)",
@@ -94,9 +96,86 @@ export default function Home() {
 
         <TrustSection />
 
-        <AccelerationSection />
+        <HowItWorksSection />
 
-        <OrgOsSection />
+        {/* ── PROOF (실 UI 증빙 band — primary wide + supporting 2-up) ── */}
+        <section id="proof" className="px-5 py-20 sm:px-8 sm:py-28">
+          <div className="mx-auto max-w-7xl">
+            <ScrollReveal className="mx-auto max-w-2xl text-center">
+              <p
+                className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
+                style={{ color: "oklch(65% 0.06 258)" }}
+              >
+                {t("proof.eyebrow")}
+              </p>
+              <h2
+                className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
+                style={{ color: "oklch(93% 0.02 265)" }}
+              >
+                {t("proof.title")}
+              </h2>
+              <p className="mt-4 text-base leading-8" style={{ color: "oklch(65% 0.025 265)" }}>
+                {t("proof.subtitle")}
+              </p>
+            </ScrollReveal>
+
+            {/* primary — org briefing (wide) */}
+            {proofShots[0] && (
+              <ScrollReveal direction="scale" className="mx-auto mt-12 max-w-5xl">
+                <Parallax speed={-0.04}>
+                  <div
+                    className="shimmer-frame relative overflow-hidden rounded-2xl"
+                    style={{ border: "1px solid oklch(26% 0.022 265)", boxShadow: "0 24px 64px oklch(13% 0.015 265 / 0.6)" }}
+                  >
+                    <div
+                      className="absolute inset-x-12 -bottom-6 -top-6 -z-10 rounded-[2rem] opacity-40 blur-3xl"
+                      style={{ background: "radial-gradient(ellipse 80% 50% at 50% 50%, oklch(72% 0.14 258 / 0.25), transparent)" }}
+                    />
+                    <Image
+                      src={PROOF_SHOT_IMAGES[0]!}
+                      alt={proofShots[0].alt}
+                      width={1600}
+                      height={1000}
+                      className="w-full object-cover"
+                    />
+                  </div>
+                </Parallax>
+                <h3 className="mt-4 font-[family-name:var(--font-display)] text-lg font-bold" style={{ color: "oklch(93% 0.02 265)" }}>
+                  {proofShots[0].title}
+                </h3>
+                <p className="mt-1 text-sm leading-7" style={{ color: "oklch(65% 0.025 265)" }}>
+                  {proofShots[0].desc}
+                </p>
+              </ScrollReveal>
+            )}
+
+            {/* supporting — board + glance (2-up) */}
+            <div className="mx-auto mt-8 grid max-w-5xl gap-8 sm:grid-cols-2">
+              {proofShots.slice(1).map((shot, i) => (
+                <ScrollReveal key={shot.title} delay={i * 120}>
+                  <div
+                    className="card-lift overflow-hidden rounded-2xl"
+                    style={{ border: "1px solid oklch(26% 0.022 265)", boxShadow: "0 16px 40px oklch(13% 0.015 265 / 0.5)" }}
+                  >
+                    <Image
+                      src={PROOF_SHOT_IMAGES[i + 1] ?? PROOF_SHOT_IMAGES[0]}
+                      alt={shot.alt}
+                      width={1600}
+                      height={1000}
+                      className="w-full object-cover"
+                    />
+                  </div>
+                  <h3 className="mt-4 font-[family-name:var(--font-display)] text-base font-bold" style={{ color: "oklch(93% 0.02 265)" }}>
+                    {shot.title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-7" style={{ color: "oklch(65% 0.025 265)" }}>
+                    {shot.desc}
+                  </p>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* ── CUSTOMERS ── */}
         <section
@@ -105,7 +184,7 @@ export default function Home() {
           style={{ backgroundColor: "oklch(15% 0.016 265)" }}
         >
           <div className="mx-auto max-w-7xl">
-            <div className="mb-14">
+            <ScrollReveal className="mb-14">
               <p
                 className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
                 style={{ color: "oklch(65% 0.06 258)" }}
@@ -126,13 +205,14 @@ export default function Home() {
                   {t("customers.subtitle")}
                 </p>
               </div>
-            </div>
+            </ScrollReveal>
 
             <div className="grid gap-4 lg:grid-cols-3">
-              {customerCards.map((card) => (
-                <div
+              {customerCards.map((card, i) => (
+                <ScrollReveal
                   key={card.title}
-                  className="flex flex-col rounded-2xl p-7"
+                  delay={i * 100}
+                  className="card-lift flex flex-col rounded-2xl p-7"
                   style={{
                     border: "1px solid oklch(26% 0.022 265)",
                     backgroundColor: "oklch(13% 0.015 265)",
@@ -160,7 +240,7 @@ export default function Home() {
                   >
                     {card.fit}
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -169,7 +249,7 @@ export default function Home() {
         {/* ── MODEL ── */}
         <section id="model" className="px-5 py-20 sm:px-8 sm:py-28">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-14">
+            <ScrollReveal className="mb-14">
               <p
                 className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
                 style={{ color: "oklch(65% 0.06 258)" }}
@@ -188,12 +268,13 @@ export default function Home() {
               >
                 {t("model.subtitle")}
               </p>
-            </div>
+            </ScrollReveal>
 
             <div className="grid gap-4 lg:grid-cols-2">
               {/* BYOA card */}
-              <div
-                className="rounded-2xl p-7"
+              <ScrollReveal
+                direction="left"
+                className="card-lift rounded-2xl p-7"
                 style={{
                   border: "1px solid oklch(26% 0.022 265)",
                   backgroundColor: "oklch(16% 0.018 265)",
@@ -225,11 +306,13 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </ScrollReveal>
 
               {/* Premium card */}
-              <div
-                className="rounded-2xl p-7"
+              <ScrollReveal
+                direction="right"
+                delay={120}
+                className="card-lift rounded-2xl p-7"
                 style={{
                   border: "1px solid oklch(72% 0.14 258 / 0.25)",
                   background:
@@ -262,11 +345,12 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </ScrollReveal>
             </div>
 
             {/* Bridge note */}
-            <div
+            <ScrollReveal
+              delay={200}
               className="mt-4 rounded-2xl p-6"
               style={{
                 border: "1px solid oklch(72% 0.14 258 / 0.16)",
@@ -279,95 +363,14 @@ export default function Home() {
               >
                 {t("model.bridge")}
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ── PROOF (실 UI 증빙 band — 유나 큐레이션: primary wide + supporting 2-up, 히어로 이미지 스타일 재사용) ── */}
-        <section
-          id="proof"
-          className="px-5 py-20 sm:px-8 sm:py-28"
-          style={{ backgroundColor: "oklch(15% 0.016 265)" }}
-        >
-          <div className="mx-auto max-w-7xl">
-            <div className="mx-auto max-w-2xl text-center">
-              <p
-                className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
-                style={{ color: "oklch(65% 0.06 258)" }}
-              >
-                {t("proof.eyebrow")}
-              </p>
-              <h2
-                className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
-                style={{ color: "oklch(93% 0.02 265)" }}
-              >
-                {t("proof.title")}
-              </h2>
-              <p className="mt-4 text-base leading-8" style={{ color: "oklch(65% 0.025 265)" }}>
-                {t("proof.subtitle")}
-              </p>
-            </div>
-
-            {/* primary — org briefing (wide) */}
-            {proofShots[0] && (
-              <div className="mx-auto mt-12 max-w-5xl">
-                <div
-                  className="relative overflow-hidden rounded-2xl"
-                  style={{ border: "1px solid oklch(26% 0.022 265)", boxShadow: "0 24px 64px oklch(13% 0.015 265 / 0.6)" }}
-                >
-                  <div
-                    className="absolute inset-x-12 -bottom-6 -top-6 -z-10 rounded-[2rem] opacity-40 blur-3xl"
-                    style={{ background: "radial-gradient(ellipse 80% 50% at 50% 50%, oklch(72% 0.14 258 / 0.25), transparent)" }}
-                  />
-                  <Image
-                    src={PROOF_SHOT_IMAGES[0]!}
-                    alt={proofShots[0].alt}
-                    width={1600}
-                    height={1000}
-                    className="w-full object-cover"
-                  />
-                </div>
-                <h3 className="mt-4 font-[family-name:var(--font-display)] text-lg font-bold" style={{ color: "oklch(93% 0.02 265)" }}>
-                  {proofShots[0].title}
-                </h3>
-                <p className="mt-1 text-sm leading-7" style={{ color: "oklch(65% 0.025 265)" }}>
-                  {proofShots[0].desc}
-                </p>
-              </div>
-            )}
-
-            {/* supporting — board + glance (2-up) */}
-            <div className="mx-auto mt-8 grid max-w-5xl gap-8 sm:grid-cols-2">
-              {proofShots.slice(1).map((shot, i) => (
-                <div key={shot.title}>
-                  <div
-                    className="overflow-hidden rounded-2xl"
-                    style={{ border: "1px solid oklch(26% 0.022 265)", boxShadow: "0 16px 40px oklch(13% 0.015 265 / 0.5)" }}
-                  >
-                    <Image
-                      src={PROOF_SHOT_IMAGES[i + 1] ?? PROOF_SHOT_IMAGES[0]}
-                      alt={shot.alt}
-                      width={1600}
-                      height={1000}
-                      className="w-full object-cover"
-                    />
-                  </div>
-                  <h3 className="mt-4 font-[family-name:var(--font-display)] text-base font-bold" style={{ color: "oklch(93% 0.02 265)" }}>
-                    {shot.title}
-                  </h3>
-                  <p className="mt-1 text-sm leading-7" style={{ color: "oklch(65% 0.025 265)" }}>
-                    {shot.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
+            </ScrollReveal>
           </div>
         </section>
 
         {/* ── PRICING ── */}
         <section id="pricing" className="px-5 py-20 sm:px-8 sm:py-28">
           <div className="mx-auto max-w-7xl">
-            <div className="mb-14">
+            <ScrollReveal className="mb-14">
               <p
                 className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
                 style={{ color: "oklch(65% 0.06 258)" }}
@@ -386,7 +389,7 @@ export default function Home() {
               >
                 {t("pricing.subtitle")}
               </p>
-            </div>
+            </ScrollReveal>
 
             {/* Annual discount badge */}
             <div className="mb-8 flex justify-center">
@@ -406,9 +409,10 @@ export default function Home() {
               {pricingPlans.map((plan, i) => {
                 const isTeam = i === 1;
                 return (
-                  <div
+                  <ScrollReveal
                     key={plan.name}
-                    className="relative flex flex-col rounded-2xl p-7"
+                    delay={i * 100}
+                    className="card-lift relative flex flex-col rounded-2xl p-7"
                     style={{
                       border: isTeam
                         ? "1px solid oklch(72% 0.14 258 / 0.35)"
@@ -503,10 +507,24 @@ export default function Home() {
                           ? t("pricing.startTrial")
                           : t("pricing.contactSales")}
                     </a>
-                  </div>
+                  </ScrollReveal>
                 );
               })}
             </div>
+
+            {/* 컴플라이언스 웨지 — SSO·감사로그·SLA를 세일즈 게이트 없이 (vs Factory류 Business 커스텀 가격) */}
+            <ScrollReveal
+              delay={120}
+              className="mt-6 rounded-2xl p-5 text-center"
+              style={{
+                border: "1px solid oklch(72% 0.14 258 / 0.2)",
+                backgroundColor: "oklch(72% 0.14 258 / 0.06)",
+              }}
+            >
+              <p className="text-sm font-semibold" style={{ color: "oklch(82% 0.06 258)" }}>
+                {t("pricing.wedge")}
+              </p>
+            </ScrollReveal>
 
             <p
               className="mt-6 text-xs leading-6"
@@ -563,7 +581,7 @@ export default function Home() {
             {
               label: t("footer.product"),
               links: [
-                { label: t("footer.overview"), href: "#value" },
+                { label: t("footer.overview"), href: "#product" },
                 { label: t("footer.proof"), href: "#proof" },
                 { label: t("footer.changelog"), href: "https://github.com/moonklabs/sprintable/releases", external: true },
               ],

@@ -63,9 +63,124 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.03em;
 }
 
+/* ── Scroll reveal (driven by ScrollReveal client component) ── */
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-up { transform: translateY(28px); }
+.reveal-left { transform: translateX(-28px); }
+.reveal-right { transform: translateX(28px); }
+.reveal-scale { transform: scale(0.96); }
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Ambient aurora orbs ── */
+@keyframes aurora-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(36px, -24px, 0) scale(1.08); }
+  66% { transform: translate3d(-28px, 18px, 0) scale(0.94); }
+}
+.aurora-orb {
+  animation: aurora-drift 16s ease-in-out infinite;
+  pointer-events: none;
+}
+.aurora-orb--late { animation-delay: -8s; }
+
+/* ── Dot-grid backdrop ── */
+.bg-grid-dots {
+  background-image: radial-gradient(oklch(45% 0.03 265 / 0.3) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 0%, black 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 0%, black 25%, transparent 78%);
+  pointer-events: none;
+}
+
+/* ── Card hover lift (overrides inline border via !important) ── */
+.card-lift {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  border-color: oklch(72% 0.14 258 / 0.4) !important;
+  box-shadow:
+    0 16px 44px oklch(10% 0.01 265 / 0.55),
+    0 0 32px oklch(72% 0.14 258 / 0.12);
+}
+
+/* ── Primary CTA glow ── */
+.btn-glow {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+.btn-glow:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 44px oklch(72% 0.14 258 / 0.45) !important;
+  filter: brightness(1.06);
+}
+
+/* ── Screenshot frame shimmer sweep ── */
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-120%) skewX(-12deg); }
+  60%, 100% { transform: translateX(220%) skewX(-12deg); }
+}
+.shimmer-frame { position: relative; }
+.shimmer-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    oklch(90% 0.03 265 / 0.05) 45%,
+    oklch(90% 0.03 265 / 0.09) 50%,
+    oklch(90% 0.03 265 / 0.05) 55%,
+    transparent
+  );
+  animation: shimmer-sweep 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Claimed → Verified seal stamp cycle (hero proof card) ── */
+@keyframes seal-claim {
+  0%, 42% { opacity: 1; }
+  50%, 92% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes seal-verify {
+  0%, 42% { opacity: 0; transform: scale(1.5); }
+  50%, 92% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+@keyframes seal-row-glow {
+  0%, 44% { background-color: oklch(13% 0.015 265); }
+  52%, 88% { background-color: oklch(70% 0.15 145 / 0.06); }
+  100% { background-color: oklch(13% 0.015 265); }
+}
+.seal-claim { animation: seal-claim 8s ease-in-out infinite; }
+.seal-verify { animation: seal-verify 8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.seal-row-animated { animation: seal-row-glow 8s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  /* Frozen stamp cycle would land mid-crossfade — pin to the verified state */
+  .seal-claim { opacity: 0; }
+  .seal-verify { opacity: 1; transform: none; }
 }

@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
-const NAV_KEYS = ["product", "trust", "acceleration", "pricing"] as const;
+const NAV_KEYS = ["product", "trust", "pricing"] as const;
 
 export function NavLinks() {
   const t = useTranslations();

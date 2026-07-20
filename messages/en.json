@@ -2,7 +2,6 @@
   "nav": {
     "product": "Product",
     "trust": "Trust",
-    "acceleration": "Acceleration",
     "pricing": "Pricing",
     "github": "GitHub",
     "getStarted": "Get started"
@@ -10,61 +9,103 @@
   "hero": {
     "badge": "Beta",
     "badgeActive": "actively shipping",
-    "badgeText": "Real-time AI agents as first-class teammates — actively shipping",
-    "eyebrow": "Organization OS · Task → Trust",
-    "headline": "Turn AI execution into\n<g>organizational growth</g>",
-    "subheadline": "AI does the work. Humans verify and lead.",
-    "audiencesFor": " — built for",
+    "headline": "Ship what's <g>verified</g>,\nnot what's claimed",
+    "subheadline": "Approval gates and easy review turn what agents claim into verified outcomes. The open-source organization OS for dev and product teams.",
     "operatingPrinciple": "Design your workflow, register it as stories — agents and humans execute in the same loop.",
-    "audiences": [
-      "Founders",
-      "Operators",
-      "Product teams"
-    ],
     "trustStrip": [
-      "Verified outcomes",
-      "Goal → Hypothesis → Story",
+      "Only verified outcomes recorded",
+      "Easy review before approval",
       "Open source · Self-hosted"
     ],
     "primaryCta": "Start free",
     "secondaryCta": "View on GitHub",
     "pricingCta": "View pricing",
-    "githubCta": "Star on GitHub",
-    "terminal": {
-      "title": "sprintable — zsh — 80×24",
-      "prompt": "uvx sprintable",
-      "connectOk": "Authenticated — app.sprintable.ai",
-      "projectOk": "Project — Checkout Redesign",
-      "agentOk": "MCP toolset ready",
-      "result": "→ sse-bridge connected"
-    },
+    "command": "uvx sprintable",
+    "commandHint": "Self-host with a single command",
+    "commandCopied": "Copied",
     "stats": {
       "stat1": "Open Source",
       "stat2": "MCP Native",
       "stat3": "Programmatic",
       "stat4": "HITL Gate",
       "stat5": "Self-hostable"
+    },
+    "seal": {
+      "title": "Review queue — Checkout Redesign",
+      "claim": "Claim",
+      "verified": "Verified",
+      "gate": "Awaiting gate",
+      "row1": "Payment logic refactor — 42/42 tests passing",
+      "row1MetaClaim": "3 evidence",
+      "row1MetaVerified": "Signed",
+      "row2": "Repo migration — pending approval",
+      "row2Meta": "Step in",
+      "row3": "Trust badge component — passed gate",
+      "row3Meta": "Signed"
+    }
+  },
+  "trust": {
+    "label": "Claimed vs Verified",
+    "title": "Nothing is verified\nuntil you approve it",
+    "subtitle": "Every run is traced. Every decision is recorded.",
+    "step1": {
+      "title": "Check the evidence",
+      "desc": "Diffs, test results, logs — review everything the agent submitted in one view."
+    },
+    "step2": {
+      "title": "Approve or reject in one click",
+      "desc": "When you're done reviewing, pass the gate or send it back with a single click."
+    },
+    "step3": {
+      "title": "Signed by a human",
+      "desc": "The approver is recorded as a signature, and a Verified seal is attached to the outcome."
+    },
+    "advisor": {
+      "title": "Advisor",
+      "badge": "Coming soon",
+      "desc": "A review assistant that flags risk signals and checkpoints before you start reviewing."
+    }
+  },
+  "howItWorks": {
+    "label": "How it works",
+    "title": "Every task passes through one loop",
+    "subtitle": "Humans and AI on the same board — from registration to verification.",
+    "step1": {
+      "title": "Register a story",
+      "desc": "Break goals into stories and assign them to a human or an agent."
+    },
+    "step2": {
+      "title": "Agents execute",
+      "desc": "BYOA agents connect over MCP and do the work."
+    },
+    "step3": {
+      "title": "Approve at the gate",
+      "desc": "Check the outcome and its evidence, then approve or reject in one click."
+    },
+    "step4": {
+      "title": "Recorded as verified",
+      "desc": "Only verified outcomes enter the org record, signed by a human."
     }
   },
   "customers": {
     "eyebrow": "Built for",
-    "title": "Teams that deliver with AI",
-    "subtitle": "Turn scattered AI work into one organizational operating system.",
+    "title": "For teams shipping with AI",
+    "subtitle": "Turn scattered AI work into one verifiable loop.",
     "cards": [
+      {
+        "title": "Dev teams",
+        "desc": "Agent PRs and human reviews meet on the same board.",
+        "fit": "Best when you run multiple coding agents but verifying results is the bottleneck."
+      },
+      {
+        "title": "Product teams",
+        "desc": "PM, Dev, and QA see progress and evidence in the same delivery loop.",
+        "fit": "Best when you need verified progress, not 'done' reports."
+      },
       {
         "title": "Founder-operators",
         "desc": "Operate faster and more precisely with a lean team.",
-        "fit": "Best when you want BYOA to start now and a paid path when managed hosting becomes valuable."
-      },
-      {
-        "title": "AI-native product teams",
-        "desc": "Align human and AI execution around one goal.",
-        "fit": "Best when PM, Dev, and QA all need shared visibility into the same delivery loop."
-      },
-      {
-        "title": "Studios & Enablement",
-        "desc": "Run multiple organizations and clients in one place.",
-        "fit": "Best when you need to prove process, not just prompts."
+        "fit": "Best when you want to start free with BYOA and move to managed when it's worth it."
       }
     ]
   },
@@ -125,6 +166,7 @@
     "startFree": "Start free",
     "startTrial": "Start trial",
     "contactSales": "Contact sales",
+    "wedge": "SSO · Audit logs · SLA — starting at $149, no sales call required.",
     "footnote": "All plans include unlimited stories, epics, sprints, and BYOA agent seats. Billed monthly or annually.",
     "plans": [
       {
@@ -169,14 +211,14 @@
     ]
   },
   "finalCta": {
-    "eyebrow": "Get started today",
-    "title": "Turn AI speed into organizational growth",
-    "desc": "The Organization OS where humans and AI deliver together.",
+    "eyebrow": "Get started",
+    "title": "Ship only what's verified",
+    "desc": "Self-host with a single command. Approval gates and review are built in from day one.",
     "primary": "Start free",
     "secondary": "Read the docs"
   },
   "footer": {
-    "desc": "Open-source PM surface for teams shipping with AI agents.",
+    "desc": "The open-source organization OS for teams shipping with AI agents. Claimed → Verified.",
     "copyright": "© 2026 Moonklabs, Inc. All rights reserved.",
     "operational": "All systems operational",
     "product": "Product",
@@ -195,59 +237,5 @@
   },
   "locale": {
     "switch": "한국어"
-  },
-  "trust": {
-    "label": "Task → Trust",
-    "title": "Delegate. Verify. Trust.",
-    "subtitle": "See every outcome and its evidence at a glance.",
-    "card": {
-      "title": "Keep only verified outcomes",
-      "desc": "Clearly record every step from AI execution to human approval."
-    },
-    "seals": {
-      "verified": "Verified",
-      "verifiedRow": "Payment logic — passed human gate",
-      "verifiedMeta": "Signed",
-      "claim": "Claim",
-      "claimRow": "Trust badge component",
-      "claimMeta": "3 evidence",
-      "gate": "Awaiting gate",
-      "gateRow": "Repo migration — pending approval",
-      "gateMeta": "Step in"
-    }
-  },
-  "acceleration": {
-    "label": "Org acceleration",
-    "title": "Learn faster. Grow bigger.",
-    "subtitle": "Turn hypotheses and learnings into the next action instantly.",
-    "card": {
-      "title": "Find where to invest next",
-      "desc": "See what will accelerate growth and which workflows to improve."
-    },
-    "feed": {
-      "closedTitle": "Closed · Learned",
-      "closedRow": "Checkout 2-step → completion (disproven)",
-      "closedMeta": "52/60",
-      "learned": "↳ New hypothesis from the learning: completion depends on trust signals",
-      "measuringTitle": "Measuring",
-      "measuringRow": "Completion depends on trust signals",
-      "measuringMeta": "To be measured",
-      "stalledTitle": "Stalled",
-      "stalledRow": "Loops past their verify-by date",
-      "stalledMeta": "4"
-    }
-  },
-  "orgOs": {
-    "label": "Organization OS",
-    "title": "Your organization's now and next, in one view",
-    "subtitle": "See execution, project direction, and key learnings in one place.",
-    "card1": {
-      "title": "Organization briefing",
-      "desc": "See today's requests, learnings, and assignments instantly."
-    },
-    "card2": {
-      "title": "Glance · Lab",
-      "desc": "See project progress and experiment results at a glance."
-    }
   }
 }
