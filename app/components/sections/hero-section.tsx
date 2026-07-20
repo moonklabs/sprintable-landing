@@ -21,47 +21,58 @@ export async function HeroSection() {
   const dashboardShot = locale === "en" ? "/screenshots/12-dashboard-activity-en.png" : "/screenshots/12-dashboard-activity.png";
 
   return (
-    <section id="product" className="relative px-5 pb-24 pt-16 sm:px-8 sm:pt-20">
-      {/* Background radial — wider, centered, more subtle (D-HR-7) */}
+    /* isolate — 네거티브 z 오브가 페이지 래퍼의 불투명 배경 뒤로 빠지지 않도록 스태킹 컨텍스트 고정 */
+    <section id="product" className="relative isolate px-5 pb-24 pt-16 sm:px-8 sm:pt-20">
+      {/* Aurora mesh — 3 explicit orbs: periwinkle left-top, sky right-top, mint bottom-center.
+          Stronger chroma + higher alpha + 100px+ blur → visible pastel gradient on white canvas. */}
       <div
-        className="absolute inset-x-0 top-0 -z-10 h-[800px]"
+        aria-hidden="true"
+        className="aurora-orb pointer-events-none absolute -z-10 h-[620px] w-[620px] rounded-full"
         style={{
-          background:
-            "radial-gradient(ellipse 100% 60% at 50% 0%, oklch(72% 0.14 258 / 0.08), transparent)",
+          top: "-80px",
+          left: "-96px",
+          background: "radial-gradient(circle, oklch(85% 0.09 258 / 0.7), transparent 65%)",
+          filter: "blur(100px)",
         }}
       />
-      {/* Dot grid — fades out toward the fold */}
+      <div
+        aria-hidden="true"
+        className="aurora-orb aurora-orb--late pointer-events-none absolute -z-10 h-[580px] w-[580px] rounded-full"
+        style={{
+          top: "-32px",
+          right: "-64px",
+          background: "radial-gradient(circle, oklch(89% 0.06 220 / 0.6), transparent 65%)",
+          filter: "blur(100px)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="aurora-orb pointer-events-none absolute -z-10 h-[700px] w-[700px] -translate-x-1/2 rounded-full"
+        style={{
+          bottom: "-80px",
+          left: "50%",
+          background: "radial-gradient(circle, oklch(90% 0.07 185 / 0.5), transparent 65%)",
+          filter: "blur(120px)",
+          animationDelay: "-5s",
+        }}
+      />
+      {/* Dot grid — strong blue dots, fades out toward the fold */}
       <div className="bg-grid-dots absolute inset-x-0 top-0 -z-10 h-[640px]" aria-hidden="true" />
-      {/* Film grain — warm the dark, scoped to the hero */}
+      {/* Film grain — light paper texture, scoped to hero */}
       <div className="grain-layer -z-10" aria-hidden="true" />
-      {/* Aurora orbs — parallax at different depths for a layered backdrop */}
-      <Parallax speed={0.18} className="absolute left-[8%] top-24 -z-10 hidden lg:block">
-        <div
-          aria-hidden="true"
-          className="aurora-orb h-72 w-72 rounded-full blur-3xl"
-          style={{ background: "radial-gradient(circle, oklch(72% 0.14 258 / 0.14), transparent 70%)" }}
-        />
-      </Parallax>
-      <Parallax speed={0.1} className="absolute right-[4%] top-64 -z-10 hidden lg:block">
-        <div
-          aria-hidden="true"
-          className="aurora-orb aurora-orb--late h-96 w-96 rounded-full blur-3xl"
-          style={{ background: "radial-gradient(circle, oklch(78% 0.13 195 / 0.1), transparent 70%)" }}
-        />
-      </Parallax>
 
       <div className="mx-auto max-w-7xl">
         {/* Hero grid — text left, verified seal card right */}
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div className="min-w-0 max-w-2xl">
-          {/* BETA 배지 단순화 (D-HR-1) */}
+          {/* BETA badge */}
           <ScrollReveal delay={0}>
             <div
               className="mb-8 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium tracking-tight"
               style={{
-                border: "1px solid oklch(72% 0.14 258 / 0.3)",
-                backgroundColor: "oklch(72% 0.14 258 / 0.08)",
-                color: "oklch(78% 0.13 258)",
+                border: "1px solid oklch(51% 0.19 258 / 0.3)",
+                backgroundColor: "oklch(51% 0.19 258 / 0.07)",
+                color: "oklch(44% 0.19 258)",
               }}
             >
               <span
@@ -70,11 +81,11 @@ export async function HeroSection() {
               >
                 <span
                   className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-60"
-                  style={{ backgroundColor: "oklch(78% 0.13 258)" }}
+                  style={{ backgroundColor: "oklch(51% 0.19 258)" }}
                 />
                 <span
                   className="relative inline-flex h-1.5 w-1.5 rounded-full"
-                  style={{ backgroundColor: "oklch(78% 0.13 258)" }}
+                  style={{ backgroundColor: "oklch(51% 0.19 258)" }}
                 />
               </span>
               <span className="font-bold uppercase tracking-widest">{t("hero.badge")}</span>
@@ -83,20 +94,20 @@ export async function HeroSection() {
             </div>
           </ScrollReveal>
 
-          {/* Headline — Claimed vs Verified 단일 후킹(경쟁 무점유 니치), <g> 구간만 브랜드 그라디언트 */}
+          {/* Headline — ink color; <g> highlighted word gets accent blue + highlighter wash */}
           <ScrollReveal delay={80}>
             <h1
               className="whitespace-pre-line font-[family-name:var(--font-display)] text-5xl font-extrabold tracking-[-0.04em] sm:text-6xl xl:text-7xl"
-              style={{ color: "oklch(95% 0.015 265)", lineHeight: "1.02" }}
+              style={{ color: "oklch(22% 0.025 265)", lineHeight: "1.02" }}
             >
               {t.rich("hero.headline", {
                 g: (chunks) => (
                   <span
                     style={{
-                      background: "linear-gradient(90deg, oklch(80% 0.1 258), oklch(72% 0.14 258))",
-                      WebkitBackgroundClip: "text",
-                      backgroundClip: "text",
-                      color: "transparent",
+                      color: "oklch(44% 0.19 258)",
+                      background: "oklch(88% 0.055 258 / 0.6)",
+                      borderRadius: "0.5em",
+                      padding: "0.15em 0.18em",
                     }}
                   >
                     {chunks}
@@ -110,13 +121,13 @@ export async function HeroSection() {
           <ScrollReveal delay={160}>
             <p
               className="mt-6 max-w-3xl text-lg leading-8"
-              style={{ color: "oklch(72% 0.025 265)" }}
+              style={{ color: "oklch(45% 0.02 265)" }}
             >
               {t("hero.subheadline")}
             </p>
           </ScrollReveal>
 
-          {/* Stat chips row (A2A3) */}
+          {/* Stat chips row — white fill + hairline + ink-secondary */}
           <ScrollReveal delay={240}>
             <div className="mt-6 flex flex-wrap gap-2">
               {HERO_STATS.map(({ icon: Icon, labelKey }) => (
@@ -124,39 +135,39 @@ export async function HeroSection() {
                   key={labelKey}
                   className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
                   style={{
-                    border: "1px solid oklch(26% 0.022 265)",
-                    backgroundColor: "oklch(17% 0.018 265)",
-                    color: "oklch(82% 0.025 265)",
+                    border: "1px solid oklch(84% 0.012 265)",
+                    backgroundColor: "oklch(100% 0 0)",
+                    color: "oklch(45% 0.02 265)",
                   }}
                 >
-                  <Icon className="size-3" style={{ color: "oklch(78% 0.13 258)" }} aria-hidden="true" />
+                  <Icon className="size-3" style={{ color: "oklch(51% 0.19 258)" }} aria-hidden="true" />
                   {t(`hero.stats.${labelKey}`)}
                 </span>
               ))}
             </div>
           </ScrollReveal>
 
-          {/* Trust strip — Task→Trust 포지셔닝의 3개 증거점 */}
+          {/* Trust strip — verified-green check + ink-muted text */}
           <ScrollReveal delay={300}>
-            <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm" style={{ color: "oklch(65% 0.025 265)" }}>
+            <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm" style={{ color: "oklch(57% 0.015 265)" }}>
               {heroTrustStrip.map((item) => (
                 <span key={item} className="inline-flex items-center gap-2">
-                  <span style={{ color: "oklch(70% 0.15 145)" }}>✓</span> {item}
+                  <span style={{ color: "oklch(56% 0.13 150)" }}>✓</span> {item}
                 </span>
               ))}
             </div>
           </ScrollReveal>
 
-          {/* CTA 2개 + OSS 실행 오브젝트(복사 가능한 셀프호스트 커맨드) */}
+          {/* CTA buttons + OSS command chip */}
           <ScrollReveal delay={360}>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
                 href="https://app.sprintable.ai/login"
                 className="btn-glow group inline-flex items-center gap-2 rounded-[var(--radius)] px-7 py-3.5 text-sm font-semibold"
                 style={{
-                  backgroundColor: "oklch(72% 0.14 258)",
-                  color: "oklch(18% 0.06 258)",
-                  boxShadow: "0 8px 32px oklch(72% 0.14 258 / 0.22)",
+                  backgroundColor: "oklch(51% 0.19 258)",
+                  color: "oklch(100% 0 0)",
+                  boxShadow: "0 1px 2px oklch(25% .1 258 / .2), 0 8px 24px -6px oklch(51% .19 258 / 0.45)",
                 }}
               >
                 {t("hero.primaryCta")}
@@ -168,9 +179,9 @@ export async function HeroSection() {
                 rel="noopener noreferrer"
                 className="card-lift inline-flex items-center gap-2 rounded-[var(--radius)] px-7 py-3.5 text-sm font-medium"
                 style={{
-                  border: "1px solid oklch(26% 0.022 265)",
-                  backgroundColor: "oklch(17% 0.018 265)",
-                  color: "oklch(82% 0.025 265)",
+                  border: "1px solid oklch(84% 0.012 265)",
+                  backgroundColor: "oklch(100% 0 0)",
+                  color: "oklch(45% 0.02 265)",
                 }}
               >
                 <svg className="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -181,14 +192,14 @@ export async function HeroSection() {
             </div>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <CommandChip command={t("hero.command")} copiedLabel={t("hero.commandCopied")} />
-              <span className="text-xs" style={{ color: "oklch(55% 0.02 265)" }}>
+              <span className="text-xs" style={{ color: "oklch(57% 0.015 265)" }}>
                 {t("hero.commandHint")}
               </span>
             </div>
           </ScrollReveal>
         </div>
 
-        {/* Verified seal card — 제품의 핵심 약속(Claimed → Verified)을 증빙으로 */}
+        {/* Verified seal card — white certificate card with accent blue stamp */}
         <ScrollReveal delay={200} direction="right" className="w-full min-w-0 max-w-xl lg:ml-auto">
           <VerifiedSealCard
             title={t("hero.seal.title")}
@@ -212,49 +223,52 @@ export async function HeroSection() {
         {/* Spacer */}
         <div className="mt-16 sm:mt-20" />
 
-        {/* Screenshot full-width with brand glow (D-HR-5) — counter-scroll parallax
-            for depth; tilt-in scrub owns the entry motion where supported */}
+        {/* Dashboard screenshot — light browser chrome frames dark app for contrast */}
         <ScrollReveal direction="none">
           <Parallax speed={-0.05}>
-            <div className="tilt-in relative mx-auto max-w-7xl">
-              {/* brand glow */}
+            <div className="tilt-in relative isolate mx-auto max-w-7xl">
+              {/* Brand glow — strengthened so screenshot visually lifts off the canvas */}
               <div
-                className="absolute inset-x-12 -bottom-6 -top-6 -z-10 rounded-[2rem] opacity-50 blur-3xl"
+                className="absolute inset-x-8 -bottom-10 -top-10 -z-10 rounded-[2rem] opacity-70 blur-3xl"
                 style={{
                   background:
-                    "radial-gradient(ellipse 80% 50% at 50% 50%, oklch(72% 0.14 258 / 0.25), transparent)",
+                    "radial-gradient(ellipse 85% 55% at 50% 50%, oklch(51% 0.19 258 / 0.22), transparent)",
                 }}
               />
               <div
-                className="corner-ticks shimmer-frame overflow-hidden rounded-2xl"
+                className="corner-ticks overflow-hidden rounded-2xl"
                 style={{
-                  border: "1px solid oklch(26% 0.022 265)",
-                  boxShadow: "0 24px 64px oklch(13% 0.015 265 / 0.6)",
+                  border: "1px solid oklch(84% 0.012 265)",
+                  boxShadow: "0 4px 16px oklch(35% 0.08 258 / 0.12), 0 32px 80px -16px oklch(40% 0.14 258 / 0.38)",
                 }}
               >
-                {/* Browser chrome — evidence framing: this is a real window, not an illustration */}
+                {/* Browser chrome — canvas-tint bar separates from dark screenshot */}
                 <div
                   className="flex items-center gap-2 px-4 py-2.5"
                   style={{
-                    borderBottom: "1px solid oklch(24% 0.02 265)",
-                    backgroundColor: "oklch(15% 0.016 265)",
+                    borderBottom: "1px solid oklch(84% 0.012 265)",
+                    backgroundColor: "oklch(96.9% 0.007 258)",
                   }}
                 >
                   <span className="flex gap-1.5" aria-hidden="true">
-                    {[0, 1, 2].map((d) => (
+                    {[
+                      "oklch(72% 0.2 25)",
+                      "oklch(76% 0.18 85)",
+                      "oklch(68% 0.17 145)",
+                    ].map((bg, d) => (
                       <span
                         key={d}
                         className="size-2 rounded-full"
-                        style={{ backgroundColor: "oklch(30% 0.025 265)" }}
+                        style={{ backgroundColor: bg }}
                       />
                     ))}
                   </span>
                   <span
                     className="mx-auto rounded-md px-3 py-0.5 font-mono text-[11px]"
                     style={{
-                      backgroundColor: "oklch(13% 0.015 265)",
-                      color: "oklch(55% 0.02 265)",
-                      border: "1px solid oklch(22% 0.018 265)",
+                      backgroundColor: "oklch(96.9% 0.007 258)",
+                      color: "oklch(57% 0.015 265)",
+                      border: "1px solid oklch(84% 0.012 265)",
                     }}
                   >
                     app.sprintable.ai
@@ -277,13 +291,13 @@ export async function HeroSection() {
         {/* Measure rule — hairline with center registration tick */}
         <div className="rule-ticks mx-auto my-16 max-w-3xl sm:my-20" aria-hidden="true" />
 
-        {/* Operating Principle — 스크린샷 아래 spotlight (D-HR-6) */}
+        {/* Operating Principle — accent border-left quote */}
         <ScrollReveal>
           <p
             className="mx-auto max-w-3xl border-l-2 pl-6 font-[family-name:var(--font-display)] text-lg italic leading-relaxed"
             style={{
-              borderColor: "oklch(72% 0.14 258)",
-              color: "oklch(88% 0.025 265)",
+              borderColor: "oklch(51% 0.19 258)",
+              color: "oklch(45% 0.02 265)",
             }}
           >
             {t("hero.operatingPrinciple")}

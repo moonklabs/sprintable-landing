@@ -8,22 +8,31 @@
 
   --radius: 0.625rem; /* 본앱 정합 */
 
-  /* OKLCH-based color system — warm-indigo tinted dark */
-  --color-surface: oklch(13% 0.015 265);
-  --color-surface-raised: oklch(17% 0.018 265);
-  --color-surface-overlay: oklch(20% 0.02 265);
-  --color-border: oklch(26% 0.022 265);
-  --color-border-subtle: oklch(22% 0.018 265);
+  /* ═══ "Proof, in Daylight" — OKLCH light color system ═══ */
 
-  --color-text-primary: oklch(93% 0.02 265);
-  --color-text-secondary: oklch(72% 0.025 265);
-  --color-text-muted: oklch(55% 0.02 265);
+  /* Canvas — cool neutral white, blue undertone */
+  --color-canvas:        oklch(98.5% 0.003 265);
+  --color-canvas-tint:   oklch(96.9% 0.007 258);
+  --color-card:          oklch(100% 0 0);
 
-  --color-accent: oklch(72% 0.14 258);       /* brand blue — hue 265°→258° 본앱 정렬 */
-  --color-accent-dim: oklch(72% 0.14 258 / 0.15);
-  --color-accent-hover: oklch(78% 0.13 258);
-  --color-teal: oklch(78% 0.13 195);         /* secondary teal */
-  --color-teal-dim: oklch(78% 0.13 195 / 0.14);
+  /* Ink */
+  --color-ink:           oklch(22% 0.025 265);
+  --color-ink-secondary: oklch(45% 0.02 265);
+  --color-ink-muted:     oklch(57% 0.015 265);
+
+  /* Hairlines */
+  --color-line:          oklch(90% 0.008 265);
+  --color-line-strong:   oklch(84% 0.012 265);
+
+  /* Signature blue — deep for light-background WCAG AA contrast */
+  --color-accent:        oklch(51% 0.19 258);
+  --color-accent-strong: oklch(44% 0.19 258);      /* hover */
+  --color-accent-wash:   oklch(51% 0.19 258 / 0.07);
+  --color-accent-soft:   oklch(88% 0.055 258);     /* mesh / decorative */
+
+  /* Secondary */
+  --color-teal:          oklch(55% 0.11 195);
+  --color-verified:      oklch(56% 0.13 150);      /* verified ink-green */
 
   /* Container widths — Tailwind v4 uses --container-{key} for max-w-{key} */
   --container-sm: 24rem;
@@ -49,22 +58,21 @@ html {
 }
 
 body {
-  background-color: oklch(13% 0.015 265);
-  color: oklch(93% 0.02 265);
+  background-color: oklch(98.5% 0.003 265);
+  color: oklch(22% 0.025 265);
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
 }
 
-/* Film grain — scoped per-section (absolute, not a fixed whole-page layer:
-   full-viewport fixed overlays stall the embedded compositor).
-   The texture that separates this dark from the flat "Linear Look" dark. */
+/* Film grain — scoped per-section (absolute, not fixed).
+   Opacity 0.025 = light "paper" texture; dark theme used 0.04. */
 .grain-layer {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 160px 160px;
 }
@@ -81,7 +89,7 @@ h2 {
 }
 
 :focus-visible {
-  outline: 2px solid oklch(72% 0.14 258 / 0.7);
+  outline: 2px solid oklch(51% 0.19 258 / 0.7);
   outline-offset: 2px;
 }
 
@@ -113,9 +121,9 @@ h2 {
 }
 .aurora-orb--late { animation-delay: -8s; }
 
-/* ── Dot-grid backdrop ── */
+/* ── Dot-grid backdrop — light blue dots on canvas, fades out toward the fold ── */
 .bg-grid-dots {
-  background-image: radial-gradient(oklch(45% 0.03 265 / 0.3) 1px, transparent 1px);
+  background-image: radial-gradient(oklch(60% 0.05 258 / 0.5) 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: radial-gradient(ellipse 70% 65% at 50% 0%, black 25%, transparent 78%);
   -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 0%, black 25%, transparent 78%);
@@ -157,7 +165,7 @@ h2 {
 .rule-ticks {
   position: relative;
   height: 1px;
-  background: linear-gradient(90deg, transparent, oklch(30% 0.025 265) 18%, oklch(30% 0.025 265) 82%, transparent);
+  background: linear-gradient(90deg, transparent, oklch(84% 0.012 265) 18%, oklch(84% 0.012 265) 82%, transparent);
 }
 .rule-ticks::before {
   content: '';
@@ -167,11 +175,11 @@ h2 {
   width: 8px;
   height: 8px;
   transform: translateX(-50%) rotate(45deg);
-  border: 1px solid oklch(72% 0.14 258 / 0.5);
-  background: oklch(13% 0.015 265);
+  border: 1px solid oklch(51% 0.19 258 / 0.5);
+  background: oklch(98.5% 0.003 265); /* canvas — the diamond window shows page bg */
 }
 
-/* ── Blueprint corner brackets — evidence frames only (hero shot, primary proof) ── */
+/* ── Blueprint corner brackets — accent blue, evidence frames only ── */
 .corner-ticks {
   position: relative;
 }
@@ -181,7 +189,7 @@ h2 {
   position: absolute;
   width: 14px;
   height: 14px;
-  border: 0 solid oklch(72% 0.14 258 / 0.55);
+  border: 0 solid oklch(51% 0.19 258 / 0.55);
   pointer-events: none;
 }
 .corner-ticks::before {
@@ -197,7 +205,7 @@ h2 {
   border-right-width: 1px;
 }
 
-/* ── Card hover lift (overrides inline border via !important) ── */
+/* ── Card hover lift — Stripe-style blue-tint layered shadow ── */
 .card-lift {
   transition:
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -206,14 +214,14 @@ h2 {
 }
 .card-lift:hover {
   transform: translateY(-4px);
-  border-color: oklch(72% 0.14 258 / 0.4) !important;
+  border-color: oklch(51% 0.19 258 / 0.4) !important;
   box-shadow:
-    0 16px 44px oklch(10% 0.01 265 / 0.55),
-    0 0 32px oklch(72% 0.14 258 / 0.12),
-    inset 0 1px 0 oklch(93% 0.02 265 / 0.06);
+    0 2px 4px oklch(25% 0.04 265 / 0.06),
+    0 20px 48px -12px oklch(45% 0.12 258 / 0.22),
+    inset 0 1px 0 oklch(100% 0 0 / 0.8);
 }
 
-/* ── Primary CTA glow ── */
+/* ── Primary CTA glow — color shadow (blur-free, per brief) ── */
 .btn-glow {
   transition:
     transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
@@ -222,14 +230,16 @@ h2 {
 }
 .btn-glow:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 44px oklch(72% 0.14 258 / 0.45) !important;
-  filter: brightness(1.06);
+  box-shadow:
+    0 1px 2px oklch(25% 0.1 258 / 0.2),
+    0 8px 24px -6px oklch(51% 0.19 258 / 0.45) !important;
+  filter: brightness(1.04);
 }
 
-/* ── Nav link — hairline underline slides in from the left ── */
+/* ── Nav link — ink-secondary, hairline underline slides in from the left in accent ── */
 .nav-link {
   position: relative;
-  color: oklch(65% 0.025 265);
+  color: oklch(45% 0.02 265);
   transition: color 0.25s ease;
 }
 .nav-link::after {
@@ -239,19 +249,19 @@ h2 {
   bottom: -5px;
   height: 1px;
   width: 100%;
-  background: oklch(78% 0.13 258);
+  background: oklch(51% 0.19 258);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .nav-link:hover {
-  color: oklch(90% 0.03 265);
+  color: oklch(22% 0.025 265);
 }
 .nav-link:hover::after {
   transform: scaleX(1);
 }
 
-/* ── Screenshot frame shimmer sweep ── */
+/* ── Screenshot frame shimmer sweep — halved for light context ── */
 @keyframes shimmer-sweep {
   0% { transform: translateX(-120%) skewX(-12deg); }
   60%, 100% { transform: translateX(220%) skewX(-12deg); }
@@ -265,9 +275,9 @@ h2 {
   background: linear-gradient(
     100deg,
     transparent,
-    oklch(90% 0.03 265 / 0.05) 45%,
-    oklch(90% 0.03 265 / 0.09) 50%,
-    oklch(90% 0.03 265 / 0.05) 55%,
+    oklch(100% 0 0 / 0.025) 45%,
+    oklch(100% 0 0 / 0.045) 50%,
+    oklch(100% 0 0 / 0.025) 55%,
     transparent
   );
   animation: shimmer-sweep 7s ease-in-out infinite;
@@ -285,17 +295,17 @@ h2 {
   50%, 92% { opacity: 1; transform: scale(1) rotate(0deg); }
   100% { opacity: 0; transform: scale(1.45) rotate(4deg); }
 }
+/* Row glows: transparent (white card bg) → verified ink-green wash */
 @keyframes seal-row-glow {
-  0%, 44% { background-color: oklch(13% 0.015 265); }
-  52%, 88% { background-color: oklch(70% 0.15 145 / 0.06); }
-  100% { background-color: oklch(13% 0.015 265); }
+  0%, 44% { background-color: transparent; }
+  52%, 88% { background-color: oklch(56% 0.13 150 / 0.07); }
+  100% { background-color: transparent; }
 }
 .seal-claim { animation: seal-claim 8s ease-in-out infinite; }
 .seal-verify { animation: seal-verify 8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 .seal-row-animated { animation: seal-row-glow 8s ease-in-out infinite; }
 
-/* Emblem stamps onto the card corner on the same clock — the ink hits at 47%,
-   settles tilted like a real hand stamp */
+/* Emblem stamps onto the card corner on the same clock — the ink hits at 47% */
 @keyframes seal-emblem-stamp {
   0%, 42% { opacity: 0; transform: scale(1.7) rotate(-18deg); }
   47% { opacity: 1; transform: scale(0.92) rotate(-6deg); }
@@ -332,7 +342,7 @@ h2 {
 .flow-line {
   background-image: repeating-linear-gradient(
     90deg,
-    oklch(72% 0.14 258 / 0.5) 0 5px,
+    oklch(51% 0.19 258 / 0.5) 0 5px,
     transparent 5px 22px
   );
   mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
@@ -404,7 +414,7 @@ h2 {
     animation-timeline: view();
   }
 
-  /* The loop fills Claimed-blue → Verified-green as the section scrolls through */
+  /* The loop fills accent-blue → verified-green as the section scrolls through */
   .flow-timeline { view-timeline: --how-loop block; }
   @keyframes sd-fill {
     from { transform: scaleX(0); }

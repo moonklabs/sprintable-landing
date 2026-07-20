@@ -12,9 +12,9 @@ function DiffObject() {
     { w: "52%", tone: "ctx" },
   ] as const;
   const TONES = {
-    add: { bar: "oklch(65% 0.15 145 / 0.55)", sign: "+", color: "oklch(65% 0.15 145)" },
-    del: { bar: "oklch(60% 0.19 25 / 0.45)", sign: "−", color: "oklch(60% 0.19 25 / 0.8)" },
-    ctx: { bar: "oklch(40% 0.03 265 / 0.6)", sign: "·", color: "oklch(45% 0.02 265)" },
+    add: { bar: "oklch(56% 0.13 150 / 0.45)", sign: "+", color: "oklch(56% 0.13 150)" },
+    del: { bar: "oklch(55% 0.18 25 / 0.35)", sign: "−", color: "oklch(50% 0.18 25 / 0.9)" },
+    ctx: { bar: "oklch(60% 0.03 265 / 0.4)", sign: "·", color: "oklch(57% 0.015 265)" },
   } as const;
   return (
     <div className="flex w-24 flex-col gap-1.5" aria-hidden="true">
@@ -39,13 +39,13 @@ function GateObject() {
     <div className="flex items-center gap-1.5" aria-hidden="true">
       <span
         className="inline-flex items-center gap-1 rounded-md px-2 py-1 font-mono text-[10px] font-bold"
-        style={{ backgroundColor: "oklch(65% 0.15 145 / 0.15)", color: "oklch(65% 0.15 145)", border: "1px solid oklch(65% 0.15 145 / 0.35)" }}
+        style={{ backgroundColor: "oklch(56% 0.13 150 / 0.12)", color: "oklch(56% 0.13 150)", border: "1px solid oklch(56% 0.13 150 / 0.3)" }}
       >
         ✓
       </span>
       <span
         className="inline-flex items-center gap-1 rounded-md px-2 py-1 font-mono text-[10px] font-bold"
-        style={{ border: "1px solid oklch(32% 0.026 265)", color: "oklch(55% 0.02 265)" }}
+        style={{ border: "1px solid oklch(84% 0.012 265)", color: "oklch(57% 0.015 265)" }}
       >
         ↩
       </span>
@@ -59,7 +59,7 @@ function SignatureObject() {
     <svg viewBox="0 0 150 44" className="sig-draw h-9 w-28" aria-hidden="true" fill="none">
       <path
         d="M8 32 C 26 4, 38 42, 56 24 S 84 8, 92 26 S 118 40, 128 18 C 132 10, 138 14, 144 22"
-        stroke="oklch(78% 0.13 258)"
+        stroke="oklch(51% 0.19 258)"
         strokeWidth="1.75"
         strokeLinecap="round"
       />
@@ -73,8 +73,12 @@ export async function TrustSection() {
   const t = await getTranslations();
 
   return (
-    <section id="trust" className="overflow-x-clip py-20 sm:py-28">
-      {/* Ghost strip — the king message as a giant outlined artifact, drifting with scroll */}
+    <section
+      id="trust"
+      className="overflow-x-clip py-20 sm:py-28"
+      style={{ backgroundColor: "oklch(96.9% 0.007 258)" }}
+    >
+      {/* Ghost strip — subtle blue outline on canvas-tint, drifting with scroll */}
       <div
         aria-hidden="true"
         className="ghost-strip pointer-events-none select-none mb-14 sm:mb-20"
@@ -84,7 +88,7 @@ export async function TrustSection() {
           style={{
             fontSize: "clamp(4.5rem, 11vw, 10rem)",
             color: "transparent",
-            WebkitTextStroke: "1.5px oklch(36% 0.055 258 / 0.55)",
+            WebkitTextStroke: "1.5px oklch(51% 0.19 258 / 0.18)",
           }}
         >
           Claimed → Gate → Verified&ensp;·&ensp;Claimed → Gate → Verified
@@ -95,17 +99,17 @@ export async function TrustSection() {
         <ScrollReveal className="mx-auto max-w-3xl space-y-4 text-center">
           <p
             className="eyebrow-cross text-xs font-semibold uppercase tracking-[0.3em]"
-            style={{ color: "oklch(65% 0.06 258)" }}
+            style={{ color: "oklch(51% 0.19 258)" }}
           >
             {t("trust.label")}
           </p>
           <h2
             className="whitespace-pre-line font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[-0.04em] sm:text-5xl"
-            style={{ color: "oklch(93% 0.02 265)" }}
+            style={{ color: "oklch(22% 0.025 265)" }}
           >
             {t("trust.title")}
           </h2>
-          <p className="text-base leading-7" style={{ color: "oklch(65% 0.025 265)" }}>
+          <p className="text-base leading-7" style={{ color: "oklch(45% 0.02 265)" }}>
             {t("trust.subtitle")}
           </p>
         </ScrollReveal>
@@ -119,15 +123,15 @@ export async function TrustSection() {
                 key={key}
                 delay={i * 110}
                 className="card-lift rounded-2xl p-7"
-                style={{ border: "1px solid oklch(26% 0.022 265)", backgroundColor: "oklch(17% 0.018 265)" }}
+                style={{ border: "1px solid oklch(84% 0.012 265)", backgroundColor: "oklch(100% 0 0)" }}
               >
                 <div className="flex items-start justify-between gap-4">
                   <span
                     className="inline-flex size-8 items-center justify-center rounded-full font-mono text-xs font-bold"
                     style={{
-                      border: "1px solid oklch(72% 0.14 258 / 0.35)",
-                      backgroundColor: "oklch(72% 0.14 258 / 0.1)",
-                      color: "oklch(78% 0.13 258)",
+                      border: "1px solid oklch(51% 0.19 258 / 0.35)",
+                      backgroundColor: "oklch(51% 0.19 258 / 0.08)",
+                      color: "oklch(51% 0.19 258)",
                     }}
                   >
                     {i + 1}
@@ -136,11 +140,11 @@ export async function TrustSection() {
                 </div>
                 <h3
                   className="mt-5 font-[family-name:var(--font-display)] text-lg font-bold"
-                  style={{ color: "oklch(93% 0.02 265)" }}
+                  style={{ color: "oklch(22% 0.025 265)" }}
                 >
                   {t(`trust.${key}.title`)}
                 </h3>
-                <p className="mt-2 text-sm leading-7" style={{ color: "oklch(65% 0.025 265)" }}>
+                <p className="mt-2 text-sm leading-7" style={{ color: "oklch(45% 0.02 265)" }}>
                   {t(`trust.${key}.desc`)}
                 </p>
               </ScrollReveal>
@@ -148,35 +152,35 @@ export async function TrustSection() {
           })}
         </div>
 
-        {/* Advisor — 보강 중 기능은 '곧 제공'으로 정직하게 */}
+        {/* Advisor — accent-wash bg + accent 20% border */}
         <ScrollReveal
           delay={120}
           className="card-lift mt-4 rounded-2xl p-7"
           style={{
-            border: "1px solid oklch(72% 0.14 258 / 0.2)",
+            border: "1px solid oklch(51% 0.19 258 / 0.2)",
             background:
-              "linear-gradient(160deg, oklch(72% 0.14 258 / 0.08) 0%, oklch(16% 0.018 265) 60%)",
+              "linear-gradient(160deg, oklch(51% 0.19 258 / 0.07) 0%, oklch(100% 0 0) 60%)",
           }}
         >
           <div className="flex flex-wrap items-center gap-3">
             <h3
               className="font-[family-name:var(--font-display)] text-lg font-bold"
-              style={{ color: "oklch(93% 0.02 265)" }}
+              style={{ color: "oklch(22% 0.025 265)" }}
             >
               {t("trust.advisor.title")}
             </h3>
             <span
               className="rounded-full px-2.5 py-0.5 text-xs font-bold uppercase tracking-widest"
               style={{
-                border: "1px solid oklch(72% 0.14 258 / 0.35)",
-                backgroundColor: "oklch(72% 0.14 258 / 0.1)",
-                color: "oklch(78% 0.13 258)",
+                border: "1px solid oklch(51% 0.19 258 / 0.35)",
+                backgroundColor: "oklch(51% 0.19 258 / 0.08)",
+                color: "oklch(51% 0.19 258)",
               }}
             >
               {t("trust.advisor.badge")}
             </span>
           </div>
-          <p className="mt-2 max-w-2xl text-sm leading-7" style={{ color: "oklch(65% 0.025 265)" }}>
+          <p className="mt-2 max-w-2xl text-sm leading-7" style={{ color: "oklch(45% 0.02 265)" }}>
             {t("trust.advisor.desc")}
           </p>
         </ScrollReveal>

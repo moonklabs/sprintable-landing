@@ -9,6 +9,11 @@ interface CommandChipProps {
   className?: string;
 }
 
+/**
+ * Terminal command chip — intentionally dark on the light page.
+ * The ink-dark bg is the page's only small-scale dark object: a terminal
+ * lives in the dark, and that contrast makes it feel authentically runnable.
+ */
 export function CommandChip({ command, copiedLabel, className }: CommandChipProps) {
   const [copied, setCopied] = useState(false);
 
@@ -28,8 +33,8 @@ export function CommandChip({ command, copiedLabel, className }: CommandChipProp
       onClick={copy}
       className={`card-lift inline-flex cursor-pointer items-center gap-3 rounded-[var(--radius)] px-4 py-2.5 font-mono text-sm ${className ?? ''}`}
       style={{
-        border: '1px solid oklch(26% 0.022 265)',
-        backgroundColor: 'oklch(15% 0.016 265)',
+        border: '1px solid oklch(32% 0.025 265)',
+        backgroundColor: 'oklch(22% 0.025 265)', /* ink — terminal dark */
         color: 'oklch(85% 0.025 265)',
       }}
       aria-label={`Copy: ${command}`}
