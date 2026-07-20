@@ -57,10 +57,32 @@ body {
   line-height: 1.6;
 }
 
+/* Film grain — scoped per-section (absolute, not a fixed whole-page layer:
+   full-viewport fixed overlays stall the embedded compositor).
+   The texture that separates this dark from the flat "Linear Look" dark. */
+.grain-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display), system-ui, sans-serif;
   line-height: 1.1;
   letter-spacing: -0.03em;
+  word-break: keep-all; /* 한국어 헤드라인이 어중에서 꺾이지 않도록 (CJK만 영향) */
+}
+
+h2 {
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid oklch(72% 0.14 258 / 0.7);
+  outline-offset: 2px;
 }
 
 /* ── Scroll reveal (driven by ScrollReveal client component) ── */
@@ -100,6 +122,81 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
+/* ── Registration marks — print-proof crosshairs flanking section eyebrows ── */
+.eyebrow-cross {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow-cross::before,
+.eyebrow-cross::after {
+  content: '';
+  width: 1.25rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+  opacity: 0.55;
+}
+.eyebrow-cross::after {
+  background: linear-gradient(270deg, transparent, currentColor);
+}
+/* left-aligned variant — leading dash only */
+.eyebrow-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow-lead::before {
+  content: '';
+  width: 1.25rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+/* ── Measure rule — hairline divider with a center registration tick ── */
+.rule-ticks {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, oklch(30% 0.025 265) 18%, oklch(30% 0.025 265) 82%, transparent);
+}
+.rule-ticks::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -3.5px;
+  width: 8px;
+  height: 8px;
+  transform: translateX(-50%) rotate(45deg);
+  border: 1px solid oklch(72% 0.14 258 / 0.5);
+  background: oklch(13% 0.015 265);
+}
+
+/* ── Blueprint corner brackets — evidence frames only (hero shot, primary proof) ── */
+.corner-ticks {
+  position: relative;
+}
+.corner-ticks::before,
+.corner-ticks::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid oklch(72% 0.14 258 / 0.55);
+  pointer-events: none;
+}
+.corner-ticks::before {
+  top: -7px;
+  left: -7px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+.corner-ticks::after {
+  bottom: -7px;
+  right: -7px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
 /* ── Card hover lift (overrides inline border via !important) ── */
 .card-lift {
   transition:
@@ -112,7 +209,8 @@ h1, h2, h3, h4, h5, h6 {
   border-color: oklch(72% 0.14 258 / 0.4) !important;
   box-shadow:
     0 16px 44px oklch(10% 0.01 265 / 0.55),
-    0 0 32px oklch(72% 0.14 258 / 0.12);
+    0 0 32px oklch(72% 0.14 258 / 0.12),
+    inset 0 1px 0 oklch(93% 0.02 265 / 0.06);
 }
 
 /* ── Primary CTA glow ── */
@@ -126,6 +224,31 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-1px);
   box-shadow: 0 10px 44px oklch(72% 0.14 258 / 0.45) !important;
   filter: brightness(1.06);
+}
+
+/* ── Nav link — hairline underline slides in from the left ── */
+.nav-link {
+  position: relative;
+  color: oklch(65% 0.025 265);
+  transition: color 0.25s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 1px;
+  width: 100%;
+  background: oklch(78% 0.13 258);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover {
+  color: oklch(90% 0.03 265);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
 }
 
 /* ── Screenshot frame shimmer sweep ── */
@@ -151,16 +274,16 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
-/* ── Claimed → Verified seal stamp cycle (hero proof card) ── */
+/* ── Claimed → Verified seal stamp cycle (hero proof card, 8s shared clock) ── */
 @keyframes seal-claim {
   0%, 42% { opacity: 1; }
   50%, 92% { opacity: 0; }
   100% { opacity: 1; }
 }
 @keyframes seal-verify {
-  0%, 42% { opacity: 0; transform: scale(1.5); }
-  50%, 92% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.5); }
+  0%, 42% { opacity: 0; transform: scale(1.45) rotate(4deg); }
+  50%, 92% { opacity: 1; transform: scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: scale(1.45) rotate(4deg); }
 }
 @keyframes seal-row-glow {
   0%, 44% { background-color: oklch(13% 0.015 265); }
@@ -170,6 +293,142 @@ h1, h2, h3, h4, h5, h6 {
 .seal-claim { animation: seal-claim 8s ease-in-out infinite; }
 .seal-verify { animation: seal-verify 8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 .seal-row-animated { animation: seal-row-glow 8s ease-in-out infinite; }
+
+/* Emblem stamps onto the card corner on the same clock — the ink hits at 47%,
+   settles tilted like a real hand stamp */
+@keyframes seal-emblem-stamp {
+  0%, 42% { opacity: 0; transform: scale(1.7) rotate(-18deg); }
+  47% { opacity: 1; transform: scale(0.92) rotate(-6deg); }
+  51%, 90% { opacity: 1; transform: scale(1) rotate(-8deg); }
+  100% { opacity: 0; transform: scale(1.7) rotate(-18deg); }
+}
+.seal-emblem-stamp {
+  animation: seal-emblem-stamp 8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  transform-origin: center;
+}
+/* Impact ripple — a ring that blooms outward right after the stamp lands */
+@keyframes seal-ripple {
+  0%, 45% { opacity: 0; transform: scale(0.7); }
+  50% { opacity: 0.55; }
+  68%, 100% { opacity: 0; transform: scale(1.45); }
+}
+.seal-ripple {
+  animation: seal-ripple 8s ease-out infinite;
+  transform-origin: center;
+}
+/* Ring text rotates continuously inside the emblem */
+@keyframes seal-ring-spin {
+  to { transform: rotate(360deg); }
+}
+.seal-ring-spin {
+  animation: seal-ring-spin 44s linear infinite;
+  transform-origin: center;
+}
+
+/* ── Loop flow — dashes marching along the How-it-works connector ── */
+@keyframes flow-dash {
+  to { background-position-x: 22px; }
+}
+.flow-line {
+  background-image: repeating-linear-gradient(
+    90deg,
+    oklch(72% 0.14 258 / 0.5) 0 5px,
+    transparent 5px 22px
+  );
+  mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  animation: flow-dash 1.6s linear infinite;
+}
+
+/* ── Signature — draws itself when its section reveals ── */
+.sig-draw path {
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+}
+.reveal.is-visible .sig-draw path {
+  animation: sig-draw 1.4s cubic-bezier(0.5, 0, 0.3, 1) 0.5s forwards;
+}
+@keyframes sig-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── Gate breathing — soft emphasis on the human-approval step ── */
+@keyframes gate-breathe {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.gate-breathe { animation: gate-breathe 3.2s ease-in-out infinite; }
+
+/* Loop fill exists only where scrubbing exists — dashes carry the fallback */
+.flow-fill { display: none; }
+
+/* ── Ghost strip — the king message as a giant outlined artifact ── */
+.ghost-strip {
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+
+/* ═══ Scroll-driven layer — scrubbing tied to scroll position.
+   Progressive enhancement: browsers without animation-timeline keep the
+   IO reveal system untouched (compositor-only transforms, 60fps). ═══ */
+@supports (animation-timeline: view()) {
+  /* Verification gauge — reading progress as a hairline gauge over the nav */
+  @keyframes sd-progress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  .scroll-progress {
+    animation: sd-progress linear both;
+    animation-timeline: scroll(root);
+  }
+
+  /* Product windows tilt flat as they enter — evidence stands up to meet you */
+  @keyframes sd-tilt-in {
+    from { opacity: 0.5; transform: perspective(1100px) rotateX(9deg) scale(0.962); }
+    to { opacity: 1; transform: none; }
+  }
+  .tilt-in {
+    transform-origin: 50% 15%;
+    animation: sd-tilt-in cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 8% cover 42%;
+  }
+
+  /* Ghost strip drifts sideways with scroll */
+  @keyframes sd-drift-x {
+    from { transform: translateX(3%); }
+    to { transform: translateX(-9%); }
+  }
+  .ghost-strip-inner {
+    animation: sd-drift-x linear both;
+    animation-timeline: view();
+  }
+
+  /* The loop fills Claimed-blue → Verified-green as the section scrolls through */
+  .flow-timeline { view-timeline: --how-loop block; }
+  @keyframes sd-fill {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  .flow-fill {
+    display: block;
+    transform-origin: left center;
+    animation: sd-fill linear both;
+    animation-timeline: --how-loop;
+    animation-range: entry 35% contain 90%;
+  }
+
+  /* Closing seal turns as the certificate arrives */
+  @keyframes sd-seal-turn {
+    from { transform: rotate(-30deg) scale(0.92); }
+    to { transform: rotate(6deg) scale(1); }
+  }
+  .seal-scrub {
+    animation: sd-seal-turn linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 85%;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -183,4 +442,11 @@ h1, h2, h3, h4, h5, h6 {
   /* Frozen stamp cycle would land mid-crossfade — pin to the verified state */
   .seal-claim { opacity: 0; }
   .seal-verify { opacity: 1; transform: none; }
+  .seal-emblem-stamp { opacity: 1; transform: rotate(-8deg); }
+  .seal-ripple { opacity: 0; }
+  .sig-draw path { stroke-dashoffset: 0; }
+  /* Scroll-scrub layer: duration tricks don't stop timeline-driven animation —
+     detach explicitly and rest at the finished state */
+  .tilt-in, .ghost-strip-inner, .flow-fill, .seal-scrub { animation: none !important; }
+  .scroll-progress { display: none; }
 }

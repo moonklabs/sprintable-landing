@@ -32,6 +32,8 @@ export async function HeroSection() {
       />
       {/* Dot grid — fades out toward the fold */}
       <div className="bg-grid-dots absolute inset-x-0 top-0 -z-10 h-[640px]" aria-hidden="true" />
+      {/* Film grain — warm the dark, scoped to the hero */}
+      <div className="grain-layer -z-10" aria-hidden="true" />
       {/* Aurora orbs — parallax at different depths for a layered backdrop */}
       <Parallax speed={0.18} className="absolute left-[8%] top-24 -z-10 hidden lg:block">
         <div
@@ -51,7 +53,7 @@ export async function HeroSection() {
       <div className="mx-auto max-w-7xl">
         {/* Hero grid — text left, verified seal card right */}
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <div className="max-w-2xl">
+        <div className="min-w-0 max-w-2xl">
           {/* BETA 배지 단순화 (D-HR-1) */}
           <ScrollReveal delay={0}>
             <div
@@ -187,7 +189,7 @@ export async function HeroSection() {
         </div>
 
         {/* Verified seal card — 제품의 핵심 약속(Claimed → Verified)을 증빙으로 */}
-        <ScrollReveal delay={200} direction="right" className="w-full max-w-xl lg:ml-auto">
+        <ScrollReveal delay={200} direction="right" className="w-full min-w-0 max-w-xl lg:ml-auto">
           <VerifiedSealCard
             title={t("hero.seal.title")}
             labels={{
@@ -210,10 +212,11 @@ export async function HeroSection() {
         {/* Spacer */}
         <div className="mt-16 sm:mt-20" />
 
-        {/* Screenshot full-width with brand glow (D-HR-5) — counter-scroll parallax for depth */}
-        <ScrollReveal direction="scale">
+        {/* Screenshot full-width with brand glow (D-HR-5) — counter-scroll parallax
+            for depth; tilt-in scrub owns the entry motion where supported */}
+        <ScrollReveal direction="none">
           <Parallax speed={-0.05}>
-            <div className="relative mx-auto max-w-7xl">
+            <div className="tilt-in relative mx-auto max-w-7xl">
               {/* brand glow */}
               <div
                 className="absolute inset-x-12 -bottom-6 -top-6 -z-10 rounded-[2rem] opacity-50 blur-3xl"
@@ -223,12 +226,41 @@ export async function HeroSection() {
                 }}
               />
               <div
-                className="shimmer-frame overflow-hidden rounded-2xl"
+                className="corner-ticks shimmer-frame overflow-hidden rounded-2xl"
                 style={{
                   border: "1px solid oklch(26% 0.022 265)",
                   boxShadow: "0 24px 64px oklch(13% 0.015 265 / 0.6)",
                 }}
               >
+                {/* Browser chrome — evidence framing: this is a real window, not an illustration */}
+                <div
+                  className="flex items-center gap-2 px-4 py-2.5"
+                  style={{
+                    borderBottom: "1px solid oklch(24% 0.02 265)",
+                    backgroundColor: "oklch(15% 0.016 265)",
+                  }}
+                >
+                  <span className="flex gap-1.5" aria-hidden="true">
+                    {[0, 1, 2].map((d) => (
+                      <span
+                        key={d}
+                        className="size-2 rounded-full"
+                        style={{ backgroundColor: "oklch(30% 0.025 265)" }}
+                      />
+                    ))}
+                  </span>
+                  <span
+                    className="mx-auto rounded-md px-3 py-0.5 font-mono text-[11px]"
+                    style={{
+                      backgroundColor: "oklch(13% 0.015 265)",
+                      color: "oklch(55% 0.02 265)",
+                      border: "1px solid oklch(22% 0.018 265)",
+                    }}
+                  >
+                    app.sprintable.ai
+                  </span>
+                  <span className="w-9" aria-hidden="true" />
+                </div>
                 <Image
                   src={dashboardShot}
                   alt="Sprintable dashboard — command center with sprint status and live activity feed"
@@ -242,11 +274,8 @@ export async function HeroSection() {
           </Parallax>
         </ScrollReveal>
 
-        {/* Subtle divider */}
-        <div
-          className="mx-auto my-16 max-w-3xl border-t sm:my-20"
-          style={{ borderColor: "oklch(26% 0.022 265)" }}
-        />
+        {/* Measure rule — hairline with center registration tick */}
+        <div className="rule-ticks mx-auto my-16 max-w-3xl sm:my-20" aria-hidden="true" />
 
         {/* Operating Principle — 스크린샷 아래 spotlight (D-HR-6) */}
         <ScrollReveal>

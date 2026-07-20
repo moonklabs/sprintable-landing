@@ -47,6 +47,18 @@ export default function Home() {
       }}
       className="min-h-screen selection:bg-[oklch(72%_0.14_265/0.25)]"
     >
+      {/* Verification gauge — scroll progress as a hairline over the nav.
+          Inline scaleX(0) doubles as the no-support fallback (stays hidden). */}
+      <div
+        aria-hidden="true"
+        className="scroll-progress fixed inset-x-0 top-0 z-[60] h-0.5 origin-left"
+        style={{
+          transform: "scaleX(0)",
+          background:
+            "linear-gradient(90deg, oklch(72% 0.14 258), oklch(78% 0.13 195))",
+        }}
+      />
+
       {/* ── NAV ── */}
       <nav
         style={{
@@ -72,8 +84,7 @@ export default function Home() {
               href="https://github.com/moonklabs/sprintable"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden text-sm font-medium transition sm:inline-flex"
-              style={{ color: "oklch(65% 0.025 265)" }}
+              className="nav-link hidden text-sm font-medium sm:inline-flex"
             >
               {t("nav.github")}
             </a>
@@ -91,7 +102,8 @@ export default function Home() {
         </div>
       </nav>
 
-      <main className="overflow-x-hidden pt-18">
+      {/* overflow-x-clip — hidden would create a y-scroll container that hijacks anchor jumps */}
+      <main className="overflow-x-clip pt-18">
         <HeroSection />
 
         <TrustSection />
@@ -103,7 +115,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <ScrollReveal className="mx-auto max-w-2xl text-center">
               <p
-                className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
+                className="eyebrow-cross mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
                 style={{ color: "oklch(65% 0.06 258)" }}
               >
                 {t("proof.eyebrow")}
@@ -121,10 +133,10 @@ export default function Home() {
 
             {/* primary — org briefing (wide) */}
             {proofShots[0] && (
-              <ScrollReveal direction="scale" className="mx-auto mt-12 max-w-5xl">
+              <ScrollReveal direction="none" className="mx-auto mt-12 max-w-5xl">
                 <Parallax speed={-0.04}>
                   <div
-                    className="shimmer-frame relative overflow-hidden rounded-2xl"
+                    className="corner-ticks shimmer-frame tilt-in relative overflow-hidden rounded-2xl"
                     style={{ border: "1px solid oklch(26% 0.022 265)", boxShadow: "0 24px 64px oklch(13% 0.015 265 / 0.6)" }}
                   >
                     <div
@@ -186,7 +198,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <ScrollReveal className="mb-14">
               <p
-                className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
+                className="eyebrow-lead mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
                 style={{ color: "oklch(65% 0.06 258)" }}
               >
                 {t("customers.eyebrow")}
@@ -251,7 +263,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <ScrollReveal className="mb-14">
               <p
-                className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
+                className="eyebrow-lead mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
                 style={{ color: "oklch(65% 0.06 258)" }}
               >
                 {t("model.eyebrow")}
@@ -372,7 +384,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <ScrollReveal className="mb-14">
               <p
-                className="mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
+                className="eyebrow-lead mb-3 text-xs font-semibold uppercase tracking-[0.3em]"
                 style={{ color: "oklch(65% 0.06 258)" }}
               >
                 {t("pricing.eyebrow")}
