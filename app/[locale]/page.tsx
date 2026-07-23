@@ -1,15 +1,15 @@
 import Image from "next/image";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
-import { LocaleSwitcher } from "./components/locale-switcher";
-import { NavLinks } from "./components/nav-links";
-import { SprintableMarkSvg } from "./components/brand/sprintable-mark-svg";
-import { ScrollReveal } from "./components/motion/scroll-reveal";
-import { Parallax } from "./components/motion/parallax";
-import { HeroSection } from "./components/sections/hero-section";
-import { TrustSection } from "./components/sections/trust-section";
-import { HowItWorksSection } from "./components/sections/how-it-works-section";
-import { FinalCtaSection } from "./components/sections/final-cta-section";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "../../i18n/navigation";
+import { LocaleSwitcher } from "../components/locale-switcher";
+import { NavLinks } from "../components/nav-links";
+import { SprintableMarkSvg } from "../components/brand/sprintable-mark-svg";
+import { ScrollReveal } from "../components/motion/scroll-reveal";
+import { Parallax } from "../components/motion/parallax";
+import { HeroSection } from "../components/sections/hero-section";
+import { TrustSection } from "../components/sections/trust-section";
+import { HowItWorksSection } from "../components/sections/how-it-works-section";
+import { FinalCtaSection } from "../components/sections/final-cta-section";
 
 /** Minimal white browser chrome — wraps dark app screenshots for contrast */
 function BrowserChrome({ url = "app.sprintable.ai" }: { url?: string }) {
@@ -41,8 +41,10 @@ function BrowserChrome({ url = "app.sprintable.ai" }: { url?: string }) {
   );
 }
 
-export default function Home() {
-  const t = useTranslations();
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
   const customerCards = t.raw("customers.cards") as {
     title: string;
     desc: string;
@@ -122,8 +124,10 @@ export default function Home() {
             >
               {t("nav.github")}
             </a>
-            <a
-              href="https://app.sprintable.ai/login"
+            <button
+              type="button"
+              data-waitlist-cta
+              data-waitlist-source="navigation"
               className="btn-glow rounded-lg px-4 py-2 text-sm font-semibold"
               style={{
                 backgroundColor: "oklch(48% 0.17 260)",
@@ -131,7 +135,7 @@ export default function Home() {
               }}
             >
               {t("nav.getStarted")}
-            </a>
+            </button>
           </div>
         </div>
       </nav>
@@ -547,8 +551,11 @@ export default function Home() {
                       ))}
                     </ul>
 
-                    <a
-                      href={i === 2 ? "mailto:dev1@moonklabs.com" : "https://app.sprintable.ai/login"}
+                    <button
+                      type="button"
+                      data-waitlist-cta
+                      data-waitlist-source="pricing"
+                      data-waitlist-plan={plan.name}
                       className="mt-8 inline-flex items-center justify-center rounded-[var(--radius)] px-5 py-3 text-sm font-semibold transition"
                       style={
                         isTeam
@@ -568,7 +575,7 @@ export default function Home() {
                         : i === 1
                           ? t("pricing.startTrial")
                           : t("pricing.contactSales")}
-                    </a>
+                    </button>
                   </ScrollReveal>
                 );
               })}
@@ -717,8 +724,10 @@ export default function Home() {
             boxShadow: "0 -2px 24px oklch(35% 0.08 260 / 0.12)",
           }}
         >
-          <a
-            href="https://app.sprintable.ai/login"
+          <button
+            type="button"
+            data-waitlist-cta
+            data-waitlist-source="mobile_sticky"
             className="flex-1 rounded-[var(--radius)] py-3 text-center text-sm font-semibold"
             style={{
               backgroundColor: "oklch(48% 0.17 260)",
@@ -726,7 +735,7 @@ export default function Home() {
             }}
           >
             {t("hero.primaryCta")}
-          </a>
+          </button>
           <a
             href="#pricing"
             className="flex-1 rounded-[var(--radius)] py-3 text-center text-sm font-medium"

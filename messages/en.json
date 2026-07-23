@@ -1,10 +1,14 @@
 {
+  "metadata": {
+    "title": "Sprintable — Ship with AI agents",
+    "description": "Open-source PM surface for teams shipping with AI. Turn agent claims into human-verified outcomes."
+  },
   "nav": {
     "product": "Product",
     "trust": "Trust",
     "pricing": "Pricing",
     "github": "GitHub",
-    "getStarted": "Get started"
+    "getStarted": "Join waitlist"
   },
   "hero": {
     "badge": "Beta",
@@ -17,7 +21,7 @@
       "Easy review before approval",
       "Open source · Self-hosted"
     ],
-    "primaryCta": "Start free",
+    "primaryCta": "Join waitlist",
     "secondaryCta": "View on GitHub",
     "pricingCta": "View pricing",
     "command": "uvx sprintable",
@@ -163,9 +167,9 @@
     "subtitle": "Start free with self-hosting and add only the support you need.",
     "popular": "Most popular",
     "annualDiscount": "Save 17% annually",
-    "startFree": "Start free",
-    "startTrial": "Start trial",
-    "contactSales": "Contact sales",
+    "startFree": "Join waitlist",
+    "startTrial": "Join waitlist",
+    "contactSales": "Join waitlist",
     "wedge": "SSO · Audit logs · SLA — starting at $149, no sales call required.",
     "footnote": "All plans include unlimited stories, epics, sprints, and BYOA agent seats. Billed monthly or annually.",
     "plans": [
@@ -211,10 +215,10 @@
     ]
   },
   "finalCta": {
-    "eyebrow": "Get started",
+    "eyebrow": "Early access",
     "title": "Ship only what's verified",
     "desc": "Self-host with a single command. Approval gates and review are built in from day one.",
-    "primary": "Start free",
+    "primary": "Join waitlist",
     "secondary": "Read the docs"
   },
   "footer": {
@@ -237,5 +241,14 @@
   },
   "locale": {
     "switch": "한국어"
+  },
+  "waitlist": {
+    "eyebrow": "Early access",
+    "opening": "Opening the waitlist form.",
+    "unavailable": {
+      "title": "The waitlist is almost ready",
+      "description": "Please check back shortly while we prepare early access.",
+      "dismiss": "Close"
+    }
   }
 }

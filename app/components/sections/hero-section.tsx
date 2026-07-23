@@ -202,8 +202,10 @@ export async function HeroSection() {
           {/* CTA buttons + OSS command chip */}
           <ScrollReveal delay={360}>
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <a
-                href="https://app.sprintable.ai/login"
+              <button
+                type="button"
+                data-waitlist-cta
+                data-waitlist-source="hero"
                 className="btn-glow glass-btn group inline-flex items-center gap-2 rounded-[var(--radius)] px-7 py-3.5 text-sm font-semibold"
                 style={{
                   backgroundColor: "oklch(48% 0.17 260)",
@@ -213,7 +215,7 @@ export async function HeroSection() {
               >
                 {t("hero.primaryCta")}
                 <span className="transition-transform group-hover:translate-x-0.5">→</span>
-              </a>
+              </button>
               <a
                 href="https://github.com/moonklabs/sprintable"
                 target="_blank"

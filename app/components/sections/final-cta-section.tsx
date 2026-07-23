@@ -79,8 +79,10 @@ export async function FinalCtaSection() {
             </div>
             <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
               {/* Primary CTA — white button + deep blue text (反転: light on dark band) */}
-              <a
-                href="https://app.sprintable.ai/login"
+              <button
+                type="button"
+                data-waitlist-cta
+                data-waitlist-source="final_cta"
                 className="btn-glow inline-flex items-center justify-center rounded-[var(--radius)] px-7 py-3.5 text-sm font-semibold"
                 style={{
                   backgroundColor: "oklch(100% 0 0)",
@@ -89,7 +91,7 @@ export async function FinalCtaSection() {
                 }}
               >
                 {t("finalCta.primary")}
-              </a>
+              </button>
               {/* Secondary CTA — ghost on dark band */}
               <a
                 href="https://github.com/moonklabs/sprintable#readme"

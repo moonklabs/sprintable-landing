@@ -1,10 +1,14 @@
 {
+  "metadata": {
+    "title": "Sprintable — AI 에이전트와 검증하며 배포하세요",
+    "description": "AI 에이전트의 작업을 사람의 검토와 승인으로 검증하는 개발·프로덕트 팀용 오픈소스 조직 OS."
+  },
   "nav": {
     "product": "제품",
     "trust": "신뢰",
     "pricing": "요금제",
     "github": "GitHub",
-    "getStarted": "시작하기"
+    "getStarted": "얼리 액세스 신청"
   },
   "hero": {
     "badge": "Beta",
@@ -17,7 +21,7 @@
       "승인 전 쉬운 Review",
       "오픈소스 · 셀프호스트"
     ],
-    "primaryCta": "무료로 시작",
+    "primaryCta": "얼리 액세스 신청",
     "secondaryCta": "GitHub에서 보기",
     "pricingCta": "요금제 보기",
     "command": "uvx sprintable",
@@ -163,9 +167,9 @@
     "subtitle": "셀프호스트로 무료 시작하고 필요한 지원만 추가합니다.",
     "popular": "가장 인기",
     "annualDiscount": "연간 결제 17% 절약",
-    "startFree": "무료로 시작",
-    "startTrial": "트라이얼 시작",
-    "contactSales": "문의하기",
+    "startFree": "얼리 액세스 신청",
+    "startTrial": "얼리 액세스 신청",
+    "contactSales": "얼리 액세스 신청",
     "wedge": "SSO · 감사 로그 · SLA — 영업 문의 없이 $149에 시작하세요.",
     "footnote": "모든 요금제는 스토리, 에픽, 스프린트, BYOA 에이전트를 무제한으로 포함합니다. 월별 또는 연간 결제.",
     "plans": [
@@ -211,10 +215,10 @@
     ]
   },
   "finalCta": {
-    "eyebrow": "지금 시작",
+    "eyebrow": "얼리 액세스",
     "title": "검증된 결과만 배포하세요",
     "desc": "한 줄이면 셀프호스트로 시작할 수 있습니다. 승인 Gate와 Review는 처음부터 포함되어 있습니다.",
-    "primary": "무료로 시작",
+    "primary": "얼리 액세스 신청",
     "secondary": "문서 읽기"
   },
   "footer": {
@@ -237,5 +241,14 @@
   },
   "locale": {
     "switch": "English"
+  },
+  "waitlist": {
+    "eyebrow": "얼리 액세스",
+    "opening": "얼리 액세스 신청 폼을 여는 중입니다.",
+    "unavailable": {
+      "title": "얼리 액세스 신청을 준비하고 있습니다",
+      "description": "얼리 액세스를 준비하고 있습니다. 잠시 후 다시 시도해 주세요.",
+      "dismiss": "닫기"
+    }
   }
 }

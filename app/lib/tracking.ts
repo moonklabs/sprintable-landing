@@ -29,6 +29,11 @@ type RetentionVisitParams = {
   cohort_day: "d1" | "d7" | "d30";
 };
 
+type WaitlistEventParams = {
+  source: string;
+  plan?: string;
+};
+
 function sendEvent(name: string, params: Record<string, unknown>) {
   if (typeof window === "undefined" || !window.gtag) return;
   window.gtag("event", name, params);
@@ -56,4 +61,16 @@ export function trackFeatureEngage(params: FeatureEngageParams) {
 
 export function trackRetentionVisit(params: RetentionVisitParams) {
   sendEvent("retention_visit", params);
+}
+
+export function trackWaitlistCtaClick(params: WaitlistEventParams) {
+  sendEvent("waitlist_cta_clicked", params);
+}
+
+export function trackWaitlistFormOpened(params: WaitlistEventParams) {
+  sendEvent("waitlist_form_opened", params);
+}
+
+export function trackWaitlistSubmitted(params: WaitlistEventParams) {
+  sendEvent("waitlist_submitted", params);
 }

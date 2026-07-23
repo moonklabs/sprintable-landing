@@ -1,25 +1,10 @@
-import { getRequestConfig } from 'next-intl/server';
-import { cookies, headers } from 'next/headers';
+import { hasLocale } from "next-intl";
+import { getRequestConfig } from "next-intl/server";
+import { routing } from "./routing";
 
-const SUPPORTED_LOCALES = ['en', 'ko'];
-const DEFAULT_LOCALE = 'en';
-
-async function getLocale(): Promise<string> {
-  const cookieStore = await cookies();
-  const cookieLocale = cookieStore.get('locale')?.value;
-  if (cookieLocale && SUPPORTED_LOCALES.includes(cookieLocale)) return cookieLocale;
-
-  const headerStore = await headers();
-  const acceptLang = headerStore.get('accept-language') ?? '';
-  for (const locale of SUPPORTED_LOCALES) {
-    if (acceptLang.includes(locale)) return locale;
-  }
-
-  return DEFAULT_LOCALE;
-}
-
-export default getRequestConfig(async () => {
-  const locale = await getLocale();
+export default getRequestConfig(async ({ requestLocale }) => {
+  const requestedLocale = await requestLocale;
+  const locale = hasLocale(routing.locales, requestedLocale) ? requestedLocale : routing.defaultLocale;
 
   return {
     locale,
