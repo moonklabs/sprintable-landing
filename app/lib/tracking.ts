@@ -39,6 +39,13 @@ function sendEvent(name: string, params: Record<string, unknown>) {
   window.gtag("event", name, params);
 }
 
+/* Meta Pixel 브리지 — 광고 최적화용. GA4와 별개로 waitlist 퍼널을 Pixel에도 흘린다.
+   'Lead'는 Meta 표준 전환 이벤트라 광고 세트가 직접 최적화 대상으로 잡을 수 있다. */
+function sendMetaEvent(kind: "track" | "trackCustom", name: string, params: Record<string, unknown>) {
+  if (typeof window === "undefined" || !window.fbq) return;
+  window.fbq(kind, name, params);
+}
+
 export function trackContentView(params: ContentViewParams) {
   sendEvent("content_view", params);
 }
@@ -65,12 +72,19 @@ export function trackRetentionVisit(params: RetentionVisitParams) {
 
 export function trackWaitlistCtaClick(params: WaitlistEventParams) {
   sendEvent("waitlist_cta_clicked", params);
+  sendMetaEvent("trackCustom", "WaitlistCTAClick", params);
 }
 
 export function trackWaitlistFormOpened(params: WaitlistEventParams) {
   sendEvent("waitlist_form_opened", params);
+  sendMetaEvent("trackCustom", "WaitlistFormOpened", params);
 }
 
 export function trackWaitlistSubmitted(params: WaitlistEventParams) {
   sendEvent("waitlist_submitted", params);
+  sendMetaEvent("track", "Lead", {
+    content_name: "waitlist",
+    content_category: params.source,
+    ...(params.plan ? { content_type: params.plan } : {}),
+  });
 }

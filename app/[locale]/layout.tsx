@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { routing } from "../../i18n/routing";
 import { GoogleAnalytics } from "../components/google-analytics";
+import { MetaPixel } from "../components/meta-pixel";
 import { WaitlistPopup } from "../components/waitlist-popup";
 import "../globals.css";
 
@@ -92,6 +93,7 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
         <Suspense>
           <GoogleAnalytics />
         </Suspense>
+        <MetaPixel />
         <NextIntlClientProvider messages={messages}>
           {children}
           <WaitlistPopup />

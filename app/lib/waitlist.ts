@@ -1,5 +1,14 @@
 const TALLY_FORM_ID = /^[A-Za-z0-9]{6}$/;
-const CAMPAIGN_FIELDS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"] as const;
+// ref: 추천 링크 코드 · fbclid: Meta 광고 클릭 ID (광고 어트리뷰션·CAPI 매칭용)
+const CAMPAIGN_FIELDS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_content",
+  "ref",
+  "fbclid",
+] as const;
 
 type WaitlistContext = {
   pathname: string;

@@ -12,6 +12,23 @@ test("rejects an invalid Tally form ID", () => {
   assert.equal(getTallyFormId(undefined), null);
 });
 
+test("captures referral code and Meta click ID for Tally hidden fields", () => {
+  assert.deepEqual(
+    buildWaitlistHiddenFields({
+      pathname: "/ko",
+      search: "?ref=abc123&fbclid=IwAR0xyz&utm_source=facebook",
+      source: "final",
+    }),
+    {
+      originPage: "/ko",
+      ctaSource: "final",
+      utm_source: "facebook",
+      ref: "abc123",
+      fbclid: "IwAR0xyz",
+    },
+  );
+});
+
 test("preserves campaign attribution and CTA context for Tally hidden fields", () => {
   assert.deepEqual(
     buildWaitlistHiddenFields({

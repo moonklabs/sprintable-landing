@@ -40,8 +40,10 @@ Create these hidden text fields in Tally using the names exactly as written:
 - `utm_campaign`
 - `utm_term`
 - `utm_content`
+- `ref`
+- `fbclid`
 
-The landing populates these automatically. `ctaSource` identifies the hero, navigation, pricing card, final CTA, or mobile sticky CTA; `plan` is set only from a pricing card.
+The landing populates these automatically. `ctaSource` identifies the hero, navigation, pricing card, final CTA, or mobile sticky CTA; `plan` is set only from a pricing card. `ref` carries a referral code from shared links (`?ref=<code>`); `fbclid` is the Meta ad click ID, kept for ad attribution and future Conversions API matching.
 
 ## 3. Connect lead routing
 
@@ -73,6 +75,26 @@ Keep raw submissions restricted to the people responsible for follow-up. Documen
    - `waitlist_cta_clicked`
    - `waitlist_form_opened`
    - `waitlist_submitted`
+
+## 5. Meta Pixel (Facebook ads)
+
+Facebook 광고 집행 시 전환 최적화를 위해 Pixel을 함께 켠다.
+
+1. [Meta Events Manager](https://business.facebook.com/events_manager2)에서 데이터 소스(Pixel)를 만들고 ID를 복사한다.
+2. 빌드 환경변수를 설정하고 재배포한다 (`NEXT_PUBLIC_*`는 빌드 타임 임베드):
+
+   ```bash
+   NEXT_PUBLIC_META_PIXEL_ID=<PIXEL_ID>
+   ```
+
+3. 랜딩이 자동으로 보내는 이벤트:
+   - `PageView` — 모든 페이지·라우트 전환
+   - `WaitlistCTAClick` (custom) — CTA 클릭
+   - `WaitlistFormOpened` (custom) — 팝업 오픈
+   - **`Lead` (standard)** — Tally 제출 완료. `content_category`=ctaSource, `content_type`=plan
+4. 광고 세트의 전환 목표를 **Lead**로 지정한다. Events Manager의 이벤트 테스트 도구로 `Lead` 수신을 확인한 뒤 집행한다.
+5. UTM 규칙: 광고 URL에 `?utm_source=facebook&utm_medium=paid&utm_campaign=<캠페인명>`을 붙인다. `fbclid`는 자동으로 히든 필드에 수집된다.
+6. (추후) 볼륨이 생기면 Conversions API 서버 이벤트를 추가해 iOS/광고차단 손실을 보전한다 — 수집된 `fbclid`가 매칭 키가 된다.
 
 ## Conversion guardrails
 
