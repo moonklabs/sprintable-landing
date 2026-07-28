@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
-  --font-serif: var(--font-serif);           /* Instrument Serif — editorial accent */
+  /* Pretendard 단일 폰트 — display/body/serif 전부 같은 가변 폰트를 가리킨다 */
+  --font-display: var(--font-pretendard);
+  --font-body: var(--font-pretendard);
+  --font-serif: var(--font-pretendard);
   --font-sans: var(--font-body);             /* alias — 본앱 변수명 호환 */
   --font-heading: var(--font-display);       /* alias — 본앱 변수명 호환 */
 

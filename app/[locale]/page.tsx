@@ -3,7 +3,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "../../i18n/navigation";
 import { LocaleSwitcher } from "../components/locale-switcher";
 import { NavLinks } from "../components/nav-links";
-import { SprintableMarkSvg } from "../components/brand/sprintable-mark-svg";
 import { ScrollReveal } from "../components/motion/scroll-reveal";
 import { Parallax } from "../components/motion/parallax";
 import { HeroSection } from "../components/sections/hero-section";
@@ -101,15 +100,15 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       >
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
           {/* Wordmark */}
-          <Link
-            href="/"
-            className="flex shrink-0 items-center gap-[11px]"
-            style={{ color: "oklch(23% 0.03 262)" }}
-          >
-            <SprintableMarkSvg className="size-[26px]" style={{ color: "oklch(48% 0.17 260)" }} />
-            <span className="font-[family-name:var(--font-display)] text-lg font-bold tracking-[-0.04em]">
-              Sprintable
-            </span>
+          <Link href="/" className="flex shrink-0 items-center">
+            <Image
+              src="/brand/sprintable-logo.svg"
+              alt="Sprintable"
+              width={142}
+              height={28}
+              className="h-7 w-auto"
+              priority
+            />
           </Link>
 
           <NavLinks />
@@ -120,7 +119,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               href="https://github.com/moonklabs/sprintable"
               target="_blank"
               rel="noopener noreferrer"
-              className="nav-link hidden text-sm font-medium sm:inline-flex"
+              className="nav-link hidden items-center text-sm font-medium leading-none sm:inline-flex"
             >
               {t("nav.github")}
             </a>

@@ -14,7 +14,7 @@
     "badge": "Beta",
     "badgeActive": "활발한 개발 중",
     "headline": "AI가 했다는 것과\n<g>검증된 것</g>은 다릅니다",
-    "subheadline": "승인 Gate와 쉬운 Review가 AI의 주장(Claimed)을 검증된 결과(Verified)로 바꿉니다. 개발·프로덕트 팀을 위한 오픈소스 조직 OS.",
+    "subheadline": "승인 Gate와 쉬운 Review가 AI의 주장(Claimed)을 검증된 결과(Verified)로 바꿉니다.\n개발·프로덕트 팀을 위한 오픈소스 조직 OS.",
     "operatingPrinciple": "워크플로우를 설계하고, 스토리로 등록하면 — 에이전트와 사람이 같은 루프에서 실행한다.",
     "trustStrip": [
       "검증된 결과만 기록",

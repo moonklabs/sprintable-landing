@@ -1,7 +1,7 @@
 export const runtime = "edge";
 
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Barlow, Instrument_Serif, Noto_Serif_KR } from "next/font/google";
+import localFont from "next/font/local";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -12,36 +12,13 @@ import { MetaPixel } from "../components/meta-pixel";
 import { WaitlistPopup } from "../components/waitlist-popup";
 import "../globals.css";
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+/* Pretendard — 단일 가변 폰트. 라틴+한글 전체 굵기(45~920)를 한 파일로 커버.
+   display/body/serif 전부 이 하나로 통일. */
+const pretendard = localFont({
+  src: "../fonts/PretendardVariable.woff2",
+  variable: "--font-pretendard",
+  weight: "45 920",
   display: "swap",
-});
-
-const barlow = Barlow({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-/* Noto Serif KR — 한글 명조. 영문 Instrument Serif의 등가물.
-   CJK 폰트는 파일이 크므로 preload: false로 LCP 충돌 방지. */
-const notoSerifKr = Noto_Serif_KR({
-  variable: "--font-serif-kr",
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  display: "swap",
-  preload: false,
 });
 
 type LocaleLayoutProps = Readonly<{
@@ -87,7 +64,7 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
     <html
       lang={locale}
       data-scroll-behavior="smooth"
-      className={`${bricolage.variable} ${barlow.variable} ${instrumentSerif.variable} ${notoSerifKr.variable}`}
+      className={pretendard.variable}
     >
       <body>
         <Suspense>

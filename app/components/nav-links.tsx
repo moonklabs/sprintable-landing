@@ -9,7 +9,7 @@ export function NavLinks() {
   return (
     <div className="hidden items-center gap-7 lg:flex">
       {NAV_KEYS.map((key) => (
-        <a key={key} href={`#${key}`} className="nav-link text-sm font-medium">
+        <a key={key} href={`#${key}`} className="nav-link text-sm font-medium leading-none">
           {t(`nav.${key}`)}
         </a>
       ))}

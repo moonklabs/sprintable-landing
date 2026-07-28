@@ -123,17 +123,11 @@ export async function HeroSection() {
             >
               {t.rich("hero.headline", {
                 g: (chunks) => (
-                  /* Editorial serif — EN: Instrument Serif italic / KO: Noto Serif KR 700 upright
-                     세리프 체인: 라틴은 Instrument Serif가 받고, 한글은 Noto Serif KR이 받는다. */
                   <span
                     className="relative inline-block pb-1.5"
                     style={{
                       color: "oklch(48% 0.17 260)",
-                      fontStyle: locale === "en" ? "italic" : "normal",
-                      fontFamily: "var(--font-serif), var(--font-serif-kr), 'Georgia', serif",
-                      fontWeight: locale === "ko" ? "700" : undefined,
-                      /* 한글 명조는 자간이 넓어 보이므로 획 무게에 맞게 압축 */
-                      letterSpacing: locale === "ko" ? "-0.01em" : undefined,
+                      fontWeight: "700",
                     }}
                   >
                     {chunks}
@@ -161,7 +155,7 @@ export async function HeroSection() {
           {/* Subheadline */}
           <ScrollReveal delay={160}>
             <p
-              className="mt-6 max-w-3xl text-lg leading-8"
+              className="mt-6 max-w-3xl whitespace-pre-line text-lg leading-8"
               style={{ color: "oklch(44% 0.025 262)" }}
             >
               {t("hero.subheadline")}
@@ -298,15 +292,11 @@ export async function HeroSection() {
                     priority
                   />
                 </div>
-                {/* Serif caption — EN: Instrument Serif italic / KO: Noto Serif KR 600 upright */}
                 <p
                   className="pb-0.5 pt-3 text-center text-xs leading-none"
                   style={{
-                    fontFamily: "var(--font-serif), var(--font-serif-kr), 'Georgia', serif",
-                    fontStyle: locale === "en" ? "italic" : "normal",
-                    fontWeight: locale === "ko" ? "600" : undefined,
+                    fontWeight: "600",
                     color: "oklch(44% 0.025 262)",
-                    letterSpacing: locale === "ko" ? "-0.01em" : "0.02em",
                   }}
                 >
                   {locale === "ko"
@@ -323,14 +313,10 @@ export async function HeroSection() {
 
         {/* Operating Principle — accent border-left quote */}
         <ScrollReveal>
-          {/* EN: Instrument Serif italic / KO: Noto Serif KR 600 upright — 합성 오블리크 금지 */}
           <p
             className="mx-auto max-w-3xl border-l-2 pl-6 text-lg leading-relaxed"
             style={{
-              fontFamily: "var(--font-serif), var(--font-serif-kr), 'Georgia', serif",
-              fontStyle: locale === "en" ? "italic" : "normal",
-              fontWeight: locale === "ko" ? "600" : undefined,
-              letterSpacing: locale === "ko" ? "-0.01em" : undefined,
+              fontWeight: "600",
               borderColor: "oklch(48% 0.17 260)",
               color: "oklch(44% 0.025 262)",
             }}
