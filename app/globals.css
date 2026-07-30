@@ -1,29 +1,44 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
-  --font-sans: var(--font-body);       /* alias — 본앱 변수명 호환 */
-  --font-heading: var(--font-display); /* alias — 본앱 변수명 호환 */
+  /* Pretendard 단일 폰트 — display/body/serif 전부 같은 가변 폰트를 가리킨다 */
+  --font-display: var(--font-pretendard);
+  --font-body: var(--font-pretendard);
+  --font-serif: var(--font-pretendard);
+  --font-sans: var(--font-body);             /* alias — 본앱 변수명 호환 */
+  --font-heading: var(--font-display);       /* alias — 본앱 변수명 호환 */
 
   --radius: 0.625rem; /* 본앱 정합 */
 
-  /* OKLCH-based color system — warm-indigo tinted dark */
-  --color-surface: oklch(13% 0.015 265);
-  --color-surface-raised: oklch(17% 0.018 265);
-  --color-surface-overlay: oklch(20% 0.02 265);
-  --color-border: oklch(26% 0.022 265);
-  --color-border-subtle: oklch(22% 0.018 265);
+  /* ═══ "Certificate Luxury" — OKLCH ivory-paper + navy-ink color system ═══ */
 
-  --color-text-primary: oklch(93% 0.02 265);
-  --color-text-secondary: oklch(72% 0.025 265);
-  --color-text-muted: oklch(55% 0.02 265);
+  /* Canvas — warm ivory paper */
+  --color-canvas:        oklch(98.6% 0.005 85);
+  --color-canvas-tint:   oklch(96.8% 0.008 80);
+  --color-card:          oklch(99.5% 0.002 85);
 
-  --color-accent: oklch(72% 0.14 258);       /* brand blue — hue 265°→258° 본앱 정렬 */
-  --color-accent-dim: oklch(72% 0.14 258 / 0.15);
-  --color-accent-hover: oklch(78% 0.13 258);
-  --color-teal: oklch(78% 0.13 195);         /* secondary teal */
-  --color-teal-dim: oklch(78% 0.13 195 / 0.14);
+  /* Ink */
+  --color-ink:           oklch(23% 0.03 262);
+  --color-ink-secondary: oklch(44% 0.025 262);
+  --color-ink-muted:     oklch(57% 0.015 265);
+
+  /* Hairlines — warm */
+  --color-line:          oklch(89% 0.01 85);
+  --color-line-strong:   oklch(82% 0.015 85);
+
+  /* Signature blue — deep navy-blue ink, WCAG AA on ivory */
+  --color-accent:        oklch(48% 0.17 260);
+  --color-accent-strong: oklch(42% 0.17 260);      /* hover */
+  --color-accent-wash:   oklch(48% 0.17 260 / 0.07);
+  --color-accent-soft:   oklch(88% 0.055 260);     /* mesh / decorative */
+
+  /* Gold foil — seal ring · rule tick · CTA watermark. 3 uses only. */
+  --color-gold:          oklch(72% 0.09 85);
+  --color-gold-soft:     oklch(72% 0.09 85 / 0.35);
+
+  /* Secondary */
+  --color-teal:          oklch(55% 0.11 195);
+  --color-verified:      oklch(56% 0.13 150);      /* verified ink-green */
 
   /* Container widths — Tailwind v4 uses --container-{key} for max-w-{key} */
   --container-sm: 24rem;
@@ -49,18 +64,416 @@ html {
 }
 
 body {
-  background-color: oklch(13% 0.015 265);
-  color: oklch(93% 0.02 265);
+  background-color: oklch(98.6% 0.005 85);  /* ivory paper */
+  color: oklch(23% 0.03 262);               /* deep navy ink */
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
 }
 
+/* Film grain — scoped per-section (absolute, not fixed).
+   Opacity 0.025 = light "paper" texture; dark theme used 0.04. */
+.grain-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display), system-ui, sans-serif;
   line-height: 1.1;
   letter-spacing: -0.03em;
+  word-break: keep-all; /* 한국어 헤드라인이 어중에서 꺾이지 않도록 (CJK만 영향) */
+}
+
+h2 {
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid oklch(48% 0.17 260 / 0.7);
+  outline-offset: 2px;
+}
+
+/* ── Scroll reveal (driven by ScrollReveal client component) ── */
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-up { transform: translateY(28px); }
+.reveal-left { transform: translateX(-28px); }
+.reveal-right { transform: translateX(28px); }
+.reveal-scale { transform: scale(0.96); }
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Ambient aurora orbs ── */
+@keyframes aurora-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(36px, -24px, 0) scale(1.08); }
+  66% { transform: translate3d(-28px, 18px, 0) scale(0.94); }
+}
+.aurora-orb {
+  animation: aurora-drift 16s ease-in-out infinite;
+  pointer-events: none;
+}
+.aurora-orb--late { animation-delay: -8s; }
+
+/* ── Dot-grid backdrop — light blue dots on canvas, fades out toward the fold ── */
+.bg-grid-dots {
+  background-image: radial-gradient(oklch(60% 0.05 258 / 0.5) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 0%, black 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 0%, black 25%, transparent 78%);
+  pointer-events: none;
+}
+
+/* ── Registration marks — print-proof crosshairs flanking section eyebrows ── */
+.eyebrow-cross {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow-cross::before,
+.eyebrow-cross::after {
+  content: '';
+  width: 1.25rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor);
+  opacity: 0.55;
+}
+.eyebrow-cross::after {
+  background: linear-gradient(270deg, transparent, currentColor);
+}
+/* left-aligned variant — leading dash only */
+.eyebrow-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.eyebrow-lead::before {
+  content: '';
+  width: 1.25rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+/* ── Measure rule — hairline divider with a center registration tick ── */
+.rule-ticks {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, oklch(82% 0.015 85) 18%, oklch(82% 0.015 85) 82%, transparent);
+}
+.rule-ticks::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -3.5px;
+  width: 8px;
+  height: 8px;
+  transform: translateX(-50%) rotate(45deg);
+  border: 1px solid oklch(72% 0.09 85 / 0.65);  /* gold tick */
+  background: oklch(98.6% 0.005 85);             /* ivory diamond */
+}
+
+/* ── Blueprint corner brackets — accent blue, evidence frames only ── */
+.corner-ticks {
+  position: relative;
+}
+.corner-ticks::before,
+.corner-ticks::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid oklch(48% 0.17 260 / 0.55);
+  pointer-events: none;
+}
+.corner-ticks::before {
+  top: -7px;
+  left: -7px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+.corner-ticks::after {
+  bottom: -7px;
+  right: -7px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+/* ── Card hover lift — Stripe-style blue-tint layered shadow ── */
+.card-lift {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  border-color: oklch(48% 0.17 260 / 0.4) !important;
+  box-shadow:
+    0 2px 4px oklch(23% 0.04 262 / 0.06),
+    0 20px 48px -12px oklch(42% 0.12 260 / 0.22),
+    inset 0 1px 0 oklch(99.5% 0.002 85 / 0.9);
+}
+
+/* ── Primary CTA glow — color shadow (blur-free, per brief) ── */
+.btn-glow {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+.btn-glow:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 1px 2px oklch(25% 0.1 260 / 0.2),
+    0 8px 24px -6px oklch(48% 0.17 260 / 0.45) !important;
+  filter: brightness(1.04);
+}
+
+/* ── Glass button — gradient body + inset top highlight → luxury button feel ── */
+.glass-btn {
+  background: linear-gradient(180deg, oklch(52% 0.18 260), oklch(44% 0.17 260)) !important;
+  box-shadow:
+    inset 0 1px 0 oklch(100% 0 0 / 0.18),
+    0 1px 2px oklch(23% 0.1 260 / 0.2),
+    0 8px 24px -6px oklch(48% 0.17 260 / 0.4);
+}
+.glass-btn:hover {
+  background: linear-gradient(180deg, oklch(54% 0.18 260), oklch(46% 0.17 260)) !important;
+  box-shadow:
+    inset 0 1px 0 oklch(100% 0 0 / 0.22),
+    0 1px 2px oklch(23% 0.1 260 / 0.25),
+    0 12px 32px -8px oklch(48% 0.17 260 / 0.55) !important;
+}
+
+/* ── Certificate double-border — 6px inset hairline inside card, document frame ── */
+.cert-double {
+  position: relative;
+}
+.cert-double::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid oklch(82% 0.015 85);
+  border-radius: calc(1rem - 3px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Nav link — ink-secondary, hairline underline slides in from the left in accent ── */
+.nav-link {
+  position: relative;
+  color: oklch(44% 0.025 262);
+  transition: color 0.25s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 1px;
+  width: 100%;
+  background: oklch(48% 0.17 260);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover {
+  color: oklch(23% 0.03 262);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Screenshot frame shimmer sweep — halved for light context ── */
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-120%) skewX(-12deg); }
+  60%, 100% { transform: translateX(220%) skewX(-12deg); }
+}
+.shimmer-frame { position: relative; }
+.shimmer-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 45%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    oklch(100% 0 0 / 0.025) 45%,
+    oklch(100% 0 0 / 0.045) 50%,
+    oklch(100% 0 0 / 0.025) 55%,
+    transparent
+  );
+  animation: shimmer-sweep 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Claimed → Verified seal stamp cycle (hero proof card, 8s shared clock) ── */
+@keyframes seal-claim {
+  0%, 42% { opacity: 1; }
+  50%, 92% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes seal-verify {
+  0%, 42% { opacity: 0; transform: scale(1.45) rotate(4deg); }
+  50%, 92% { opacity: 1; transform: scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: scale(1.45) rotate(4deg); }
+}
+/* Row glows: transparent (white card bg) → verified ink-green wash */
+@keyframes seal-row-glow {
+  0%, 44% { background-color: transparent; }
+  52%, 88% { background-color: oklch(56% 0.13 150 / 0.07); }
+  100% { background-color: transparent; }
+}
+.seal-claim { animation: seal-claim 8s ease-in-out infinite; }
+.seal-verify { animation: seal-verify 8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.seal-row-animated { animation: seal-row-glow 8s ease-in-out infinite; }
+
+/* Emblem stamps onto the card corner on the same clock — the ink hits at 47% */
+@keyframes seal-emblem-stamp {
+  0%, 42% { opacity: 0; transform: scale(1.7) rotate(-18deg); }
+  47% { opacity: 1; transform: scale(0.92) rotate(-6deg); }
+  51%, 90% { opacity: 1; transform: scale(1) rotate(-8deg); }
+  100% { opacity: 0; transform: scale(1.7) rotate(-18deg); }
+}
+.seal-emblem-stamp {
+  animation: seal-emblem-stamp 8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  transform-origin: center;
+}
+/* Impact ripple — a ring that blooms outward right after the stamp lands */
+@keyframes seal-ripple {
+  0%, 45% { opacity: 0; transform: scale(0.7); }
+  50% { opacity: 0.55; }
+  68%, 100% { opacity: 0; transform: scale(1.45); }
+}
+.seal-ripple {
+  animation: seal-ripple 8s ease-out infinite;
+  transform-origin: center;
+}
+/* Ring text rotates continuously inside the emblem */
+@keyframes seal-ring-spin {
+  to { transform: rotate(360deg); }
+}
+.seal-ring-spin {
+  animation: seal-ring-spin 44s linear infinite;
+  transform-origin: center;
+}
+
+/* ── Loop flow — dashes marching along the How-it-works connector ── */
+@keyframes flow-dash {
+  to { background-position-x: 22px; }
+}
+.flow-line {
+  background-image: repeating-linear-gradient(
+    90deg,
+    oklch(48% 0.17 260 / 0.5) 0 5px,
+    transparent 5px 22px
+  );
+  mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  animation: flow-dash 1.6s linear infinite;
+}
+
+/* ── Signature — draws itself when its section reveals ── */
+.sig-draw path {
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+}
+.reveal.is-visible .sig-draw path {
+  animation: sig-draw 1.4s cubic-bezier(0.5, 0, 0.3, 1) 0.5s forwards;
+}
+@keyframes sig-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── Gate breathing — soft emphasis on the human-approval step ── */
+@keyframes gate-breathe {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.gate-breathe { animation: gate-breathe 3.2s ease-in-out infinite; }
+
+/* Loop fill exists only where scrubbing exists — dashes carry the fallback */
+.flow-fill { display: none; }
+
+/* ── Ghost strip — the king message as a giant outlined artifact ── */
+.ghost-strip {
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+
+/* ═══ Scroll-driven layer — scrubbing tied to scroll position.
+   Progressive enhancement: browsers without animation-timeline keep the
+   IO reveal system untouched (compositor-only transforms, 60fps). ═══ */
+@supports (animation-timeline: view()) {
+  /* Verification gauge — reading progress as a hairline gauge over the nav */
+  @keyframes sd-progress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  .scroll-progress {
+    animation: sd-progress linear both;
+    animation-timeline: scroll(root);
+  }
+
+  /* Product windows tilt flat as they enter — evidence stands up to meet you */
+  @keyframes sd-tilt-in {
+    from { opacity: 0.5; transform: perspective(1100px) rotateX(9deg) scale(0.962); }
+    to { opacity: 1; transform: none; }
+  }
+  .tilt-in {
+    transform-origin: 50% 15%;
+    animation: sd-tilt-in cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 8% cover 42%;
+  }
+
+  /* Ghost strip drifts sideways with scroll */
+  @keyframes sd-drift-x {
+    from { transform: translateX(3%); }
+    to { transform: translateX(-9%); }
+  }
+  .ghost-strip-inner {
+    animation: sd-drift-x linear both;
+    animation-timeline: view();
+  }
+
+  /* The loop fills accent-blue → verified-green as the section scrolls through */
+  .flow-timeline { view-timeline: --how-loop block; }
+  @keyframes sd-fill {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  .flow-fill {
+    display: block;
+    transform-origin: left center;
+    animation: sd-fill linear both;
+    animation-timeline: --how-loop;
+    animation-range: entry 35% contain 90%;
+  }
+
+  /* Closing seal turns as the certificate arrives */
+  @keyframes sd-seal-turn {
+    from { transform: rotate(-30deg) scale(0.92); }
+    to { transform: rotate(6deg) scale(1); }
+  }
+  .seal-scrub {
+    animation: sd-seal-turn linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 85%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -68,4 +481,18 @@ h1, h2, h3, h4, h5, h6 {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  /* Frozen stamp cycle would land mid-crossfade — pin to the verified state */
+  .seal-claim { opacity: 0; }
+  .seal-verify { opacity: 1; transform: none; }
+  .seal-emblem-stamp { opacity: 1; transform: rotate(-8deg); }
+  .seal-ripple { opacity: 0; }
+  .sig-draw path { stroke-dashoffset: 0; }
+  /* Scroll-scrub layer: duration tricks don't stop timeline-driven animation —
+     detach explicitly and rest at the finished state */
+  .tilt-in, .ghost-strip-inner, .flow-fill, .seal-scrub { animation: none !important; }
+  .scroll-progress { display: none; }
 }

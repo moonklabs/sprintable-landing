@@ -41,3 +41,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .wrangler/
+
+# oh-my-claudecode local state (research/plans are tracked)
+.omc/state/
+.omc/sessions/
+.omc/logs/
+.omc/project-memory.json
+.omc/notepad.md

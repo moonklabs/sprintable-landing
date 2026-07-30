@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Early Access Waitlist 극대화 플랜 해설</title>
+<style>
+:root{
+  --ink:#1b1a17; --ink-soft:#4a4740; --ink-faint:#7d7970;
+  --paper:#fbfaf7; --paper-2:#f3f1eb; --rule:#e2ded4;
+  --accent:#8a5a2b; --accent-soft:#f0e5d6;
+  --good:#2e6b45; --good-soft:#e3f0e7;
+  --bad:#9a3131; --bad-soft:#f7e4e2;
+  --warn:#8a6a12; --warn-soft:#f7efd8;
+  --code-bg:#f5f3ee;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Nanum Myeongjo", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink:#e8e5de; --ink-soft:#b5b1a7; --ink-faint:#8b877e;
+    --paper:#161513; --paper-2:#1f1d1a; --rule:#332f2a;
+    --accent:#d9a066; --accent-soft:#2e2519;
+    --good:#7fc79b; --good-soft:#1a2a20;
+    --bad:#e58c85; --bad-soft:#2c1c1a;
+    --warn:#d9bd6a; --warn-soft:#2a2417;
+    --code-bg:#1c1a17;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--serif); font-size:18px; line-height:1.72}
+.wrap{max-width:1180px; margin:0 auto; padding:0 20px; display:block}
+@media (min-width:1060px){
+  .wrap{display:grid; grid-template-columns:232px minmax(0,1fr); gap:52px; align-items:start}
+}
+header.mast{border-bottom:1px solid var(--rule); background:var(--paper-2)}
+.mast-in{max-width:1180px;margin:0 auto;padding:44px 20px 34px}
+.kicker{font-family:var(--sans); font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent); font-weight:650; margin:0 0 12px}
+h1{font-size:clamp(28px,4.6vw,42px); line-height:1.22; margin:0 0 14px; font-weight:600; letter-spacing:-.015em}
+.standfirst{margin:0; color:var(--ink-soft); font-size:clamp(17px,2.1vw,20px); max-width:64ch}
+.meta{font-family:var(--sans); font-size:13px; color:var(--ink-faint); margin-top:20px;
+  display:flex; flex-wrap:wrap; gap:8px 18px}
+.meta code{font-family:var(--mono); font-size:12px}
+nav.toc{font-family:var(--sans); font-size:13.5px; line-height:1.6; padding:28px 0}
+@media (min-width:1060px){ nav.toc{position:sticky; top:0; max-height:100vh; overflow:auto; padding:40px 0} }
+nav.toc h2{font-family:var(--sans); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-faint); margin:0 0 12px; font-weight:650}
+nav.toc ol{list-style:none; margin:0; padding:0}
+nav.toc > ol > li{margin:0 0 4px}
+nav.toc ol ol{padding-left:12px; margin:3px 0 8px; border-left:1px solid var(--rule)}
+nav.toc a{display:block; padding:3px 8px; color:var(--ink-soft); text-decoration:none; border-radius:5px}
+nav.toc a:hover{background:var(--paper-2); color:var(--ink)}
+nav.toc a.on{color:var(--accent); background:var(--accent-soft); font-weight:600}
+nav.toc ol ol a{font-size:12.8px; color:var(--ink-faint)}
+article{padding:28px 0 90px; min-width:0}
+article > section{scroll-margin-top:20px}
+h2.sec{font-size:clamp(23px,3vw,30px); margin:56px 0 6px; font-weight:600; letter-spacing:-.01em;
+  padding-top:22px; border-top:1px solid var(--rule)}
+section:first-of-type h2.sec{margin-top:8px; border-top:0; padding-top:0}
+h2.sec .num{color:var(--accent); font-family:var(--sans); font-size:.62em; font-weight:650;
+  display:block; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px}
+h3{font-size:20px; margin:38px 0 8px; font-weight:600; letter-spacing:-.005em; scroll-margin-top:20px}
+h4{font-family:var(--sans); font-size:14.5px; margin:26px 0 6px; font-weight:650; color:var(--ink-soft)}
+p{margin:0 0 17px; max-width:70ch}
+ul,ol.md{max-width:70ch; padding-left:1.3em; margin:0 0 17px}
+li{margin:0 0 7px}
+strong{font-weight:650}
+em{font-style:italic; color:var(--ink-soft)}
+a{color:var(--accent)}
+code{font-family:var(--mono); font-size:.855em; background:var(--code-bg); padding:.12em .38em;
+  border-radius:4px; border:1px solid var(--rule); word-break:break-word}
+.lede{font-size:1.06em; color:var(--ink-soft)}
+hr.soft{border:0; border-top:1px solid var(--rule); margin:34px 0}
+pre{background:var(--code-bg); border:1px solid var(--rule); border-radius:9px;
+  padding:15px 17px; overflow-x:auto; margin:0 0 20px;
+  font-family:var(--mono); font-size:13px; line-height:1.62; white-space:pre; tab-size:2}
+pre code{background:none; border:0; padding:0; font-size:inherit; white-space:pre}
+pre.wrap-code, pre.wrap-code code{white-space:pre-wrap; word-break:break-word}
+.codecap{font-family:var(--sans); font-size:12px; color:var(--ink-faint); margin:-12px 0 20px; padding-left:3px}
+.tok-c{color:var(--ink-faint); font-style:italic}
+.tok-s{color:var(--good)}
+.tok-k{color:var(--accent); font-weight:600}
+.tok-n{color:var(--bad)}
+.tok-y{color:var(--accent)}
+.dl{display:block}
+.d-add{background:var(--good-soft); color:var(--good)}
+.d-del{background:var(--bad-soft); color:var(--bad)}
+.d-hunk{color:var(--ink-faint); font-weight:600}
+.d-meta{color:var(--ink-faint)}
+.call{border-left:3px solid var(--accent); background:var(--accent-soft); padding:14px 18px;
+  border-radius:0 8px 8px 0; margin:0 0 22px; max-width:70ch}
+.call.warnc{border-color:var(--warn); background:var(--warn-soft)}
+.call.badc{border-color:var(--bad); background:var(--bad-soft)}
+.call.goodc{border-color:var(--good); background:var(--good-soft)}
+.call .tag{font-family:var(--sans); font-size:11px; letter-spacing:.13em; text-transform:uppercase;
+  font-weight:700; color:var(--accent); display:block; margin-bottom:6px}
+.call.warnc .tag{color:var(--warn)} .call.badc .tag{color:var(--bad)} .call.goodc .tag{color:var(--good)}
+.call p:last-child{margin-bottom:0}
+.call p{font-size:.95em}
+.fig{margin:0 0 26px; padding:20px 18px; background:var(--paper-2); border:1px solid var(--rule);
+  border-radius:11px; overflow-x:auto}
+.fig .cap{font-family:var(--sans); font-size:12.5px; color:var(--ink-faint); margin-top:14px;
+  padding-top:11px; border-top:1px solid var(--rule); line-height:1.55}
+.flow{display:flex; align-items:stretch; gap:9px; flex-wrap:wrap}
+.dbox{flex:1 1 130px; min-width:118px; background:var(--paper); border:1px solid var(--rule);
+  border-radius:8px; padding:11px 12px; font-family:var(--sans); font-size:12.5px; line-height:1.45}
+.dbox .t{font-weight:650; font-size:13px; display:block; margin-bottom:3px}
+.dbox .d{color:var(--ink-faint); font-size:11.5px; display:block}
+.dbox.ok{border-color:var(--good); background:var(--good-soft)}
+.dbox.no{border-color:var(--bad); background:var(--bad-soft)}
+.dbox.hi{border-color:var(--accent); background:var(--accent-soft)}
+.dbox.wa{border-color:var(--warn); background:var(--warn-soft)}
+.arrow{align-self:center; color:var(--ink-faint); font-family:var(--sans); font-size:17px; flex:0 0 auto}
+.dstack{display:flex; flex-direction:column; gap:8px}
+.row{display:flex; gap:9px; align-items:center; flex-wrap:wrap}
+.pill{font-family:var(--sans); font-size:11.5px; padding:3px 9px; border-radius:20px;
+  border:1px solid var(--rule); background:var(--paper); color:var(--ink-soft)}
+.pill.ok{border-color:var(--good); color:var(--good); background:var(--good-soft)}
+.pill.no{border-color:var(--bad); color:var(--bad); background:var(--bad-soft)}
+.pill.wa{border-color:var(--warn); color:var(--warn); background:var(--warn-soft)}
+.pill.hi{border-color:var(--accent); color:var(--accent); background:var(--accent-soft)}
+.lbl{font-family:var(--sans); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-faint); font-weight:650; margin:2px 0 7px}
+.wins{display:grid; grid-template-columns:1fr; gap:14px}
+@media (min-width:660px){ .wins.n2{grid-template-columns:1fr 1fr} }
+.uiwin{border:1px solid var(--rule); border-radius:9px; overflow:hidden; background:var(--paper);
+  max-width:430px; font-family:var(--sans)}
+.uibar{background:var(--paper-2); padding:7px 11px; display:flex; gap:5px; align-items:center;
+  border-bottom:1px solid var(--rule)}
+.uidot{width:9px;height:9px;border-radius:50%;background:var(--rule)}
+.uibar .ttl{font-size:11.5px; color:var(--ink-faint); margin-left:7px}
+.uibody{padding:13px}
+.uibanner{display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:9px 11px;
+  border:1px solid var(--accent); background:var(--accent-soft); border-radius:7px; font-size:12.5px}
+.uibanner.mute{border-color:var(--rule); background:var(--paper-2); color:var(--ink-faint)}
+.uibtn{font-size:11.5px; padding:4px 11px; border-radius:6px; border:1px solid var(--accent);
+  background:var(--accent); color:var(--paper); font-weight:600; white-space:nowrap}
+.uibtn.ghost{background:transparent; color:var(--accent)}
+.uibtn.gone{opacity:.28; text-decoration:line-through}
+.uistub{height:7px; background:var(--rule); border-radius:4px; margin:9px 0; opacity:.5; width:78%}
+.uistub.s{width:55%}
+.tbl{width:100%; border-collapse:collapse; font-family:var(--sans); font-size:13.5px; margin:0 0 22px}
+.tbl th,.tbl td{text-align:left; padding:9px 11px; border-bottom:1px solid var(--rule); vertical-align:top}
+.tbl th{font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); font-weight:650}
+.tbl td.r,.tbl th.r{text-align:right}
+.tbl code{font-size:12px}
+.quiz{border:1px solid var(--rule); border-radius:11px; padding:20px 19px; margin:0 0 20px; background:var(--paper-2)}
+.quiz .qn{font-family:var(--sans); font-size:11px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--accent); font-weight:700; margin-bottom:7px}
+.quiz .qt{font-weight:600; margin:0 0 15px; font-size:17px; line-height:1.55}
+.opts{display:flex; flex-direction:column; gap:8px}
+.opt{display:flex; gap:10px; align-items:flex-start; text-align:left; width:100%;
+  font-family:var(--sans); font-size:14px; line-height:1.5; padding:11px 13px; cursor:pointer;
+  background:var(--paper); border:1px solid var(--rule); border-radius:8px; color:var(--ink);
+  transition:border-color .12s, background .12s}
+.opt:hover:not(.locked){border-color:var(--accent)}
+.opt .mk{flex:0 0 auto; width:21px; height:21px; border-radius:50%; border:1.5px solid var(--rule);
+  display:flex; align-items:center; justify-content:center; font-size:11.5px; font-weight:700; color:var(--ink-faint)}
+.opt.correct{border-color:var(--good); background:var(--good-soft)}
+.opt.correct .mk{border-color:var(--good); color:var(--good)}
+.opt.wrong{border-color:var(--bad); background:var(--bad-soft)}
+.opt.wrong .mk{border-color:var(--bad); color:var(--bad)}
+.opt.locked{cursor:default}
+.fb{margin-top:13px; padding:12px 14px; border-radius:8px; font-family:var(--sans);
+  font-size:13.5px; line-height:1.6; display:none}
+.fb.show{display:block}
+.fb.y{background:var(--good-soft); border-left:3px solid var(--good)}
+.fb.n{background:var(--bad-soft); border-left:3px solid var(--bad)}
+.fb b{font-weight:700}
+.score{font-family:var(--sans); font-size:14.5px; padding:15px 18px; border-radius:10px;
+  background:var(--accent-soft); border:1px solid var(--accent); text-align:center; font-weight:600}
+footer.end{border-top:1px solid var(--rule); margin-top:60px; padding:26px 0 0;
+  font-family:var(--sans); font-size:13px; color:var(--ink-faint)}
+/* ---- 플랜 전용 컴포넌트 ---- */
+.tline{display:flex; flex-direction:column}
+.tl{display:flex; gap:14px; position:relative; padding:0 0 20px}
+.tl:before{content:""; position:absolute; left:16px; top:34px; bottom:2px; width:2px; background:var(--rule)}
+.tl:last-child{padding-bottom:2px}
+.tl:last-child:before{display:none}
+.tl-dot{flex:0 0 34px; width:34px; height:34px; border-radius:50%; background:var(--paper);
+  border:2px solid var(--rule); display:flex; align-items:center; justify-content:center;
+  font-family:var(--sans); font-size:11px; font-weight:700; color:var(--ink-faint); z-index:1}
+.tl.done .tl-dot{border-color:var(--good); color:var(--good); background:var(--good-soft)}
+.tl.now .tl-dot{border-color:var(--accent); color:var(--accent); background:var(--accent-soft)}
+.tl.gate .tl-dot{border-color:var(--warn); color:var(--warn); background:var(--warn-soft)}
+.tl-body{flex:1; min-width:0; font-family:var(--sans); padding-top:3px}
+.tl-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.tl-t{font-weight:650; font-size:14.5px}
+.tl.now .tl-t{color:var(--accent)}
+.tl-d{color:var(--ink-faint); font-size:12.5px; margin-top:3px; line-height:1.55}
+.deps{display:flex; flex-direction:column; gap:6px}
+.dep-layer{display:flex; gap:9px; flex-wrap:wrap}
+.dep-join{color:var(--ink-faint); font-family:var(--sans); font-size:15px; padding-left:14px}
+.dbox .dep-from{color:var(--ink-faint); font-size:11px; display:block; margin-top:4px;
+  font-family:var(--mono)}
+.fmap{width:100%; border-collapse:collapse; font-family:var(--sans); font-size:13px; margin:0}
+.fmap td{padding:7px 10px 7px 0; border-bottom:1px solid var(--rule); vertical-align:top}
+.fmap tr:last-child td{border-bottom:0}
+.fmap .fpath{font-family:var(--mono); font-size:12.5px; word-break:break-all}
+.fmap .fnote{color:var(--ink-faint)}
+.fbadge{display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.08em;
+  padding:2px 8px; border-radius:20px; border:1px solid var(--rule); white-space:nowrap}
+.fbadge.add{color:var(--good); border-color:var(--good); background:var(--good-soft)}
+.fbadge.mod{color:var(--accent); border-color:var(--accent); background:var(--accent-soft)}
+.fbadge.del{color:var(--bad); border-color:var(--bad); background:var(--bad-soft)}
+.fbadge.tbd{color:var(--warn); border-color:var(--warn); background:var(--warn-soft)}
+.ck{border:1px solid var(--rule); border-radius:11px; background:var(--paper-2);
+  padding:18px 19px; margin:0 0 22px; font-family:var(--sans)}
+.ck .lbl{margin-bottom:10px}
+.ckbar{height:7px; border-radius:5px; background:var(--rule); overflow:hidden; margin:0 0 6px}
+.ckbar i{display:block; height:100%; width:0; background:var(--good); border-radius:5px;
+  transition:width .25s}
+.ckpct{font-size:12px; color:var(--ink-faint); margin:0 0 13px}
+.ckitem{display:flex; gap:10px; align-items:flex-start; padding:8px 10px; border-radius:8px;
+  font-size:14px; line-height:1.55; cursor:pointer}
+.ckitem:hover{background:var(--paper)}
+.ckitem input{margin-top:4px; accent-color:var(--good); width:15px; height:15px; flex:0 0 auto; cursor:pointer}
+.ckitem.on span{color:var(--ink-faint); text-decoration:line-through}
+.dec{border:1px solid var(--accent); border-radius:11px; background:var(--paper);
+  padding:18px 20px; margin:0 0 22px; font-family:var(--sans); max-width:70ch}
+.dec .tag{font-size:11px; letter-spacing:.13em; text-transform:uppercase; font-weight:700;
+  color:var(--accent); display:block; margin-bottom:6px}
+.dec .dt{font-size:16.5px; font-weight:650; margin:0 0 10px; font-family:var(--serif)}
+.dec .pick{font-size:14px; padding:10px 13px; border-radius:8px; background:var(--accent-soft);
+  border-left:3px solid var(--accent); margin:0 0 10px; line-height:1.6}
+.dec .why{font-size:13.5px; color:var(--ink-soft); margin:0 0 10px; line-height:1.6}
+.dec ul.alt{list-style:none; padding:0; margin:0; font-size:13px}
+.dec ul.alt li{margin:0 0 5px; padding-left:20px; position:relative; line-height:1.55}
+.dec ul.alt li.drop{color:var(--ink-faint)}
+.dec ul.alt li.drop:before{content:"✕"; position:absolute; left:0; color:var(--bad)}
+.dec ul.alt li.drop .altbody{text-decoration:line-through}
+.dec ul.alt li.hold{color:var(--ink-soft)}
+.dec ul.alt li.hold:before{content:"…"; position:absolute; left:0; color:var(--warn); font-weight:700}
+/* ---- 원문 패널(드로어) ---- */
+a.srclink{color:var(--accent); text-decoration:none; border-bottom:1px dashed var(--accent);
+  cursor:pointer}
+a.srclink:after{content:" ↗"; font-size:.8em}
+.srcback{position:fixed; inset:0; background:rgba(0,0,0,.35); opacity:0; pointer-events:none;
+  transition:opacity .2s; z-index:40}
+.srcback.show{opacity:1; pointer-events:auto}
+.srcpanel{position:fixed; top:0; right:0; bottom:0; width:min(680px,94vw); z-index:41;
+  background:var(--paper); border-left:1px solid var(--rule); display:flex; flex-direction:column;
+  transform:translateX(102%); transition:transform .22s ease; box-shadow:-12px 0 40px rgba(0,0,0,.18)}
+.srcpanel.show{transform:translateX(0)}
+.srchead{display:flex; align-items:center; gap:12px; padding:14px 18px;
+  border-bottom:1px solid var(--rule); background:var(--paper-2); font-family:var(--sans)}
+.srchead .tag{font-size:11px; letter-spacing:.13em; text-transform:uppercase; font-weight:700;
+  color:var(--accent)}
+.srcname{font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); flex:1; min-width:0;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.srcclose{font-family:var(--sans); font-size:12.5px; border:1px solid var(--rule); background:var(--paper);
+  color:var(--ink-soft); border-radius:7px; padding:5px 12px; cursor:pointer}
+.srcclose:hover{border-color:var(--accent); color:var(--accent)}
+.srcbody{flex:1; overflow-y:auto; padding:22px 26px 60px; font-size:15.5px; line-height:1.7}
+.srcbody h2{font-size:22px; margin:8px 0 12px; font-weight:650}
+.srcbody h3{font-size:18px; margin:30px 0 8px}
+.srcbody h4,.srcbody h5{font-family:var(--sans); font-size:14px; margin:22px 0 6px; font-weight:650;
+  color:var(--ink-soft)}
+.srcbody .srch{scroll-margin-top:14px}
+.srcbody pre{font-size:12px}
+.srcbody p,.srcbody ul,.srcbody ol.md{max-width:none}
+@keyframes srcflash{0%{background:var(--accent-soft)} 100%{background:transparent}}
+.srcbody .srch.flash{animation:srcflash 1.6s ease-out}
+.srchbtn{font-family:var(--sans); font-size:12.5px; font-weight:650; padding:6px 14px;
+  border-radius:20px; cursor:pointer; border:1px solid var(--accent); background:var(--accent-soft);
+  color:var(--accent); white-space:nowrap}
+.srchbtn:hover{background:var(--accent); color:var(--paper)}
+.srcfab{position:fixed; right:18px; bottom:18px; z-index:39; font-family:var(--sans);
+  font-size:13px; font-weight:650; padding:10px 16px; border-radius:24px; cursor:pointer;
+  border:1px solid var(--accent); background:var(--accent); color:var(--paper);
+  box-shadow:0 4px 16px rgba(0,0,0,.22)}
+.srcfab:hover{filter:brightness(1.08)}
+@media print{.srcfab,.srcback,.srcpanel{display:none}}
+</style>
+</head>
+<body>
+<header class="mast"><div class="mast-in">
+<p class="kicker">Sprintable Landing · feat/waitlist-conversion</p><h1>Early Access Waitlist 극대화 플랜 해설</h1>
+<p class="standfirst">랜딩을 early access 전환 퍼널로 완성하고, waitlist 등록을 최대화하기 위한 코드 + 운영 실행 계획. 승인 완료 — 이 문서는 실행·추적용이다.</p>
+<div class="meta"><span>2026-07-23</span><span>브랜치 <code>feat/waitlist-conversion</code></span><span>베이스 커밋 <code>c197b42</code></span><button class="srchbtn" id="srchbtn" type="button">플랜 원문 보기 ↗</button></div>
+</div></header>
+<div class="wrap">
+<nav class="toc" id="toc"><h2>목차</h2><ol><li><a href="#glance">한눈에</a></li><li><a href="#bg">배경 — 무엇이 이미 되어 있고, 무엇이 문제인가</a></li><li><a href="#decisions">핵심 결정</a></li><li><a href="#exec">실행 계획</a><ol><li><a href="#s4-1">A1. Early access 서사 전환 — 카피가 전환 도구가 된다</a></li><li><a href="#s4-1">A2. 추천(referral) 루프 — 최소 구현</a></li><li><a href="#s4-1">A3. 메타데이터/OG 정비</a></li><li><a href="#s4-1">A4. 정리 + 게이트</a></li><li><a href="#s4-2">B. 운영 가이드 문서화</a></li></ol></li><li><a href="#deps">의존 관계</a></li><li><a href="#risks">위험 · 열린 질문</a></li><li><a href="#verify">검증 체크리스트</a></li></ol></nav>
+<article>
+<section id="glance"><h2 class="sec"><span class="num">Part 1</span>한눈에</h2>
+<p><strong>목표 한 줄</strong>: 이미 완성된 waitlist 인프라 위에, ① early access 전환 서사 ② 추천 루프 ③ 운영 루틴을 얹어 <strong>waitlist 등록 수를 최대화</strong>한다.</p>
+<p><strong>범위</strong>: 코드(랜딩 서사·referral·OG) + 운영 가이드 문서. 콘텐츠 동결은 해제 — 이제 카피가 전환 도구다. 디자인 시스템(아이보리·네이비·명조·골드)은 그대로 유지.</p>
+<div class="fig"><div class="lbl">실행 로드맵</div><div class="tline"><div class="tl now"><div class="tl-dot">A1</div><div class="tl-body"><div class="tl-head"><span class="tl-t">Early access 서사 전환 (카피+섹션)</span><span class="pill now">코드 · 최대 공수</span></div></div></div><div class="tl"><div class="tl-dot">A2</div><div class="tl-body"><div class="tl-head"><span class="tl-t">추천(ref) 캡처 + 테스트</span><span class="pill">코드 · 소규모</span></div></div></div><div class="tl"><div class="tl-dot">A3</div><div class="tl-body"><div class="tl-head"><span class="tl-t">메타데이터/OG 정비</span><span class="pill">코드 · 소규모</span></div></div></div><div class="tl"><div class="tl-dot">A4</div><div class="tl-body"><div class="tl-head"><span class="tl-t">링크 정리 + tsc/테스트</span><span class="pill">코드 · 마무리</span></div></div></div><div class="tl"><div class="tl-dot">B</div><div class="tl-body"><div class="tl-head"><span class="tl-t">운영 가이드 (플레이북 문서)</span><span class="pill">문서</span></div></div></div><div class="tl gate"><div class="tl-dot">L</div><div class="tl-body"><div class="tl-head"><span class="tl-t">런치(트래픽 개시)</span><span class="pill gate">게이트: Tally 폼 발행 + env 배포</span></div></div></div></div><div class="cap">A1~A4는 병렬 가능. 런치는 사용자 액션(Tally 폼 발행)에 게이트가 걸려 있다.</div></div>
+<p>가장 중요한 사실 하나: <strong>지금 이 순간 배포하면 모든 CTA가 "unavailable" 안내 다이얼로그로 떨어진다.</strong> Tally form ID가 비어 있기 때문이다. 코드 작업과 무관하게 <a class="srclink" data-src="src-h7" href="#src-h7">런치 블로킹 체크리스트</a>의 폼 발행이 최우선 크리티컬 패스다.</p></section>
+<section id="bg"><h2 class="sec"><span class="num">Part 2</span>배경 — 무엇이 이미 되어 있고, 무엇이 문제인가</h2>
+<p>커밋 <code>c197b42</code>(Add localized waitlist conversion flow)로 전환 <strong>인프라</strong>는 이미 완성됐다. 상세는 <a class="srclink" data-src="src-h1" href="#src-h1">원문 Context ↗</a> 참조.</p>
+<div class="fig"><div class="lbl">현재 완성된 전환 파이프라인</div><div class="flow"><div class="dbox hi"><span class="t">CTA 6곳 클릭</span><span class="d">nav·hero·pricing·final·mobile</span></div><div class="arrow">→</div><div class="dbox"><span class="t">Tally 팝업 오픈</span><span class="d">waitlist-popup.tsx</span></div><div class="arrow">→</div><div class="dbox"><span class="t">히든 필드 자동 주입</span><span class="d">originPage·ctaSource·plan·UTM 5종</span></div><div class="arrow">→</div><div class="dbox ok"><span class="t">GA4 퍼널 이벤트</span><span class="d">clicked→opened→submitted</span></div></div><div class="cap">CTA는 data-waitlist-cta 속성 하나로 위임 처리되고, pricing 카드는 plan까지 태깅된다.</div></div>
+<p>인프라의 실제 모습 — 히든 필드 빌더는 UTM 5종을 URL에서 자동 수집한다:</p>
+<pre><code data-lang="ts">export function buildWaitlistHiddenFields({
+  pathname,
+  search,
+  source,
+  plan,
+}: WaitlistContext): Record&lt;string, string&gt; {
+  const params = new URLSearchParams(search);
+  const fields: Record&lt;string, string&gt; = {
+    originPage: pathname,
+    ctaSource: source,
+  };
+
+  if (plan) fields.plan = plan;
+
+  for (const key of CAMPAIGN_FIELDS) {
+    const value = params.get(key);
+    if (value) fields[key] = value;
+  }
+
+  return fields;
+}</code></pre>
+<p>i18n 라우팅(<code>/ko</code> <code>/en</code>) + sitemap + Tally 폼 스펙 문서(<a class="srclink" data-src="src-h7" href="#src-h7">docs/waitlist-setup.md</a>)까지 갖춰져 있다. 그런데 네 가지가 비어 있다:</p>
+<table class="tbl"><thead><tr><th>#</th><th>남은 문제</th><th>성격</th></tr></thead><tbody><tr><td>①</td><td>Tally 폼 미발행 — <code>NEXT_PUBLIC_TALLY_WAITLIST_FORM_ID</code> 빈 값 → 전 CTA가 unavailable 폴백</td><td><strong>런치 블로커 (사용자 액션)</strong></td></tr><tr><td>②</td><td>페이지 서사가 여전히 "제품 소개 + 요금제" — early access를 신청할 <em>이유</em>가 화면에 없음</td><td>코드 (A1)</td></tr><tr><td>③</td><td>추천(referral) 루프 부재 — 등록자가 다음 등록자를 데려올 장치 없음</td><td>코드 (A2)</td></tr><tr><td>④</td><td>운영 루틴 미정 — 리드가 들어와도 누가 언제 어떻게 초대하는지 없음</td><td>문서 (B)</td></tr></tbody></table>
+<div class="call warnc"><span class="tag">NEXT_PUBLIC_* 은 빌드 타임에 박제된다</span><p>Tally form ID는 클라이언트 번들에 임베드되는 환경변수다. Cloudflare Pages에 값을 넣어도 <strong>재배포(재빌드) 전에는 반영되지 않는다.</strong> 폼 ID를 바꿀 때마다 새 빌드가 필요하다는 점을 운영 체크리스트에 명시한다.</p></div></section>
+<section id="decisions"><h2 class="sec"><span class="num">Part 3</span>핵심 결정</h2>
+<p>네 가지 방향 결정이 이 플랜의 뼈대다. 앞의 두 개는 사용자가 직접 확정했다.</p>
+<div class="dec"><span class="tag">결정</span><p class="dt">얼리 액세스 신청자에게 무엇을 약속하나?</p><div class="pick">우선 온보딩(코호트 초대) + 파운더 직접 지원 채널 + 로드맵 우선 반영</div><p class="why">가격 훼손 없이 신뢰 서사("검증된 것만 배포")와 일치하는 혜택. 얼리버드가 아니라 얼리 파트너로 포지셔닝.</p><ul class="alt"><li class="drop"><span class="altbody">얼리버드 할인 — 전환율은 높지만 가격 앵커가 낮아진다</span></li><li class="drop"><span class="altbody">무료 기간 제공 — 훅은 강하지만 비용 부담 + 무료 사용자 비율 증가</span></li></ul></div>
+<div class="dec"><span class="tag">결정</span><p class="dt">오픈소스 셀프호스트 경로(GitHub)는?</p><div class="pick">그대로 열어둠 — nav·hero secondary·footer의 GitHub 링크 유지</div><p class="why">오픈소스 신뢰가 브랜드 핵심이고, OSS 셀프호스트 유저가 waitlist의 잠재 풀이 된다</p><ul class="alt"><li class="drop"><span class="altbody">waitlist 일원화 — 리스트는 커지지만 오픈소스 서사와 충돌</span></li></ul></div>
+<div class="dec"><span class="tag">결정</span><p class="dt">waitlist 백엔드는 자체 구현인가 Tally인가?</p><div class="pick">Tally 팝업 유지 (c197b42에서 이미 선택된 구조를 승계)</div><p class="why">방문자가 캠페인 페이지를 떠나지 않고, 백엔드·개인정보 보관 표면이 생기지 않으며, 질문·라우팅·땡큐 카피를 마케팅이 코드 배포 없이 수정 가능</p><ul class="alt"><li class="drop"><span class="altbody">자체 API + DB — 데이터 소유권은 좋지만 지금 단계에선 속도·운영 부담에서 손해</span></li></ul></div>
+<div class="dec"><span class="tag">결정</span><p class="dt">희소성 연출은 어디까지?</p><div class="pick">정직한 희소성만 — "코호트 단위로 초대 중" (운영 사실 그대로)</div><p class="why">브랜드가 "Claimed vs Verified", 즉 검증 가능한 주장을 파는 제품이다. 랜딩이 먼저 거짓말하면 서사가 무너진다</p><ul class="alt"><li class="drop"><span class="altbody">가짜 대기자 카운터·마감 임박 타이머 — 단기 전환↑ 신뢰↓</span></li><li class="drop"><span class="altbody">팝업 auto-open / exit-intent — 명시적 CTA 클릭시에만 팝업 (기존 가드레일 유지)</span></li></ul></div></section>
+<section id="exec"><h2 class="sec"><span class="num">Part 4</span>실행 계획</h2>
+<h3 id="s4-1">A1. Early access 서사 전환 — 카피가 전환 도구가 된다</h3>
+<p><a class="srclink" data-src="src-h3" href="#src-h3">원문 A1 ↗</a>. <code>messages/ko.json</code> · <code>en.json</code>(콘텐츠 동결 해제)과 <code>app/[locale]/page.tsx</code>가 대상이다.</p>
+<div class="fig"><div class="lbl">A1 파일 배치</div><table class="fmap"><tbody><tr><td><span class="fbadge mod">수정</span></td><td class="fpath">messages/ko.json</td><td class="fnote">hero.badge → "Early Access", earlyAccess 섹션 신규 키</td></tr><tr><td><span class="fbadge mod">수정</span></td><td class="fpath">messages/en.json</td><td class="fnote">동일 구조의 영문 카피</td></tr><tr><td><span class="fbadge mod">수정</span></td><td class="fpath">app/[locale]/page.tsx</td><td class="fnote">earlyAccess 3-칩 밴드 삽입 (pricing 아래 또는 Final CTA 위)</td></tr><tr><td><span class="fbadge mod">수정</span></td><td class="fpath">app/components/sections/hero-section.tsx</td><td class="fnote">뱃지·서브헤드 반영</td></tr><tr><td><span class="fbadge mod">수정</span></td><td class="fpath">app/components/sections/final-cta-section.tsx</td><td class="fnote">desc를 waitlist 서사로</td></tr></tbody></table></div>
+<p>구체 변경 목록 — 이 다섯 가지가 전부다:</p>
+<ol class="md"><li><code>hero.badge</code>: "Beta" → <strong>"Early Access"</strong>, <code>badgeActive</code>: "코호트 단위로 초대 중" 류의 정직한 희소성</li><li><code>hero.subheadline</code> 끝에 waitlist 가치 한 줄 — "검증 루프를 먼저 쓰는 팀"</li><li><strong>신규 <code>earlyAccess</code> 섹션</strong>: "얼리 액세스로 받는 것" 3개 — ① 우선 온보딩(코호트 초대) ② 파운더 직접 지원 채널 ③ 로드맵 우선 반영 — 컴팩트 3-칩 밴드</li><li><code>pricing.subtitle</code>에 "얼리 액세스 기간에는 waitlist 승인 후 시작" 컨텍스트 한 줄 (pricing CTA 라벨은 이미 waitlist로 전환돼 있어 유지)</li><li><code>finalCta</code>: 타이틀 "검증된 결과만 배포하세요" 유지, desc만 waitlist 서사로 조정</li></ol>
+<div class="call "><span class="tag">디자인은 건드리지 않는다</span><p>아이보리·네이비·명조·골드의 Certificate Luxury 시스템은 그대로. 신규 3-칩 밴드도 기존 칩·rule-ticks 문법 안에서 조립한다.</p></div>
+<h3 id="s4-1">A2. 추천(referral) 루프 — 최소 구현</h3>
+<p><a class="srclink" data-src="src-h4" href="#src-h4">원문 A2 ↗</a>. 등록자가 공유한 링크(<code>?ref=...</code>)로 들어온 방문자를 추적하는 최소 장치다.</p>
+<div class="fig"><div class="lbl">A2 파일 배치</div><table class="fmap"><tbody><tr><td><span class="fbadge mod">수정</span></td><td class="fpath">app/lib/waitlist.ts</td><td class="fnote">buildWaitlistHiddenFields에 ref 파라미터 캡처 추가</td></tr><tr><td><span class="fbadge mod">수정</span></td><td class="fpath">app/lib/waitlist.test.ts</td><td class="fnote">ref 캡처 테스트 케이스 추가</td></tr><tr><td><span class="fbadge mod">수정</span></td><td class="fpath">docs/waitlist-setup.md</td><td class="fnote">Tally 히든 필드 목록에 ref 추가 (8종 → 9종)</td></tr></tbody></table></div>
+<p>동작: URL의 <code>ref</code> 쿼리 파라미터를 UTM과 같은 방식으로 히든 필드에 실어 Tally 제출에 포함시킨다. 공유 링크 자체(<code>https://sprintable.ai/ko?ref=&lt;code&gt;&amp;utm_source=referral</code>)는 <strong>Tally thank-you 화면에 안내</strong> — 코드가 아닌 Tally 설정 영역이므로 운영 가이드(B)에 기재한다.</p>
+<div class="call warnc"><span class="tag">ref 코드 생성 방식은 보류 상태</span><p>1차 구현은 "받는 쪽"(캡처)만이다. 등록자별 고유 코드 발급(email-hash 등)은 Tally thank-you의 정적 안내로 시작하고, 자동화는 리드 볼륨이 생긴 뒤 판단한다.</p></div>
+<h3 id="s4-1">A3. 메타데이터/OG 정비</h3>
+<p><a class="srclink" data-src="src-h5" href="#src-h5">원문 A3 ↗</a>. 공유될 때의 첫인상이 waitlist 서사를 실어야 한다.</p>
+<div class="fig"><div class="lbl">A3 파일 배치</div><table class="fmap"><tbody><tr><td><span class="fbadge mod">수정</span></td><td class="fpath">app/[locale]/layout.tsx</td><td class="fnote">title·description을 early access 서사로 (로케일별)</td></tr><tr><td><span class="fbadge tbd">미정</span></td><td class="fpath">public/og.png</td><td class="fnote">OG 이미지 존재 확인 → 없으면 히어로 캡처 기반 정적 1장 추가</td></tr></tbody></table></div>
+<p>톤: "Sprintable — AI 검증 조직 OS, 얼리 액세스". <code>?</code> 표시된 OG 이미지는 현재 존재 여부 미확인 — 실행 시 확인 후 결정.</p>
+<h3 id="s4-1">A4. 정리 + 게이트</h3>
+<p><a class="srclink" data-src="src-h6" href="#src-h6">원문 A4 ↗</a>. 남은 <code>app.sprintable.ai</code> 링크 1곳을 waitlist CTA 또는 GitHub으로 정리하고, <code>npx tsc --noEmit</code> + <code>waitlist.test.ts</code> 통과를 코드 완료 게이트로 삼는다.</p>
+<h3 id="s4-2">B. 운영 가이드 문서화</h3>
+<p><a class="srclink" data-src="src-h7" href="#src-h7">원문 Part B ↗</a>. <code>docs/waitlist-setup.md</code> 확장 또는 <code>docs/early-access-playbook.md</code> 신규. 네 파트:</p>
+<table class="tbl"><thead><tr><th>파트</th><th>내용</th></tr></thead><tbody><tr><td>런치 블로킹 체크리스트</td><td>Tally 폼 발행(2-step · 필수 4필드 · 히든 9필드) → env 설정(로컬+Cloudflare Pages) → 재배포 → Slack/Sheets 라우팅 + 리드 오너·응답 SLA 48h → GA4 <code>waitlist_submitted</code> 전환 마킹</td></tr><tr><td>코호트 운영 루틴</td><td>주 단위 배치 초대. 우선순위: AI 에이전트 활용팀 &gt; 6인 이상 &gt; 나머지 너처. 초대 시 다음 코호트 안내 메일</td></tr><tr><td>채널 플레이북</td><td>GitHub README 배지 → waitlist, 디스콰이엇·GeekNews·HN Show, 파운더 LinkedIn/X, Product Hunt 예고. 채널별 UTM 규칙표: `utm_source=github\</td><td>disquiet\</td><td>geeknews\</td><td>linkedin\</td><td>x\</td><td>ph`</td></tr><tr><td>주간 측정 루틴</td><td>GA4 퍼널(clicked→opened→submitted)을 source/plan별 리뷰 → 최저 전환 구간의 카피/위치를 반복 개선</td></tr></tbody></table></section>
+<section id="deps"><h2 class="sec"><span class="num">Part 5</span>의존 관계</h2>
+<p>코드(A1~A3)는 서로 독립이라 병렬 가능하다. 크리티컬 패스는 코드가 아니라 <strong>사용자 액션(Tally 폼 발행)</strong> 쪽이다.</p>
+<div class="fig"><div class="lbl">태스크 의존 그래프</div><div class="deps"><div class="dep-layer"><div class="dbox hi"><span class="t">u1</span><span class="d">Tally 폼 발행 (사용자 액션)</span></div><div class="dbox"><span class="t">u4</span><span class="d">GA4 전환 이벤트 마킹</span></div><div class="dbox"><span class="t">c1</span><span class="d">A1 서사 전환</span></div><div class="dbox"><span class="t">c2</span><span class="d">A2 ref 캡처</span></div><div class="dbox"><span class="t">c3</span><span class="d">A3 OG·메타</span></div><div class="dbox"><span class="t">b1</span><span class="d">B 운영 플레이북 문서</span></div></div><div class="dep-join">↓ 선행 완료 후</div><div class="dep-layer"><div class="dbox"><span class="t">u2</span><span class="d">env 설정 + 재배포</span><span class="dep-from">← u1</span></div><div class="dbox"><span class="t">u3</span><span class="d">Slack·Sheets 리드 라우팅</span><span class="dep-from">← u1</span></div><div class="dbox"><span class="t">c4</span><span class="d">A4 정리 + tsc·테스트 게이트</span><span class="dep-from">← c1, c2, c3</span></div></div><div class="dep-join">↓ 선행 완료 후</div><div class="dep-layer"><div class="dbox"><span class="t">L</span><span class="d">런치 — 트래픽 개시</span><span class="dep-from">← u2, u3, u4, c4, b1</span></div></div></div><div class="cap">런치는 다섯 갈래가 전부 모여야 한다. 코드가 끝나도 u1(폼 발행) 없이는 CTA가 빈 다이얼로그다.</div></div></section>
+<section id="risks"><h2 class="sec"><span class="num">Part 6</span>위험 · 열린 질문</h2>
+<div class="call badc"><span class="tag">폼 미발행 상태로 트래픽이 흐르면 전량 유실</span><p>현재 상태로는 CTA 클릭 → "unavailable" 안내만 나온다. 채널 포스팅·README 링크 등 어떤 트래픽도 폼 발행 전에 흘려보내면 그대로 유실된다. 런치 게이트를 반드시 지킬 것.</p></div>
+<div class="call warnc"><span class="tag">측정은 제출 기준, 클릭 기준이 아니다</span><p>CTA 클릭 수는 허영 지표가 되기 쉽다. 기존 가드레일대로 캠페인 품질 평가는 제출된 폼 + 검증된 후속 응대 기준으로 한다. GA4 전환 마킹을 waitlist_submitted에 거는 이유다.</p></div>
+<ul><li><strong>열린 질문 1 — OG 이미지</strong>: 존재 여부 미확인(<code>?</code>). 없으면 히어로 캡처 기반으로 1장 제작.</li><li><strong>열린 질문 2 — ref 코드 발급</strong>: 캡처만 먼저, 발급 자동화는 보류(hold). 볼륨 확인 후 재검토.</li><li><strong>롤백</strong>: 서사 전환은 messages/*.json 카피 변경이 대부분 — 문제가 생기면 해당 커밋 revert로 즉시 복귀 가능. 인프라(c197b42)는 건드리지 않는다.</li></ul></section>
+<section id="verify"><h2 class="sec"><span class="num">Part 7</span>검증 체크리스트</h2>
+<p><a class="srclink" data-src="src-h8" href="#src-h8">원문 Verification ↗</a>을 실행 가능한 형태로 옮겼다. 체크 상태는 브라우저에 저장된다.</p>
+<div class="ck" data-ck="1"><div class="lbl">검증 체크리스트</div><div class="ckbar"><i></i></div><div class="ckpct"></div><label class="ckitem"><input type="checkbox"><span>로컬 <code>.env</code>에 테스트 Tally form ID 설정 후 dev 서버에서 CTA 6곳(nav·hero·pricing 3카드·final·mobile) 각각 클릭 → 팝업 오픈 확인</span></label><label class="ckitem"><input type="checkbox"><span><code>/ko?utm_source=test&amp;utm_medium=test&amp;ref=abc</code>로 진입 → 테스트 제출 → Tally 대시보드에서 히든 필드 9종(originPage·ctaSource·plan·UTM 5종·ref) 도달 확인</span></label><label class="ckitem"><input type="checkbox"><span>GA4 DebugView에서 <code>waitlist_cta_clicked</code> <code>waitlist_form_opened</code> <code>waitlist_submitted</code> 3개 이벤트가 source/plan 파라미터와 함께 발화하는지 확인</span></label><label class="ckitem"><input type="checkbox"><span>브라우저 패널로 /ko·/en 실측 — Early Access 뱃지·earlyAccess 3-칩 밴드·OG 메타 렌더 확인 (reveal 강제 + body-translate 캡처 트릭)</span></label><label class="ckitem"><input type="checkbox"><span><code>npx tsc --noEmit</code> 통과</span></label><label class="ckitem"><input type="checkbox"><span><code>waitlist.test.ts</code> 통과 (ref 캡처 케이스 포함)</span></label><label class="ckitem"><input type="checkbox"><span>남은 <code>app.sprintable.ai</code> 링크 0건 (<code>grep -rn "app.sprintable.ai" app/</code>)</span></label></div></section>
+</article>
+</div>
+<div class="srcback" id="srcback"></div><aside class="srcpanel" id="srcpanel"><div class="srchead"><span class="tag">플랜 원문</span><span class="srcname">early-spicy-mochi.md</span><button class="srcclose" id="srcclose" type="button">닫기 ✕</button></div><div class="srcbody"><h2 id="src-h0" class="srch">Early Access Waitlist 극대화 플랜</h2>
+<h3 id="src-h1" class="srch">Context</h3>
+<p>랜딩(feat/waitlist-conversion 브랜치)을 early access 방식으로 전환해 <strong>waitlist 등록을 최대화</strong>하는 것이 목표. 커밋 <code>c197b42</code>로 전환 인프라는 이미 완성됨:</p>
+<ul><li>Tally 팝업 통합: <a href="app/components/waitlist-popup.tsx">waitlist-popup.tsx</a> — <code>data-waitlist-cta</code> 클릭 위임, unavailable 폴백 다이얼로그, a11y</li><li>히든 필드 수집: <a href="app/lib/waitlist.ts">waitlist.ts</a> — originPage/ctaSource/plan + UTM 5종</li><li>CTA 6곳 전환 완료: nav·hero·pricing(plan 태깅)·final CTA·모바일 스티키 → "얼리 액세스 신청 / Join waitlist"</li><li>GA4 퍼널 이벤트: <code>waitlist_cta_clicked → waitlist_form_opened → waitlist_submitted</code> (<a href="app/lib/tracking.ts">tracking.ts</a>)</li><li>i18n 라우팅(/ko /en) + sitemap + <a href="docs/waitlist-setup.md">docs/waitlist-setup.md</a> (Tally 폼 스펙)</li></ul>
+<p><strong>남은 문제</strong>: ① Tally 폼 미발행(form ID 비어있음 — 지금 모든 CTA가 "unavailable" 다이얼로그로 떨어짐) ② 페이지 서사가 여전히 "제품 소개+요금제"라 early access 전환 서사가 약함 ③ 추천(referral) 루프 부재 ④ 운영 루틴 미정.</p>
+<p><strong>확정된 방향</strong> (사용자 결정):</p>
+<ul><li>혜택: <strong>우선 온보딩 + 파운더 직접 지원 + 로드맵 반영</strong> (할인/무료 없음 — 가격 앵커 보존)</li><li>오픈소스 셀프호스트 경로(GitHub)는 <strong>그대로 열어둠</strong> (OSS 신뢰 = 브랜드 핵심, OSS 유저가 waitlist 잠재 풀)</li><li>범위: <strong>코드 + 운영 가이드</strong></li></ul>
+<hr class="soft">
+<h3 id="src-h2" class="srch">Part A — 코드 작업 (구현)</h3>
+<h4 id="src-h3" class="srch">A1. Early access 서사 전환 (messages/ko.json · en.json + 히어로/섹션)</h4>
+<p>콘텐츠 동결 해제 — 이제 카피가 전환 도구. 디자인 시스템(아이보리·네이비·명조·골드)은 유지.</p>
+<ul><li><code>hero.badge</code>: "Beta" → "Early Access", <code>badgeActive</code>: "코호트 단위로 초대 중" 류의 정직한 희소성 (가짜 카운터·마감 임박 금지)</li><li><code>hero.subheadline</code> 끝에 waitlist 가치 한 줄 추가 (검증 루프를 먼저 쓰는 팀)</li><li><strong>신규 <code>earlyAccess</code> 섹션 키</strong>: "얼리 액세스로 받는 것" 3개 — ① 우선 온보딩(코호트 초대) ② 파운더 직접 지원 채널 ③ 로드맵 우선 반영. Final CTA 밴드 위 또는 pricing 아래에 컴팩트 3-칩 밴드로 삽입 ([app/[locale]/page.tsx](app/[locale]/page.tsx))</li><li><code>pricing.subtitle</code>에 "얼리 액세스 기간에는 waitlist 승인 후 시작" 컨텍스트 한 줄, pricing CTA 라벨은 이미 waitlist로 전환돼 있음 — 유지</li><li><code>finalCta</code>: "검증된 결과만 배포하세요" 유지 + desc를 waitlist 서사로 조정</li><li>GitHub 링크(nav·hero secondary·footer)는 그대로 유지</li></ul>
+<h4 id="src-h4" class="srch">A2. 추천(referral) 루프 최소 구현</h4>
+<ul><li><a href="app/lib/waitlist.ts">waitlist.ts</a> <code>buildWaitlistHiddenFields</code>에 <code>ref</code> 파라미터 캡처 추가 (URLSearchParams에서 <code>ref</code> → hidden field). <a href="app/lib/waitlist.test.ts">waitlist.test.ts</a>에 케이스 추가</li><li>Tally 히든 필드에 <code>ref</code> 추가 (docs 갱신)</li><li>Tally thank-you 화면에 공유 링크(<code>https://sprintable.ai/ko?ref=&lt;email-hash-or-code&gt;&amp;utm_source=referral</code>) 안내 — Tally 설정 영역이므로 운영 가이드에 기재</li></ul>
+<h4 id="src-h5" class="srch">A3. 메타데이터/OG 정비 ([app/[locale]/layout.tsx](app/[locale]/layout.tsx))</h4>
+<ul><li>title/description을 early access 서사로: "Sprintable — AI 검증 조직 OS, 얼리 액세스" 톤 (로케일별)</li><li>OG 이미지 존재 확인, 없으면 히어로 캡처 기반 정적 OG 1장 추가 (public/)</li></ul>
+<h4 id="src-h6" class="srch">A4. 정리</h4>
+<ul><li>남은 <code>app.sprintable.ai</code> 링크 1곳 waitlist CTA 또는 GitHub으로 정리</li><li><code>npx tsc --noEmit</code> + waitlist 테스트 통과 확인</li></ul>
+<h3 id="src-h7" class="srch">Part B — 운영 가이드 문서화 (docs/waitlist-setup.md 확장 or docs/early-access-playbook.md 신규)</h3>
+<ol class="md"><li><strong>런치 블로킹 체크리스트</strong> (사용자 액션):</li></ol>
+<ul><li>Tally 폼 발행 (docs 스펙: 2-step, 필수 4필드, 히든 9필드[ref 포함]) → <code>NEXT_PUBLIC_TALLY_WAITLIST_FORM_ID</code> 로컬+Cloudflare Pages 설정 → 재배포</li><li>Tally → Slack 알림 + Google Sheets 연동, 리드 오너·응답 SLA(48h) 지정</li><li>GA4에서 <code>waitlist_submitted</code> 전환 이벤트로 마킹</li></ul>
+<ol class="md"><li><strong>코호트 운영 루틴</strong>: 주 단위 배치 초대(우선순위: AI 에이전트 활용팀 &gt; 6인 이상 &gt; 나머지 너처), 초대 시 다음 코호트 안내 메일</li><li><strong>채널 플레이북</strong>: GitHub README 배지/링크 → waitlist, 커뮤니티(디스콰이엇·GeekNews·HN Show), 파운더 LinkedIn/X 포스팅, Product Hunt 예고 페이지 — 채널별 UTM 규칙표 (<code>utm_source=github|disquiet|geeknews|linkedin|x|ph</code>)</li><li><strong>주간 측정 루틴</strong>: GA4 퍼널(clicked→opened→submitted) source/plan별 리뷰 → 최저 전환 구간의 카피/위치 반복 개선</li></ol>
+<h3 id="src-h8" class="srch">Verification</h3>
+<ol class="md"><li>로컬 <code>.env</code>에 테스트 Tally form ID 설정 → dev 서버에서 CTA 6곳 클릭 → 팝업 오픈 → 테스트 제출</li><li><code>/ko?utm_source=test&amp;utm_medium=test&amp;ref=abc</code>로 진입해 Tally 제출에 히든 필드 9종 도달 확인</li><li>GA4 DebugView에서 3개 이벤트 발화 확인 (source/plan 파라미터 포함)</li><li>브라우저 패널로 ko/en 신규 섹션·뱃지·OG 메타 실측 (reveal 강제 + body-translate 캡처 트릭 사용)</li><li><code>npx tsc --noEmit</code> + <code>waitlist.test.ts</code> 통과</li></ol></div></aside><button class="srcfab" id="srcfab" type="button">플랜 원문</button>
+<script>window.__QUIZ__=[];window.__DOC__="waitlist-plan";</script>
+<script>
+(function(){
+  "use strict";
+  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+  var TS_KW="const|let|var|function|return|if|else|for|of|in|new|class|interface|type|export|import|from|async|await|try|catch|finally|throw|typeof|void|null|undefined|true|false|this|extends|implements|readonly|private|public|static|def|self|import|elif|not|and|or|None|True|False";
+  function hlTs(src){
+    var re=new RegExp("(\\/\\/[^\\n]*|#[^\\n]*|\\/\\*[\\s\\S]*?\\*\\/)"+
+      "|('(?:[^'\\\\]|\\\\.)*'|\"(?:[^\"\\\\]|\\\\.)*\"|`(?:[^`\\\\]|\\\\.)*`)"+
+      "|\\b("+TS_KW+")\\b|\\b(\\d[\\d_]*(?:\\.\\d+)?)\\b","g");
+    var out="",last=0,m;
+    while((m=re.exec(src))!==null){
+      out+=esc(src.slice(last,m.index));
+      if(m[1])out+='<span class="tok-c">'+esc(m[1])+"</span>";
+      else if(m[2])out+='<span class="tok-s">'+esc(m[2])+"</span>";
+      else if(m[3])out+='<span class="tok-k">'+esc(m[3])+"</span>";
+      else if(m[4])out+='<span class="tok-n">'+esc(m[4])+"</span>";
+      last=re.lastIndex; if(m[0]==="")re.lastIndex++;
+    }
+    return out+esc(src.slice(last));
+  }
+  function hlYaml(src){
+    return src.split("\n").map(function(line){
+      var cm=line.match(/^(\s*)(#.*)$/);
+      if(cm)return esc(cm[1])+'<span class="tok-c">'+esc(cm[2])+"</span>";
+      var out=line,trailing="";
+      var tc=out.match(/\s#(?!\{).*$/);
+      if(tc){trailing='<span class="tok-c">'+esc(tc[0])+"</span>";out=out.slice(0,tc.index);}
+      var km=out.match(/^(\s*-?\s*)([A-Za-z0-9_.\-]+)(:)(.*)$/);
+      if(km){
+        var v=km[4];
+        var vh=/^\s*['"]/.test(v)?'<span class="tok-s">'+esc(v)+"</span>":esc(v);
+        return esc(km[1])+'<span class="tok-y">'+esc(km[2])+"</span>"+esc(km[3])+vh+trailing;
+      }
+      return esc(out)+trailing;
+    }).join("\n");
+  }
+  function hlDiff(src){
+    return src.split("\n").map(function(l){
+      var c="";
+      if(/^(diff |index |--- |\+\+\+ )/.test(l))c="d-meta";
+      else if(/^@@/.test(l))c="d-hunk";
+      else if(/^\+/.test(l))c="d-add";
+      else if(/^-/.test(l))c="d-del";
+      return '<span class="dl '+c+'">'+esc(l===""?" ":l)+"</span>";
+    }).join("");
+  }
+  document.querySelectorAll("pre code[data-lang]").forEach(function(el){
+    var lang=el.getAttribute("data-lang"),raw=el.textContent;
+    if(lang==="diff")el.innerHTML=hlDiff(raw);
+    else if(lang==="yaml"||lang==="yml")el.innerHTML=hlYaml(raw);
+    else if(lang==="text")el.innerHTML=esc(raw);
+    else el.innerHTML=hlTs(raw);
+  });
+
+  var QUESTIONS=window.__QUIZ__||[];
+  var answered=0,correct=0;
+  var root=document.getElementById("quizroot"),scoreEl=document.getElementById("score");
+  if(root)QUESTIONS.forEach(function(item,qi){
+    var box=document.createElement("div");box.className="quiz";
+    var num=document.createElement("div");num.className="qn";
+    num.textContent="질문 "+(qi+1)+" / "+QUESTIONS.length;box.appendChild(num);
+    var qt=document.createElement("p");qt.className="qt";qt.innerHTML=item.q;box.appendChild(qt);
+    var opts=document.createElement("div");opts.className="opts";
+    var fb=document.createElement("div");fb.className="fb";
+    var done=false;
+    item.opts.forEach(function(text,oi){
+      var b=document.createElement("button");b.type="button";b.className="opt";
+      var mk=document.createElement("span");mk.className="mk";
+      mk.textContent=String.fromCharCode(65+oi);
+      var sp=document.createElement("span");sp.innerHTML=text;
+      b.appendChild(mk);b.appendChild(sp);
+      b.addEventListener("click",function(){
+        if(done)return; done=true;
+        var ok=(oi===item.a); answered++; if(ok)correct++;
+        Array.prototype.forEach.call(opts.children,function(ch,ci){
+          ch.classList.add("locked");
+          if(ci===item.a){ch.classList.add("correct");ch.querySelector(".mk").textContent="✓";}
+          else if(ci===oi){ch.classList.add("wrong");ch.querySelector(".mk").textContent="✕";}
+        });
+        fb.className="fb show "+(ok?"y":"n");
+        fb.innerHTML="<b>"+(ok?"정답입니다.":"아쉽네요 — 정답은 "+String.fromCharCode(65+item.a)+"입니다.")+"</b> "+item.why;
+        if(scoreEl)scoreEl.textContent=QUESTIONS.length+"문제 중 "+answered+"문제 완료 · "+correct+"개 정답"+
+          (answered===QUESTIONS.length?(correct===QUESTIONS.length?" — 완벽합니다!":" — 틀린 문제의 해설을 다시 읽어보세요."):"");
+      });
+      opts.appendChild(b);
+    });
+    box.appendChild(opts);box.appendChild(fb);root.appendChild(box);
+  });
+
+  var panel=document.getElementById("srcpanel"),back=document.getElementById("srcback"),
+      fab=document.getElementById("srcfab");
+  function srcOpen(target){
+    if(!panel)return;
+    panel.classList.add("show"); back.classList.add("show");
+    if(target){
+      var el=document.getElementById(target);
+      if(el){
+        el.classList.remove("flash");
+        setTimeout(function(){ el.scrollIntoView({block:"start"}); el.classList.add("flash"); },230);
+      }
+    }
+  }
+  function srcClose(){
+    if(!panel)return;
+    panel.classList.remove("show"); back.classList.remove("show");
+  }
+  if(fab)fab.addEventListener("click",function(){srcOpen();});
+  var hbtn=document.getElementById("srchbtn");
+  if(hbtn)hbtn.addEventListener("click",function(){srcOpen();});
+  if(back)back.addEventListener("click",srcClose);
+  var closeBtn=document.getElementById("srcclose");
+  if(closeBtn)closeBtn.addEventListener("click",srcClose);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")srcClose();});
+  document.querySelectorAll("a.srclink").forEach(function(a){
+    a.addEventListener("click",function(e){
+      e.preventDefault();
+      srcOpen(a.getAttribute("data-src"));
+    });
+  });
+
+  var DOC=window.__DOC__||"plan";
+  document.querySelectorAll(".ck").forEach(function(ck){
+    var key="skplan:"+DOC+":"+ck.getAttribute("data-ck");
+    var saved={};
+    try{saved=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
+    var boxes=Array.prototype.slice.call(ck.querySelectorAll("input[type=checkbox]"));
+    var bar=ck.querySelector(".ckbar i"),pct=ck.querySelector(".ckpct");
+    function upd(){
+      var done=0;
+      boxes.forEach(function(b){
+        b.closest(".ckitem").classList.toggle("on",b.checked);
+        if(b.checked)done++;
+      });
+      var p=boxes.length?Math.round(done*100/boxes.length):0;
+      if(bar)bar.style.width=p+"%";
+      if(pct)pct.textContent=boxes.length+"개 중 "+done+"개 완료 ("+p+"%)"+
+        (done===boxes.length&&boxes.length?" — 검증 완료!":"");
+    }
+    boxes.forEach(function(b,i){
+      if(Object.prototype.hasOwnProperty.call(saved,i))b.checked=!!saved[i];
+      b.addEventListener("change",function(){
+        saved[i]=b.checked;
+        try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){}
+        upd();
+      });
+    });
+    upd();
+  });
+
+  var links=Array.prototype.slice.call(document.querySelectorAll("#toc a"));
+  var targets=links.map(function(a){
+    var el=document.querySelector(a.getAttribute("href"));
+    return el?{a:a,el:el}:null;
+  }).filter(Boolean);
+  function spy(){
+    var y=window.scrollY+110,cur=null;
+    targets.forEach(function(t){if(t.el.offsetTop<=y)cur=t.a;});
+    links.forEach(function(a){a.classList.toggle("on",a===cur);});
+  }
+  var ticking=false;
+  window.addEventListener("scroll",function(){
+    if(ticking)return; ticking=true;
+    window.requestAnimationFrame(function(){spy();ticking=false;});
+  },{passive:true});
+  spy();
+})();
+</script>
+</body>
+</html>

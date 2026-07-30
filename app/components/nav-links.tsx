@@ -2,25 +2,14 @@
 
 import { useTranslations } from "next-intl";
 
-const NAV_KEYS = ["product", "trust", "acceleration", "pricing"] as const;
+const NAV_KEYS = ["product", "trust", "pricing"] as const;
 
 export function NavLinks() {
   const t = useTranslations();
   return (
     <div className="hidden items-center gap-7 lg:flex">
       {NAV_KEYS.map((key) => (
-        <a
-          key={key}
-          href={`#${key}`}
-          className="text-sm font-medium transition"
-          style={{ color: "oklch(65% 0.025 265)" }}
-          onMouseEnter={(e) =>
-            ((e.target as HTMLElement).style.color = "oklch(88% 0.03 265)")
-          }
-          onMouseLeave={(e) =>
-            ((e.target as HTMLElement).style.color = "oklch(65% 0.025 265)")
-          }
-        >
+        <a key={key} href={`#${key}`} className="nav-link text-sm font-medium leading-none">
           {t(`nav.${key}`)}
         </a>
       ))}
