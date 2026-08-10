@@ -191,7 +191,13 @@
     "docs": "문서",
     "pricing": "요금제",
     "community": "커뮤니티",
-    "github": "GitHub"
+    "github": "GitHub",
+    "businessTitle": "사업자 정보",
+    "businessCeo": "대표자",
+    "businessRegNo": "사업자등록번호",
+    "businessMailOrderNo": "통신판매업신고",
+    "businessAddress": "주소",
+    "businessSupport": "고객센터"
   },
   "locale": {
     "switch": "English"

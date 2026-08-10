@@ -9,6 +9,16 @@ import { AccelerationSection } from "./components/sections/acceleration-section"
 import { OrgOsSection } from "./components/sections/org-os-section";
 import { FinalCtaSection } from "./components/sections/final-cta-section";
 
+// 전자상거래법 표시의무 + PG(토스페이먼츠) 심사 요구 항목 — 로케일 무관 법정 표기
+const BUSINESS_INFO = {
+  companyName: "주식회사 뭉클랩",
+  ceo: "윤도선",
+  regNo: "488-88-02579",
+  mailOrderNo: "제2023-고양일산동-1337호",
+  address: "경기도 고양시 일산동구 무궁화로 20-38, 5층 502호",
+  supportTel: "070-8098-5775",
+};
+
 export default function Home() {
   const t = useTranslations();
   const customerCards = t.raw("customers.cards") as {
@@ -607,7 +617,48 @@ export default function Home() {
         </div>
 
         <div
-          className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 pt-6 text-xs sm:flex-row sm:items-center sm:justify-between"
+          className="mx-auto mt-12 max-w-7xl pt-6"
+          style={{ borderTop: "1px solid oklch(22% 0.018 265)" }}
+        >
+          <h3
+            className="text-xs font-bold uppercase tracking-widest"
+            style={{ color: "oklch(75% 0.025 265)" }}
+          >
+            {t("footer.businessTitle")}
+          </h3>
+          <div
+            className="mt-4 flex flex-col gap-x-5 gap-y-2 text-xs leading-6 sm:flex-row sm:flex-wrap"
+            style={{ color: "oklch(50% 0.02 265)" }}
+          >
+            <span style={{ color: "oklch(62% 0.025 265)" }}>
+              {BUSINESS_INFO.companyName}
+            </span>
+            <span>
+              {t("footer.businessCeo")} : {BUSINESS_INFO.ceo}
+            </span>
+            <span>
+              {t("footer.businessRegNo")} : {BUSINESS_INFO.regNo}
+            </span>
+            <span>
+              {t("footer.businessMailOrderNo")} : {BUSINESS_INFO.mailOrderNo}
+            </span>
+            <span>
+              {t("footer.businessAddress")} : {BUSINESS_INFO.address}
+            </span>
+            <span>
+              {t("footer.businessSupport")} :{" "}
+              <a
+                href={`tel:${BUSINESS_INFO.supportTel.replace(/-/g, "")}`}
+                style={{ color: "oklch(62% 0.025 265)" }}
+              >
+                {BUSINESS_INFO.supportTel}
+              </a>
+            </span>
+          </div>
+        </div>
+
+        <div
+          className="mx-auto mt-8 flex max-w-7xl flex-col gap-4 pt-6 text-xs sm:flex-row sm:items-center sm:justify-between"
           style={{ borderTop: "1px solid oklch(22% 0.018 265)" }}
         >
           <p style={{ color: "oklch(45% 0.02 265)" }}>{t("footer.copyright")}</p>
