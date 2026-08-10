@@ -191,7 +191,13 @@
     "docs": "Docs",
     "pricing": "Pricing",
     "community": "Community",
-    "github": "GitHub"
+    "github": "GitHub",
+    "businessTitle": "Business Information",
+    "businessCeo": "CEO",
+    "businessRegNo": "Business Registration No.",
+    "businessMailOrderNo": "Mail-order Business No.",
+    "businessAddress": "Address",
+    "businessSupport": "Customer Support"
   },
   "locale": {
     "switch": "한국어"
