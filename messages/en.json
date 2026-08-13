@@ -121,17 +121,17 @@
     "title": "Choose the plan that grows with your team",
     "subtitle": "Start free with self-hosting and add only the support you need.",
     "popular": "Most popular",
-    "annualDiscount": "Save 17% annually",
+    "annualDiscount": "Save 16.7% on a 12-month annual plan",
     "startFree": "Start free",
-    "startTrial": "Start trial",
+    "startTrial": "Get started",
     "contactSales": "Contact sales",
-    "footnote": "All plans include unlimited stories, epics, sprints, and BYOA agent seats. Billed monthly or annually.",
+    "footnote": "All plans include unlimited stories, epics, sprints, and BYOA agent seats. Billed monthly or annually (12 months). Prices are in Korean Won (KRW) — Sprintable bills in KRW regardless of display language.",
     "plans": [
       {
         "name": "Free",
-        "price": "$0",
+        "price": "0원",
         "period": "/month",
-        "audience": "Self-hosted · Unlimited",
+        "audience": "Self-hosted · 3 seats",
         "features": [
           "Unlimited members & agents",
           "Unlimited projects",
@@ -141,29 +141,41 @@
         ]
       },
       {
-        "name": "Team",
-        "price": "$49",
+        "name": "Starter",
+        "price": "29,000원",
         "period": "/month",
-        "audience": "Managed hosting for teams",
+        "audience": "Individual & small-team productivity · 3 seats",
         "features": [
           "Everything in Free",
           "Managed cloud hosting",
-          "Team management tools",
-          "Priority support",
-          "17% discount billed annually"
+          "Analytics and evidence search",
+          "Buy add-on packs once included usage runs out",
+          "Community support"
         ]
       },
       {
-        "name": "Pro",
-        "price": "$149",
+        "name": "Team",
+        "price": "59,000원",
         "period": "/month",
-        "audience": "SLA · Advanced operational controls",
+        "audience": "Collaboration & permissions · 5 seats",
+        "features": [
+          "Everything in Starter",
+          "Team management tools · per-project access control",
+          "Priority support",
+          "16.7% discount billed annually"
+        ]
+      },
+      {
+        "name": "Business",
+        "price": "219,000원",
+        "period": "/month",
+        "audience": "Control, audit, and identity · 15 seats",
         "features": [
           "Everything in Team",
           "SSO and audit logs",
           "Custom agent quotas",
           "SLA & dedicated support",
-          "17% discount billed annually"
+          "16.7% discount billed annually"
         ]
       }
     ]

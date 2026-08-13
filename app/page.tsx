@@ -412,9 +412,9 @@ export default function Home() {
               </span>
             </div>
 
-            <div className="grid gap-4 xl:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {pricingPlans.map((plan, i) => {
-                const isTeam = i === 1;
+                const isTeam = i === 2;
                 return (
                   <div
                     key={plan.name}
@@ -492,7 +492,7 @@ export default function Home() {
                     </ul>
 
                     <a
-                      href={i === 2 ? "mailto:dev1@moonklabs.com" : "https://app.sprintable.ai/login"}
+                      href={i === 3 ? "mailto:dev1@moonklabs.com" : "https://app.sprintable.ai/login"}
                       className="mt-8 inline-flex items-center justify-center rounded-[var(--radius)] px-5 py-3 text-sm font-semibold transition"
                       style={
                         isTeam
@@ -509,9 +509,9 @@ export default function Home() {
                     >
                       {i === 0
                         ? t("pricing.startFree")
-                        : i === 1
-                          ? t("pricing.startTrial")
-                          : t("pricing.contactSales")}
+                        : i === 3
+                          ? t("pricing.contactSales")
+                          : t("pricing.startTrial")}
                     </a>
                   </div>
                 );
