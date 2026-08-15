@@ -209,7 +209,10 @@
     "businessRegNo": "Business Registration No.",
     "businessMailOrderNo": "Mail-order Business No.",
     "businessAddress": "Address",
-    "businessSupport": "Customer Support"
+    "businessSupport": "Customer Support",
+    "legalTerms": "Terms of Service",
+    "legalPrivacy": "Privacy Policy",
+    "legalRefund": "Refund Policy"
   },
   "locale": {
     "switch": "한국어"
