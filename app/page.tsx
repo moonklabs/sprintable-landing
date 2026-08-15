@@ -655,6 +655,24 @@ export default function Home() {
               </a>
             </span>
           </div>
+
+          {/* story #2616 — 앱 웹 공개 페이지(/terms·/privacy)로의 공개 도달. 법적 고지
+              계열이라 사업자 정보 행 바로 아래 응집(PO 판정). 셋 다 실재 라우트 확認 후
+              링크(없는 페이지에 링크 금지) — refund-policy는 apps/web develop→main
+              프로모션 전까지 prod에서 /login 307(session_expired)로 튕겨(라이브 실측)
+              여기 안 얹는다. 프로모션 도래 시 1줄 후속 PR로 추가(PO 판정, i18n 키
+              footer.legalRefund는 그 후속을 위해 미리 등록해 둔다). */}
+          <div
+            className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs"
+            style={{ color: "oklch(50% 0.02 265)" }}
+          >
+            <a href="https://app.sprintable.ai/terms" className="transition" style={{ color: "oklch(62% 0.025 265)" }}>
+              {t("footer.legalTerms")}
+            </a>
+            <a href="https://app.sprintable.ai/privacy" className="transition" style={{ color: "oklch(62% 0.025 265)" }}>
+              {t("footer.legalPrivacy")}
+            </a>
+          </div>
         </div>
 
         <div
