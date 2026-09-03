@@ -6,7 +6,9 @@ import { PAGEVIEW_BEACON_ENDPOINT, PAGEVIEW_ORG_PUBLIC_KEY } from '@/lib/pagevie
 /**
  * story 2b4067b5 — Sprintable 자체 조회수 beacon. 계약(PO 확定, 2026-09-03 — story
  * fbcc07b5, 디디군 백엔드 별도 작업): `POST {endpoint}/api/v2/public/pageview` body
- * `{org_public_key, path, referrer}` — 쿠키 0, GA4 접근 없이도 유입을 센다.
+ * `{public_key, path, referrer}`(필드명은 story fbcc07b5/PR#3728의
+ * `backend/app/routers/public_pageview.py::PageviewBeaconRequest`를 직접 읽어 확認 —
+ * `org_public_key` 아님, PO 리뷰 지적) — 쿠키 0, GA4 접근 없이도 유입을 센다.
  * `navigator.sendBeacon`은 안 쓴다(PO 명시, 2026-09-03) — text/plain으로 실려 백엔드가
  * 422를 낸다. fetch(..., {keepalive: true})가 계약.
  *
@@ -22,7 +24,7 @@ export function ViewBeacon({ path }: { path: string }) {
       void fetch(PAGEVIEW_BEACON_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ org_public_key: PAGEVIEW_ORG_PUBLIC_KEY, path, referrer: document.referrer || null }),
+        body: JSON.stringify({ public_key: PAGEVIEW_ORG_PUBLIC_KEY, path, referrer: document.referrer || null }),
         keepalive: true,
       });
     } catch {

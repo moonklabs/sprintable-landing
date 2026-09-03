@@ -49,9 +49,13 @@ reader side (`lib/blog.ts`, `app/ko/blog/`), it does not redefine the contract.
   "Edge Function Routes".
 - View-count beacon (`app/components/blog/view-beacon.tsx`) — `fetch(..., {keepalive: true})`
   (not `navigator.sendBeacon`, which sends `text/plain` and the backend 422s on that) to
-  `POST {NEXT_PUBLIC_SPRINTABLE_API}/api/v2/public/pageview` (story fbcc07b5, separate backend
-  work) — no-op if `NEXT_PUBLIC_SPRINTABLE_API`/`NEXT_PUBLIC_SPRINTABLE_ORG_PUBLIC_KEY` aren't
-  set, so this repo has no ordering dependency on that story landing first.
+  `POST {endpoint}/api/v2/public/pageview`, body `{public_key, path, referrer}` (field name
+  confirmed directly against `backend/app/routers/public_pageview.py::PageviewBeaconRequest` in
+  story fbcc07b5/PR#3728, separate backend work). Config is a plain constants file
+  (`lib/pageview.config.ts`, PO decision — not env vars: neither value is a secret) — the
+  endpoint is fixed, `PAGEVIEW_ORG_PUBLIC_KEY` ships as an empty string until PR#3728 deploys,
+  and the beacon no-ops (skips the fetch entirely) while it's empty, so this repo has no
+  ordering dependency on that story landing first.
 - Locale: this repo has no existing `/ko`-prefixed routing (next-intl here is a cookie/
   `Accept-Language`-based single-tree, no middleware, no `[locale]` segment) — `/ko/blog` is a
   standalone folder, independent of that cookie logic.
