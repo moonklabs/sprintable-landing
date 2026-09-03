@@ -584,6 +584,9 @@ export default function Home() {
               links: [
                 { label: t("footer.docs"), href: "https://github.com/moonklabs/sprintable#readme", external: true },
                 { label: t("footer.pricing"), href: "#pricing" },
+                // story 2b4067b5 — footer.blog는 번역 문구만 있고 링크가 없던 채였다(/blog
+                // 자체가 없었으므로). /ko/blog 신설로 처음 연결.
+                { label: t("footer.blog"), href: "/ko/blog" },
                 {
                   // TODO: 어윈군 마케팅 채널 결정 hook — 마케팅 자산 전용 채널 분리 시 갱신
                   label: t("footer.community"),

@@ -258,6 +258,13 @@
       "stalledMeta": "4"
     }
   },
+  "blog": {
+    "title": "Blog",
+    "description": "News and learnings from the Sprintable team.",
+    "empty": "No posts published yet.",
+    "backToList": "Back to blog",
+    "publishedOn": "Published"
+  },
   "orgOs": {
     "label": "Organization OS",
     "title": "Your organization's now and next, in one view",

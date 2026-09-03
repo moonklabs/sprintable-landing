@@ -1,4 +1,8 @@
 @import "tailwindcss";
+/* story 2b4067b5 — 블로그 본문(신뢰 소스 markdown → HTML)을 손으로 p/h2/ul/... 마다
+   인라인 스타일 나열 없이 렌더하려고 추가(prose/prose-invert 클래스, app/ko/blog/[slug]/
+   page.tsx). 이 레포에 없던 유일한 새 CSS 의존성 — 표준 해법이라 손으로 재발명 안 함. */
+@plugin "@tailwindcss/typography";
 
 @theme inline {
   --font-display: var(--font-display);
