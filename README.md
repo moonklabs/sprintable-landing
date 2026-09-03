@@ -29,47 +29,60 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Blog (`/ko/blog`, story 2b4067b5)
+## Blog (`/ko/blog`, story 15a18511 — supersedes the file-based 2b4067b5 approach)
 
-Posts are markdown files at `content/blog/{lang}/{slug}.md`, committed by the
-`sprintable-agent-plugins` repo's `site_git` publish connector (story a32c9f1a) — the
-canonical file-path/frontmatter contract lives in **that repo's `plugins/sprintable/README.md`,
-§"File path / frontmatter contract"** (PO 확定, 2026-09-03); this repo only implements the
-reader side (`lib/blog.ts`, `app/ko/blog/`), it does not redefine the contract.
+Posts are **not** files in this repo. They live as rows in the Sprintable backend, served by
+a public read API (story e5731937) — `/ko/blog` and `/ko/blog/{slug}` `fetch()` that API on
+every request. Publishing a post is a server-side write behind an approval gate; it never
+touches this repo, never triggers a deploy, never needs a commit — a new post shows up here
+within the API's cache TTL (60s), not on the next `git push`.
 
-- **`scripts/build-blog.mjs` (a `prebuild`/`predev` hook) is the only place that touches
-  `content/blog/**` or `node:fs`.** It parses every post (gray-matter + marked) and writes
-  `lib/blog-data.json` (gitignored, regenerated every build) — `lib/blog.ts` and the two
-  page components only ever `import` that JSON, never the filesystem. This two-step split
-  exists because of two conflicting constraints that had to be found the hard way (both by
-  actually running `npx @cloudflare/next-on-pages`, not just `next build` — see
-  `feedback-cf-pages-runtime-verify-wrangler` discipline; `next build`'s route table looks
-  identical — `○`/static — for both the working and the broken version, so it cannot tell
-  them apart):
-  1. Every route here inherits `runtime = "edge"` from the root layout, and Next 16 (Turbopack)
-     flatly disables static generation for any page under edge runtime — so an
-     `export const runtime = "nodejs"` override (which *does* support static generation) looks
-     like the fix, and does make `next build` show `○ /ko/blog`.
-  2. But `@cloudflare/next-on-pages` treats a `nodejs`-runtime page with **zero** prerendered
-     instances as "must be a live function", not "a static page with nothing in it yet" — and
-     rejects the whole deploy with "routes not configured to run with the Edge Runtime". This
-     only shows up when the post count is actually 0, which is exactly the state this repo
-     ships in before the first post exists — a build verified with one scratch post in
-     `content/blog/ko/` (as an earlier pass here did) never hits it. **Real incident**: CF
-     Pages deploy run `33700034117` failed on `main` this way.
-  The fix: don't touch `node:fs` from the page at all, don't override `runtime`, and accept
-  that these two routes render as ordinary Edge Functions (like `/` already does) — instant,
-  since there's no I/O, just a JSON lookup. Verified both the 0-post and 1-post case through
-  the real CF build; both land under "Edge Function Routes", neither errors.
+This replaced an earlier design (story 2b4067b5) that treated `content/blog/{lang}/{slug}.md`
+committed by a GitHub connector as the source of truth — reverted per PO/선생님 decision
+("글 1편=커밋 1건은 구조적으로 틀림", 2026-09-03): a commit-per-post model doesn't scale, and
+ties every publish to this repo's deploy pipeline for no reason once posts are just data.
+
+- **Contract** (`lib/site-posts.ts`, canonical text lives in both `sprintable/e5731937` and
+  `sprintable-landing/15a18511` story bodies — identical, either is authoritative):
+  - `GET {SPRINTABLE_PUBLIC_API_BASE}/api/v2/public/site-posts?public_key=&lang=` →
+    `{"posts": [{slug, title, summary|null, tags[], lang, published_at}]}` (published_at desc,
+    no body) — unknown `public_key` → 404, missing `lang` → 400.
+  - `GET {SPRINTABLE_PUBLIC_API_BASE}/api/v2/public/site-posts/{slug}?public_key=&lang=` →
+    `{slug, title, summary, tags, lang, published_at, body_md, source_story_id}` — not found →
+    404. `body_md` is rendered to HTML with `marked` at request time (no `node:fs` anywhere in
+    this path — that's what makes these two routes safe as ordinary Edge Functions, see below).
+  - Response carries `Cache-Control: public, s-maxage=60, stale-while-revalidate=300`; the
+    fetch calls pass Cloudflare's `{ cf: { cacheTtl: 60 } }` extension to respect it.
+  - `getAllBlogPosts`/`getBlogPostBySlug` never throw on a missing `public_key`, a non-2xx
+    response, or a network failure — they resolve to `[]`/`null`, so the list page falls back
+    to its empty-state copy and the detail page 404s via `notFound()`, exactly like a real
+    empty/missing state would (PO instruction: "API 오류/빈 목록 → 빈 상태 문구, throw 0").
+- **Why both routes are plain Edge Functions, not statically prerendered** — this was worked
+  out the hard way on the previous (file-based) design and the reasoning still applies now
+  that both routes fetch instead of reading files: every route here inherits
+  `runtime = "edge"` from the root layout, and Next 16 (Turbopack) flatly disables static
+  generation for any page under edge runtime. An earlier attempt overrode
+  `runtime = "nodejs"` to regain static generation — `next build` looked fine (`○ /ko/blog`),
+  but `@cloudflare/next-on-pages` rejects a `nodejs`-runtime page with **zero** prerendered
+  instances as "must be a live function", which only surfaces when the post count is actually
+  0 — exactly the state this repo shipped in before the first post existed. **Real incident**:
+  CF Pages deploy run `33700034117` failed on `main` this way, verified only after running the
+  real `npx @cloudflare/next-on-pages` build (not just `next build`, whose route table looks
+  identical for the working and the broken version — see `feedback-cf-pages-runtime-verify-wrangler`
+  discipline) against both the 0-post and 1-post case. Both routes now render as ordinary Edge
+  Functions (like `/` already does) — trivially fast since there's no I/O beyond the one
+  upstream fetch.
 - View-count beacon (`app/components/blog/view-beacon.tsx`) — `fetch(..., {keepalive: true})`
   (not `navigator.sendBeacon`, which sends `text/plain` and the backend 422s on that) to
-  `POST {endpoint}/api/v2/public/pageview`, body `{public_key, path, referrer}` (field name
-  confirmed directly against `backend/app/routers/public_pageview.py::PageviewBeaconRequest` in
-  story fbcc07b5/PR#3728, separate backend work). Config is a plain constants file
-  (`lib/pageview.config.ts`, PO decision — not env vars: neither value is a secret) — the
-  endpoint is fixed, `PAGEVIEW_ORG_PUBLIC_KEY` ships as an empty string until PR#3728 deploys,
-  and the beacon no-ops (skips the fetch entirely) while it's empty, so this repo has no
-  ordering dependency on that story landing first.
+  `POST {SPRINTABLE_PUBLIC_API_BASE}/api/v2/public/pageview`, body `{public_key, path, referrer}`
+  (field name confirmed directly against
+  `backend/app/routers/public_pageview.py::PageviewBeaconRequest` in story fbcc07b5/PR#3728,
+  separate backend work). Config is a plain constants file (`lib/sprintable-public-api.config.ts`,
+  PO decision — not env vars: neither value is a secret, and the beacon and site-posts API
+  share the same base URL and public key) — `SPRINTABLE_ORG_PUBLIC_KEY` ships as an empty
+  string until the backend stories above deploy, and both consumers no-op (skip the fetch
+  entirely, or resolve to empty/`null`) while it's empty, so this repo has no ordering
+  dependency on either backend story landing first.
 - Locale: this repo has no existing `/ko`-prefixed routing (next-intl here is a cookie/
   `Accept-Language`-based single-tree, no middleware, no `[locale]` segment) — `/ko/blog` is a
   standalone folder, independent of that cookie logic.

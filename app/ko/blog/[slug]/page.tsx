@@ -2,32 +2,23 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { getAllBlogSlugs, getBlogPostBySlug } from '@/lib/blog';
+import { getBlogPostBySlug } from '@/lib/site-posts';
 import { ViewBeacon } from '@/app/components/blog/view-beacon';
 
 /**
- * story 2b4067b5(PO 확定 2026-09-03) — `/ko/blog/{slug}` 본문. generateStaticParams()가
- * 빌드 시점에 content/blog/ko/*.md 전부를 프리렌더한다(lib/blog.ts 상단 주석 참고).
- * dynamicParams=false — 빌드 시점에 없던 slug는 그대로 404(빌드 후 늦게 생긴 파일을
- * request-time에 즉석 렌더하는 폴백 0, 다음 배포까지 정직하게 404).
+ * story 15a18511(PO 확定 2026-09-03, 선생님 «글 1편=커밋 1건은 구조적으로 틀림» 지적 뒤
+ * 재설계) — `/ko/blog/{slug}` 본문. 이전엔 build-time에 알려진 slug만 정적 프리렌더했으나
+ * (generateStaticParams+dynamicParams=false), 이제 Sprintable 공개 site-posts API(story
+ * e5731937)를 요청마다 fetch한다 — build 시점에 어떤 slug가 존재할지 알 필요가 없다(발행
+ * =서버 DB 행 1건, 배포 0). 모르는 slug는 API가 404를 주고 그대로 notFound()로 이어간다
+ * (lib/site-posts.ts 상단 주석의 계약 참고).
  *
- * runtime override 없음 — app/ko/blog/page.tsx와 동일 이유(lib/blog.ts가 더 이상
- * node:fs를 안 쓰므로 override 자체가 불필요, 상단 파일 주석 참고). 이전
- * runtime='nodejs' override는 글 0편(generateStaticParams가 [] 반환)일 때 CF Pages가
- * "프리렌더 인스턴스 0개인 nodejs 라우트"를 함수로 오인해 실배포를 거부하는 근본원인이었다
- * (실측 CF Pages run 33700034117 실패).
+ * fetch를 쓰므로 자동 동적 렌더(루트 layout의 runtime='edge' 상속 — `/`와 동형 평범한
+ * Edge Function). node:fs는 이 파일 어디에도 없다.
  */
-// dynamic='force-static' 명시는 안 쓴다(app/ko/blog/page.tsx와 동일 이유 — edge runtime과
-// 공존 불가, 실측). dynamicParams=false만 유지 — 빌드 시점에 없던 slug는 그대로 404.
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  return getAllBlogSlugs('ko').map((slug) => ({ slug }));
-}
-
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPostBySlug('ko', slug);
+  const post = await getBlogPostBySlug('ko', slug);
   if (!post) return {};
   return {
     title: `${post.meta.title} — Sprintable`,
@@ -38,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = getBlogPostBySlug('ko', slug);
+  const post = await getBlogPostBySlug('ko', slug);
   if (!post) notFound();
   const t = await getTranslations({ locale: 'ko', namespace: 'blog' });
 
@@ -69,8 +60,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       ) : null}
       <article
         className="prose prose-invert mt-10 max-w-none"
-        // story 2b4067b5 — 신뢰 소스(사람 승인 게이트를 통과해 발행 커넥터가 커밋한 파일)만
-        // 담는 디렉터리를 렌더한다 — 임의 사용자 입력이 아니다(lib/blog.ts 상단 주석 참고).
+        // story 15a18511 — 신뢰 소스(사람 승인 게이트를 통과한 글만 site-posts API에
+        // 실린다)만 렌더한다 — 임의 사용자 입력이 아니다(lib/site-posts.ts 상단 주석 참고).
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
     </main>

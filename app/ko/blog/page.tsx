@@ -1,29 +1,25 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
-import { getAllBlogPosts } from '@/lib/blog';
+import { getAllBlogPosts } from '@/lib/site-posts';
 
 /**
- * story 2b4067b5(PO 확定 2026-09-03) — `/ko/blog` 목록. cookie 기반 next-intl 로직과
- * 독립(getTranslations({locale:'ko', ...})로 명시 오버라이드 — 이 레포에 기존 `/ko`
- * URL-prefix 라우팅 메커니즘 자체가 없다, 그라운딩 확認). runtime override 없음 — 루트
- * layout의 'edge'를 그대로 상속한다(lib/blog.ts가 더 이상 node:fs를 안 쓰므로 override
- * 자체가 불필요 — scripts/build-blog.mjs가 build-time에 미리 구운 lib/blog-data.json을
- * import만 한다, lib/blog.ts 상단 주석 참고. 이전엔 runtime='nodejs'로 override했었으나
- * 그 상태에서 글 0편일 때 CF Pages 실배포가 거부됐다 — "정적 페이지"가 아니라 "실행돼야
- * 할 함수"로 오인식, 실측 CF Pages run 33700034117). 이 페이지는 force-static이라
- * request-time fs 읽기 자체가 없다(애초에 fs를 안 씀).
+ * story 15a18511(PO 확定 2026-09-03, 선생님 «글 1편=커밋 1건은 구조적으로 틀림» 지적 뒤
+ * 재설계) — `/ko/blog` 목록. 이전엔 markdown 파일(prebuild)에서 읽었으나, 이제 Sprintable
+ * 공개 site-posts API(story e5731937)를 매 요청마다 fetch한다 — 발행=서버 DB 행 1건이라
+ * 배포 없이 최대 60초 내 반영된다(lib/site-posts.ts 상단 주석의 계약 참고).
+ *
+ * 이 라우트는 fetch를 쓰므로 자동으로 동적 렌더(루트 layout의 runtime='edge' 그대로
+ * 상속 — 평범한 Edge Function, `/`와 동형). node:fs는 이 파일 어디에도 없다.
+ *
+ * cookie 기반 next-intl 로직과 독립(getTranslations({locale:'ko', ...})로 명시 오버라이드
+ * — 이 레포에 기존 `/ko` URL-prefix 라우팅 메커니즘 자체가 없다, 그라운딩 확認).
  *
  * 색상: 이 레포는 Tailwind 컬러 유틸리티 클래스가 아니라 인라인 style={{color: 'oklch(...)'}}
  * 관례를 쓴다(app/page.tsx 전체와 footer 실측 — 색상 토큰 클래스는 어디서도 안 씀).
  * globals.css의 --color-text-secondary/--color-text-muted 값을 그대로 재사용한다
  * (h1/h2는 body의 기본 텍스트색을 상속하므로 별도 지정 불요).
  */
-// dynamic='force-static' 명시는 안 쓴다 — 이 라우트는 루트 layout에서 상속한
-// runtime='edge'와 그 값이 공존 불가(실측: next build가 "runtime='edge'... incompatible
-// with dynamic='force-static'" 경고를 내고 라우트를 ƒ(완전 동적)로 강등시킨다). 이 페이지는
-// 동적 API를 안 써서 Next가 별도 선언 없이도 자동으로 정적 최적화한다.
-
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations({ locale: 'ko', namespace: 'blog' });
   return { title: `${t('title')} — Sprintable`, description: t('description') };
@@ -31,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function BlogListPage() {
   const t = await getTranslations({ locale: 'ko', namespace: 'blog' });
-  const posts = getAllBlogPosts('ko');
+  const posts = await getAllBlogPosts('ko');
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-20">
