@@ -41,7 +41,3 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .wrangler/
-
-# blog build artifact — story 2b4067b5, scripts/build-blog.mjs generates this
-# (prebuild/predev hook) from content/blog/**/*.md, never hand-edited or committed.
-/lib/blog-data.json
