@@ -7,17 +7,18 @@ import { ViewBeacon } from '@/app/components/blog/view-beacon';
 
 /**
  * story 2b4067b5(PO 확定 2026-09-03) — `/ko/blog/{slug}` 본문. generateStaticParams()가
- * 빌드 시점에 content/blog/ko/*.md 전부를 프리렌더한다(lib/blog.ts 상단 주석 참고 —
- * Edge runtime 상속 + CF Pages 정적 산출물 제약상 request-time fs 읽기는 쓸 수 없다).
+ * 빌드 시점에 content/blog/ko/*.md 전부를 프리렌더한다(lib/blog.ts 상단 주석 참고).
  * dynamicParams=false — 빌드 시점에 없던 slug는 그대로 404(빌드 후 늦게 생긴 파일을
  * request-time에 즉석 렌더하는 폴백 0, 다음 배포까지 정직하게 404).
  *
- * runtime='nodejs' — app/ko/blog/page.tsx와 동일 이유(lib/blog.ts의 node:fs/node:path,
- * Turbopack의 edge-runtime 모듈 검사가 build-time 전용 사용도 정적으로 막는다). 완전
- * 정적(force-static+generateStaticParams)이라 override가 안전하다.
+ * runtime override 없음 — app/ko/blog/page.tsx와 동일 이유(lib/blog.ts가 더 이상
+ * node:fs를 안 쓰므로 override 자체가 불필요, 상단 파일 주석 참고). 이전
+ * runtime='nodejs' override는 글 0편(generateStaticParams가 [] 반환)일 때 CF Pages가
+ * "프리렌더 인스턴스 0개인 nodejs 라우트"를 함수로 오인해 실배포를 거부하는 근본원인이었다
+ * (실측 CF Pages run 33700034117 실패).
  */
-export const runtime = 'nodejs';
-export const dynamic = 'force-static';
+// dynamic='force-static' 명시는 안 쓴다(app/ko/blog/page.tsx와 동일 이유 — edge runtime과
+// 공존 불가, 실측). dynamicParams=false만 유지 — 빌드 시점에 없던 slug는 그대로 404.
 export const dynamicParams = false;
 
 export async function generateStaticParams() {

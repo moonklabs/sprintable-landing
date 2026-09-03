@@ -6,24 +6,23 @@ import { getAllBlogPosts } from '@/lib/blog';
 /**
  * story 2b4067b5(PO 확定 2026-09-03) — `/ko/blog` 목록. cookie 기반 next-intl 로직과
  * 독립(getTranslations({locale:'ko', ...})로 명시 오버라이드 — 이 레포에 기존 `/ko`
- * URL-prefix 라우팅 메커니즘 자체가 없다, 그라운딩 확認). 전 사이트가 Edge runtime을
- * 상속하고(app/layout.tsx) markdown은 build-time에만 읽을 수 있어(lib/blog.ts 상단
- * 주석 참고) 이 페이지는 완전 정적(force-static) — request-time fs 읽기 0.
+ * URL-prefix 라우팅 메커니즘 자체가 없다, 그라운딩 확認). runtime override 없음 — 루트
+ * layout의 'edge'를 그대로 상속한다(lib/blog.ts가 더 이상 node:fs를 안 쓰므로 override
+ * 자체가 불필요 — scripts/build-blog.mjs가 build-time에 미리 구운 lib/blog-data.json을
+ * import만 한다, lib/blog.ts 상단 주석 참고. 이전엔 runtime='nodejs'로 override했었으나
+ * 그 상태에서 글 0편일 때 CF Pages 실배포가 거부됐다 — "정적 페이지"가 아니라 "실행돼야
+ * 할 함수"로 오인식, 실측 CF Pages run 33700034117). 이 페이지는 force-static이라
+ * request-time fs 읽기 자체가 없다(애초에 fs를 안 씀).
  *
  * 색상: 이 레포는 Tailwind 컬러 유틸리티 클래스가 아니라 인라인 style={{color: 'oklch(...)'}}
  * 관례를 쓴다(app/page.tsx 전체와 footer 실측 — 색상 토큰 클래스는 어디서도 안 씀).
  * globals.css의 --color-text-secondary/--color-text-muted 값을 그대로 재사용한다
  * (h1/h2는 body의 기본 텍스트색을 상속하므로 별도 지정 불요).
- *
- * runtime='nodejs' — 루트 layout이 전 라우트에 'edge'를 상속시키는데, 이 페이지가 부르는
- * lib/blog.ts는 node:fs/node:path를 쓴다. Turbopack의 edge-runtime 모듈 검사는
- * "build-time에만 실행되는가"를 안 가리고 import 자체를 정적으로 막는다(실측 — next build
- * 자체가 에러로 죽는다, #b60a6c2류 배포-시점 실패보다 이른 시점에 걸림). 이 라우트는
- * force-static+generateStaticParams로 완전 정적이라 배포되는 함수 자체가 없으므로
- * runtime override가 안전하다.
  */
-export const runtime = 'nodejs';
-export const dynamic = 'force-static';
+// dynamic='force-static' 명시는 안 쓴다 — 이 라우트는 루트 layout에서 상속한
+// runtime='edge'와 그 값이 공존 불가(실측: next build가 "runtime='edge'... incompatible
+// with dynamic='force-static'" 경고를 내고 라우트를 ƒ(완전 동적)로 강등시킨다). 이 페이지는
+// 동적 API를 안 써서 Next가 별도 선언 없이도 자동으로 정적 최적화한다.
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations({ locale: 'ko', namespace: 'blog' });

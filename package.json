@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/build-blog.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/build-blog.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "verify-pricing": "node scripts/verify-pricing.mjs"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
     "lucide-react": "^1.16.0",
-    "marked": "^18.0.11",
     "next": "16.2.4",
     "next-intl": "^4.9.1",
     "react": "19.2.4",
@@ -37,6 +37,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
+    "gray-matter": "^4.0.3",
+    "marked": "^18.0.11",
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4",
