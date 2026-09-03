@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { getBlogPostBySlug } from '@/lib/site-posts';
 import { ViewBeacon } from '@/app/components/blog/view-beacon';
+import { BlogBrandBar } from '@/app/components/blog/blog-brand-bar';
 
 /**
  * story 15a18511(PO 확定 2026-09-03, 선생님 «글 1편=커밋 1건은 구조적으로 틀림» 지적 뒤
@@ -34,36 +35,39 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const t = await getTranslations({ locale: 'ko', namespace: 'blog' });
 
   return (
-    <main className="mx-auto max-w-2xl px-6 py-20">
-      <ViewBeacon path={`/ko/blog/${slug}`} />
-      <Link href="/ko/blog" className="text-sm" style={{ color: 'oklch(72% 0.14 258)' }}>
-        ← {t('backToList')}
-      </Link>
-      <h1 className="mt-6 text-3xl font-bold">{post.meta.title}</h1>
-      {post.meta.publishedAt ? (
-        <p className="mt-3 text-xs" style={{ color: 'oklch(55% 0.02 265)' }}>
-          {t('publishedOn')} {new Date(post.meta.publishedAt).toLocaleDateString('ko-KR')}
-        </p>
-      ) : null}
-      {post.meta.tags && post.meta.tags.length > 0 ? (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {post.meta.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full px-3 py-1 text-xs"
-              style={{ backgroundColor: 'oklch(20% 0.02 265)', color: 'oklch(72% 0.025 265)' }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      ) : null}
-      <article
-        className="prose prose-invert mt-10 max-w-none"
-        // story 15a18511 — 신뢰 소스(사람 승인 게이트를 통과한 글만 site-posts API에
-        // 실린다)만 렌더한다 — 임의 사용자 입력이 아니다(lib/site-posts.ts 상단 주석 참고).
-        dangerouslySetInnerHTML={{ __html: post.html }}
-      />
-    </main>
+    <>
+      <BlogBrandBar maxWidthClassName="max-w-2xl" />
+      <main className="mx-auto max-w-2xl px-6 py-20">
+        <ViewBeacon path={`/ko/blog/${slug}`} />
+        <Link href="/ko/blog" className="text-sm" style={{ color: 'oklch(72% 0.14 258)' }}>
+          ← {t('backToList')}
+        </Link>
+        <h1 className="mt-6 text-3xl font-bold">{post.meta.title}</h1>
+        {post.meta.publishedAt ? (
+          <p className="mt-3 text-xs" style={{ color: 'oklch(55% 0.02 265)' }}>
+            {t('publishedOn')} {new Date(post.meta.publishedAt).toLocaleDateString('ko-KR')}
+          </p>
+        ) : null}
+        {post.meta.tags && post.meta.tags.length > 0 ? (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {post.meta.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full px-3 py-1 text-xs"
+                style={{ backgroundColor: 'oklch(20% 0.02 265)', color: 'oklch(72% 0.025 265)' }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        ) : null}
+        <article
+          className="prose prose-invert mt-10 max-w-none"
+          // story 15a18511 — 신뢰 소스(사람 승인 게이트를 통과한 글만 site-posts API에
+          // 실린다)만 렌더한다 — 임의 사용자 입력이 아니다(lib/site-posts.ts 상단 주석 참고).
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
+      </main>
+    </>
   );
 }
