@@ -37,16 +37,30 @@ canonical file-path/frontmatter contract lives in **that repo's `plugins/sprinta
 §"File path / frontmatter contract"** (PO 확定, 2026-09-03); this repo only implements the
 reader side (`lib/blog.ts`, `app/ko/blog/`), it does not redefine the contract.
 
-- `lib/blog.ts` reads/parses those files at **build time only** — every route in this app
-  inherits `runtime = "edge"` from the root layout, and `@cloudflare/next-on-pages` rejects
-  any Node `fs` access reachable from an Edge Function (confirmed by running the actual CF
-  build, not just `next build` — see `feedback-cf-pages-runtime-verify-wrangler` discipline).
-  `app/ko/blog/page.tsx` and `app/ko/blog/[slug]/page.tsx` both override with
-  `export const runtime = "nodejs"` — safe only because both are fully static
-  (`dynamic = "force-static"`, `[slug]` uses `generateStaticParams` + `dynamicParams = false`),
-  so no Edge Function is actually deployed for either route — verified via
-  `npx @cloudflare/next-on-pages`, which places both under "Prerendered Routes", not
-  "Edge Function Routes".
+- **`scripts/build-blog.mjs` (a `prebuild`/`predev` hook) is the only place that touches
+  `content/blog/**` or `node:fs`.** It parses every post (gray-matter + marked) and writes
+  `lib/blog-data.json` (gitignored, regenerated every build) — `lib/blog.ts` and the two
+  page components only ever `import` that JSON, never the filesystem. This two-step split
+  exists because of two conflicting constraints that had to be found the hard way (both by
+  actually running `npx @cloudflare/next-on-pages`, not just `next build` — see
+  `feedback-cf-pages-runtime-verify-wrangler` discipline; `next build`'s route table looks
+  identical — `○`/static — for both the working and the broken version, so it cannot tell
+  them apart):
+  1. Every route here inherits `runtime = "edge"` from the root layout, and Next 16 (Turbopack)
+     flatly disables static generation for any page under edge runtime — so an
+     `export const runtime = "nodejs"` override (which *does* support static generation) looks
+     like the fix, and does make `next build` show `○ /ko/blog`.
+  2. But `@cloudflare/next-on-pages` treats a `nodejs`-runtime page with **zero** prerendered
+     instances as "must be a live function", not "a static page with nothing in it yet" — and
+     rejects the whole deploy with "routes not configured to run with the Edge Runtime". This
+     only shows up when the post count is actually 0, which is exactly the state this repo
+     ships in before the first post exists — a build verified with one scratch post in
+     `content/blog/ko/` (as an earlier pass here did) never hits it. **Real incident**: CF
+     Pages deploy run `33700034117` failed on `main` this way.
+  The fix: don't touch `node:fs` from the page at all, don't override `runtime`, and accept
+  that these two routes render as ordinary Edge Functions (like `/` already does) — instant,
+  since there's no I/O, just a JSON lookup. Verified both the 0-post and 1-post case through
+  the real CF build; both land under "Edge Function Routes", neither errors.
 - View-count beacon (`app/components/blog/view-beacon.tsx`) — `fetch(..., {keepalive: true})`
   (not `navigator.sendBeacon`, which sends `text/plain` and the backend 422s on that) to
   `POST {endpoint}/api/v2/public/pageview`, body `{public_key, path, referrer}` (field name
