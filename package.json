@@ -10,7 +10,9 @@
     "verify-pricing": "node scripts/verify-pricing.mjs"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "lucide-react": "^1.16.0",
+    "marked": "^18.0.11",
     "next": "16.2.4",
     "next-intl": "^4.9.1",
     "react": "19.2.4",
@@ -29,6 +31,7 @@
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.16",
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

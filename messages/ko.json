@@ -258,6 +258,13 @@
       "stalledMeta": "4"
     }
   },
+  "blog": {
+    "title": "블로그",
+    "description": "Sprintable 팀의 소식과 학습을 전합니다.",
+    "empty": "아직 게시된 글이 없습니다.",
+    "backToList": "블로그 목록으로",
+    "publishedOn": "게시일"
+  },
   "orgOs": {
     "label": "조직 OS",
     "title": "조직의 오늘과 다음을 한 화면에",
