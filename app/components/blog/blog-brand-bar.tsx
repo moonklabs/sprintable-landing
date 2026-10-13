@@ -15,7 +15,7 @@ export function BlogBrandBar({ maxWidthClassName }: { maxWidthClassName: string 
   return (
     <div style={{ borderBottom: '1px solid oklch(26% 0.022 265)' }}>
       <div className={`mx-auto flex items-center px-6 py-6 ${maxWidthClassName}`}>
-        <Link href="/" className="flex shrink-0 items-center gap-[11px] text-white">
+        <Link href="/ko" className="flex shrink-0 items-center gap-[11px] text-white">
           <SprintableMarkSvg className="size-[22px]" style={{ color: 'oklch(72% 0.14 258)' }} />
           <span className="font-[family-name:var(--font-display)] text-base font-bold tracking-[-0.04em]">
             Sprintable

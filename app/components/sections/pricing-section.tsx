@@ -2,7 +2,7 @@ import { Check, Minus } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Spotlight } from "../ui/spotlight";
 
-type Plan = { name: string; price: string; period: string; audience: string; features: string[] };
+type Plan = { name: string; price: string; period: string; audience: string; features: string[]; note?: string };
 type Row = { label: string; has: boolean[] };
 
 /* 요금제 — 플랜, 가격, 기능 내용은 원본 그대로. 구조만 바꿨다:
@@ -11,6 +11,7 @@ export async function PricingSection() {
   const t = await getTranslations();
   const plans = t.raw("pricing.plans") as Plan[];
   const rows = t.raw("pricingMatrix.rows") as Row[];
+  const hasNotes = plans.some((p) => p.note); // 영어는 원화 청구 안내 줄이 있어 다른 플랜도 같은 높이를 확보한다
 
   return (
     <section id="pricing" className="px-5 py-20 sm:px-8 sm:py-28">
@@ -51,6 +52,9 @@ export async function PricingSection() {
                   <span className="text-4xl font-medium tracking-[-0.04em] tabular-nums">{plan.price}</span>
                   {plan.period && <span className={`mb-1 whitespace-nowrap text-sm ${featured ? "text-white/55" : "text-faint"}`}>{plan.period}</span>}
                 </p>
+                {hasNotes && (
+                  <p className={`mt-1 min-h-4 text-xs ${featured ? "text-white/55" : "text-faint"}`}>{plan.note ?? ""}</p>
+                )}
 
                 <ul className="mt-7 flex-1">
                   {plan.features.map((f) => (

@@ -1,21 +1,11 @@
 import { getRequestConfig } from 'next-intl/server';
-import { cookies, headers } from 'next/headers';
+import { headers } from 'next/headers';
+import { DEFAULT_LOCALE, isLocale } from '../app/lib/locale';
 
-const SUPPORTED_LOCALES = ['en', 'ko'];
-const DEFAULT_LOCALE = 'en';
-
+/* 언어는 주소로 정해지고(middleware.ts가 x-locale 헤더로 전달), 매칭되지 않는 경로는 영어다. */
 async function getLocale(): Promise<string> {
-  const cookieStore = await cookies();
-  const cookieLocale = cookieStore.get('locale')?.value;
-  if (cookieLocale && SUPPORTED_LOCALES.includes(cookieLocale)) return cookieLocale;
-
-  const headerStore = await headers();
-  const acceptLang = headerStore.get('accept-language') ?? '';
-  for (const locale of SUPPORTED_LOCALES) {
-    if (acceptLang.includes(locale)) return locale;
-  }
-
-  return DEFAULT_LOCALE;
+  const fromPath = (await headers()).get('x-locale');
+  return isLocale(fromPath) ? fromPath : DEFAULT_LOCALE;
 }
 
 export default getRequestConfig(async ({ requestLocale }) => {
@@ -26,7 +16,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
   // Accept-Language 기반 getLocale()로 폴백 — 회귀 0.
   const overrideLocale = await requestLocale;
   const locale =
-    overrideLocale && SUPPORTED_LOCALES.includes(overrideLocale) ? overrideLocale : await getLocale();
+    isLocale(overrideLocale) ? overrideLocale : await getLocale();
 
   return {
     locale,
