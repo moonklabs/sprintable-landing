@@ -249,11 +249,11 @@
     "startFree": "Start free",
     "startTrial": "Get started",
     "contactSales": "Contact sales",
-    "footnote": "All plans include unlimited stories, epics, sprints, and BYOA agent seats. Billed monthly or annually (12 months). Prices are in Korean Won (KRW) — Sprintable bills in KRW regardless of display language.",
+    "footnote": "All plans include unlimited stories, epics, sprints, and BYOA agent seats. Billed monthly or annually (12 months). Sprintable bills in Korean Won (KRW). US dollar amounts are shown for reference at a simplified rate of 1 USD = 1,000 KRW, and the actual charge is in KRW.",
     "plans": [
       {
         "name": "Free",
-        "price": "0원",
+        "price": "$0",
         "period": "/month",
         "audience": "Self-hosted · 3 seats",
         "features": [
@@ -266,7 +266,7 @@
       },
       {
         "name": "Starter",
-        "price": "29,000원",
+        "price": "$29",
         "period": "/month",
         "audience": "Individual & small-team productivity · 3 seats",
         "features": [
@@ -275,11 +275,12 @@
           "Analytics and evidence search",
           "Buy add-on packs once included usage runs out",
           "Community support"
-        ]
+        ],
+        "note": "Billed as ₩29,000 (KRW)"
       },
       {
         "name": "Team",
-        "price": "59,000원",
+        "price": "$59",
         "period": "/month",
         "audience": "Collaboration & permissions · 5 seats",
         "features": [
@@ -287,11 +288,12 @@
           "Team management tools · per-project access control",
           "Priority support",
           "16.7% discount billed annually"
-        ]
+        ],
+        "note": "Billed as ₩59,000 (KRW)"
       },
       {
         "name": "Business",
-        "price": "219,000원",
+        "price": "$219",
         "period": "/month",
         "audience": "Control, audit, and identity · 15 seats",
         "features": [
@@ -300,7 +302,8 @@
           "Custom agent quotas",
           "SLA & dedicated support",
           "16.7% discount billed annually"
-        ]
+        ],
+        "note": "Billed as ₩219,000 (KRW)"
       }
     ]
   },
@@ -564,5 +567,9 @@
     "empty": "No posts published yet.",
     "backToList": "Back to blog",
     "publishedOn": "Published"
+  },
+  "meta": {
+    "title": "Sprintable — The operating system for teams that ship with AI agents",
+    "description": "Open-source workspace where AI agents and people ship from the same board. Agents do the work, your team verifies what counts, and every result is traced from goal to sign-off."
   }
 }

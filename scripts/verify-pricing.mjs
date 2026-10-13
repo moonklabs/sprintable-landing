@@ -26,6 +26,10 @@ const CANONICAL_KRW_MONTHLY = {
   Business: 219_000,
 };
 
+// 영어 페이지는 참고용 USD로 보여주지만 실제 청구는 원화다. 단순화한 기준: 1,000원 = 1달러 (USD = KRW / 1,000).
+// ⛔기준환율을 바꾸면 messages/en.json의 pricing.plans 가격·note·footnote도 함께 바꿔야 한다.
+const USD_REFERENCE_RATE = 1_000;
+
 const LOCALES = ['ko', 'en'];
 let failed = false;
 
@@ -52,11 +56,30 @@ for (const locale of LOCALES) {
 
   for (const plan of plans) {
     const expectedKrw = CANONICAL_KRW_MONTHLY[plan.name];
-    // price 문자열 형식: "29,000원" (formatKrw와 동일 — apps/web pricing-data.ts 참조)
     const numeric = Number(String(plan.price).replace(/[^\d]/g, ''));
-    if (numeric !== expectedKrw) {
+
+    if (locale === 'ko') {
+      // price 문자열 형식: "29,000원" (formatKrw와 동일 — apps/web pricing-data.ts 참조)
+      if (numeric !== expectedKrw) {
+        console.error(
+          `[pricing-guard] ko.json: ${plan.name} price "${plan.price}" (parsed ${numeric}원) !== canonical ${expectedKrw}원`,
+        );
+        failed = true;
+      }
+      continue;
+    }
+
+    // en: 참고용 USD 표기 — 환산값과 같아야 하고, 실제 청구 원화 금액을 note에 밝혀야 한다
+    const expectedUsd = Math.round(expectedKrw / USD_REFERENCE_RATE);
+    if (!String(plan.price).startsWith('$') || numeric !== expectedUsd) {
       console.error(
-        `[pricing-guard] ${locale}.json: ${plan.name} price "${plan.price}" (parsed ${numeric}원) !== canonical ${expectedKrw}원`,
+        `[pricing-guard] en.json: ${plan.name} price "${plan.price}" !== $${expectedUsd} (= ${expectedKrw}원 / ${USD_REFERENCE_RATE})`,
+      );
+      failed = true;
+    }
+    if (expectedKrw > 0 && !String(plan.note ?? '').includes(expectedKrw.toLocaleString('en-US'))) {
+      console.error(
+        `[pricing-guard] en.json: ${plan.name} note must state the KRW billing amount (${expectedKrw.toLocaleString('en-US')}), got "${plan.note ?? ''}"`,
       );
       failed = true;
     }
@@ -68,4 +91,4 @@ if (failed) {
   process.exit(1);
 }
 
-console.log('[pricing-guard] OK — 랜딩 가격이 정본과 일치한다 (ko/en 둘 다).');
+console.log('[pricing-guard] OK — ko는 정본(원화)과, en은 참고용 USD(환산값 + 원화 청구 안내)와 일치한다.');

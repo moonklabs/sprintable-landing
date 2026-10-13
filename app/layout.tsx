@@ -22,6 +22,7 @@ const notoKr = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sprintable.ai"),
   title: "Sprintable — Ship with AI agents",
   description:
     "Open-source PM surface for teams shipping with AI. Start with BYOA, upgrade to managed orchestration.",
