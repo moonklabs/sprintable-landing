@@ -1,27 +1,14 @@
-'use client';
-
 import { useTranslations } from "next-intl";
 
-const NAV_KEYS = ["product", "trust", "acceleration", "pricing"] as const;
+const NAV_KEYS = ["features", "trust", "customers", "pricing", "faq"] as const;
 
 export function NavLinks() {
-  const t = useTranslations();
+  const t = useTranslations("nav");
   return (
     <div className="hidden items-center gap-7 lg:flex">
       {NAV_KEYS.map((key) => (
-        <a
-          key={key}
-          href={`#${key}`}
-          className="text-sm font-medium transition"
-          style={{ color: "oklch(65% 0.025 265)" }}
-          onMouseEnter={(e) =>
-            ((e.target as HTMLElement).style.color = "oklch(88% 0.03 265)")
-          }
-          onMouseLeave={(e) =>
-            ((e.target as HTMLElement).style.color = "oklch(65% 0.025 265)")
-          }
-        >
-          {t(`nav.${key}`)}
+        <a key={key} href={`#${key}`} className="text-sm text-muted transition hover:text-ink">
+          {t(key)}
         </a>
       ))}
     </div>

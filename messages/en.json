@@ -2,52 +2,162 @@
   "nav": {
     "product": "Product",
     "trust": "Trust",
-    "acceleration": "Acceleration",
+    "customers": "Customers",
     "pricing": "Pricing",
+    "faq": "FAQ",
+    "login": "Log in",
+    "getStarted": "Get started",
     "github": "GitHub",
-    "getStarted": "Get started"
+    "features": "Features"
   },
   "hero": {
-    "badge": "Beta",
-    "badgeActive": "actively shipping",
-    "badgeText": "Real-time AI agents as first-class teammates — actively shipping",
-    "eyebrow": "Organization OS · Task → Trust",
-    "headline": "Turn AI execution into\n<g>organizational growth</g>",
-    "subheadline": "AI does the work. Humans verify and lead.",
-    "audiencesFor": " — built for",
-    "operatingPrinciple": "Design your workflow, register it as stories — agents and humans execute in the same loop.",
-    "audiences": [
-      "Founders",
-      "Operators",
-      "Product teams"
-    ],
-    "trustStrip": [
-      "Verified outcomes",
-      "Goal → Hypothesis → Story",
-      "Open source · Self-hosted"
-    ],
+    "badge": "Verifies the work",
+    "headline": "The operating system for teams that ship with AI agents",
+    "subheadline": "Agents do the work. Your team verifies what counts. Every result is traced from goal to sign-off.",
+    "goalExample": "Improve checkout completion rate",
+    "run": "Run demo",
     "primaryCta": "Start free",
     "secondaryCta": "View on GitHub",
+    "note": "Open source and self-hostable. Connects to your own agents over MCP.",
     "pricingCta": "View pricing",
-    "githubCta": "Star on GitHub",
-    "terminal": {
-      "title": "sprintable — zsh — 80×24",
-      "prompt": "uvx sprintable",
-      "connectOk": "Authenticated — app.sprintable.ai",
-      "projectOk": "Project — Checkout Redesign",
-      "agentOk": "MCP toolset ready",
-      "result": "→ sse-bridge connected"
-    },
-    "stats": {
-      "stat1": "Open Source",
-      "stat2": "MCP Native",
-      "stat3": "Programmatic",
-      "stat4": "HITL Gate",
-      "stat5": "Self-hostable"
+    "worksWith": {
+      "label": "Connects to",
+      "items": [
+        "Claude Code",
+        "OpenCode",
+        "Hermes",
+        "OpenClaw",
+        "LangChain",
+        "your own runtime"
+      ]
     }
   },
+  "demo": {
+    "label": "Interactive product demo",
+    "agentPane": "What the agent runs",
+    "teamPane": "What your team sees",
+    "play": "Play",
+    "pause": "Pause",
+    "replay": "Replay",
+    "steps": [
+      {
+        "title": "Connect",
+        "caption": "An agent joins the project over MCP with one command."
+      },
+      {
+        "title": "Pick up",
+        "caption": "It claims a story from the backlog and starts working."
+      },
+      {
+        "title": "Claim done",
+        "caption": "It says the payment gate is finished and attaches evidence. That is a claim, not a result."
+      },
+      {
+        "title": "Review",
+        "caption": "The claim waits for a person. Press Review to sign it off yourself."
+      },
+      {
+        "title": "Verified",
+        "caption": "Only now does the story count as done, and the log shows who verified it."
+      }
+    ],
+    "terminal": {
+      "title": "alex@checkout-redesign",
+      "prompt": "uvx sprintable",
+      "auth": "Authenticated with app.sprintable.ai",
+      "project": "Project: Checkout Redesign",
+      "tools": "MCP toolset ready",
+      "bridge": "sse-bridge connected",
+      "claimOk": "#2 assigned to Alex",
+      "statusOk": "#2 moved to In Progress",
+      "reviewOk": "#4 moved to In Review, 3 pieces of evidence attached",
+      "waiting": "Waiting for human review of #4",
+      "verified": "#4 verified by Landing Demo",
+      "next": "Continuing with #2"
+    },
+    "app": {
+      "org": "Northlight Studio",
+      "project": "Checkout Redesign",
+      "groupHome": "Home",
+      "groupWork": "Work",
+      "groupTrust": "Trust",
+      "briefing": "Org Briefing",
+      "inbox": "Inbox",
+      "board": "Board",
+      "goals": "Goals",
+      "glance": "Glance",
+      "lab": "Lab",
+      "activity": "Activity Log",
+      "boardTitle": "Kanban Board",
+      "backlog": "Backlog",
+      "inProgress": "In Progress",
+      "inReview": "In Review",
+      "done": "Done",
+      "noStories": "No stories",
+      "goal": "Improve checkout completion rate",
+      "story2": "Simplify shipping address form",
+      "story3": "Migrate repo to new billing service",
+      "story4": "Wire payment flow human gate",
+      "story5": "Update pricing copy on checkout confirmation",
+      "agentTag": "Agent",
+      "claimChip": "Claim: agent says done",
+      "verifiedChip": "Verified: human sign-off",
+      "briefingTitle": "Hi Landing Demo, here's your org today",
+      "briefingSub": "What's come to you, what we're learning, and who's on what, at a glance.",
+      "now": "Now",
+      "requests": "Requests",
+      "toReview": "{count} to review",
+      "decisionWaiting": "Decision waiting",
+      "needsReview": "Needs review, 3 pieces of evidence",
+      "review": "Review",
+      "nothingWaiting": "Nothing is waiting on you.",
+      "requestsNote": "Everything else lives below in Lab and Workforce. Only decisions surface here.",
+      "labSub": "Hypotheses under test",
+      "hypothesis": "Completion depends on trust signals shown at checkout",
+      "testing": "Testing",
+      "workforce": "Workforce",
+      "workforceSub": "Who's on what",
+      "workingTogether": "Working together",
+      "activityTitle": "Activity Log",
+      "activitySub": "Every action by people and agents, in order.",
+      "logConnect": "Alex connected over MCP",
+      "logClaim": "Alex picked up #2 Simplify shipping address form",
+      "logSubmit": "Alex claimed #4 Wire payment flow human gate is done",
+      "logWaiting": "#4 is waiting for a human decision",
+      "logVerified": "Landing Demo verified #4 Wire payment flow human gate",
+      "byAgent": "agent",
+      "byHuman": "human",
+      "bySystem": "system"
+    }
+  },
+  "acceleration": {
+    "title": "Learn faster. Grow bigger.",
+    "subtitle": "Turn hypotheses and learnings into the next action instantly.",
+    "card": {
+      "title": "Find where to invest next",
+      "desc": "See what will accelerate growth and which workflows to improve."
+    },
+    "feed": {
+      "closedTitle": "Closed, learned",
+      "closedRow": "Checkout 2-step → completion (disproven)",
+      "closedMeta": "52/60",
+      "learned": "↳ New hypothesis from the learning: completion depends on trust signals",
+      "measuringTitle": "Measuring",
+      "measuringRow": "Completion depends on trust signals",
+      "measuringMeta": "To be measured",
+      "stalledTitle": "Stalled",
+      "stalledRow": "Loops past their verify-by date",
+      "stalledMeta": "4"
+    },
+    "loop": [
+      "Goal",
+      "Hypothesis",
+      "Story",
+      "Verified",
+      "Learned"
+    ]
+  },
   "customers": {
-    "eyebrow": "Built for",
     "title": "Teams that deliver with AI",
     "subtitle": "Turn scattered AI work into one organizational operating system.",
     "cards": [
@@ -66,14 +176,19 @@
         "desc": "Run multiple organizations and clients in one place.",
         "fit": "Best when you need to prove process, not just prompts."
       }
-    ]
+    ],
+    "scenes": {
+      "workspaces": [
+        "Northlight Studio",
+        "Harbor & Co",
+        "Fieldnote"
+      ]
+    }
   },
   "model": {
-    "eyebrow": "Operating model",
     "title": "Run it yourself—or let us run it for you",
     "subtitle": "Start open source and move to managed when you need it.",
     "byoa": {
-      "eyebrow": "BYOA",
       "title": "Connect your own (BYOA)",
       "desc": "Connect your existing models and tools via MCP. Start free.",
       "bullets": [
@@ -83,7 +198,6 @@
       ]
     },
     "serving": {
-      "eyebrow": "Premium",
       "title": "Managed hosting",
       "desc": "Reduce operational overhead with priority support and an SLA.",
       "bullets": [
@@ -92,27 +206,37 @@
         "Scalable hosting as your team grows"
       ]
     },
-    "bridge": "Start lean, upgrade when managed hosting is worth paying for. BYOA is the low-friction entry. Managed hosting is for teams that want to run workflows without infrastructure overhead."
+    "bridge": "Start lean, upgrade when managed hosting is worth paying for. BYOA is the low-friction entry. Managed hosting is for teams that want to run workflows without infrastructure overhead.",
+    "diagram": {
+      "agents": "Your agents",
+      "mcp": "MCP",
+      "self": "Sprintable, self-hosted",
+      "cloud": "Sprintable Cloud, managed"
+    }
   },
-  "proof": {
-    "eyebrow": "Real product",
-    "title": "See it for yourself",
-    "subtitle": "This is the actual product, running.",
-    "shots": [
+  "faq": {
+    "title": "Your questions, covered",
+    "cta": "Get started",
+    "items": [
       {
-        "title": "Organization briefing",
-        "desc": "Today's requests and learnings at a glance",
-        "alt": "Org briefing screen — pending requests and human+AI assignments"
+        "q": "What exactly is Sprintable?",
+        "a": "An open-source workspace where AI agents and people share one board. Agents pick up stories and report results. People review the evidence and sign off."
       },
       {
-        "title": "Board",
-        "desc": "People and AI in one view",
-        "alt": "Kanban board screen — stories in progress"
+        "q": "Do I have to replace my agents or tools?",
+        "a": "No. Connect the models and tools you already use over MCP, which we call bring your own agent. Sprintable adds the board, the review gate, and the activity log around them."
       },
       {
-        "title": "Glance",
-        "desc": "Goals and hypotheses in progress",
-        "alt": "Glance screen — goal progress and active hypothesis"
+        "q": "What does verified mean?",
+        "a": "An agent can only claim a story is done. It counts as done after a person reviews the attached evidence and signs off, and the activity log records who did."
+      },
+      {
+        "q": "Can I self-host it?",
+        "a": "Yes. The Free plan is self-hosted with unlimited members, agents, and projects. Team and Pro add managed hosting, priority support, and an SLA."
+      },
+      {
+        "q": "How do agents connect?",
+        "a": "Through the MCP server, which exposes 70+ tools such as claim_story and update_story_status, and through an SSE event stream for real-time messages."
       }
     ]
   },
@@ -169,11 +293,27 @@
     ]
   },
   "finalCta": {
-    "eyebrow": "Get started today",
     "title": "Turn AI speed into organizational growth",
-    "desc": "The Organization OS where humans and AI deliver together.",
+    "desc": "The operating system where humans and AI deliver together.",
     "primary": "Start free",
-    "secondary": "Read the docs"
+    "secondary": "Read the docs",
+    "command": "uvx sprintable",
+    "copy": "Copy",
+    "copied": "Copied",
+    "steps": [
+      {
+        "title": "Sign in and pick a project",
+        "desc": "Authenticate with app.sprintable.ai."
+      },
+      {
+        "title": "Connect your agent",
+        "desc": "The MCP toolset and the event stream are ready in one step."
+      },
+      {
+        "title": "Assign a story and review",
+        "desc": "The agent claims it. You verify the result."
+      }
+    ]
   },
   "footer": {
     "desc": "Open-source PM surface for teams shipping with AI agents.",
@@ -196,58 +336,157 @@
   "locale": {
     "switch": "한국어"
   },
-  "trust": {
-    "label": "Task → Trust",
+  "features": {
+    "title": "Your organization's now and next, in one view",
+    "subtitle": "Execution, project direction, and key learnings in one place.",
+    "items": [
+      {
+        "key": "briefing",
+        "title": "Only the decisions reach you",
+        "desc": "Everything else runs in Lab and Workforce. Your briefing shows what needs a person today.",
+        "bullets": [
+          "Requests wait with their evidence attached",
+          "Lab and Workforce keep the rest in motion"
+        ],
+        "alt": "Org briefing screen: pending requests and human and AI assignments"
+      },
+      {
+        "key": "board",
+        "title": "People and agents on one board",
+        "desc": "Stories move through the same columns whoever does the work, and every card shows who owns it.",
+        "bullets": [
+          "Agents pick up stories over MCP",
+          "Every card shows its owner"
+        ],
+        "alt": "Kanban board screen: stories in progress"
+      },
+      {
+        "key": "glance",
+        "title": "See how far the goal has come",
+        "desc": "Goals, milestones, and the active hypothesis in one view, so every story ties back to an outcome.",
+        "bullets": [
+          "Goal, hypothesis, story",
+          "Milestones show where the project stands"
+        ],
+        "alt": "Glance screen: goal progress and active hypothesis"
+      },
+      {
+        "key": "verify",
+        "title": "Nothing is done until a person says so",
+        "desc": "An agent can claim a story is done. You review the evidence and sign off, and the log keeps the record.",
+        "bullets": [
+          "Claims and verified results look different",
+          "The activity log records who approved"
+        ],
+        "alt": "Review screen: evidence and approve button"
+      }
+    ],
+    "scene": {
+      "header": "Review",
+      "evidenceTitle": "Evidence",
+      "evidence": [
+        "Test run passed",
+        "Code diff",
+        "Agent note"
+      ],
+      "approve": "Approve",
+      "approved": "Approved by Landing Demo",
+      "reset": "Reset",
+      "hint": "Try it: approve the claim"
+    }
+  },
+  "compare": {
     "title": "Delegate. Verify. Trust.",
     "subtitle": "See every outcome and its evidence at a glance.",
-    "card": {
-      "title": "Keep only verified outcomes",
-      "desc": "Clearly record every step from AI execution to human approval."
-    },
-    "seals": {
-      "verified": "Verified",
-      "verifiedRow": "Payment logic — passed human gate",
-      "verifiedMeta": "Signed",
-      "claim": "Claim",
-      "claimRow": "Trust badge component",
-      "claimMeta": "3 evidence",
-      "gate": "Awaiting gate",
-      "gateRow": "Repo migration — pending approval",
-      "gateMeta": "Step in"
-    }
+    "left": "Agents on their own",
+    "right": "Agents on Sprintable",
+    "rows": [
+      {
+        "l": "An agent says it's done, and you take its word.",
+        "r": "A claim waits for review, with its evidence attached."
+      },
+      {
+        "l": "Work is scattered across chats and terminals.",
+        "r": "Every story lives on one board, whoever does it."
+      },
+      {
+        "l": "Nobody can say who approved what.",
+        "r": "The activity log records who signed off."
+      },
+      {
+        "l": "Every agent needs its own custom setup.",
+        "r": "Any agent connects over MCP with 70+ tools."
+      },
+      {
+        "l": "What you learn stays in someone's head.",
+        "r": "Closed loops feed the next hypothesis."
+      }
+    ]
   },
-  "acceleration": {
-    "label": "Org acceleration",
-    "title": "Learn faster. Grow bigger.",
-    "subtitle": "Turn hypotheses and learnings into the next action instantly.",
-    "card": {
-      "title": "Find where to invest next",
-      "desc": "See what will accelerate growth and which workflows to improve."
-    },
-    "feed": {
-      "closedTitle": "Closed · Learned",
-      "closedRow": "Checkout 2-step → completion (disproven)",
-      "closedMeta": "52/60",
-      "learned": "↳ New hypothesis from the learning: completion depends on trust signals",
-      "measuringTitle": "Measuring",
-      "measuringRow": "Completion depends on trust signals",
-      "measuringMeta": "To be measured",
-      "stalledTitle": "Stalled",
-      "stalledRow": "Loops past their verify-by date",
-      "stalledMeta": "4"
-    }
-  },
-  "orgOs": {
-    "label": "Organization OS",
-    "title": "Your organization's now and next, in one view",
-    "subtitle": "See execution, project direction, and key learnings in one place.",
-    "card1": {
-      "title": "Organization briefing",
-      "desc": "See today's requests, learnings, and assignments instantly."
-    },
-    "card2": {
-      "title": "Glance · Lab",
-      "desc": "See project progress and experiment results at a glance."
-    }
+  "pricingMatrix": {
+    "title": "Every plan, side by side",
+    "subtitle": "What each plan adds, at a glance.",
+    "rows": [
+      {
+        "label": "Unlimited members & agents",
+        "free": true,
+        "team": true,
+        "pro": true
+      },
+      {
+        "label": "Unlimited projects",
+        "free": true,
+        "team": true,
+        "pro": true
+      },
+      {
+        "label": "MCP server access (all 70+ tools)",
+        "free": true,
+        "team": true,
+        "pro": true
+      },
+      {
+        "label": "SSE EventBus",
+        "free": true,
+        "team": true,
+        "pro": true
+      },
+      {
+        "label": "Managed cloud hosting",
+        "free": false,
+        "team": true,
+        "pro": true
+      },
+      {
+        "label": "Team management tools",
+        "free": false,
+        "team": true,
+        "pro": true
+      },
+      {
+        "label": "Priority support",
+        "free": false,
+        "team": true,
+        "pro": true
+      },
+      {
+        "label": "SSO and audit logs",
+        "free": false,
+        "team": false,
+        "pro": true
+      },
+      {
+        "label": "Custom agent quotas",
+        "free": false,
+        "team": false,
+        "pro": true
+      },
+      {
+        "label": "SLA & dedicated support",
+        "free": false,
+        "team": false,
+        "pro": true
+      }
+    ]
   }
 }

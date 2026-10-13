@@ -15,7 +15,7 @@ export function LocaleSwitcher() {
   return (
     <button
       onClick={handleSwitch}
-      className="text-sm font-medium text-[oklch(65%_0.02_265)] transition hover:text-[oklch(88%_0.04_265)]"
+      className="text-sm text-muted transition hover:text-ink"
       aria-label="Switch language"
     >
       {t("switch")}
