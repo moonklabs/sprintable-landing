@@ -1,0 +1,24 @@
+name: Pricing Guard
+
+# story #2605 — landing pricing (messages/*.json) has no automated check against the
+# canonical price policy (pricing-policy-v2-3), which is how it drifted to stale USD
+# figures while the real billing code moved to KRW. This repo had no pull_request-triggered
+# CI at all before this (only a push-to-main deploy workflow) — so this check must run on
+# every PR to actually gate, not just exist.
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify-pricing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify landing pricing matches canonical policy
+        run: node scripts/verify-pricing.mjs

@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Spotlight } from "../ui/spotlight";
 
 type Plan = { name: string; price: string; period: string; audience: string; features: string[] };
-type Row = { label: string; free: boolean; team: boolean; pro: boolean };
+type Row = { label: string; has: boolean[] };
 
 /* 요금제 — 플랜, 가격, 기능 내용은 원본 그대로. 구조만 바꿨다:
    추천 플랜을 띄운 카드 3개 + 같은 내용을 한 표로 모은 비교표 */
@@ -11,7 +11,6 @@ export async function PricingSection() {
   const t = await getTranslations();
   const plans = t.raw("pricing.plans") as Plan[];
   const rows = t.raw("pricingMatrix.rows") as Row[];
-  const cols = ["free", "team", "pro"] as const;
 
   return (
     <section id="pricing" className="px-5 py-20 sm:px-8 sm:py-28">
@@ -26,9 +25,9 @@ export async function PricingSection() {
           </p>
         </div>
 
-        <div className="grid items-stretch gap-5 lg:grid-cols-3">
+        <div className="grid items-stretch gap-5 md:grid-cols-2 xl:grid-cols-4">
           {plans.map((plan, i) => {
-            const featured = i === 1;
+            const featured = i === 2;
             return (
               <Spotlight
                 key={plan.name}
@@ -37,7 +36,7 @@ export async function PricingSection() {
                 color={featured ? "oklch(100% 0 0 / 0.12)" : "oklch(50% 0.17 255 / 0.08)"}
                 className={`flex flex-col rounded-2xl border p-7 ${
                   featured
-                    ? "border-ink bg-ink text-white shadow-[0_40px_80px_-36px_oklch(20%_0.03_265/0.6)] lg:-my-3 lg:py-10"
+                    ? "border-ink bg-ink text-white shadow-[0_40px_80px_-36px_oklch(20%_0.03_265/0.6)] xl:-my-3 xl:py-10"
                     : "border-line bg-white"
                 }`}
               >
@@ -48,9 +47,9 @@ export async function PricingSection() {
                   )}
                 </div>
                 <p className={`mt-1 text-sm ${featured ? "text-white/65" : "text-muted"}`}>{plan.audience}</p>
-                <p className="mt-6 flex items-end gap-1.5">
-                  <span className="text-5xl font-medium tracking-[-0.04em] tabular-nums">{plan.price}</span>
-                  {plan.period && <span className={`mb-1.5 text-sm ${featured ? "text-white/55" : "text-faint"}`}>{plan.period}</span>}
+                <p className="mt-6 flex flex-wrap items-end gap-x-1.5">
+                  <span className="text-4xl font-medium tracking-[-0.04em] tabular-nums">{plan.price}</span>
+                  {plan.period && <span className={`mb-1 whitespace-nowrap text-sm ${featured ? "text-white/55" : "text-faint"}`}>{plan.period}</span>}
                 </p>
 
                 <ul className="mt-7 flex-1">
@@ -68,12 +67,12 @@ export async function PricingSection() {
                 </ul>
 
                 <a
-                  href={i === 2 ? "mailto:dev1@moonklabs.com" : "https://app.sprintable.ai/login"}
+                  href={i === plans.length - 1 ? "mailto:dev1@moonklabs.com" : "https://app.sprintable.ai/login"}
                   className={`mt-8 inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition ${
                     featured ? "bg-white text-ink hover:bg-paper-2" : "border border-line bg-white text-ink hover:bg-paper-2"
                   }`}
                 >
-                  {i === 0 ? t("pricing.startFree") : i === 1 ? t("pricing.startTrial") : t("pricing.contactSales")}
+                  {i === 0 ? t("pricing.startFree") : i === plans.length - 1 ? t("pricing.contactSales") : t("pricing.startTrial")}
                 </a>
               </Spotlight>
             );
@@ -86,15 +85,15 @@ export async function PricingSection() {
           <p className="mt-2 text-[15px] text-muted">{t("pricingMatrix.subtitle")}</p>
 
           <div className="mt-8 overflow-x-auto">
-            <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
+            <table className="w-full min-w-[40rem] border-collapse text-left text-sm">
               <thead>
                 <tr>
-                  <th className="w-[46%] pb-4" />
+                  <th className="w-[36%] pb-4" />
                   {plans.map((plan, i) => (
                     <th
                       key={plan.name}
                       scope="col"
-                      className={`pb-4 pt-5 text-center align-bottom font-medium ${i === 1 ? "rounded-t-xl bg-[oklch(96%_0.015_255)]" : ""}`}
+                      className={`pb-4 pt-5 text-center align-bottom font-medium ${i === 2 ? "rounded-t-xl bg-[oklch(96%_0.015_255)]" : ""}`}
                     >
                       <span className="block text-base text-ink">{plan.name}</span>
                       <span className="block text-sm font-normal tabular-nums text-muted">
@@ -111,14 +110,14 @@ export async function PricingSection() {
                     <th scope="row" className="py-3.5 pr-4 font-normal text-ink">
                       {row.label}
                     </th>
-                    {cols.map((c, ci) => (
+                    {row.has.map((included, ci) => (
                       <td
-                        key={c}
-                        className={`py-3.5 text-center ${ci === 1 ? "bg-[oklch(96%_0.015_255)]" : ""} ${
-                          ci === 1 && ri === rows.length - 1 ? "rounded-b-xl" : ""
+                        key={plans[ci]?.name ?? ci}
+                        className={`py-3.5 text-center ${ci === 2 ? "bg-[oklch(96%_0.015_255)]" : ""} ${
+                          ci === 2 && ri === rows.length - 1 ? "rounded-b-xl" : ""
                         }`}
                       >
-                        {row[c] ? (
+                        {included ? (
                           <Check className="mx-auto size-4 text-ok" aria-label="included" />
                         ) : (
                           <Minus className="mx-auto size-4 text-[oklch(80%_0.005_265)]" aria-label="not included" />
