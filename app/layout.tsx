@@ -1,24 +1,23 @@
 export const runtime = "edge";
 
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Barlow } from "next/font/google";
+import { Inter, Noto_Sans_KR } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Suspense } from "react";
 import { GoogleAnalytics } from "./components/google-analytics";
 import "./globals.css";
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-display",
+const inter = Inter({
+  variable: "--font-latin",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const barlow = Barlow({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const notoKr = Noto_Sans_KR({
+  variable: "--font-kr",
+  weight: ["400", "500", "600"],
+  preload: false,
   display: "swap",
 });
 
@@ -45,7 +44,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${bricolage.variable} ${barlow.variable}`}
+      className={`${inter.variable} ${notoKr.variable}`}
     >
       <body>
         <Suspense>
