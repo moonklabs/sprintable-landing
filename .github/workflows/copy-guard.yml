@@ -1,0 +1,22 @@
+name: Copy Guard
+
+# story 4918 — the landing's one-line description (finalCta.desc · home meta.description · root layout description)
+# is pinned to the wording the teacher chose; this check fails a PR that changes one of them without the others
+# (or brings the old «조직 OS» / «PM surface» line back). Same shape as pricing-guard.yml.
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify landing one-line description is the decided copy
+        run: node scripts/verify-copy.mjs

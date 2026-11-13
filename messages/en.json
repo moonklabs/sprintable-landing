@@ -309,7 +309,7 @@
   },
   "finalCta": {
     "title": "Turn AI speed into organizational growth",
-    "desc": "The operating system where humans and AI deliver together.",
+    "desc": "While your agents work on your Mac, chat and approve from your phone. A workspace for people who work solo or in small teams.",
     "primary": "Start free",
     "secondary": "Read the docs",
     "command": "uvx sprintable",
@@ -570,6 +570,6 @@
   },
   "meta": {
     "title": "Sprintable — The operating system for teams that ship with AI agents",
-    "description": "Open-source workspace where AI agents and people ship from the same board. Agents do the work, your team verifies what counts, and every result is traced from goal to sign-off."
+    "description": "While your agents work on your Mac, chat and approve from your phone. A workspace for people who work solo or in small teams."
   }
 }

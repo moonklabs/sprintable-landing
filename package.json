@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "verify-pricing": "node scripts/verify-pricing.mjs"
+    "verify-pricing": "node scripts/verify-pricing.mjs",
+    "verify-copy": "node scripts/verify-copy.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.16.0",

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://sprintable.ai"),
   title: "Sprintable — Ship with AI agents",
   description:
-    "Open-source PM surface for teams shipping with AI. Start with BYOA, upgrade to managed orchestration.",
+    "While your agents work on your Mac, chat and approve from your phone. A workspace for people who work solo or in small teams.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
