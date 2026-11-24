@@ -202,3 +202,9 @@ main .hero--centred .hero__window { max-height: 560px; }
 /* ── the real brand mark (the web app's three-chevron mark) in the header and the footer instead of the «S» box ── */
 .nav__logo .brand-mark { width: 26px; height: 26px; flex: none; color: var(--p-accent, #1f2de6); }
 .footer .nav__logo .brand-mark { color: currentColor; }
+
+/* ── FAQ: no open/close mark ──
+   The kit keeps every FAQ answer open and the question row cannot close it (system.js, «every FAQ answer open, for good»; system.css sets the summary to a
+   block with pointer-events none). This page's earlier «–» / «+» after the question therefore marked nothing — it fell under the question like an empty bullet.
+   There is nothing to open or close, so the mark is gone. */
+main .v3-faq .faq__item > summary::after { content: none; }
