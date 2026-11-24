@@ -40,7 +40,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const locale = await getLocale();
-  const messages = await getMessages();
+  // Only the client components read translations through this provider (LocaleSwitcher → «locale», DownloadButton → «v2.dl»); every other string is read on the server.
+  // Handing it the whole file shipped the old page's copy (demo · compare · pricing matrix · an old «Trust» …) inside every page's data, unseen.
+  const all = await getMessages();
+  const messages = { locale: all.locale, v2: { dl: (all.v2 as { dl: unknown }).dl } };
 
   return (
     <html
