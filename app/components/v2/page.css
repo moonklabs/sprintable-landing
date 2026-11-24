@@ -95,3 +95,17 @@ main .hero--centred .hero__c .hero__proof { color: var(--ink); }
 .v3-faq .faq__item { padding-block: var(--s-2); }
 .v3-faq summary > h3 { font-size: var(--t-body); font-weight: 500; }
 .v3-faq details > p { margin-top: var(--s-2); }
+
+/* ── C-2 ── */
+/* step 3 has no real screen: a text card as high as its neighbours, the words larger, no plate and no icon box */
+.v3-step--text > p { font-size: var(--t-lead); line-height: 1.4; }
+/* the three systems: the block is centred on its screen, the cards and the Windows line are larger, so no empty space hangs under them */
+main > section.v3-os-section > .wrap { justify-content: center; }
+.v3-os-section .v3-os { min-height: 280px; justify-content: space-between; padding: var(--s-6); }
+.v3-os-section .v3-os__head { gap: var(--s-5); }
+.v3-os-section .v3-os__head .ic { width: 64px; height: 64px; }
+.v3-os-section .v3-os__head h3 { font-size: 28px; }
+.v3-os-section .v3-notice { font-size: var(--t-lead); max-width: 52em; margin-top: var(--s-7); }
+.v3-card-shot--policy { align-self: center; height: auto; }
+.v3-card-shot--policy > img { height: auto; object-fit: contain; }
+.v3-step--text > p { font-size: clamp(20px, 1.4vw + 8px, 28px); }

@@ -153,10 +153,10 @@ export function HomePage() {
             <div className="section-head"><h2 id="how-h">{v("steps.title")}</h2></div>
             <ol className="grid fill v3-steps">
               {list("steps.items").map((text, i) => (
-                <li className="card span-4 v3-step" key={i}>
+                <li className={`card span-4 v3-step${i === 2 ? " v3-step--text" : ""}`} key={i}>
                   <span className="step-num">{i + 1}</span>
                   <p>{text}</p>
-                  <div className="v3-step__visual">
+                  {i < 2 && <div className="v3-step__visual">
                     {i === 0 && (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={`${shots}/step-install.jpg`} alt="" width={1100} height={570} loading="lazy" />
@@ -165,15 +165,7 @@ export function HomePage() {
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={`${shots}/step-pair.jpg`} alt="" width={1100} height={630} loading="lazy" />
                     )}
-                    {i === 2 && (
-                      <span className="v3-step__glyphs">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img className="ic ic-ink" src="/assets/icons/ui-wifi.svg" alt="" width={72} height={72} loading="lazy" />
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img className="ic ic-ink" src="/assets/icons/ui-lock.svg" alt="" width={72} height={72} loading="lazy" />
-                      </span>
-                    )}
-                  </div>
+                  </div>}
                 </li>
               ))}
             </ol>
@@ -206,9 +198,9 @@ export function HomePage() {
         <section className="section v3-fill" id="own" aria-labelledby="own-h">
           <div className="wrap">
             <div className="grid fill v3-feature v3-feature--flip">
-              <div className="span-7 v3-card-shot">
+              <div className="span-7 v3-card-shot v3-card-shot--policy">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`${shots}/approval-card-1440.jpg`} alt="" width={1300} height={987} loading="lazy" />
+                <img src={`${shots}/policies-1440.jpg`} alt="" width={1300} height={690} loading="lazy" />
               </div>
               <div className="span-4 start-9">
                 <div className="section-head"><h2 id="own-h">{v("own.title")}</h2></div>
@@ -239,7 +231,7 @@ export function HomePage() {
         </section>
 
         {/* 6 — three systems (B's cards) */}
-        <section className="section v3-fill" id="os" aria-labelledby="os-h">
+        <section className="section v3-fill v3-os-section" id="os" aria-labelledby="os-h">
           <div className="wrap">
             <div className="section-head"><h2 id="os-h">{v("os.title")}</h2><p>{v("os.body")}</p></div>
             <div className="grid v3-oscards">
