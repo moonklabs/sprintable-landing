@@ -185,3 +185,9 @@ main .hero--centred .hero__c .hero__lead { font-size: clamp(15px, .5vw + 13px, 1
 /* the questions: two pixels back inside the section */
 .v3-faq .faq__item { padding-block: 5px; }
 .v3-faq details > p { margin-top: 4px; }
+
+/* ── C-7 ── the policies picture scales down as a whole to its column: nothing is cut */
+.v3-card-shot--policy { overflow: visible; }
+.v3-card-shot--policy > img { display: block; width: 100%; max-width: 100%; height: auto; min-height: 0; object-fit: contain; }
+/* the step pictures too scale down as a whole (the pairing picture was cut on its right edge at 390) */
+.v3-step__visual > img { object-fit: contain; object-position: top center; }
