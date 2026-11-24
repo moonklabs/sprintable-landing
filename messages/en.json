@@ -648,15 +648,15 @@
       "title": "Questions",
       "items": [
         {
-          "q": "Do you see my code?",
+          "q": "Can you see my code?",
           "a": "No. Your agents and files stay on your computer. What travels between your devices is end-to-end encrypted, and on the same network it doesn't touch our relay at all."
         },
         {
-          "q": "Which agents?",
+          "q": "Which agents work with it?",
           "a": "Claude Code and Codex."
         },
         {
-          "q": "Ports or a VPN?",
+          "q": "Do I need to open ports or install a VPN?",
           "a": "No ports to open, no VPN to install."
         },
         {
@@ -673,9 +673,24 @@
       "line": "Start with the computer you already have."
     },
     "alt": {
-      "desktop": "Sprintable on a computer",
-      "phone": "Sprintable on a phone"
+      "desktop": "",
+      "phone": ""
     },
-    "trademarks": "Product names and logos are trademarks of their owners."
+    "core": {
+      "items": [
+        {
+          "head": "Claude Code and Codex keep working on your own machine.",
+          "line": "No ports to open, no VPN to install."
+        },
+        {
+          "head": "Approve or deny what an agent asks to do.",
+          "line": "Send an instruction to a running session."
+        },
+        {
+          "head": "Even we can't read it.",
+          "line": "On the same network they go directly, without our relay."
+        }
+      ]
+    }
   }
 }

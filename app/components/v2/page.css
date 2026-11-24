@@ -1,23 +1,97 @@
-/* Page CSS (the kit's rule: only what sits inside a visual). Variant B — product forward. */
-.hero__art > .ly-piece--main img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--r-md) 0 0 0; }
-.hero__art > .ly-piece--note { left: var(--s-6); bottom: var(--s-6); width: min(26%, 170px); z-index: 2; }
-.hero__art > .ly-piece--note img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--r-md); }
-/* a screenshot cut by its frame (the frame's right and bottom edges) */
-.shot-cut { object-position: top left; }
-/* a phone-width capture rising out of the lit frame, cut by the frame's bottom */
-.phone-shot { width: 330px; height: auto; border: 1px solid var(--line); border-radius: var(--r-lg) var(--r-lg) 0 0; }
+/* Page CSS (the kit's rule: only what sits inside a visual or a card). Variant C — the usual SaaS order, B's base with A's restraint. */
+
+/* ── 1 hero: the 62-character headline in two lines at a restrained size; the desktop picture and the phone-width picture as one composition ── */
+main .hero--centred .hero__c h1 { max-width: none; font-size: clamp(28px, 1.2vw + 26px, 44px); line-height: 1.08; text-wrap: balance; }
+.hero--centred .hero__c .hero__lead { font-size: var(--t-body); max-width: 64ch; }
+.hero--centred .hero__proof { color: var(--muted); font-size: var(--t-small); max-width: 56ch; }
+.hero--centred .hero__window > .ly-piece.hero-comp { width: min(1040px, calc(100% - 2 * var(--s-6))); }
+.hero-comp { aspect-ratio: 16 / 10; }
+.hero-comp__desk { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: 0 24px 60px -30px rgb(0 0 0 / .35); }
+.hero-comp__phone { position: absolute; right: -3%; top: 14%; width: 25%; height: auto; border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: 0 28px 60px -24px rgb(0 0 0 / .45); }
+@media (max-width: 639px) {
+  .hero--centred .hero__window > .ly-piece.hero-comp { width: calc(100% - 2 * var(--s-4)); }
+  .hero-comp__phone { right: 2%; top: 22%; width: 34%; }
+}
+
+/* the site's Tailwind has .start-N { inset-inline-start: 28px }; the kit's .start-N only names a grid column */
+.grid > :is(.start-5, .start-6, .start-7, .start-8, .start-9, .start-10) { inset-inline-start: auto; }
+
+/* ── 2 three core cards: a tile of real icons, the two lines under it; under them the three «who» lines of the same section ── */
+.v3-cards { align-items: stretch; }
+.v3-core { display: flex; flex-direction: column; gap: var(--s-3); }
+.v3-core__tile { display: flex; align-items: center; gap: var(--s-4); margin-bottom: var(--s-2); }
+.v3-core .v3-core__tile .ic { width: 40px; height: 40px; }
+.v3-core h3 { font-size: var(--t-card); line-height: 1.3; margin: 0; }
+.v3-core p { color: var(--muted); margin: 0; }
+.v3-who { list-style: none; padding: 0; margin: var(--s-7) 0 0; }
+.v3-who li { border-top: 1px solid var(--line); padding-top: var(--s-4); }
+.v3-who p { margin: 0; }
+
+/* ── 3 three steps across: the visual takes what the card leaves ── */
+.v3-steps { list-style: none; padding: 0; margin: 0; align-items: stretch; }
+.v3-step { display: flex; flex-direction: column; gap: var(--s-4); }
+.v3-step > p { margin: 0; }
+.v3-step__visual { flex: none; aspect-ratio: 4 / 3; position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); display: grid; place-items: center; }
+.v3-step__visual > img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.v3-step__glyphs { display: flex; gap: var(--s-6); align-items: center; justify-content: center; }
+.v3-step .v3-step__glyphs .ic { width: 96px; height: 96px; }
+
+/* ── 4 two feature blocks: the text centred beside a picture that takes the screen's height ── */
+.v3-feature { align-items: stretch; }
+.v3-feature > :is(.span-4, .span-5) { align-self: center; }
+.v3-feature .rows { margin-top: var(--s-5); }
+.v3-phones { display: flex; justify-content: center; align-items: flex-start; gap: var(--s-5); overflow: hidden; padding: var(--s-6) var(--s-5) 0; }
+.v3-phones > img { width: 46%; max-width: 300px; height: auto; border: 1px solid var(--line); border-radius: var(--r-lg) var(--r-lg) 0 0; }
+.v3-phones > .v3-phones__b { margin-top: 96px; }
+.v3-card-shot { overflow: hidden; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--surface); }
+.v3-card-shot > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.v3-diagram { min-height: 420px; display: grid; align-items: center; border-radius: var(--r-lg); background: var(--surface); border: 1px solid rgb(255 255 255 / .1); padding: var(--s-6); }
+
+/* ── 5/6 the dark band and the three systems ── */
+.v3-oscards { align-items: stretch; }
+.v3-os { display: flex; flex-direction: column; gap: var(--s-4); align-items: flex-start; }
+.v3-os__head { display: flex; align-items: center; gap: var(--s-4); }
+.v3-os__head .ic { width: 40px; height: 40px; }
+.v3-os__head h3 { margin: 0; font-size: var(--t-card); }
+.v3-notice { max-width: 40em; margin-top: var(--s-6); color: var(--ink); }
+section#oss .mo-la__sub { color: var(--ink); }
+
+/* ── 8 questions: open on load, each can be closed ── */
+.v3-faqgrid { align-items: start; }
+.v3-faq .faq__item { border-bottom: 1px solid var(--line); padding-block: var(--s-4); }
+.v3-faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: var(--s-4); align-items: baseline; }
+.v3-faq summary::-webkit-details-marker { display: none; }
+.v3-faq summary::after { content: "–"; color: var(--muted); font-weight: 400; flex: none; }
+.v3-faq details:not([open]) > summary::after { content: "+"; }
+.v3-faq summary > h3 { margin: 0; font-size: var(--t-card); flex: 1 1 auto; width: auto; }
+.v3-faq summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.v3-faq details > p { margin: var(--s-3) 0 0; max-width: 60ch; }
+
 .mark-row { display: flex; align-items: center; gap: var(--s-5); margin-top: var(--s-5); }
 .btn .ic { margin-right: var(--s-2); }
-.card--open > .ic { margin-bottom: var(--s-4); }
-.v2-notice { max-width: 40em; margin-top: var(--s-6); color: var(--ink); }
-
-/* the site's Tailwind has .start-7 { inset-inline-start: 28px }; the kit's .start-N only names a grid column */
-.grid > :is(.start-5, .start-6, .start-7, .start-8, .start-10) { inset-inline-start: auto; }
-section#oss .mo-la__sub { color: var(--ink); }
 @media (max-width: 639px) { .nav__loc { display: none; } }
-#how .panel { --p-h: 440px; }
-#os .ic-tile { --tile: 160px; }
-@media (max-width: 639px) {
-  .hero--collage h1 { font-size: 32px; }
-  .hero__art { min-height: 200px; }
+
+/* ── 7 open source: the statement left, the real GitHub mark right ── */
+.v3-oss { align-items: center; }
+.v3-oss__mark { display: grid; place-items: center; aspect-ratio: 1 / 1; max-height: 100%; background: var(--bg); border-radius: var(--r-lg); border: 1px solid var(--line); }
+.v3-oss__mark .ic { width: 45%; height: auto; }
+
+/* ── round 2 (gate round 1 findings) ── */
+/* on a phone a section grows with what it holds: a stretched grid may not shrink below its content (collide / spill / neighbour at 390 and 320) */
+@media (max-width: 1023px) {
+  main > section.v3-fill > .wrap > .fill, main > section.v3-fill > .wrap > .grid.fill { flex: 1 0 auto; min-height: auto; }
+  .v3-phones { min-height: 460px; }
 }
+/* the phone-width picture stays inside the hero window; the hero lead is ink, not grey */
+.hero-comp__phone { right: 2%; }
+main .hero--centred .hero__c .hero__lead { color: var(--ink); }
+/* a question and its marker on one line */
+.v3-faq summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; }
+.v3-faq .faq__item { padding-block: var(--s-3); }
+
+/* ── round 3 ── */
+main .hero--centred .hero__c .hero__proof { color: var(--ink); }
+@media (max-width: 639px) { .hero-comp__phone { top: 6%; width: 28%; } }
+.v3-faq .faq__item { padding-block: var(--s-2); }
+.v3-faq summary > h3 { font-size: var(--t-body); font-weight: 500; }
+.v3-faq details > p { margin-top: var(--s-2); }
