@@ -1,7 +1,7 @@
 /* Page CSS (the kit's rule: only what sits inside a visual or a card). Variant C — the usual SaaS order, B's base with A's restraint. */
 
 /* ── 1 hero: the 62-character headline in two lines at a restrained size; the desktop picture and the phone-width picture as one composition ── */
-main .hero--centred .hero__c h1 { max-width: none; font-size: clamp(28px, 1.2vw + 26px, 44px); line-height: 1.08; text-wrap: balance; }
+/* the h1 is the kit's own size and measure (35 characters now) */
 .hero--centred .hero__c .hero__lead { font-size: var(--t-body); max-width: 64ch; }
 .hero--centred .hero__proof { color: var(--muted); font-size: var(--t-small); max-width: 56ch; }
 .hero--centred .hero__window > .ly-piece.hero-comp { width: min(1040px, calc(100% - 2 * var(--s-6))); }
@@ -109,3 +109,16 @@ main > section.v3-os-section > .wrap { justify-content: center; }
 .v3-card-shot--policy { align-self: center; height: auto; }
 .v3-card-shot--policy > img { height: auto; object-fit: contain; }
 .v3-step--text > p { font-size: clamp(20px, 1.4vw + 8px, 28px); }
+
+/* ── C-3 ── */
+/* the three step cards end on one edge: pictures of one short height (16:9), step 3 a text card whose words fill the same height; the row is centred on its screen */
+main > section.v3-center > .wrap { justify-content: center; }
+.v3-step__visual { aspect-ratio: 16 / 9; }
+.v3-step--text { justify-content: flex-start; }
+.v3-step--text > p { font-size: clamp(20px, 1vw + 12px, 26px); line-height: 1.35; }
+/* the «Mac» card heading steps with the other card headings on a phone */
+@media (max-width: 639px) { .v3-os-section .v3-os__head h3 { font-size: var(--t-card); } .v3-os-section .v3-os { min-height: 0; } }
+/* the footer's logo mark keeps its letter inside its box */
+.footer .nav__logo .mark--initial { overflow: visible; line-height: 1; display: inline-grid; place-items: center; }
+/* step 3's words are set larger than the kit's card text so they fill the card (the kit's `.card > p` rule is as specific as the class alone) */
+.card.v3-step--text > p { font-size: clamp(20px, 1.1vw + 8px, 24px); line-height: 1.3; }

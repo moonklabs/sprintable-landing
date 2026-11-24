@@ -148,10 +148,10 @@ export function HomePage() {
         </section>
 
         {/* 3 — three steps, across: the install page and the pairing area are real captures of the web side; the third is real glyphs (the QR screen lives inside the desktop app window and is not available) */}
-        <section className="section ground-surface v3-fill" id="how" aria-labelledby="how-h">
+        <section className="section ground-surface v3-fill v3-center" id="how" aria-labelledby="how-h">
           <div className="wrap">
             <div className="section-head"><h2 id="how-h">{v("steps.title")}</h2></div>
-            <ol className="grid fill v3-steps">
+            <ol className="grid v3-steps">
               {list("steps.items").map((text, i) => (
                 <li className={`card span-4 v3-step${i === 2 ? " v3-step--text" : ""}`} key={i}>
                   <span className="step-num">{i + 1}</span>
@@ -159,11 +159,11 @@ export function HomePage() {
                   {i < 2 && <div className="v3-step__visual">
                     {i === 0 && (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={`${shots}/step-install.jpg`} alt="" width={1100} height={570} loading="lazy" />
+                      <img src={`${shots}/step-install.jpg`} alt="" width={1100} height={600} loading="lazy" />
                     )}
                     {i === 1 && (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={`${shots}/step-pair.jpg`} alt="" width={1100} height={630} loading="lazy" />
+                      <img src={`${shots}/step-pair.jpg`} alt="" width={1056} height={600} loading="lazy" />
                     )}
                   </div>}
                 </li>
@@ -198,7 +198,7 @@ export function HomePage() {
         <section className="section v3-fill" id="own" aria-labelledby="own-h">
           <div className="wrap">
             <div className="grid fill v3-feature v3-feature--flip">
-              <div className="span-7 v3-card-shot v3-card-shot--policy">
+              <div className="span-8 v3-card-shot v3-card-shot--policy">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={`${shots}/policies-1440.jpg`} alt="" width={1300} height={690} loading="lazy" />
               </div>

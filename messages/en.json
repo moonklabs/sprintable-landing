@@ -574,8 +574,8 @@
   },
   "v2": {
     "hero": {
-      "title": "Your AI agents run on your computer. Reach them from anywhere.",
-      "sub": "Claude Code and Codex keep working on your own machine. Pair your phone or another computer with one QR scan — then send instructions, approve requests and open files from wherever you are.",
+      "title": "A home base for your coding agents.",
+      "sub": "Claude Code and Codex work on your projects, on your own computer. Hand them tasks, see what they change and approve the next step — at your desk or from your phone.",
       "github": "View on GitHub",
       "small": "Open source. Your agents and your Claude sign-in stay on your computer."
     },
@@ -611,7 +611,7 @@
       ]
     },
     "anywhere": {
-      "title": "What your agents need from you, on your phone.",
+      "title": "Away from your desk? Keep the work moving from your phone.",
       "items": [
         "Send an instruction to a running session.",
         "Approve or deny what an agent asks to do.",
