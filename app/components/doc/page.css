@@ -1,0 +1,31 @@
+/* page CSS for variant A: only what the kit lacks. The kit's own files (public/assets) are unchanged copies of taste-skill 6c0b5c78. */
+/* the dealt pairing has no Korean glyphs: the site's Noto Sans KR (layout.tsx) stands behind it */
+html[lang="ko"] { --font-display: "Instrument Sans", var(--font-kr), system-ui, sans-serif; --font-text: "Instrument Sans", var(--font-kr), system-ui, sans-serif; }
+/* two phone captures side by side inside one frame (section 4) */
+.pair { display: flex; justify-content: center; gap: var(--s-4); align-items: flex-start; padding: var(--s-5); }
+.pair img { display: block; width: auto; max-width: calc(50% - var(--s-2)); height: min(520px, calc(100svh - 400px)); border: 1px solid var(--line); border-radius: var(--r-md); }
+@media (max-width: 639px) { .pair img { height: auto; width: calc(50% - var(--s-2)); max-width: none; } }
+.frame > img.shot { display: block; width: 100%; height: auto; }
+.statement .btn-row { margin-top: var(--s-6); }
+.hero__note { margin-top: var(--s-5); }
+.close__links-note { margin-top: var(--s-3); }
+
+/* Tailwind (globals.css) also defines .start-N as «inset-inline-start»: on the kit's grid placement that shifted every split picture 28px right of its column.
+   The kit's .start-N means grid-column-start only. */
+.start-1, .start-2, .start-3, .start-4, .start-5, .start-6, .start-7, .start-8, .start-9, .start-10 { inset-inline-start: auto; }
+/* the nav has no words in the middle (the copy gives none): its actions end on the right line */
+.nav__actions { margin-left: auto; }
+/* the h1 of the copy is 62 characters: the statement hero's 21ch measure would take three lines */
+.hero--statement h1 { max-width: 36ch; }
+
+/* the legal business information (kept verbatim from main): inline rows at the label size, so the one-screen footer holds it under the name */
+footer.closing .legal-info { display: grid; gap: var(--s-3); margin-top: var(--s-7); }
+.legal-info h3 { margin: 0; }
+footer.closing .legal-info .legal-inline { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-5); list-style: none; margin: 0; padding: 0; font-size: var(--t-label); line-height: 1.6; color: var(--muted); }
+footer.closing .legal-info .legal-inline a { color: inherit; }
+/* the footer's two link columns as short inline rows: the one-screen footer then holds the close, the name and the legal information */
+footer.closing .footer__col ul { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); }
+footer.closing .legal-info { margin-top: var(--s-5); }
+/* the name set across the close: the kit clips it at its 0.86 line box (the glyphs' top is cut); let it show whole */
+footer.closing .close__word { overflow: visible; }
+footer.closing .closing__links { gap: var(--s-5); }

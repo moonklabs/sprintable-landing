@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // the taste-skill kit (unchanged copies, public/assets): its own files are never linted or edited here
+    "public/assets/**",
+    ".claude/**",
+    ".taste-skill/**",
   ]),
 ]);
 

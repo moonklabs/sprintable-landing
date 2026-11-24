@@ -46,6 +46,10 @@ export default async function RootLayout({
     <html
       lang={locale}
       className={`${inter.variable} ${notoKr.variable}`}
+      data-type="software"
+      data-radius="sharp"
+      data-buttons="tonal"
+      data-motion=""
     >
       <body>
         <Suspense>
