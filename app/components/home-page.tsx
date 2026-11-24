@@ -1,21 +1,12 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { LocaleSwitcher } from "./locale-switcher";
+import { SprintableMarkSvg } from "./brand/sprintable-mark-svg";
 import { NavLinks } from "./nav-links";
 import { DownloadButton } from "./v2/download-button";
 import { buildJsonLd } from "../lib/seo";
 import type { Locale } from "../lib/locale";
 import "./v2/page.css";
-
-// 전자상거래법 표시의무 + PG(토스페이먼츠) 심사 요구 항목 — 로케일 무관 법정 표기
-const BUSINESS_INFO = {
-  companyName: "주식회사 뭉클랩",
-  ceo: "윤도선",
-  regNo: "488-88-02579",
-  mailOrderNo: "제2023-고양일산동-1337호",
-  address: "경기도 고양시 일산동구 무궁화로 20-38, 5층 502호",
-  supportTel: "070-8098-5775",
-};
 
 /* Variant C. Built on the taste-skill kit (public/assets, copied unchanged): system.css/js, layout (hero-centred), motion, moments.
    Palette and type are the dealt ones (cool-grey-cobalt · Mona Sans); the dark values below are the palette's own inverse set. */
@@ -80,7 +71,7 @@ export function HomePage() {
       <header className="nav">
         <div className="wrap nav__bar">
           <a className="skip-link" href="#top">{locale === "ko" ? "본문으로 건너뛰기" : "Skip to content"}</a>
-          <a className="nav__logo" href={homeHref}><span className="mark mark--initial" aria-hidden="true">S</span>Sprintable</a>
+          <a className="nav__logo" href={homeHref}><SprintableMarkSvg className="brand-mark" aria-hidden="true" />Sprintable</a>
           <NavLinks />
           <div className="nav__actions">
             <span className="nav__loc"><LocaleSwitcher /></span>
@@ -315,14 +306,14 @@ export function HomePage() {
           <div className="closing__links">
             <div className="grid">
               <div className="span-4 stack-4">
-                <a className="nav__logo" href="#top"><span className="mark mark--initial" aria-hidden="true">S</span>Sprintable</a>
+                <a className="nav__logo" href="#top"><SprintableMarkSvg className="brand-mark" aria-hidden="true" />Sprintable</a>
                 <p className="footer__lede">{v("hero.small")}</p>
               </div>
               <div className="span-2 start-7 footer__col">
                 <h3>{t("footer.product")}</h3>
                 <ul>
-                  <li><a href="#phone">{t("footer.overview")}</a></li>
-                  <li><a href="#sealed">{t("footer.proof")}</a></li>
+                  <li><a href="#os">{t("footer.download")}</a></li>
+                  <li><a href="#sealed">{t("footer.security")}</a></li>
                   <li><a href="https://github.com/moonklabs/sprintable/releases" target="_blank" rel="noopener noreferrer">{t("footer.changelog")}</a></li>
                 </ul>
               </div>
@@ -330,26 +321,21 @@ export function HomePage() {
                 <h3>{t("footer.resources")}</h3>
                 <ul>
                   <li><a href="https://github.com/moonklabs/sprintable#readme" target="_blank" rel="noopener noreferrer">{t("footer.docs")}</a></li>
-                  <li><Link href="/ko/blog">{t("footer.blog")}</Link></li>
-                  <li><a href="https://discord.gg/sprintable" target="_blank" rel="noopener noreferrer">{t("footer.community")}</a></li>
+                  <li><a href="https://github.com/moonklabs/sprintable" target="_blank" rel="noopener noreferrer">{t("footer.github")}</a></li>
+                  {locale === "ko" ? <li><Link href="/ko/blog">{t("footer.blog")}</Link></li> : null}
                 </ul>
               </div>
               <div className="span-2 footer__col">
-                <h3>{t("footer.businessTitle")}</h3>
+                <h3>{t("footer.legal")}</h3>
                 <ul>
                   <li><a href="https://app.sprintable.ai/terms">{t("footer.legalTerms")}</a></li>
                   <li><a href="https://app.sprintable.ai/privacy">{t("footer.legalPrivacy")}</a></li>
-                  <li><a href="https://app.sprintable.ai/refund-policy">{t("footer.legalRefund")}</a></li>
                 </ul>
               </div>
             </div>
-            {/* 법정 표기: 사업자 정보 (PG 심사 요구 항목 — 문구는 main 그대로) */}
             <div className="footer__legal">
-              <span>{t("footer.copyright")} · <LocaleSwitcher /></span>
-              <span>
-                {BUSINESS_INFO.companyName} · {t("footer.businessCeo")} : {BUSINESS_INFO.ceo} · {t("footer.businessRegNo")} : {BUSINESS_INFO.regNo} · {t("footer.businessMailOrderNo")} : {BUSINESS_INFO.mailOrderNo} · {t("footer.businessAddress")} : {BUSINESS_INFO.address} · {t("footer.businessSupport")} :{" "}
-                <a href={`tel:${BUSINESS_INFO.supportTel.replace(/-/g, "")}`}>{BUSINESS_INFO.supportTel}</a>
-              </span>
+              <span>{t("footer.copyright")}</span>
+              <LocaleSwitcher />
             </div>
           </div>
         </div>

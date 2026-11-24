@@ -191,3 +191,14 @@ main .hero--centred .hero__c .hero__lead { font-size: clamp(15px, .5vw + 13px, 1
 .v3-card-shot--policy > img { display: block; width: 100%; max-width: 100%; height: auto; min-height: 0; object-fit: contain; }
 /* the step pictures too scale down as a whole (the pairing picture was cut on its right edge at 390) */
 .v3-step__visual > img { object-fit: contain; object-position: top center; }
+
+/* ── UX-writing PR: the hero frame has a ceiling ──
+   The kit sizes the dark frame to fill the hero (flex 1 1 0 in a hero that is at least 100svh tall). On a very tall window (a long vertical screen) that
+   made the frame follow the window up to thousands of px (measured at 1440x2400: 1879px) — an empty dark plate. Normal screens are unchanged
+   (measured: 1440x900 379 · 1920x1080 498 · 768x1024 534 · 390x844 289): the ceiling sits above all of them. */
+main .hero--centred .hero__window { max-height: 560px; }
+@media (max-width: 639px) { main .hero--centred .hero__window { max-height: 360px; } }
+
+/* ── the real brand mark (the web app's three-chevron mark) in the header and the footer instead of the «S» box ── */
+.nav__logo .brand-mark { width: 26px; height: 26px; flex: none; color: var(--p-accent, #1f2de6); }
+.footer .nav__logo .brand-mark { color: currentColor; }

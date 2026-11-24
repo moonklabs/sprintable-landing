@@ -332,30 +332,23 @@
   },
   "footer": {
     "desc": "Open-source PM surface for teams shipping with AI agents.",
-    "copyright": "© 2026 Moonklabs, Inc. All rights reserved.",
+    "copyright": "© 2026 Moonklabs, Inc.",
     "operational": "All systems operational",
     "product": "Product",
     "company": "Company",
     "resources": "Resources",
-    "overview": "Overview",
-    "proof": "Proof",
     "changelog": "Changelog",
     "about": "About",
     "careers": "Careers",
     "blog": "Blog",
     "docs": "Docs",
     "pricing": "Pricing",
-    "community": "Community",
     "github": "GitHub",
-    "businessTitle": "Business Information",
-    "businessCeo": "CEO",
-    "businessRegNo": "Business Registration No.",
-    "businessMailOrderNo": "Mail-order Business No.",
-    "businessAddress": "Address",
-    "businessSupport": "Customer Support",
     "legalTerms": "Terms of Service",
     "legalPrivacy": "Privacy Policy",
-    "legalRefund": "Refund Policy"
+    "download": "Download",
+    "security": "Security",
+    "legal": "Legal"
   },
   "locale": {
     "switch": "한국어"
@@ -570,14 +563,14 @@
   },
   "meta": {
     "title": "Sprintable — Your agents keep working on your computer. Stay connected from anywhere.",
-    "description": "Claude Code and Codex work on your own computer — with your projects, your files and your accounts. Pair your phone or another computer once, then hand out work, approve requests and follow along from wherever you are."
+    "description": "Claude Code and Codex work on your own computer, with your projects and files. Connect your phone or another computer once, then hand out work, approve requests and follow along from wherever you are."
   },
   "v2": {
     "hero": {
       "title": "Your agents keep working on your computer. Stay connected from anywhere.",
-      "sub": "Claude Code and Codex work on your own computer — with your projects, your files and your accounts. Pair your phone or another computer once, then hand out work, approve requests and follow along from wherever you are.",
+      "sub": "Claude Code and Codex work on your own computer, with your projects and files. Connect your phone or another computer once, then hand out work, approve requests and follow along from wherever you are.",
       "github": "View on GitHub",
-      "small": "Open source. Your agents and your Claude sign-in stay on your computer."
+      "small": "Open source. Your code and sign-ins stay on your computer."
     },
     "dl": {
       "mac": "Download for Mac",
@@ -589,16 +582,16 @@
       "title": "Built for one person — or a small team.",
       "items": [
         {
-          "lead": "A Mac mini as home base.",
-          "rest": "Your MacBook and your phone connect to it."
+          "lead": "One computer that stays on",
+          "rest": "Your agents work there. Connect from your laptop or phone wherever you are."
         },
         {
-          "lead": "One laptop and your phone.",
+          "lead": "Just a laptop and your phone",
           "rest": "No server to set up."
         },
         {
-          "lead": "A small team.",
-          "rest": "One shared workspace where people and agents pick up the same work."
+          "lead": "A small team",
+          "rest": "People and agents share one workspace and pick up the same work."
         }
       ]
     },
@@ -606,39 +599,39 @@
       "title": "Three steps. Nothing to configure.",
       "items": [
         "Install the desktop app and sign in.",
-        "Scan the QR code with your phone — or with another computer.",
-        "On the same Wi-Fi they talk directly. Away from home they go through our relay, end-to-end encrypted. It picks the way on its own."
+        "Scan the QR code with your phone or another computer.",
+        "That's it. On the same Wi-Fi your devices connect directly; anywhere else, through our end-to-end encrypted relay — automatically."
       ]
     },
     "anywhere": {
       "title": "Away from your desk? Keep the work moving from your phone.",
       "items": [
-        "Send an instruction to a running session.",
-        "Approve or deny what an agent asks to do.",
-        "Stop a session in one tap.",
-        "See each agent's usage and when it resets.",
-        "Browse project files, open one, or save it to your phone (up to 8 MB).",
-        "Look back at what you asked and approved."
+        "Send instructions to a running session",
+        "Approve or deny what an agent wants to do",
+        "Stop a session with one tap",
+        "See each agent's usage and when it resets",
+        "Browse project files, open them or save them to your phone (up to 8 MB)",
+        "Look back at what you asked and approved"
       ]
     },
     "sealed": {
       "title": "Even we can't read it.",
-      "body": "Instructions, approval previews, changed file names and your history travel sealed, end to end, between your phone and your computer. On the same network they go directly, without our relay. Files you save to your phone pass through sealed and are deleted once read. Remove a phone, and it loses your history."
+      "body": "Instructions, approval previews, changed file names and your history are end-to-end encrypted between your phone and your computer. On the same network they skip our relay entirely. Files you save to your phone pass through encrypted and are deleted from the relay once delivered. Remove a phone and it can no longer read your history."
     },
     "own": {
       "title": "Your accounts. Your computers. Your rules.",
       "items": [
-        "Use a different Claude account for each project.",
-        "Move your home base to a new computer.",
-        "Keep the computer awake while agents work.",
-        "What an agent may do is your setting — not ours."
+        "Choose the agent for each project — Claude Code or Codex",
+        "Move your setup to a new computer",
+        "Keep the computer awake while agents work",
+        "You decide what your agents can do"
       ]
     },
     "os": {
-      "title": "Mac, Windows and Linux.",
-      "body": "The desktop app runs on all three. For a computer without a screen, a server host runs headless.",
-      "windows": "The Windows installer isn't signed yet, so Windows may warn the first time you open it. Choose More info, then Run anyway.",
-      "linux": "On Ubuntu 24.04, install these first for the AppImage: `sudo apt install libfuse2t64 libasound2t64`"
+      "title": "Mac, Windows and Linux",
+      "body": "The desktop app runs on all three. For a computer without a screen, there's a headless server host.",
+      "windows": "The Windows installer isn't code-signed yet, so Windows may warn you the first time you open it. Choose More info, then Run anyway.",
+      "linux": "On Ubuntu 24.04, run this before opening the AppImage: `sudo apt install libfuse2t64 libasound2t64`"
     },
     "oss": {
       "title": "Open source.",
@@ -646,27 +639,27 @@
       "button": "Read the code"
     },
     "faq": {
-      "title": "Questions",
+      "title": "Frequently asked questions",
       "items": [
         {
-          "q": "Can you see my code?",
-          "a": "No. Your agents and files stay on your computer. What travels between your devices is end-to-end encrypted, and on the same network it doesn't touch our relay at all."
+          "q": "Can Sprintable see my code?",
+          "a": "No. Your agents and files stay on your computer. Data between your devices is end-to-end encrypted, and on the same network it never touches our relay."
         },
         {
-          "q": "Which agents work with it?",
-          "a": "Claude Code and Codex."
+          "q": "Which agents are supported?",
+          "a": "Claude Code and Codex today, with more on the way."
         },
         {
           "q": "Do I need to open ports or install a VPN?",
-          "a": "No ports to open, no VPN to install."
+          "a": "No. It connects without any network setup."
         },
         {
-          "q": "What about the phone app?",
-          "a": "iOS and Android are in testing now — coming soon."
+          "q": "Is there a phone app?",
+          "a": "iOS and Android apps are in testing now and coming soon."
         },
         {
-          "q": "What does it cost?",
-          "a": "Free on your own computer — for one person or a whole team. Want your team's home base in the cloud instead? We'll run a machine just for your team (paid · coming soon)."
+          "q": "How much does it cost?",
+          "a": "It's free on your own computer, for one person or a whole team. If your team would rather run its main computer in the cloud, we'll offer a dedicated machine just for your team (paid, coming soon)."
         }
       ]
     },
@@ -680,16 +673,16 @@
     "core": {
       "items": [
         {
-          "head": "Claude Code and Codex keep working on your own machine.",
+          "head": "Agents that keep working on your computer",
           "line": "No ports to open, no VPN to install."
         },
         {
-          "head": "Approve or deny what an agent asks to do.",
-          "line": "Send an instruction to a running session."
+          "head": "Approve or deny from your phone",
+          "line": "Send instructions to a running session, too."
         },
         {
-          "head": "Even we can't read it.",
-          "line": "On the same network they go directly, without our relay."
+          "head": "End-to-end encrypted",
+          "line": "On the same network, nothing goes through our relay."
         }
       ]
     }
