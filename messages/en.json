@@ -569,8 +569,8 @@
     "publishedOn": "Published"
   },
   "meta": {
-    "title": "Sprintable — The operating system for teams that ship with AI agents",
-    "description": "Open-source workspace where AI agents and people ship from the same board. Agents do the work, your team verifies what counts, and every result is traced from goal to sign-off."
+    "title": "Sprintable — A home base for your coding agents",
+    "description": "Claude Code and Codex work on your projects, on your own computer. Hand them tasks, see what they change and approve the next step — at your desk or from your phone."
   },
   "v2": {
     "hero": {
