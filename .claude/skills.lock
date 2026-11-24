@@ -1,0 +1,11 @@
+{
+  "taken_in": "2026-11-24",
+  "note": "What the page was built with. The kits themselves are not in this repo (39 MB); each entry is pinned to the commit used.",
+  "skills": [
+    { "name": "design-taste-frontend", "source": "leonxlnx/taste-skill", "commit": "6c0b5c78f5d31776e2210305abaa210cdc0030bf", "used_as": "build path: deals, checker, copy-lint, finish gate" },
+    { "name": "choreograph", "source": "emilkowalski/skills", "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c", "used_as": "guidance" },
+    { "name": "review-animations", "source": "emilkowalski/skills", "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c", "used_as": "guidance" },
+    { "name": "animation-performance", "source": "emilkowalski/skills", "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c", "used_as": "guidance" },
+    { "name": "impeccable", "source": "pbakaus/impeccable", "commit": "b49177d32788f2dc585c42831d845dacf1ebed2c", "used_as": "documentation only (no binary, no hook, no login)" }
+  ]
+}
