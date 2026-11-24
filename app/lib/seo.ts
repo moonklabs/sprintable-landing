@@ -16,6 +16,8 @@ export async function buildHomeMetadata(locale: Locale): Promise<Metadata> {
     metadataBase: new URL(SITE_URL),
     title,
     description,
+    // taste-skill page kind (the checker reads these metas)
+    other: { "page-type": "software", "site-kind": "software" },
     alternates: {
       canonical: PATH[locale],
       languages: { en: PATH.en, ko: PATH.ko, "x-default": PATH.en },

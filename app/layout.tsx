@@ -23,9 +23,9 @@ const notoKr = Noto_Sans_KR({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sprintable.ai"),
-  title: "Sprintable — Ship with AI agents",
+  title: "Sprintable — Your agents keep working on your computer. Stay connected from anywhere.",
   description:
-    "Open-source PM surface for teams shipping with AI. Start with BYOA, upgrade to managed orchestration.",
+    "Claude Code and Codex work on your own computer — with your projects, your files and your accounts. Pair your phone or another computer once, then hand out work, approve requests and follow along from wherever you are.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -45,6 +45,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
+      suppressHydrationWarning
       className={`${inter.variable} ${notoKr.variable}`}
     >
       <body>

@@ -1,0 +1,193 @@
+/* Page CSS (the kit's rule: only what sits inside a visual or a card). Variant C — the usual SaaS order, B's base with A's restraint. */
+
+/* ── 1 hero: the 62-character headline in two lines at a restrained size; the desktop picture and the phone-width picture as one composition ── */
+/* the h1 is the kit's own size and measure (35 characters now) */
+.hero--centred .hero__c .hero__lead { font-size: var(--t-body); max-width: 64ch; }
+.hero--centred .hero__proof { color: var(--muted); font-size: var(--t-small); max-width: 56ch; }
+.hero--centred .hero__window > .ly-piece.hero-comp { width: min(1040px, calc(100% - 2 * var(--s-6))); }
+.hero-comp { aspect-ratio: 16 / 10; }
+.hero-comp__desk { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: 0 24px 60px -30px rgb(0 0 0 / .35); }
+.hero-comp__phone { position: absolute; right: -3%; top: 14%; width: 25%; height: auto; border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: 0 28px 60px -24px rgb(0 0 0 / .45); }
+@media (max-width: 639px) {
+  .hero--centred .hero__window > .ly-piece.hero-comp { width: calc(100% - 2 * var(--s-4)); }
+  .hero-comp__phone { right: 2%; top: 22%; width: 34%; }
+}
+
+/* the site's Tailwind has .start-N { inset-inline-start: 28px }; the kit's .start-N only names a grid column */
+.grid > :is(.start-5, .start-6, .start-7, .start-8, .start-9, .start-10) { inset-inline-start: auto; }
+
+/* ── 2 three core cards: a tile of real icons, the two lines under it; under them the three «who» lines of the same section ── */
+.v3-cards { align-items: stretch; }
+.v3-core { display: flex; flex-direction: column; gap: var(--s-3); }
+.v3-core__tile { display: flex; align-items: center; gap: var(--s-4); margin-bottom: var(--s-2); }
+.v3-core .v3-core__tile .ic { width: 40px; height: 40px; }
+.v3-core h3 { font-size: var(--t-card); line-height: 1.3; margin: 0; }
+.v3-core p { color: var(--muted); margin: 0; }
+.v3-who { list-style: none; padding: 0; margin: var(--s-7) 0 0; }
+.v3-who li { border-top: 1px solid var(--line); padding-top: var(--s-4); }
+.v3-who p { margin: 0; }
+
+/* ── 3 three steps across: the visual takes what the card leaves ── */
+.v3-steps { list-style: none; padding: 0; margin: 0; align-items: stretch; }
+.v3-step { display: flex; flex-direction: column; gap: var(--s-4); }
+.v3-step > p { margin: 0; }
+.v3-step__visual { flex: none; aspect-ratio: 4 / 3; position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); display: grid; place-items: center; }
+.v3-step__visual > img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.v3-step__glyphs { display: flex; gap: var(--s-6); align-items: center; justify-content: center; }
+.v3-step .v3-step__glyphs .ic { width: 96px; height: 96px; }
+
+/* ── 4 two feature blocks: the text centred beside a picture that takes the screen's height ── */
+.v3-feature { align-items: stretch; }
+.v3-feature > :is(.span-4, .span-5) { align-self: center; }
+.v3-feature .rows { margin-top: var(--s-5); }
+.v3-phones { display: flex; justify-content: center; align-items: flex-start; gap: var(--s-5); overflow: hidden; padding: var(--s-6) var(--s-5) 0; }
+.v3-phones > img { width: 46%; max-width: 300px; height: auto; border: 1px solid var(--line); border-radius: var(--r-lg) var(--r-lg) 0 0; }
+.v3-phones > .v3-phones__b { margin-top: 96px; }
+.v3-card-shot { overflow: hidden; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--surface); }
+.v3-card-shot > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.v3-diagram { min-height: 420px; display: grid; align-items: center; border-radius: var(--r-lg); background: var(--surface); border: 1px solid rgb(255 255 255 / .1); padding: var(--s-6); }
+
+/* ── 5/6 the dark band and the three systems ── */
+.v3-oscards { align-items: stretch; }
+.v3-os { display: flex; flex-direction: column; gap: var(--s-4); align-items: flex-start; }
+.v3-os__head { display: flex; align-items: center; gap: var(--s-4); }
+.v3-os__head .ic { width: 40px; height: 40px; }
+.v3-os__head h3 { margin: 0; font-size: var(--t-card); }
+.v3-notice { max-width: 40em; margin-top: var(--s-6); color: var(--ink); }
+section#oss .mo-la__sub { color: var(--ink); }
+
+/* ── 8 questions: open on load, each can be closed ── */
+.v3-faqgrid { align-items: start; }
+.v3-faq .faq__item { border-bottom: 1px solid var(--line); padding-block: var(--s-4); }
+.v3-faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: var(--s-4); align-items: baseline; }
+.v3-faq summary::-webkit-details-marker { display: none; }
+.v3-faq summary::after { content: "–"; color: var(--muted); font-weight: 400; flex: none; }
+.v3-faq details:not([open]) > summary::after { content: "+"; }
+.v3-faq summary > h3 { margin: 0; font-size: var(--t-card); flex: 1 1 auto; width: auto; }
+.v3-faq summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.v3-faq details > p { margin: var(--s-3) 0 0; max-width: 60ch; }
+
+.mark-row { display: flex; align-items: center; gap: var(--s-5); margin-top: var(--s-5); }
+.btn .ic { margin-right: var(--s-2); }
+@media (max-width: 639px) { .nav__loc { display: none; } }
+
+/* ── 7 open source: the statement left, the real GitHub mark right ── */
+.v3-oss { align-items: center; }
+.v3-oss__mark { display: grid; place-items: center; aspect-ratio: 1 / 1; max-height: 100%; background: var(--bg); border-radius: var(--r-lg); border: 1px solid var(--line); }
+.v3-oss__mark .ic { width: 45%; height: auto; }
+
+/* ── round 2 (gate round 1 findings) ── */
+/* on a phone a section grows with what it holds: a stretched grid may not shrink below its content (collide / spill / neighbour at 390 and 320) */
+@media (max-width: 1023px) {
+  main > section.v3-fill > .wrap > .fill, main > section.v3-fill > .wrap > .grid.fill { flex: 1 0 auto; min-height: auto; }
+  .v3-phones { min-height: 460px; }
+}
+/* the phone-width picture stays inside the hero window; the hero lead is ink, not grey */
+.hero-comp__phone { right: 2%; }
+main .hero--centred .hero__c .hero__lead { color: var(--ink); }
+/* a question and its marker on one line */
+.v3-faq summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; }
+.v3-faq .faq__item { padding-block: var(--s-3); }
+
+/* ── round 3 ── */
+main .hero--centred .hero__c .hero__proof { color: var(--ink); }
+@media (max-width: 639px) { .hero-comp__phone { top: 6%; width: 28%; } }
+.v3-faq .faq__item { padding-block: var(--s-2); }
+.v3-faq summary > h3 { font-size: var(--t-body); font-weight: 500; }
+.v3-faq details > p { margin-top: var(--s-2); }
+
+/* ── C-2 ── */
+/* step 3 has no real screen: a text card as high as its neighbours, the words larger, no plate and no icon box */
+.v3-step--text > p { font-size: var(--t-lead); line-height: 1.4; }
+/* the three systems: the block is centred on its screen, the cards and the Windows line are larger, so no empty space hangs under them */
+main > section.v3-os-section > .wrap { justify-content: center; }
+.v3-os-section .v3-os { min-height: 280px; justify-content: space-between; padding: var(--s-6); }
+.v3-os-section .v3-os__head { gap: var(--s-5); }
+.v3-os-section .v3-os__head .ic { width: 64px; height: 64px; }
+.v3-os-section .v3-os__head h3 { font-size: 28px; }
+.v3-os-section .v3-notice { font-size: var(--t-lead); max-width: 52em; margin-top: var(--s-7); }
+.v3-card-shot--policy { align-self: center; height: auto; }
+.v3-card-shot--policy > img { height: auto; object-fit: contain; }
+.v3-step--text > p { font-size: clamp(20px, 1.4vw + 8px, 28px); }
+
+/* ── C-3 ── */
+/* the three step cards end on one edge: pictures of one short height (16:9), step 3 a text card whose words fill the same height; the row is centred on its screen */
+main > section.v3-center > .wrap { justify-content: center; }
+.v3-step__visual { aspect-ratio: 16 / 9; }
+.v3-step--text { justify-content: flex-start; }
+.v3-step--text > p { font-size: clamp(20px, 1vw + 12px, 26px); line-height: 1.35; }
+/* the «Mac» card heading steps with the other card headings on a phone */
+@media (max-width: 639px) { .v3-os-section .v3-os__head h3 { font-size: var(--t-card); } .v3-os-section .v3-os { min-height: 0; } }
+/* the footer's logo mark keeps its letter inside its box */
+.footer .nav__logo .mark--initial { overflow: visible; line-height: 1; display: inline-grid; place-items: center; }
+/* step 3's words are set larger than the kit's card text so they fill the card (the kit's `.card > p` rule is as specific as the class alone) */
+.card.v3-step--text > p { font-size: clamp(20px, 1.1vw + 8px, 24px); line-height: 1.3; }
+
+/* ── C-4 ── */
+/* the «who» block is spread over its screen (heading · cards · scenes), so no empty band hangs under it and the gap to the next section matches the others */
+main > section.v3-spread > .wrap { justify-content: space-between; padding-bottom: var(--s-6); }
+.v3-spread .v3-who { margin-top: 0; }
+.v3-core { padding-block: var(--s-6); }
+/* the steps row: pictures 3:2, step 3's words larger, so the row fills its screen and the cards end on one edge */
+.v3-step__visual { aspect-ratio: 3 / 2; }
+.card.v3-step--text > p { font-size: clamp(22px, 1.4vw + 8px, 28px); }
+/* the rules block: the real policies card takes the screen's height beside the words */
+.v3-card-shot--policy { align-self: stretch; }
+.v3-card-shot--policy > img { height: 100%; min-height: 520px; object-fit: cover; object-position: top left; }
+/* the footer logo mark: the letter stays whole inside a tile of its own size */
+.footer .nav__logo .mark.mark--initial { width: 28px; height: 28px; font-size: 15px; line-height: 28px; overflow: visible; }
+
+/* ── C-5 ── */
+/* 1 the hero window: a dark frame and more height, so the light picture reads */
+main .hero--centred .hero__window { --ground-bg: #1c2433; min-height: clamp(280px, 40svh, 420px); }
+/* 2 the core cards carry a real picture; the OS marks are larger */
+.v3-core__pic { aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); }
+.v3-core__pic > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.v3-core { padding-block: var(--s-5); }
+.v3-core__tile { margin-bottom: 0; }
+.v3-os-section .v3-os__head .ic { width: 72px; height: 72px; }
+/* 3 the heading and its cards stay together (the kit's heading gap); the scenes sit at the foot of the screen */
+.v3-who-top > .section-head { margin-bottom: var(--ly-head-gap); }
+/* 4 the questions fit one screen: wider answers, tighter rows */
+.v3-faq details > p { max-width: none; }
+.v3-faq .faq__item { padding-block: var(--s-2); }
+.v3-faq summary > h3 { font-size: var(--t-body); }
+/* 7 both columns start on the same line */
+.v3-feature--top, .v3-faqgrid { align-items: start; }
+.v3-feature--top > :is(.span-5, .span-6) { align-self: start; }
+
+/* the Linux line under the Windows line: the command is inline code, selectable, wrapping on a phone */
+.v3-notice--code { margin-top: var(--s-3); }
+.v3-notice code { font-family: var(--font-mono); font-size: .92em; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 2px 6px; overflow-wrap: anywhere; user-select: all; }
+
+/* ── C-5 (after the gate) ── */
+/* the longer headline gets the hero's full measure (the kit's size stays), the lead a longer line, so the hero holds one screen */
+main .hero--centred .hero__c h1 { max-width: none; }
+main .hero--centred .hero__c .hero__lead { max-width: 80ch; }
+/* the questions end inside the section's bottom padding */
+.v3-faq .faq__item { padding-block: 6px; }
+/* on a phone the three core pictures are 16:9, so the section stays inside two screens */
+@media (max-width: 639px) { .v3-core__pic { aspect-ratio: 16 / 9; } }
+/* the policies card sits top-left in its column */
+.v3-card-shot--policy { align-self: start; }
+/* the hero window takes what the longer headline leaves (the first screen holds, SR-1) */
+main .hero--centred .hero__window { min-height: clamp(220px, 30svh, 330px); }
+
+/* ── C-6 ── */
+/* 1 the headline and the lead follow the width (fluid, never below the phone floor); the words are fixed */
+main .hero--centred .hero__c h1 { font-size: clamp(28px, 1.8vw + 21px, 50px); line-height: 1.08; }
+main .hero--centred .hero__c .hero__lead { font-size: clamp(15px, .5vw + 13px, 18px); line-height: 1.45; }
+/* 3 every core picture shares one box; the first is a whole screen, shrunk */
+.v3-core__pic { aspect-ratio: 16 / 10; }
+@media (max-width: 639px) { .v3-core__pic { aspect-ratio: 16 / 10; } }
+/* 4 the hero picture separates from its frame (light and dark): a light edge and a deep shadow */
+.hero-comp__desk, .hero-comp__phone { border-color: rgb(255 255 255 / .55); box-shadow: 0 0 0 1px rgb(0 0 0 / .35), 0 28px 60px -18px rgb(0 0 0 / .7); }
+/* the questions: two pixels back inside the section */
+.v3-faq .faq__item { padding-block: 5px; }
+.v3-faq details > p { margin-top: 4px; }
+
+/* ── C-7 ── the policies picture scales down as a whole to its column: nothing is cut */
+.v3-card-shot--policy { overflow: visible; }
+.v3-card-shot--policy > img { display: block; width: 100%; max-width: 100%; height: auto; min-height: 0; object-fit: contain; }
+/* the step pictures too scale down as a whole (the pairing picture was cut on its right edge at 390) */
+.v3-step__visual > img { object-fit: contain; object-position: top center; }
