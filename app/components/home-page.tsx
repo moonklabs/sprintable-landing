@@ -120,7 +120,7 @@ export function HomePage() {
         </section>
 
         {/* 2 — three core cards: icon and two lines each (v1.1 sentences) */}
-        <section className="section v3-fill" id="who" aria-labelledby="who-h">
+        <section className="section v3-fill v3-spread" id="who" aria-labelledby="who-h">
           <div className="wrap">
             <div className="section-head"><h2 id="who-h">{v("who.title")}</h2></div>
             <div className="grid v3-cards">
