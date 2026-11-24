@@ -172,3 +172,16 @@ main .hero--centred .hero__c .hero__lead { max-width: 80ch; }
 .v3-card-shot--policy { align-self: start; }
 /* the hero window takes what the longer headline leaves (the first screen holds, SR-1) */
 main .hero--centred .hero__window { min-height: clamp(220px, 30svh, 330px); }
+
+/* ── C-6 ── */
+/* 1 the headline and the lead follow the width (fluid, never below the phone floor); the words are fixed */
+main .hero--centred .hero__c h1 { font-size: clamp(28px, 1.8vw + 21px, 50px); line-height: 1.08; }
+main .hero--centred .hero__c .hero__lead { font-size: clamp(15px, .5vw + 13px, 18px); line-height: 1.45; }
+/* 3 every core picture shares one box; the first is a whole screen, shrunk */
+.v3-core__pic { aspect-ratio: 16 / 10; }
+@media (max-width: 639px) { .v3-core__pic { aspect-ratio: 16 / 10; } }
+/* 4 the hero picture separates from its frame (light and dark): a light edge and a deep shadow */
+.hero-comp__desk, .hero-comp__phone { border-color: rgb(255 255 255 / .55); box-shadow: 0 0 0 1px rgb(0 0 0 / .35), 0 28px 60px -18px rgb(0 0 0 / .7); }
+/* the questions: two pixels back inside the section */
+.v3-faq .faq__item { padding-block: 5px; }
+.v3-faq details > p { margin-top: 4px; }

@@ -638,7 +638,7 @@
       "title": "Mac, Windows and Linux.",
       "body": "The desktop app runs on all three. For a computer without a screen, a server host runs headless.",
       "windows": "The Windows installer isn't signed yet, so Windows may warn the first time you open it. Choose More info, then Run anyway.",
-      "linux": "On Ubuntu 24.04 the AppImage needs FUSE: `sudo apt install libfuse2t64`."
+      "linux": "On Ubuntu 24.04, install these first for the AppImage: `sudo apt install libfuse2t64 libasound2t64`"
     },
     "oss": {
       "title": "Open source.",

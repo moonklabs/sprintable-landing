@@ -635,7 +635,7 @@
       "title": "맥, 윈도, 리눅스.",
       "body": "데스크톱 앱은 세 OS에서 다 돌아요. 화면 없는 컴퓨터에는 서버용 호스트가 있어요.",
       "windows": "윈도 설치 파일은 아직 서명 전이라, 처음 열 때 경고가 뜰 수 있어요. «추가 정보» → «실행»을 누르세요.",
-      "linux": "우분투 24.04에서 AppImage를 쓰려면 FUSE가 필요해요: `sudo apt install libfuse2t64`"
+      "linux": "우분투 24.04에서 AppImage를 쓰려면 먼저 깔아 주세요: `sudo apt install libfuse2t64 libasound2t64`"
     },
     "oss": {
       "title": "오픈소스.",
