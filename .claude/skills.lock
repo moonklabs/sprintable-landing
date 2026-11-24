@@ -1,0 +1,11 @@
+{
+  "taken_in": "2026-11-24",
+  "note": "The skill kits are not in this repository (about 39 MB). This file records what the page was built with. The kits live in .claude/skills/ locally and are excluded from git.",
+  "skills": [
+    { "name": "design-taste-frontend", "source": "https://github.com/leonxlnx/taste-skill", "commit": "6c0b5c78f5d31776e2210305abaa210cdc0030bf", "license": "MIT", "use": "built and gated with it (gate.mjs, consistency.mjs, copy-lint.mjs, moments.mjs, perf.mjs); hooks not installed" },
+    { "name": "choreograph", "source": "https://github.com/emilkowalski/skills", "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c", "license": "MIT", "use": "instructions" },
+    { "name": "review-animations", "source": "https://github.com/emilkowalski/skills", "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c", "license": "MIT", "use": "instructions" },
+    { "name": "animation-performance", "source": "https://github.com/emilkowalski/skills", "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c", "license": "MIT", "use": "instructions" },
+    { "name": "impeccable", "source": "https://github.com/pbakaus/impeccable", "commit": "b49177d32788f2dc585c42831d845dacf1ebed2c", "license": "Apache-2.0", "use": "documentation only (critique, audit, polish references); engine, hooks, login and live not used" }
+  ]
+}

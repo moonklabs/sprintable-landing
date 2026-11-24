@@ -1,0 +1,23 @@
+/* Page CSS (the kit's rule: only what sits inside a visual). Variant B — product forward. */
+.hero__art > .ly-piece--main img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--r-md) 0 0 0; }
+.hero__art > .ly-piece--note { left: var(--s-6); bottom: var(--s-6); width: min(26%, 170px); z-index: 2; }
+.hero__art > .ly-piece--note img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--r-md); }
+/* a screenshot cut by its frame (the frame's right and bottom edges) */
+.shot-cut { object-position: top left; }
+/* a phone-width capture rising out of the lit frame, cut by the frame's bottom */
+.phone-shot { width: 330px; height: auto; border: 1px solid var(--line); border-radius: var(--r-lg) var(--r-lg) 0 0; }
+.mark-row { display: flex; align-items: center; gap: var(--s-5); margin-top: var(--s-5); }
+.btn .ic { margin-right: var(--s-2); }
+.card--open > .ic { margin-bottom: var(--s-4); }
+.v2-notice { max-width: 40em; margin-top: var(--s-6); color: var(--ink); }
+
+/* the site's Tailwind has .start-7 { inset-inline-start: 28px }; the kit's .start-N only names a grid column */
+.grid > :is(.start-5, .start-6, .start-7, .start-8, .start-10) { inset-inline-start: auto; }
+section#oss .mo-la__sub { color: var(--ink); }
+@media (max-width: 639px) { .nav__loc { display: none; } }
+#how .panel { --p-h: 440px; }
+#os .ic-tile { --tile: 160px; }
+@media (max-width: 639px) {
+  .hero--collage h1 { font-size: 32px; }
+  .hero__art { min-height: 200px; }
+}
