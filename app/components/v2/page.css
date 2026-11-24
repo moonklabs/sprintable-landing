@@ -136,3 +136,39 @@ main > section.v3-spread > .wrap { justify-content: space-between; padding-botto
 .v3-card-shot--policy > img { height: 100%; min-height: 520px; object-fit: cover; object-position: top left; }
 /* the footer logo mark: the letter stays whole inside a tile of its own size */
 .footer .nav__logo .mark.mark--initial { width: 28px; height: 28px; font-size: 15px; line-height: 28px; overflow: visible; }
+
+/* ── C-5 ── */
+/* 1 the hero window: a dark frame and more height, so the light picture reads */
+main .hero--centred .hero__window { --ground-bg: #1c2433; min-height: clamp(280px, 40svh, 420px); }
+/* 2 the core cards carry a real picture; the OS marks are larger */
+.v3-core__pic { aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--bg); }
+.v3-core__pic > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.v3-core { padding-block: var(--s-5); }
+.v3-core__tile { margin-bottom: 0; }
+.v3-os-section .v3-os__head .ic { width: 72px; height: 72px; }
+/* 3 the heading and its cards stay together (the kit's heading gap); the scenes sit at the foot of the screen */
+.v3-who-top > .section-head { margin-bottom: var(--ly-head-gap); }
+/* 4 the questions fit one screen: wider answers, tighter rows */
+.v3-faq details > p { max-width: none; }
+.v3-faq .faq__item { padding-block: var(--s-2); }
+.v3-faq summary > h3 { font-size: var(--t-body); }
+/* 7 both columns start on the same line */
+.v3-feature--top, .v3-faqgrid { align-items: start; }
+.v3-feature--top > :is(.span-5, .span-6) { align-self: start; }
+
+/* the Linux line under the Windows line: the command is inline code, selectable, wrapping on a phone */
+.v3-notice--code { margin-top: var(--s-3); }
+.v3-notice code { font-family: var(--font-mono); font-size: .92em; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 2px 6px; overflow-wrap: anywhere; user-select: all; }
+
+/* ── C-5 (after the gate) ── */
+/* the longer headline gets the hero's full measure (the kit's size stays), the lead a longer line, so the hero holds one screen */
+main .hero--centred .hero__c h1 { max-width: none; }
+main .hero--centred .hero__c .hero__lead { max-width: 80ch; }
+/* the questions end inside the section's bottom padding */
+.v3-faq .faq__item { padding-block: 6px; }
+/* on a phone the three core pictures are 16:9, so the section stays inside two screens */
+@media (max-width: 639px) { .v3-core__pic { aspect-ratio: 16 / 9; } }
+/* the policies card sits top-left in its column */
+.v3-card-shot--policy { align-self: start; }
+/* the hero window takes what the longer headline leaves (the first screen holds, SR-1) */
+main .hero--centred .hero__window { min-height: clamp(220px, 30svh, 330px); }

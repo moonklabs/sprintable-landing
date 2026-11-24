@@ -23,9 +23,9 @@ const notoKr = Noto_Sans_KR({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sprintable.ai"),
-  title: "Sprintable — A home base for your coding agents",
+  title: "Sprintable — Your agents keep working on your computer. Stay connected from anywhere.",
   description:
-    "Claude Code and Codex work on your projects, on your own computer. Hand them tasks, see what they change and approve the next step — at your desk or from your phone.",
+    "Claude Code and Codex work on your own computer — with your projects, your files and your accounts. Pair your phone or another computer once, then hand out work, approve requests and follow along from wherever you are.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },

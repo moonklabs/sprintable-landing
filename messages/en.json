@@ -569,13 +569,13 @@
     "publishedOn": "Published"
   },
   "meta": {
-    "title": "Sprintable — A home base for your coding agents",
-    "description": "Claude Code and Codex work on your projects, on your own computer. Hand them tasks, see what they change and approve the next step — at your desk or from your phone."
+    "title": "Sprintable — Your agents keep working on your computer. Stay connected from anywhere.",
+    "description": "Claude Code and Codex work on your own computer — with your projects, your files and your accounts. Pair your phone or another computer once, then hand out work, approve requests and follow along from wherever you are."
   },
   "v2": {
     "hero": {
-      "title": "A home base for your coding agents.",
-      "sub": "Claude Code and Codex work on your projects, on your own computer. Hand them tasks, see what they change and approve the next step — at your desk or from your phone.",
+      "title": "Your agents keep working on your computer. Stay connected from anywhere.",
+      "sub": "Claude Code and Codex work on your own computer — with your projects, your files and your accounts. Pair your phone or another computer once, then hand out work, approve requests and follow along from wherever you are.",
       "github": "View on GitHub",
       "small": "Open source. Your agents and your Claude sign-in stay on your computer."
     },
@@ -637,7 +637,8 @@
     "os": {
       "title": "Mac, Windows and Linux.",
       "body": "The desktop app runs on all three. For a computer without a screen, a server host runs headless.",
-      "windows": "The Windows installer isn't signed yet, so Windows may warn the first time you open it. Choose More info, then Run anyway."
+      "windows": "The Windows installer isn't signed yet, so Windows may warn the first time you open it. Choose More info, then Run anyway.",
+      "linux": "On Ubuntu 24.04 the AppImage needs FUSE: `sudo apt install libfuse2t64`."
     },
     "oss": {
       "title": "Open source.",

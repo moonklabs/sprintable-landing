@@ -122,6 +122,7 @@ export function HomePage() {
         {/* 2 — three core cards: icon and two lines each (v1.1 sentences) */}
         <section className="section v3-fill v3-spread" id="who" aria-labelledby="who-h">
           <div className="wrap">
+            <div className="v3-who-top">
             <div className="section-head"><h2 id="who-h">{v("who.title")}</h2></div>
             <div className="grid v3-cards">
               {([["ui-monitor", "claude-code"], ["ui-smartphone", "openai"], ["ui-lock", "ui-shield-check"]] as const).map(([glyph, mark], i) => (
@@ -134,10 +135,15 @@ export function HomePage() {
                       <img className={`ic v3-core__mark${mark === "openai" ? " ic-ink" : " ic-land"}`} src={`/assets/icons/${mark}.svg`} alt="" width={40} height={40} loading="lazy" />
                     )}
                   </div>
+                  <div className="v3-core__pic">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={`${shots}/who-${i + 1}.jpg`} alt="" width={720} height={480} loading="lazy" />
+                  </div>
                   <h3>{core[i].head}</h3>
                   <p>{core[i].line}</p>
                 </article>
               ))}
+            </div>
             </div>
             <ul className="grid v3-who">
               {(v.raw("who.items") as { lead: string; rest: string }[]).map((w) => (
@@ -175,8 +181,8 @@ export function HomePage() {
         {/* 4a — what you do from the phone: text left, the phone-width pictures right */}
         <section className="section v3-fill" id="phone" aria-labelledby="phone-h">
           <div className="wrap">
-            <div className="grid fill v3-feature">
-              <div className="span-5">
+            <div className="grid fill v3-feature v3-feature--top">
+              <div className="span-6">
                 <div className="section-head"><h2 id="phone-h">{v("anywhere.title")}</h2></div>
                 <ul className="rows">
                   {list("anywhere.items").map((text, i) => (
@@ -195,20 +201,20 @@ export function HomePage() {
         </section>
 
         {/* 4b — your accounts, your computers: the big capture left, the words right */}
-        <section className="section v3-fill" id="own" aria-labelledby="own-h">
+        <section className="section v3-fill v3-center" id="own" aria-labelledby="own-h">
           <div className="wrap">
-            <div className="grid fill v3-feature v3-feature--flip">
-              <div className="span-8 v3-card-shot v3-card-shot--policy">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`${shots}/policies-1440.jpg`} alt="" width={1300} height={690} loading="lazy" />
-              </div>
-              <div className="span-4 start-9">
+            <div className="grid fill v3-feature v3-feature--top">
+              <div className="span-6">
                 <div className="section-head"><h2 id="own-h">{v("own.title")}</h2></div>
                 <ul className="rows">
                   {list("own.items").map((text, i) => (
                     <li key={i}><p>{text}</p></li>
                   ))}
                 </ul>
+              </div>
+              <div className="span-6 start-7 v3-card-shot v3-card-shot--policy">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`${shots}/policies-1440.jpg`} alt="" width={1300} height={690} loading="lazy" />
               </div>
             </div>
           </div>
@@ -247,6 +253,7 @@ export function HomePage() {
               ))}
             </div>
             <p className="t-small v3-notice">{v("os.windows")}</p>
+            <p className="t-small v3-notice v3-notice--code">{(v("os.linux") as string).split("`").map((part, i) => (i % 2 === 1 ? <code key={i}>{part}</code> : part))}</p>
           </div>
         </section>
 
@@ -276,7 +283,7 @@ export function HomePage() {
         <section className="section v3-fill" id="faq" aria-labelledby="faq-h">
           <div className="wrap">
             <div className="grid fill v3-faqgrid">
-              <div className="span-4">
+              <div className="span-6">
                 <div className="section-head"><h2 id="faq-h">{v("faq.title")}</h2></div>
                 <div className="mark-row">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -285,7 +292,7 @@ export function HomePage() {
                   <img className="ic ic-40 ic-ink" src="/assets/icons/openai.svg" alt="OpenAI" width={39} height={40} loading="lazy" />
                 </div>
               </div>
-              <div className="faq v3-faq span-7 start-6">
+              <div className="faq v3-faq span-6 start-7">
                 {faq.map((f) => (
                   <details className="faq__item" key={f.q} open>
                     <summary><h3>{f.q}</h3></summary>
@@ -303,7 +310,7 @@ export function HomePage() {
         <div className="wrap">
           <div className="closing__cta close--type">
             <div className="section-head"><h2 id="close-h">{v("last.line")}</h2></div>
-            <DownloadButton className="btn btn--primary btn--xl btn--wide" />
+            <DownloadButton className="btn btn--primary" />
           </div>
           <div className="closing__links">
             <div className="grid">
