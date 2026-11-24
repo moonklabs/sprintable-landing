@@ -92,6 +92,12 @@ ties every publish to this repo's deploy pipeline for no reason once posts are j
   `requestLocale` first, falling back to the existing cookie/header logic exactly as before
   when no override is given (zero behavior change for the rest of the site).
 
+## Operations: where the site is served
+
+- Deploy: a push to `main` runs `.github/workflows/deploy.yml` → Cloudflare Pages project `sprintable-landing`.
+- Pages custom domains (set by hand in Cloudflare, not in code): `sprintable.ai` and `www.sprintable.ai`. Both DNS names are proxied CNAMEs to `sprintable-landing.pages.dev`.
+- `www.sprintable.ai` answers with a permanent redirect (308) to `https://sprintable.ai`, path and language kept — that redirect is in `next.config.ts`. A host that is not a custom domain of the Pages project is a 522 (this is what `www` was until 2026-11-24, when it was added as a custom domain), so a new public host needs both its DNS record and a Pages custom domain.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
