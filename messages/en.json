@@ -647,7 +647,7 @@
         },
         {
           "q": "Which agents are supported?",
-          "a": "Claude Code, Codex and OpenCode today, with more on the way. Claude Code and Codex need to be signed in on your computer; OpenCode uses whatever you've set up in it."
+          "a": "Claude Code, Codex and OpenCode today, with more on the way. Claude Code and Codex need to be signed in on that computer; OpenCode uses the models and accounts you've set up in it."
         },
         {
           "q": "Do I need to open ports or install a VPN?",

@@ -644,7 +644,7 @@
         },
         {
           "q": "어떤 에이전트를 지원하나요?",
-          "a": "지금은 Claude Code · Codex · OpenCode를 지원해요. Claude Code · Codex는 컴퓨터에 로그인해 두어야 하고, OpenCode는 OpenCode에서 정해 둔 대로 써요. 지원하는 에이전트는 계속 늘려 갈 예정이에요."
+          "a": "지금은 Claude Code · Codex · OpenCode를 지원해요. Claude Code · Codex는 그 컴퓨터에서 로그인해 두어야 하고, OpenCode는 OpenCode에 설정해 둔 모델 · 계정을 그대로 써요. 지원하는 에이전트는 계속 늘려 갈 예정이에요."
         },
         {
           "q": "포트를 열거나 VPN을 설치해야 하나요?",
