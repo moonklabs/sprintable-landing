@@ -563,12 +563,12 @@
   },
   "meta": {
     "title": "Sprintable — Your agents keep working on your computer. Stay connected from anywhere.",
-    "description": "Claude Code and Codex work on your own computer, with your projects and files. Connect your phone or another computer once, then hand out work, approve requests and follow along from wherever you are."
+    "description": "Claude Code, Codex and OpenCode work on your own computer, with your projects and files. Connect your phone or another computer once, then hand out work, approve requests and follow along from wherever you are."
   },
   "v2": {
     "hero": {
       "title": "Your agents keep working on your computer. Stay connected from anywhere.",
-      "sub": "Claude Code and Codex work on your own computer, with your projects and files. Connect your phone or another computer once, then hand out work, approve requests and follow along from wherever you are.",
+      "sub": "Claude Code, Codex and OpenCode work on your own computer, with your projects and files. Connect your phone or another computer once, then hand out work, approve requests and follow along from wherever you are.",
       "github": "View on GitHub",
       "small": "Open source. Your code and sign-ins stay on your computer."
     },
@@ -621,7 +621,7 @@
     "own": {
       "title": "Your accounts. Your computers. Your rules.",
       "items": [
-        "Choose the agent for each project — Claude Code or Codex",
+        "Choose the agent for each project — Claude Code, Codex or OpenCode",
         "Move your setup to a new computer",
         "Keep the computer awake while agents work",
         "You decide what your agents can do"
@@ -647,7 +647,7 @@
         },
         {
           "q": "Which agents are supported?",
-          "a": "Claude Code and Codex today, with more on the way."
+          "a": "Claude Code, Codex and OpenCode today, with more on the way. Claude Code and Codex need to be signed in on that computer; OpenCode uses the models and accounts you've set up in it."
         },
         {
           "q": "Do I need to open ports or install a VPN?",
